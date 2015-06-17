@@ -1,0 +1,21 @@
+@charset "utf-8";
+/* CSS Document */
+/*html5*/
+header nav ul li a.current2{color:#fff;text-decoration:none; background-color:#949494;}
+.banner{ overflow:hidden; width:100%;margin:10px auto 0 auto; }
+.banner img{ width:100%; height:100px;}
+.daohang{overflow:auto;width:95%;margin:10px auto 15px auto;background-color:#fff; }
+.daohang h1{overflow:auto; display:block;width:80%;margin:20px auto; font: normal 14px/30px "微软雅黑"; }
+.daohang h1 a{ display: block; float:left; width:40%;  height:30px; margin:5px 5%; text-align:center; background-color:#e93f3f; color:#fff; border-radius:5px;}
+.daohang h1 a:hover{display: block; text-decoration:none; background-color:#949494;}
+.daohang h1 a.current{display: block; text-decoration:none; background-color:#949494;}
+.daohang h1 a.big{ width:90%;}
+
+.list{overflow:auto;width:95%;margin:0 auto 13px auto; background-color:#fff;}
+.list h2{width:95%;margin:10px auto; text-align:center;font: normal 20px/30px "微软雅黑"; color:#e93f3f; }
+.list .content{overflow:auto;width:90%;margin:10px auto; line-height:25px;}
+.list .content p{ text-indent:30px;}
+.list .pic{ overflow:hidden; width:70%; max-height:205px; margin:20px auto; text-align:center;}
+.list .pic img{ width:100%; max-height:205px;}
+.list .list-more{width:200px; height:40px;margin:30px auto 30px auto; background-color:#e93f3f;text-align:center; border-radius:5px; color:#fff; font:18px/40px "微软雅黑";  }
+.list .list-more a{ display:block;color:#fff; text-decoration:none;}

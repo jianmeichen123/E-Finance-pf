@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.1.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.1.xsd">
+	
+	<context:component-scan base-package="com.dsh.m.web"/>
+	
+	<mvc:annotation-driven>
+		<mvc:message-converters>
+			<bean class="org.springframework.http.converter.StringHttpMessageConverter">
+                <constructor-arg value="UTF-8" />
+            </bean>
+		</mvc:message-converters>
+	</mvc:annotation-driven>
+	
+	<mvc:resources location="/js/" mapping="/js/**"/>
+	<mvc:resources location="/css/" mapping="/css/**"/>
+	<mvc:resources location="/images/" mapping="/images/**"/>
+	
+	<!-- <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="viewClass" value="org.springframework.web.servlet.view.JstlView"/>
+		<property name="prefix" value="/WEB-INF/jsp/"/>
+		<property name="suffix" value=".jsp"/>
+	</bean> -->
+	
+	<bean id="viewResolver" class="jetbrick.template.web.springmvc.JetTemplateViewResolver">
+	    <property name="order" value="1" />
+	    <property name="contentType" value="text/html; charset=utf-8" />
+	    <property name="prefix" value="/WEB-INF/jetx/"></property>
+	    <property name="suffix" value=".jetx" />
+	
+	    <!-- 指定配置文件 -->
+	    <property name="configLocation" value="/WEB-INF/jetbrick-template.properties" />
+	
+	    <!-- 直接配置属性 -->
+	    <property name="configProperties">
+	        <props>
+	            <prop key="jetx.input.encoding">utf-8</prop>
+	            <prop key="jetx.output.encoding">utf-8</prop>
+	        </props>
+	    </property>
+	</bean>
+
+</beans>

@@ -1,0 +1,46 @@
+@charset "utf-8";
+/* CSS Document */
+/*html5*/
+/*@media only screen and (min-width: 400px) and (max-width: 1024px){
+    .rightBox{width: 0;}
+    .leftBox{ width: 30%}
+    .middleBox{ width: 65%}
+}*/
+article,aside,details,dialog,figcaption,figure,footer,header,hgroup,menu,nav,section,ul,li,dl,dt,dd {display:block;}
+body{padding:0;margin:0;font-family:"microsoft yahei",Verdana,Arial,Helvetica,sans-serif;font-size:100%; background-color:#F1F1F1; }
+ul,li,h1,h2,h3,h4,h5,p,form,input,dl,dt,dd{ padding:0; margin:0;}	
+ul,li{ list-style:none;}
+i,em{ font-style:normal;}
+img{border:none;}	
+a{text-decoration:none;color:#333;}
+a:visited{text-decoration:none;color:#333; }
+a:hover{text-decoration:none;color:#333; }
+a:active{text-decoration:none;color:#333; }
+.clear{ clear:both; zoom:1; height:0; line-height:0; font-size:1px;}/*清除浮动*/
+.color_red{ color:#f00;}
+.alignright{ text-align:right;}
+
+header{ width:100%;margin:0 auto;}
+header nav{ position:relative; width:100%; height:60px; line-height:60px; margin:0 auto; background-color:#91CC32; }
+header nav .set{ position:absolute; top:0; left:15px;width:52px;height:60px;}
+header nav .set a{ color:#fff;}
+header nav .set img{width:42px; height:42px; margin-top:10px;}
+header nav .back img{width:20px; height:37px; margin-top:12px;}
+header nav h1{display:block; width:100%;text-align:center;  font-size:24px; font-family:"宋体";color:#fff;}
+header nav .search{ position:absolute; top:10px; left:70px;width:73%;height:40px;background:url(../images/fenlei02.png) no-repeat 98%  center; background-size:35px 31px; background-color:#fff;}
+header nav .search input{ float:left; width:80%; height:40px; padding-left:5px;  border:none; outline:none; font:16px "微软雅黑";}
+header nav .search .pic{ overflow:hidden; float:right; width:35px; height:31px; }
+
+.loading{ width:110px; margin:15px auto; font-size:14px; color:#333; text-align:center; background:url(../images/loading.gif) no-repeat left center;}
+.biaoti{ width:98%; height:50px; margin:0 auto; text-align:center; font:24px/50px "微软雅黑";text-indent:-30px; color:#4a9df8; background:url(../images/back_btn.png) no-repeat 5px center;}
+.biaoti a.backup{ float:left; display:block; width:30px; text-indent:-999px;} 
+.biaoti1{ width:100%; height:50px; margin:0 auto; text-align:center; font:24px/50px "微软雅黑";text-indent:-30px;background:url(../images/back-btn1.png) no-repeat 10px center; background-color:#4a9df8;color:#fff;}
+.biaoti1 a.backup{ float:left; display:block; width:30px; text-indent:-999px;} 
+.tanchu{position: fixed;top:0;z-index:9999; left:0; width:100%; height:100%; margin:0 auto; }
+.toumingbg{position: absolute; z-index:9999;top:0; left:0;width:100%; height:100%;  margin:0 auto; background-color:#000; filter:alpha(opacity=60); opacity:.6;}
+.share_zhishi{position: absolute; z-index:9999;top:0;right:3px; width:201px;height:192px; }
+.zhuce-tishi{position: absolute; z-index:9999;top:150px; left:25%; width:50%;height:100px;  border-radius:5px; background-color:#fff; line-height:40px; text-align:center;}
+.zhuce-tishi h2{ display:block; color:#4a9df8; margin-top:18px; font: normal 26px/35px "微软雅黑"; letter-spacing:1px; }
+.zhuce-tishi p{ color:#888; font:16px/30px  "微软雅黑"; }
+.zhuce-tishi p span{ color:#4a9df8; margin-left:5px; }
+

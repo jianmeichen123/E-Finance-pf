@@ -1,0 +1,41 @@
+@charset "utf-8";
+/* CSS Document */
+/*html5*/
+header nav ul li a.current1{color:#fff;text-decoration:none; background-color:#949494;}
+.banner{ position:relative;width:100%; height:180px;margin:0 auto 20px auto; background:url(../images/banner.png) no-repeat center; background-size:cover;}
+.banner .head{ position:absolute; left:50%; top:8px; margin-left:-82px; width:164px; height:164px; border-radius:50%; background-color:#F1F1F1; text-align:center;}
+.banner .head a{ display:block; width:100%; height:100%;}
+.banner .head span img{margin:10px auto 5px auto;  }
+.banner .head span{ display:block; width:100%; text-align:center; font-size:20px;}
+
+.box{float:left; width:96%;  margin:0 auto 20px auto; padding:0 2%;background-color:#fff; border-bottom:1px solid #DFDFDD; }
+.box h2{float:left; width:100%; height:34px;line-height:32px; margin-top:15px; margin-bottom:3px;font-weight:normal; font-size:18px;} 
+.box h2 b{ float:left; padding-left:40px; background:url(../images/user01.png) no-repeat left center;} 
+.box h2 b.gaikuang{background:url(../images/user07.png) no-repeat left center;}
+.box h2 span{ float:right; padding-right:12px; color:#757575; background:url(../images/user06.png) no-repeat right center;} 
+.box .nav-list{float:left; width:100%; padding:20px 0;;border-top:1px solid #DFDFDD;} 
+.box .nav-list a{ display:block; float:left; width:25%; padding-top:70px; text-align:center;font-size:14px;} 
+.box .nav-list a.js{ background:url(../images/user02.png) no-repeat center top;} 
+.box .nav-list a.sh{ background:url(../images/user03.png) no-repeat center top;} 
+.box .nav-list a.th{ background:url(../images/user04.png) no-repeat center top;} 
+.box .nav-list a.pj{ background:url(../images/user05.png) no-repeat center top;}
+
+.box .table-list{float:left; width:100%; margin-bottom:15px; text-align:center; vertical-align:middle; border-collapse:collapse;border:1px solid #DFDFDD;} 
+.box .table-list td{  padding:10px 0;border-left:1px solid #DFDFDD;border-right:1px solid #DFDFDD; font-size:14px; color:#747474;}
+.box .table-list td.top0{ padding-top:0;}
+.box .table-list td span{ color:#C53335; font-size:16px;}
+.box h2 a{ display:block; color:#727272;}
+.box h2 b.b1{background:url(../images/user08.png) no-repeat left center; margin-bottom:15px;}
+.box h2 b.b2{background:url(../images/user09.png) no-repeat left center; margin-bottom:15px;}
+.box h2 b.b3{background:url(../images/user10.png) no-repeat left center; margin-bottom:15px;}
+.box h2 b.b4{background:url(../images/user11.png) no-repeat left center; margin-bottom:15px;}
+
+.box .account{ float:left; width:100%; margin:10px 0;}
+.box .account li{ float:left;width:90%; margin:5px 0 5px 6%; line-height:30px; color:#666;}
+.box .account li input{ width:80%; height:30px; border:none; font-size:14px; border-bottom:1px solid #DFDFDD;}
+.box .account li input.reg{ height:30px;border:1px solid #DFDFDD;}
+
+.u-btn{float:left; width:100%; text-align:center;line-height:40px; }
+.u-btn input{width:80%; height:40px;text-align:center; color:#fff;  border:none;background-color:#91CC32; border-radius:3px; font-size:16px;}
+.u-f{float:left; width:90%; margin:5px 0 30px 10%; line-height:30px;font-size:14px;  }
+.u-f a{color:#999;}

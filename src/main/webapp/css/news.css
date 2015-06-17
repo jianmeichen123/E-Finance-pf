@@ -1,0 +1,33 @@
+@charset "utf-8";
+/* CSS Document */
+/*html5*/
+header nav ul li a.current2{color:#4a9df8;text-decoration:none;border-bottom:2px solid #4a9df8;}
+.banner{ overflow:auto;width:98%;margin:10px auto 5px auto; }
+.banner img{width:100%;height:100px;}
+.floatdiv{position:relative;width:98%; margin:0 auto;}
+.news-nav{position:relative; overflow:auto; width:98%;margin:0 auto 13px auto; background-color:#fff;border-bottom:1px solid #dbdada; color:#979797;font:18px/40px "微软雅黑";}
+.news-nav ul{overflow:hidden;width:99%;margin:0 auto;  }
+.news-nav ul li{ overflow:hidden;  float:left;width:20%; height:40px; text-align:center; cursor:pointer; }
+.news-nav ul li.more{ float:right; background:url(../images/morebg.png) no-repeat  right center;  }
+.news-nav ul li.more1{float:right; background:url(../images/morebg1.png) no-repeat  right center;  }
+.news-nav ul li a{ display:block; color:#979797; text-decoration:none;}
+
+.news-nav ul li.news-nav-current a{display:block;  height:38px; color:#4a9df8; border-bottom:2px solid #4a9df8;}
+.news-nav ul li:nth-child(5),.news-nav ul li:nth-child(6),.news-nav ul li:nth-child(7),.news-nav ul li:nth-child(8),.news-nav ul li:last-child{ display:none; }
+#list2,#list3,#list4,#list5,#list6,#list7,#list8{ display:none;}
+
+.list{overflow:auto;width:98%;margin:0 auto 13px auto; background-color:#fff;border-bottom:1px solid #dbdada;}
+.list .list-box{overflow:auto;width:96%;margin:15px auto 10px auto;border-bottom:1px dashed #e6e6e6;  }
+.list .list-box a{ display:block; text-decoration:none;}
+.list .list-box dl{overflow:auto;width:100%;}
+.list .list-box dl dt{ float:left;width:25%; margin:0 10px 10px 0; text-align:center; }
+.list .list-box dl dt img{width:100%;height:60px;}
+.list .list-box dl dd{overflow:hidden; float:left;width:71%; font-family:"微软雅黑"; }
+.list .list-box dl dd h4{overflow:hidden;  line-height:20px; height:40px;  font-weight:normal;font-size:18px;}
+.list .list-box dl dd p{overflow:hidden;height:20px; margin-top:4px;line-height:20px;width:100%;color:#979797; font-size:14px;}
+.list .list-box dl dd p span.source{overflow:hidden; float:left;left;width:60%;}
+.list .list-box dl dd p span.date{overflow:hidden; float:right;left;width:40%; text-align:right; }
+.list .list-box dl dd.nopic{width:100%; margin-bottom:15px;}
+.list .list-box dl dd.nopic h4{width:100%;}
+.list .list-more{width:160px; height:30px;margin:15px auto 15px auto; background-color:#4c9ef8;text-align:center; color:#fff; font:14px/30px "微软雅黑";  }
+.list .list-more a{color:#fff; text-decoration:none;}

@@ -1,0 +1,28 @@
+@charset "utf-8";
+/* CSS Document */
+/*html5*/
+.tongji{position: absolute; left:0; top:-40px; width:95%; text-align:left;  height:40px; padding-left:5%; line-height:40px; color:#fff; background:url(../images/fenlei06.png) repeat; }
+.tongji a{ padding:0 10px; float:right; background-color:#FF8000;color:#fff; font-weight:bold;}
+footer{ /* left:0; bottom:0;*/position: relative; float:left; width:100%; margin:0 auto; padding:8px 0 3px 0; background-color:#91CC32;text-align:center;font:16px "微软雅黑"; }
+footer .daohang,footer .daohang1,footer .daohang2{ float:left;width:100%; }
+footer .daohang a{ float:left; width:25%; color:#fff; text-align:center; line-height:20px;font-size:14px; }
+footer .daohang a.nav1,footer .daohang1 a.nav1{ background:url(../images/user12.png) no-repeat center top; padding-top:34px; background-size:50%;}
+footer .daohang a.nav2,footer .daohang1 a.nav2{ background:url(../images/user13.png) no-repeat center top; padding-top:34px;background-size:50%;}	
+footer .daohang a.nav3,footer .daohang1 a.nav3{ background:url(../images/user14.png) no-repeat center top; padding-top:34px;background-size:50%;}	
+footer .daohang a.nav4,footer .daohang1 a.nav4{ background:url(../images/user15.png) no-repeat center top; padding-top:34px;background-size:50%;}
+footer .daohang a.nav1,footer .daohang a.nav2,footer .daohang a.nav3,footer .daohang a.nav4{padding-top:42px; }
+	
+footer .daohang1 a{ float:left; width:20%; color:#fff; text-align:center; line-height:20px; font-size:14px; }
+footer .daohang1 a.nav5{ background:url(../images/fenlei03.png) no-repeat center top; padding-top:34px;background-size:50%;}
+
+footer .daohang2 a{ float:left; width:23%; color:#fff; line-height:40px; font-size:14px;padding-left:10%; }
+footer .daohang2 a.nav1{ background:url(../images/userqq.png) no-repeat 10% center;background-size:30%;}
+footer .daohang2 a.nav2{ background:url(../images/userweixin.png) no-repeat 10% center;background-size:30%;}
+footer .daohang2 a.nav3{ background:url(../images/userweibo.png) no-repeat 10% center;background-size:30%;}	
+/*尾部end*/
+
+#skip_float{ overflow:hidden; position:fixed; width:35px; height:150px; top:265px; right:2%;}
+#skip_float img{ display:block; max-width:35px; max-height:140px;}
+
+.bottom0{ margin-bottom:0;}
+.font16{ font-size:20px;}

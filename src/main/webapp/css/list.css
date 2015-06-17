@@ -1,0 +1,29 @@
+@charset "utf-8";
+/* CSS Document */
+/*html5*/
+header nav ul li a.current4{color:#fff;text-decoration:none; background-color:#949494;}
+.banner{ overflow:hidden; width:100%;margin:10px auto 0 auto; }
+.banner img{ width:100%; height:100px;}
+.daohang{overflow:auto;width:95%;margin:10px auto 15px auto;background-color:#fff; }
+.daohang h1{overflow:auto; display:block;width:80%;margin:20px auto; font: normal 14px/30px "微软雅黑"; }
+.daohang h1 a{ display: block; float:left; width:40%;  height:30px; margin:5px 5%; text-align:center; background-color:#e93f3f; color:#fff; border-radius:5px;}
+.daohang h1 a:hover{display: block; text-decoration:none; background-color:#949494;}
+.daohang h1 a.current{display: block; text-decoration:none; background-color:#949494;}
+
+.list{overflow:auto;width:95%;margin:0 auto 13px auto; background-color:#fff;}
+.list h2{width:95%;margin:10px auto; text-align:center;font: normal 20px/30px "微软雅黑"; color:#e93f3f; }
+.list .list-box{overflow:auto;width:95%;margin:10px auto;border-bottom:1px  dotted #e6e6e6;  }
+.list .list-box a{ display:block; text-decoration:none;}
+.list .list-box dl{overflow:auto;width:100%;}
+.list .list-box dl dt{ float:left;width:25%; height:50px; margin:0 10px 10px 0; text-align:center; border:2px solid #abaaa9; }
+.list .list-box dl dt img{width:100%; height:100%;}
+.list .list-box dl dd{overflow:hidden; float:left;width:70%; font-family:"微软雅黑"; }
+.list .list-box dl dd h4{overflow:hidden;  line-height:18px; height:36px;  font-weight:normal;font-size:16px; color:#474747;}
+.list .list-box dl dd p{overflow:hidden;height:18px; margin-top:2px;line-height:20px;width:100%;color:#979797; font-size:12px;}
+.list .list-box dl dd p span.source{overflow:hidden; float:left;left;width:60%; }
+.list .list-box dl dd p span.source strong{color:#e93f3f; font-weight:normal;}
+.list .list-box dl dd p span.date{overflow:hidden; float:right;left;width:40%; text-align:right; }
+.list .list-box dl dd.nopic{width:100%; margin-bottom:15px;}
+.list .list-box dl dd.nopic h4{width:100%;}
+.list .list-more{width:200px; height:40px;margin:15px auto 15px auto; background-color:#e93f3f;text-align:center; border-radius:5px; color:#fff; font:18px/40px "微软雅黑";  }
+.list .list-more a{ display:block;color:#fff; text-decoration:none;}
