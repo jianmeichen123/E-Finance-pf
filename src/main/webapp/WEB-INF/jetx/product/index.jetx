@@ -1,0 +1,115 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+<meta name="format-detection" content="telephone=no"/>  
+<title>多省汇</title>
+<meta name="keywords" content="多省汇">
+<meta name="description" content="多省汇">
+<link rel="stylesheet" href="/css/reset.css" />
+<link rel="stylesheet" href="/css/fenlei.css" />
+<link rel="stylesheet" href="/css/foot.css" />
+<script src="/js/jquery-1.10.1.min.js" ></script>
+<script type="text/javascript">
+	function loadproduct(catid, a) {
+		$('#tbc').html('')
+		$('#tb_').find('a').attr('class', 'normaltab')
+		$(a).addClass('hovertab')
+		$.ajax({
+			url:'/product/load?catid='+catid,
+			dataType:'json'
+		}).done(function(data){
+			$.each(data, function(i, n){
+				var html = 
+					'<dl>'+
+					'	<dt><a href="javascript:;"><img src="/images/fenlei04.png"></a></dt>'+
+					'	<dd>'+
+					'		<div class="dd-left">'+
+					'			<b><a href="javascript:;">'+n.gname+'</a></b>'+
+					'			单位：'+n.unit+'<br>'+
+					'			'+n.beizhu+
+					'		</div>'+
+					'		<div class="dd-right">'+
+					'			<ul>'+
+					'				<li><a href="javascript:;">&#8211;</a></li>'+
+					'				<li>1</li>'+
+					'				<li><a href="javascript:;">+</a></li>'+
+					'			</ul>'+
+					'			<p><a href="javascript:;" onclick="buy()">购买</a></p>'+
+					'		</div> '+            
+					'	</dd>'+
+					'</dl>'
+				$('#tbc').append(html)
+			})
+		})
+	}
+</script>
+</head>
+<body>
+<header>
+  <nav>
+     <div class="set"><a href="#"><img src="/images/fenlei01.png"></a></div>
+     <div class="search"><input name="key" type="text" placeholder="请输入商品名称"></div>
+  </nav>
+</header>
+<div class="main">
+	<div class="main-left" id="tb_">
+		<ul id="${request.getParameter('catid')}">
+			#for(cat : cats)
+			<li title="${cat.sclassid }" id="${request.getParameter('catid')==cat.sclassid}"><a href="javascript:;" onclick='loadproduct("${cat.sclassid}", this)' class="
+			#if((request.getParameter('catid')).asInt()==cat.sclassid)
+				hovertab
+			#else
+				normaltab
+			#end
+			">${cat.sclassname }</a></li>
+			#end
+		</ul>
+	</div>
+	<div class="main-right">
+		<div class="pro-list">
+			<div class="dis" id="tbc">
+				#for(good : goods)
+				<dl>
+					<dt><a href="javascript:;"><img src="/images/fenlei04.png"></a></dt>
+					<dd>
+						<div class="dd-left">
+							<b><a href="#">${good.gname }</a></b>
+							单位：${good.unit }<br>
+							${good.beizhu }
+						</div>
+						<div class="dd-right">
+							<ul>
+								<li><a href="javascript:;">&#8211;</a></li>
+								<li>1</li>
+								<li><a href="javascript:;">+</a></li>
+							</ul>
+							<p><a href="javascript:;" onclick="buy()">购买</a></p>
+						</div>               
+					</dd>
+				</dl>
+				#end
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<footer>
+    <div class="tongji">共 <span class="font16">145</span> 种商品<a href="#">下一步</a></div>
+    <div class="daohang1">
+      <a href="/cat" class="nav1">商品分类</a>
+      <a href="/" class="nav2">常用商品</a>
+      <a href="/cart" class="nav3">购物车</a>
+      <a href="/order" class="nav4">订单管理</a>
+      <a href="/member" class="nav5">个人中心</a>    
+    </div>
+</footer>
+
+</body>
+<script src="/js/fenlei_slidedoor.js" ></script>
+<script>
+
+</script>
+</html>

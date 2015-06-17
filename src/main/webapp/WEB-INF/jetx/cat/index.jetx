@@ -1,0 +1,77 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+<meta name="format-detection" content="telephone=no"/>  
+<title>多省汇</title>
+<meta name="keywords" content="多省汇">
+<meta name="description" content="多省汇">
+<link rel="stylesheet" href="/css/reset.css" />
+<link rel="stylesheet" href="/css/fenlei.css" />
+<link rel="stylesheet" href="/css/foot.css" />
+<script src="/js/jquery-1.10.1.min.js" ></script>
+<script type="text/javascript">
+	function loadcat(catid, a) {
+		$('#sectab').html('')
+		$('#tb_').find('a').attr('class', 'normaltab')
+		$(a).addClass('hovertab')
+		$.ajax({
+			url:'/cat/load?catid='+catid,
+			dataType:'json'
+		}).done(function(data){
+			$.each(data, function(i, n){
+				var html = '<a href="/product?catid='+n.sclassid
+						+'"><img src="/images/fenlei04.png"><br>'+n.sclassname+'</a>'
+				$('#sectab').append(html)
+			})
+		})
+	}
+</script>
+</head>
+
+<body>
+<header>
+  <nav>
+     <div class="set"><a href="#"><img src="/images/fenlei01.png"></a></div>
+     <div class="search"><input name="key" type="text" placeholder="请输入商品名称"></div>
+  </nav>
+</header>
+<div class="main">
+	<div class="main-left" id="tb_">
+		<ul>
+			#for(cat : firstcats)
+			<li><a href="javascript:;" onClick='loadcat("${cat.bclassid}", this)' class="
+			#if(for.index==1)
+				hovertab
+			#else
+				normaltab
+			#end
+			">${cat.bclassname}</a></li>
+			#end
+		</ul>
+	</div>
+  	<div class="main-right">
+		<div class="tab-list">
+			<div class="dis" id="sectab">
+				#for(cat : secondcats)
+			    <a href="/product?catid=${cat.sclassid}"><img src="/images/fenlei04.png"><br>${cat.sclassname}</a>
+			    #end
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<footer>
+    <div class="daohang1">
+      <a href="/cat" class="nav1">商品分类</a>
+      <a href="javascript:;" class="nav2">常用商品</a>
+      <a href="/cart" class="nav3">购物车</a>
+      <a href="/order" class="nav4">订单管理</a>
+      <a href="/member" class="nav5">个人中心</a>    
+    </div>
+</footer>
+
+</body>
+</html>
