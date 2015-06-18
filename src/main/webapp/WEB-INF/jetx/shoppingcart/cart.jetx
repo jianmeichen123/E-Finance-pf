@@ -1,0 +1,21 @@
+#for(good : goods)
+<dl>
+	<dt><a href="javascript:;"><img src="/images/fenlei04.png"></a></dt>
+	<dd>
+		<div class="dd-left">
+			<b><a href="#">${good.goods.gname }</a></b>
+			单位：${good.goods.unit }<br>
+			${good.goods.beizhu }
+		</div>
+		<div class="dd-right">
+			<ul>
+				<li><a href="javascript:;" onclick='add("${good.goods.goodsid}", -1, this)'>&#8211;</a></li>
+				<li>${good.num }</li>
+				<li><a href="javascript:;" onclick='add("${good.goods.goodsid}", 1, this)'>+</a></li>
+			</ul>
+			<p class="del"><a href="javascript:;" onclick='del("${good.goods.goodsid}")'>删除</a></p>
+		</div>               
+	</dd>
+	<dd class="count">数量：×${good.num }</dd>
+</dl>
+#end

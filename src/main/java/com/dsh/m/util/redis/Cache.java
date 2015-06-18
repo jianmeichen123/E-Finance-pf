@@ -462,6 +462,14 @@ public class Cache {
 		finally {close(jedis);}
 	}
 	
+	public String hget(String key, String field) {
+		Jedis jedis = getJedis();
+		try {
+			return jedis.hget(key, field);
+		}
+		finally {close(jedis);}
+	}
+	
 	/**
 	 * 返回哈希表 key 中给定域 field 的值。
 	 */

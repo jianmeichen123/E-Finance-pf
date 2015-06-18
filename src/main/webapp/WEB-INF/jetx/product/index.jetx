@@ -42,6 +42,7 @@
 					'</dl>'
 				$('#tbc').append(html)
 			})
+			$('.tongji').find('span').text(data.length)
 		})
 	}
 	
@@ -116,7 +117,7 @@
 
 
 <footer>
-    <div class="tongji">共 <span class="font16">145</span> 种商品<a href="#">下一步</a></div>
+    <div class="tongji">共 <span class="font16">${goods.size() }</span> 种商品<a href="#">下一步</a></div>
     <div class="daohang1">
       <a href="/cat" class="nav1">商品分类</a>
       <a href="/" class="nav2">常用商品</a>
