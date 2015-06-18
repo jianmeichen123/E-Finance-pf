@@ -8,6 +8,7 @@ import javax.servlet.http.HttpSession;
 import org.apache.commons.collections.CollectionUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -64,6 +65,11 @@ public class UserAction extends BaseAction {
 		} else {
 			return fail("用户名或密码错误！！");
 		}
+	}
+	
+	@RequestMapping("/{cusid}")
+	public String index(@PathVariable Integer cusid ) {
+		return "user/index";
 	}
 
 }
