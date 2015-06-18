@@ -32,11 +32,11 @@
 					'		</div>'+
 					'		<div class="dd-right">'+
 					'			<ul>'+
-					'				<li><a href="javascript:;">&#8211;</a></li>'+
+					'				<li><a href="javascript:;" onclick="add(-1, this)">&#8211;</a></li>'+
 					'				<li>1</li>'+
-					'				<li><a href="javascript:;">+</a></li>'+
+					'				<li><a href="javascript:;" onclick="add(1, this)">+</a></li>'+
 					'			</ul>'+
-					'			<p><a href="javascript:;" onclick="buy()">购买</a></p>'+
+					'			<p><a href="javascript:;" onclick="buy('+n.goodsid+', this)">购买</a></p>'+
 					'		</div> '+            
 					'	</dd>'+
 					'</dl>'
@@ -46,28 +46,22 @@
 	}
 	
 	function add(num, a) {
-		/* $.ajax({
-			url:'/product/add?goodsid='+id+'&num='+num,
-			dataType:'json'
-		}).done(function(data){
-			if(!data.isSuccess)
-				alert(data.msg)
-			else {
-				var li = $(a).parent().parent().children().eq(1)
-				var orgnum = Number(li.text())
-				li.text(orgnum+num)
-			}
-		}) */
-		alert(1)
 		var li = $(a).parent().parent().children().eq(1)
-		alert(2)
-		var orgnum = Number(li.text())
-		alert(3)
-		li.text(orgnum+num)
+		var oldnum = Number(li.text())
+		var newnum = oldnum+num
+		if(newnum==0) return
+		li.text(newnum)
 	}
 	
-	function buy() {
-		
+	function buy(id, a) {
+		var li = $(a).parent().prev().children().eq(1)
+		var num = li.text()
+		$.ajax({
+			url:'/cart/add?goodsid='+id+'&num='+num,
+			dataType:'json'
+		}).done(function(data){
+			alert(data.msg)
+		})
 	}
 </script>
 </head>

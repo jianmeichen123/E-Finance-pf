@@ -2,8 +2,6 @@ package com.dsh.m.web;
 
 import java.util.List;
 
-import javax.servlet.http.HttpSession;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -17,7 +15,6 @@ import com.dsh.m.model.Goods;
 import com.dsh.m.model.GoodsExample;
 import com.dsh.m.model.GoodsSclass;
 import com.dsh.m.model.GoodsSclassExample;
-import com.dsh.m.util.redis.Redis;
 
 @RequestMapping("/product")
 @Controller
@@ -50,13 +47,6 @@ public class ProductAction extends BaseAction {
 		goodsExample.createCriteria().andSclassidEqualTo(catid);
 		List<Goods> goods = goodsMapper.selectByExample(goodsExample);
 		return JSON.toJSONString(goods);
-	}
-	
-	@ResponseBody
-	@RequestMapping("/add")
-	public String add(Integer goodsid, Integer num, HttpSession session) {
-		Redis.use().hincrBy("shoppingcart:"+getUserId(session), goodsid, num);
-		return success("修改数量成功！！");
 	}
 	
 }
