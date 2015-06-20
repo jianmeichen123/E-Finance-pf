@@ -8,6 +8,7 @@ import javax.servlet.http.HttpSession;
 import org.apache.commons.collections.CollectionUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -70,6 +71,13 @@ public class UserAction extends BaseAction {
 	@RequestMapping("/{cusid}")
 	public String index(@PathVariable Integer cusid ) {
 		return "user/index";
+	}
+	
+	@RequestMapping("/setting")
+	public String setting(HttpSession session, ModelMap model) {
+		Customer customer = customerMapper.selectByPrimaryKey(super.getUserId(session));
+		model.addAttribute("user", customer);
+		return "user/setting";
 	}
 
 }
