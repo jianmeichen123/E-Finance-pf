@@ -10,7 +10,12 @@ footer .daohang a.nav1,footer .daohang1 a.nav1{ background:url(../images/user12.
 footer .daohang a.nav2,footer .daohang1 a.nav2{ background:url(../images/user13.png) no-repeat center top; padding-top:34px;background-size:50%;}	
 footer .daohang a.nav3,footer .daohang1 a.nav3{ background:url(../images/user14.png) no-repeat center top; padding-top:34px;background-size:50%;}	
 footer .daohang a.nav4,footer .daohang1 a.nav4{ background:url(../images/user15.png) no-repeat center top; padding-top:34px;background-size:50%;}
+footer .daohang a.nav5{ background:url(../images/zhishu02.png) no-repeat center top;background-size:50%;padding-top:42px;}
+footer .daohang a.nav6{ background:url(../images/zhishu03.png) no-repeat center top;background-size:50%;padding-top:42px;}
+footer .daohang a.nav7{ background:url(../images/zhishu04.png) no-repeat center top;background-size:50%;padding-top:42px;}
+
 footer .daohang a.nav1,footer .daohang a.nav2,footer .daohang a.nav3,footer .daohang a.nav4{padding-top:42px; }
+
 	
 footer .daohang1 a{ float:left; width:20%; color:#fff; text-align:center; line-height:20px; font-size:14px; }
 footer .daohang1 a.nav5{ background:url(../images/fenlei03.png) no-repeat center top; padding-top:34px;background-size:50%;}
@@ -25,4 +30,11 @@ footer .daohang2 a.nav3{ background:url(../images/userweibo.png) no-repeat 10% c
 #skip_float img{ display:block; max-width:35px; max-height:140px;}
 
 .bottom0{ margin-bottom:0;}
-.font16{ font-size:20px;}
+.font20{ font-size:20px;}
+.font16{ font-size:16px;}
+.font14{ font-size:14px;}
+.colorgray{color:#B2B2B2;}
+.color_red{ color:#f00;}
+.color_black{ color:#000;}
+.line-hight13{ line-height:13px;}
+

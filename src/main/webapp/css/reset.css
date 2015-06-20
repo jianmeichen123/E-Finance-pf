@@ -17,16 +17,18 @@ a:visited{text-decoration:none;color:#333; }
 a:hover{text-decoration:none;color:#333; }
 a:active{text-decoration:none;color:#333; }
 .clear{ clear:both; zoom:1; height:0; line-height:0; font-size:1px;}/*清除浮动*/
-.color_red{ color:#f00;}
 .alignright{ text-align:right;}
 
 header{ width:100%;margin:0 auto;}
 header nav{ position:relative; width:100%; height:60px; line-height:60px; margin:0 auto; background-color:#91CC32; }
-header nav .set{ position:absolute; top:0; left:15px;width:52px;height:60px;}
-header nav .set a{ color:#fff;}
+header nav .set{ position:absolute; z-index:2; top:0; left:15px;width:52px;height:60px;cursor:pointer;}
+header nav .set a{ display:block;color:#fff; }
 header nav .set img{width:42px; height:42px; margin-top:10px;}
+header nav .back a{ text-align:center;width:20px;}
 header nav .back img{width:20px; height:37px; margin-top:12px;}
-header nav h1{display:block; width:100%;text-align:center;  font-size:24px; font-family:"宋体";color:#fff;}
+header nav h1{ position:relative;display:block; width:100%;text-align:center;  font-size:24px; font-family:"宋体";color:#fff;}
+header nav h1 span{ position:absolute;top:12px; left:50%; width:34px; height:34px; margin-left:50px; background:url(../images/dingdan01.png) no-repeat center; background-size:70%;  }
+header nav h1 span.qushi{ margin-left:65px;}
 header nav .search{ position:absolute; top:10px; left:70px;width:73%;height:40px;background:url(../images/fenlei02.png) no-repeat 98%  center; background-size:35px 31px; background-color:#fff;}
 header nav .search input{ float:left; width:80%; height:40px; padding-left:5px;  border:none; outline:none; font:16px "微软雅黑";}
 header nav .search .pic{ overflow:hidden; float:right; width:35px; height:31px; }

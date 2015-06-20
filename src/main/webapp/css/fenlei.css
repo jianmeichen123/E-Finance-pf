@@ -24,9 +24,79 @@
 .pro-list dl dd .dd-right ul{float:left;width:99%;border-collapse:collapse; border:1px solid #DFDFDD; }
 .pro-list dl dd .dd-right ul li{float:left;width:32%;height:20px; line-height:20px; text-align:center; color:#b2b2b2; border-left:1px solid #DFDFDD;border-collapse:collapse; }
 .pro-list dl dd .dd-right ul li a{ display:block;color:#dfdfdd; font-size:14px;}
-.pro-list dl dd .dd-right p{float:left;width:79%; height:20px; padding-left:20%;line-height:20px; margin-top:15px; border-radius:25%; text-align:center;border:1px solid #DFDFDD; font-size:10px; background: url(../images/fenlei05.png) no-repeat 10% 35%; background-size:13px 13px;}
+.pro-list dl dd .dd-right p{float:left;width:79%; height:20px; padding-left:20%;line-height:20px; margin-top:15px; border-radius:20px; text-align:center;border:1px solid #DFDFDD; font-size:10px; background: url(../images/fenlei05.png) no-repeat 10% 35%; background-size:13px 13px;}
 .pro-list dl dd .dd-right p.del{padding-left:15%;background: url(../images/fenlei07.png) no-repeat 10% 41%; background-size:13px 13px;font-size:12px; line-height:18px;}
 .pro-list dl dd .dd-right p a{ display:block; width:100%;color:#b2b2b2; }
 .pro-list dl dd.count{ width:90%; height:20px; line-height:20px; text-align:right; margin-top:10px; padding-top:5px; padding-right:10%;border-top:1px dashed #dfdfdd; font-size:14px;}
+
+.dingdan-list{float:left; width:90%; padding:10px 5% 10px; margin-bottom:20px;background-color:#fff; border-bottom:1px solid #ddd;}
+.dingdan-list ul{float:left; width:100%; }
+.dingdan-list li{float:left; width:100%; color:#B2B2B2; border-bottom:1px solid #DFDFDD; padding:5px 0; line-height:18px; font-size:12px;}
+.dingdan-list li dl{float:left; width:25%; text-align:center;}
+.dingdan-list li dl dt{ color:#000; font-size:14px; margin-bottom:5px;} 
+.dingdan-list li dl dd em.state1{ float:left; display: inline-block; width:13px; height:14px; margin:2px 0 0 10px; background:url(../images/dingdan02.png) no-repeat center; background-size:100%;} 
+.dingdan-list li dl dd em.state2{ float:left; display: inline-block; width:13px; height:14px; margin:2px 0 0 10px; background:url(../images/dingdan03.png) no-repeat center; background-size:100%;} 
+.dingdan-list li dl dd em.state3{ float:left; display: inline-block; width:13px; height:14px; margin:2px 0 0 10px; background:url(../images/dingdan04.png) no-repeat center; background-size:100%;} 
+.dingdan-list li dl dd span{ float:left; margin-left:2px; } 
+.dingdan-list li .namebg,.dingdan-list li .namebg1{ float:left; background:url(../images/dingdan05.png) no-repeat left center; background-size:20%; padding-left:20px; margin-top:10px; font-size:14px;  } 
+.dingdan-list li .namebg1{margin-top:0px;}
+
+.dingdan-list li.noborderbottom{ border-bottom:none;}
+.dingdan-list li.noborderbottom i{ float:left; margin-top:8px; font-size:30px; color:#AED968;}
+.dingdan-list li .chakan-btn{ float:right; width: 80px; height:25px; line-height:25px; margin-top:5px; margin-right:3%;font-size:14px; background-color:#91CC32; text-align:center; border-radius:15px; color:#fff; }
+.dingdan-list li .dfh{ float:right; padding-left:18px;background:url(../images/dingdan02.png) no-repeat left center; background-size:30%; color:#f00; }
+.dingdan-list li .role{float:right;}
+.dingdan-list li .role i{float:right; margin-top:-2px;}
+.dingdan-list li .bianhao{ float:right;}
+.dingdan-list li.liebiao{ border-bottom:1px dashed #f1f1f0;}
+.dingdan-list li.liebiao .p-name{ float:left; width:40%; color:#000;}
+.dingdan-list li.liebiao .p-unit{ float:left; width:30%;}
+.dingdan-list li.liebiao .p-count{ float:left; width:30%;text-align:center;}
+.dingdan-list li .zs-l{ color:#000; font-size:16px;}
+.dingdan-list li .zs-r{ float:right; color:#000; font-size:16px;}
+
+.send-box{float:left; width:100%; margin-bottom:20px; border-top:1px dashed #A0D251;border-bottom:1px dashed #A0D251;}
+.send-box ul{float:left; width:94%; margin:0 3%;padding:5px 0; background-color:#F1F9E6; font-size:13px; color:#737373; line-height:25px;}
+.send-box ul li{ float:left; width:96%; margin:0 2%;}
+
+
+.dingdan-list li.zhishu-liebiao{ color:#000; font-size:14px; padding:10px 0;}
+.dingdan-list li.zhishu-liebiao .zhishu-date{ float:left; width:30%; }
+.dingdan-list li.zhishu-liebiao .zhishu-count{float:left; width:35%; }
+.dingdan-list li.zhishu-liebiao .zhishu-state{float:left; width:15%; }
+.dingdan-list li.zhishu-liebiao .zhishu-state img{ width:20%;}
+.dingdan-list li.zhishu-liebiao .zhishu-xx{float:right; width:20%; text-align:right; }
+.dingdan-list li.zhishu-liebiao .zhishu-xx i{float:right; margin-top:-2px; font-size:30px; color:#91cc32;}
+.dingdan-list li.zhishu-liebiao .zhishu-count i{ font-size:10px;color:#B2B2B2; }
+
+.dingdan-list li .zs-title{ color:#000; font-size:16px; padding-left:20px; background:url(../images/zhishu01.png) no-repeat left center; background-size:22%;}
+.dingdan-list li.zs-word{color:#666;font-size:13px; }
+.dingdan-list li.zs-word span.l{ float:left;width:65px;}
+.dingdan-list li.zs-word span.r{ float:left;width:75%;}
+
+.dingdan-list li.zhishu-xq{font-size:10px;}
+.dingdan-list li.zhishu-xq p{ width:100%; margin:0 auto;color:#000;  text-align:center;}
+.dingdan-list li.zhishu-xq p b{ display: inline-block; position:relative; margin:20px 0 13px 0; font-size:45px;font-weight:normal;}
+.dingdan-list li.zhishu-xq p b i{ position:absolute; right:-25px; top:-10px;font-size:12px; }
+.dingdan-list li.zhishu-xq p.f{ color:#737373; margin-bottom:10px;}
+
+.dingdan-list li.zhishu-dl{ padding:0;}
+.dingdan-list li.zhishu-dl dl{ width:32%; border-right:1px solid #DFDFDD; padding:0; }
+.dingdan-list li.zhishu-dl dl dt{ font-size:16px; margin-top:5px;}
+.dingdan-list li.zhishu-dl dl dd{ margin-bottom:5px;}
+
+.dingdan-list li .dengji1,.dingdan-list li .dengji2,.dingdan-list li .dengji3,.dingdan-list li .dengji4{ float:left; width:20%; margin-right:7%; padding:5px 0; color:#000; text-align:center;}
+.dingdan-list li .dengji1{ background-color:#118df8;}
+.dingdan-list li .dengji2{background-color:#fffd03;}
+.dingdan-list li .dengji3{background-color:#ff7f00;margin-right:6%;}
+.dingdan-list li .dengji4{margin-right:0;background-color:#ff0500;}
+
+.dingdan-list li table{ width:100%;border:1px solid #DFDFDD; border-collapse:collapse; text-align:center; vertical-align:middle; line-height:25px; color:#000;}
+.dingdan-list li table tr th{ font-size:14px; line-height:25px; font-weight:normal;border:1px solid #DFDFDD;}
+.dingdan-list li table tr.bgcolor-blue{ background-color:#118df8;}
+.dingdan-list li table tr.bgcolor-yellow{ background-color:#fffd03;}
+.dingdan-list li table tr.bgcolor-orange{ background-color:#ff7f00;}
+.dingdan-list li table tr.bgcolor-red{ background-color:#ff0500;}
+
 .dis{display:block;}
 .undis{display:none;}
