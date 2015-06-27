@@ -68,8 +68,8 @@ public class UserAction extends BaseAction {
 		}
 	}
 	
-	@RequestMapping("/{cusid}")
-	public String index(@PathVariable Integer cusid ) {
+	@RequestMapping
+	public String index() {
 		return "user/index";
 	}
 	

@@ -5,8 +5,8 @@
 <meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
 <meta name="format-detection" content="telephone=no"/>  
 <title>多省汇</title>
-<meta name="keywords" content="多省汇">
-<meta name="description" content="多省汇">
+<meta name="keywords" content="多省汇">
+<meta name="description" content="多省汇">
 <link rel="stylesheet" href="/css/reset.css" />
 <link rel="stylesheet" href="/css/fenlei.css" />
 <link rel="stylesheet" href="/css/foot.css" />
@@ -17,7 +17,7 @@
 <header>
   <nav>
      <div class="set back"><a href="javascript:history.go(-1);"><img src="/images/reg01.png"></a></div>
-     <h1>订单详情</h1>
+     <h1>订单详情</h1>
   </nav>
 </header>
 <div class="main">  
@@ -31,9 +31,9 @@
 	</div>
 	<div class="send-box">
 		<ul>
-			<li>配送时间：9:00 - 11:00&nbsp;&nbsp;&nbsp; 配送人员：习大大</li>
-			<li>联系电话：15321971787</li>
-		</ul>
+          <li>配送时间：${deliver.delivertime }&nbsp;&nbsp;&nbsp; 配送人员：习大大</li>
+          <li>联系电话：15321971787</li>
+        </ul>
 	</div>
 	<div class="dingdan-list">
 		<ul>
@@ -43,7 +43,7 @@
 				#set(product = getProductById(detail.goodsid))
 			    <span class="p-name">${product.gname }</span>
 			    <span class="p-unit">单位：${product.unit }</span>
-			    <span class="p-count">数量：×${cutZero(detail.amount) }</span>
+			    <span class="p-count">数量：${cutZero(detail.amount) }</span>
 			</li>
 			#end
 		</ul>  
@@ -52,7 +52,7 @@
 	<div class="dingdan-list bottom0">
 		<ul>
 			<li class="noborderbottom"><span class="zs-l">协议配送指数</span> <span class="zs-r" >130.98PMI</span></li>
-			<li class="noborderbottom">  <a href="#" class="chakan-btn">取消订单</a></li>
+			<li class="noborderbottom"><a href="#" class="chakan-btn">取消订单</a></li>
 		</ul>  
 	</div>
      
@@ -63,7 +63,7 @@
    
     <div class="daohang">
       <a href="/cat" class="nav1">商品分类</a>
-      <a href="/" class="nav2">常用商品</a>
+      <a href="/" class="nav2">常用商品</a>
       <a href="/cart" class="nav3">购物车</a>
       <a href="/order" class="nav4">订单管理</a>   
     </div>

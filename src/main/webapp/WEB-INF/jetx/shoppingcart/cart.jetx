@@ -16,6 +16,6 @@
 			<p class="del"><a href="javascript:;" onclick='del("${good.goods.goodsid}")'>删除</a></p>
 		</div>               
 	</dd>
-	<dd class="count">数量：×${good.num }</dd>
+	<dd class="count">数量：${good.num }</dd>
 </dl>
 #end
