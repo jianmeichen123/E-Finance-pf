@@ -4,22 +4,23 @@
 	<!-- <classPathEntry location="F:/repository/mysql/mysql-connector-java/5.1.27/mysql-connector-java-5.1.27.jar"/> -->
 	<classPathEntry location="C:/Users/cuihuan/.m2/repository/mysql/mysql-connector-java/5.1.27/mysql-connector-java-5.1.27.jar"/>
   <context id="context1" >
+  	<plugin type="com.dsh.m.plugin.PaginationPlugin" />
     <jdbcConnection driverClass="com.mysql.jdbc.Driver" connectionURL="jdbc:mysql://122.112.89.215/procurebj" userId="root" password="mycloud" />
     <javaModelGenerator targetPackage="com.dsh.m.model" targetProject="dsh_m" />
     <sqlMapGenerator targetPackage="com.dsh.m.sqlmap" targetProject="dsh_m" />
     <javaClientGenerator targetPackage="com.dsh.m.dao" targetProject="dsh_m" type="XMLMAPPER" />
-    <!-- <table tableName="purchaseorder" ></table> -->
-    <!-- <table tableName="purchaseorder_child" ></table>
+    <table tableName="purchaseorder" ></table>
+    <table tableName="purchaseorder_child" ></table>
     <table tableName="sys_ordernum" ></table>
     <table tableName="sys_config" ></table>
     <table tableName="sys_dictionary" ></table>
     <table tableName="sys_dictype" ></table>
     <table tableName="goods" ></table>
-    <table tableName="customer" ></table> -->
-    <!-- <table tableName="goods_bclass" ></table>
-    <table tableName="goods_sclass" ></table> -->
-    <!-- <table tableName="supply" ></table>  -->
-    <!-- <table tableName="supply_customer" ></table> -->
+    <table tableName="customer" ></table>
+    <table tableName="goods_bclass" ></table>
+    <table tableName="goods_sclass" ></table>
+    <table tableName="supply" ></table> 
+    <table tableName="supply_customer" ></table>
     <table tableName="index_date"></table>
   </context>
 </generatorConfiguration>

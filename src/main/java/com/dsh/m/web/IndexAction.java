@@ -9,7 +9,7 @@ public class IndexAction {
 	
 	@RequestMapping
 	public String index() {
-		return "index";
+		return "redirect:/user";
 	}
 
 }

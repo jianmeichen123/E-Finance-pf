@@ -1,0 +1,83 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+<meta name="format-detection" content="telephone=no"/>  
+<title>多省汇</title>
+<meta name="keywords" content="多省汇">
+<meta name="description" content="多省汇">
+<link rel="stylesheet" href="/css/reset.css" />
+<link rel="stylesheet" href="/css/fenlei.css" />
+<link rel="stylesheet" href="/css/foot.css" />
+<script src="/js/jquery-1.10.1.min.js" ></script>
+<script type="text/javascript">
+	$(function() {
+		var total = $('.zhishu-liebiao').size()
+		var temp = 0
+		for(var i=total-1;i>0;i--) {
+			var li = $('.zhishu-liebiao').get(i)
+			var count = Number($(li).find('.zhishu-count').text().replace('PMI', ''))
+			if(count>temp)
+				$(li).find('.zhishu-state').html('<img src="/images/up.png">')
+			else
+				$(li).find('.zhishu-state').html('<img src="/images/down.png">')
+			temp = count
+		}
+	})
+</script>
+</head>
+
+<body>
+<header>
+  <nav>
+     <div class="set back"><a href="javascript:history.go(-1);"><img src="/images/reg01.png"></a></div>
+     <h1>7天指数趋势<span class="qushi"></span></h1>
+  </nav>
+</header>
+<div class="main">  
+     
+	<div class="dingdan-list">
+		<ul>
+			#for(index : indexs)
+			<li class="zhishu-liebiao" >
+				   	<span class="zhishu-date">${index.indextime }【${temp }】</span>
+					<span class="zhishu-count">${index.t1 }<i>PMI</i></span>
+					<span class="zhishu-state">
+						<img src="/images/up.png" >
+					</span>
+				<a href="#" class="zhishu-xx">详情<i>&#8250;</i></a>
+			</li>
+			#end
+		</ul>  
+	</div>
+     
+     <div class="dingdan-list bottom0">
+        <ul>
+          <li><span class="zs-title">综合分析</span> </li>
+          <li class="zs-word">平均指数：109.23PMI</span></li>
+          <li class="zs-word">指数趋势：急速上涨</li>
+          <li class="zs-word noborderbottom"><span class="l">综合评定：</span><span class="r">您的指数正以火箭般的速度上升哦！您的钱也像火
+                  箭般~嗖嗖的飞走了！</span></li>
+        </ul>  
+     </div>
+     
+</div>
+
+
+<footer>
+   
+    <div class="daohang">
+      <a href="/index" class="nav5">指数趋势</a>
+      <a href="/" class="nav6">账目预警</a>
+      <a href="/" class="nav3">采购管理</a>
+      <a href="/" class="nav7">资讯信息</a>   
+    </div>
+</footer>
+
+</body>
+<script src="/js/fenlei_slidedoor.js" ></script>
+<script>
+
+</script>
+</html>
