@@ -39,26 +39,33 @@
      
 	<div class="dingdan-list">
 		<ul>
+			#set(double total = 0)
 			#for(index : indexs)
 			<li class="zhishu-liebiao" >
-				   	<span class="zhishu-date">${index.indextime }【${temp }】</span>
-					<span class="zhishu-count">${index.t1 }<i>PMI</i></span>
+				   	<span class="zhishu-date">${index.indextime }</span>
+					<span class="zhishu-count">${index.t1.format() }<i>PMI</i></span>
 					<span class="zhishu-state">
 						<img src="/images/up.png" >
 					</span>
-				<a href="#" class="zhishu-xx">详情<i>&#8250;</i></a>
+				<a href="/index/detail?id=${index.id }" class="zhishu-xx">详情<i>&#8250;</i></a>
 			</li>
+			#set(total = total + index.t1.asDouble())
+			#set(num = for.size)
 			#end
+			#set(average = total/num)
 		</ul>  
 	</div>
      
      <div class="dingdan-list bottom0">
         <ul>
           <li><span class="zs-title">综合分析</span> </li>
-          <li class="zs-word">平均指数：109.23PMI</span></li>
-          <li class="zs-word">指数趋势：急速上涨</li>
-          <li class="zs-word noborderbottom"><span class="l">综合评定：</span><span class="r">您的指数正以火箭般的速度上升哦！您的钱也像火
-                  箭般~嗖嗖的飞走了！</span></li>
+          <li class="zs-word">平均指数：${average.format() }PMI</span></li>
+          #set(level = getDescByIndex(average))
+          <li class="zs-word">指数趋势：${level.level }</li>
+          <li class="zs-word noborderbottom">
+          	<span class="l">综合评定：</span>
+          	<span class="r">${level.desc }</span>
+          </li>
         </ul>  
      </div>
      
@@ -68,7 +75,7 @@
 <footer>
    
     <div class="daohang">
-      <a href="/index" class="nav5">指数趋势</a>
+      <a href="/" class="nav5">指数趋势</a>
       <a href="/" class="nav6">账目预警</a>
       <a href="/" class="nav3">采购管理</a>
       <a href="/" class="nav7">资讯信息</a>   
