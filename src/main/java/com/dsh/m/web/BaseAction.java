@@ -22,6 +22,22 @@ public class BaseAction {
 		return json.toString();
 	}
 	
+	public String success(String msg, Object obj) {
+		JSONObject json = new JSONObject();
+		json.put("isSuccess", true);
+		json.put("msg", msg);
+		json.put("obj", obj);
+		return json.toString();
+	}
+	
+	public String fail(String msg, Object obj) {
+		JSONObject json = new JSONObject();
+		json.put("isSuccess", false);
+		json.put("msg", msg);
+		json.put("obj", obj);
+		return json.toString();
+	}
+	
 	public Integer getUserId(HttpSession session) {
 		Object obj = session.getAttribute("login_id");
 		if(obj==null) return null;

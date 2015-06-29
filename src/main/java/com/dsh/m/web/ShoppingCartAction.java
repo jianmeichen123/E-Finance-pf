@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.alibaba.fastjson.JSONArray;
+import com.dsh.m.service.OrderService;
 import com.dsh.m.service.ShoppingCartService;
 import com.dsh.m.util.redis.Redis;
 
@@ -18,6 +19,8 @@ public class ShoppingCartAction extends BaseAction {
 	
 	@Autowired
 	private ShoppingCartService shoppingCartService;
+	@Autowired
+	private OrderService orderService;
 	
 	@ResponseBody
 	@RequestMapping("/add")
@@ -29,7 +32,7 @@ public class ShoppingCartAction extends BaseAction {
 			e.printStackTrace();
 			return fail("失败！！");
 		}
-	}
+	} 
 	
 	@RequestMapping
 	public String index(HttpSession session, ModelMap model) {
@@ -57,6 +60,20 @@ public class ShoppingCartAction extends BaseAction {
 		JSONArray array = shoppingCartService.loadUserCart(userId);
 		model.addAttribute("goods", array);
 		return "shoppingcart/cart";
+	}
+	
+	@ResponseBody
+	@RequestMapping("/submit")
+	public String submit(HttpSession session) {
+		Integer userId = getUserId(session);
+		try {
+			JSONArray array = shoppingCartService.loadUserCart(userId);
+			int orderid = orderService.createOrder(userId, array);
+			return success("提交成功！！", orderid);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return fail("提交失败！！");
+		}
 	}
 
 }

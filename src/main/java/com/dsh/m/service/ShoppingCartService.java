@@ -17,9 +17,9 @@ public class ShoppingCartService {
 	@Autowired
 	private GoodsService goodsService;
 	
-	public JSONArray loadUserCart(Integer userId) {
+	public JSONArray loadUserCart(Integer userid) {
 		Cache cache = Redis.use();
-		String hkey = "shoppingcart:"+userId;
+		String hkey = "shoppingcart:"+userid;
 		Set<String> keys = cache.hkeys(hkey);
 		JSONArray array = new JSONArray();
 		for(String key:keys) {
@@ -32,6 +32,12 @@ public class ShoppingCartService {
 			array.add(json);
 		}
 		return array;
+	}
+	
+	public void clearUserCart(Integer userid) {
+		Cache cache = Redis.use();
+		String hkey = "shoppingcart:"+userid;
+		cache.del(hkey);
 	}
 
 }
