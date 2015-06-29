@@ -46,11 +46,6 @@ public class OrderMessageConsumer implements MessageListener {
 		}
 	}
 	
-	private void aftercreate(JSONObject data) {
-		
-	}
-	
-	
 	public static void main(String[] args) {
 		Date start = new JDateTime().setHour(0).setMinute(0).setSecond(0, 0).convertToDate();
 		Date end = new JDateTime(start).addDay(7).convertToDate();
