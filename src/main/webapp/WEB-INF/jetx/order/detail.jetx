@@ -11,6 +11,20 @@
 <link rel="stylesheet" href="/css/fenlei.css" />
 <link rel="stylesheet" href="/css/foot.css" />
 <script src="/js/jquery-1.10.1.min.js" ></script>
+<script type="text/javascript">
+	function cancel(id) {
+		if(window.confirm("确认取消？")) {
+			$.ajax({
+				url:'/order/cancel?orderid='+id,
+				dataType:'json'
+			}).done(function(data){
+				alert(data.msg);
+				if(data.isSuccess)
+					window.location = '/order/list'
+			})
+		}
+	}
+</script>
 </head>
 
 <body>
@@ -43,7 +57,7 @@
 				#set(product = getProductById(detail.goodsid))
 			    <span class="p-name">${product.gname }</span>
 			    <span class="p-unit">单位：${product.unit }</span>
-			    <span class="p-count">数量：${cutZero(detail.amount) }</span>
+			    <span class="p-count">数量：${detail.amount.format() }</span>
 			</li>
 			#end
 		</ul>  
@@ -51,8 +65,14 @@
 	
 	<div class="dingdan-list bottom0">
 		<ul>
-			<li class="noborderbottom"><span class="zs-l">协议配送指数</span> <span class="zs-r" >130.98PMI</span></li>
-			<li class="noborderbottom"><a href="#" class="chakan-btn">取消订单</a></li>
+			<li class="noborderbottom"><span class="zs-l">协议配送指数</span> <span class="zs-r" >${deliver.exponent.format() }PMI</span></li>
+			<li class="noborderbottom">
+				#if(order.ordertype == 1)
+					<a href="javascript:;" class="chakan-btn" onclick='cancel("${order.id}")'>取消订单</a>
+				#elseif(order.ordertype == 2)
+					<a href="/order/confirm?orderid=${order.id }" class="chakan-btn">确认收货商品</a>
+				#end
+			</li>
 		</ul>  
 	</div>
      

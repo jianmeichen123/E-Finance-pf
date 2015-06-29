@@ -1,5 +1,6 @@
 package com.dsh.m.web;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import jetbrick.util.StringUtils;
@@ -43,6 +44,12 @@ public class BaseAction {
 		if(obj==null) return null;
 		else if(StringUtils.isBlank(obj+"")) return null;
 		else return Integer.parseInt(obj+"");
+	}
+	
+	public void keepParas(HttpServletRequest req, String...params) {
+		for(String param:params) {
+			req.setAttribute(param, req.getParameter(param));
+		}
 	}
 
 }

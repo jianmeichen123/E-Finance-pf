@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.dsh.m.dao.PurchaseorderChildMapper;
@@ -19,6 +20,7 @@ import com.dsh.m.enumtype.OrderStatusEnum;
 import com.dsh.m.model.Goods;
 import com.dsh.m.model.Purchaseorder;
 import com.dsh.m.model.PurchaseorderChild;
+import com.dsh.m.model.PurchaseorderChildExample;
 import com.dsh.m.model.SupplyCustomer;
 import com.dsh.m.model.SupplyCustomerExample;
 import com.dsh.m.util.OrderUtil;
@@ -70,6 +72,28 @@ public class OrderService {
 		
 		shoppingcartService.clearUserCart(userid);
 		return orderid;
+	}
+	
+	@Transactional
+	public void confirm(Integer orderid, String json) {
+		JSONArray array = JSON.parseArray(json);
+		@SuppressWarnings("rawtypes")
+		Iterator iter = array.iterator();
+		while(iter.hasNext()) {
+			JSONObject obj = (JSONObject)iter.next();
+			BigDecimal num = obj.getBigDecimal("num");
+			int goodsid = obj.getIntValue("goodsid");
+			PurchaseorderChild child = new PurchaseorderChild();
+			child.setCheckamount(num);
+			PurchaseorderChildExample example = new PurchaseorderChildExample();
+			example.createCriteria().andOrderidEqualTo(orderid).andGoodsidEqualTo(goodsid);
+			purchaseorderChildMapper.updateByExampleSelective(child, example);
+		}
+		
+		Purchaseorder order = new Purchaseorder();
+		order.setId(orderid);
+		order.setOrdertype(OrderStatusEnum.FINISHED.getCode());
+		purchaseorderMapper.updateByPrimaryKeySelective(order);
 	}
 
 }

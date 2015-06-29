@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN" "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd" >
 <generatorConfiguration >
-	<!-- <classPathEntry location="F:/repository/mysql/mysql-connector-java/5.1.27/mysql-connector-java-5.1.27.jar"/> -->
-	<classPathEntry location="C:/Users/cuihuan/.m2/repository/mysql/mysql-connector-java/5.1.27/mysql-connector-java-5.1.27.jar"/>
+	<classPathEntry location="F:/repository/mysql/mysql-connector-java/5.1.27/mysql-connector-java-5.1.27.jar"/>
+	<!-- <classPathEntry location="C:/Users/cuihuan/.m2/repository/mysql/mysql-connector-java/5.1.27/mysql-connector-java-5.1.27.jar"/> -->
   <context id="context1" >
   	<plugin type="com.dsh.m.plugin.PaginationPlugin" />
     <jdbcConnection driverClass="com.mysql.jdbc.Driver" connectionURL="jdbc:mysql://122.112.89.215/procurebj" userId="root" password="mycloud" />
@@ -22,6 +22,7 @@
     <table tableName="supply" ></table> 
     <table tableName="supply_customer" ></table>
     <table tableName="index_date"></table> -->
-    <table tableName="index_date_child"></table>
+    <!-- <table tableName="index_date_child"></table> -->
+    <table tableName="sys_log"/>
   </context>
 </generatorConfiguration>

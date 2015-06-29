@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	
+	<bean id="orderQueue" class="org.apache.activemq.command.ActiveMQQueue">
+    	<constructor-arg index="0" value="queue-order"/>
+    </bean>
+    
+    <bean id="orderJmsTemplate" class="org.springframework.jms.core.JmsTemplate">
+        <property name="connectionFactory" ref="connectionFactory"/>
+        <property name="defaultDestination" ref="orderQueue"/>
+        <property name="messageConverter">
+        	<bean class="org.springframework.jms.support.converter.SimpleMessageConverter"/>
+        </property>
+    </bean>
+    
+    <bean id="orderJmsContainer" class="org.springframework.jms.listener.DefaultMessageListenerContainer" lazy-init="false">
+        <property name="connectionFactory" ref="connectionFactory"/>
+        <property name="destination" ref="orderQueue"/>
+        <property name="messageListener" ref="orderMessageConsumer"/>
+        <property name="concurrentConsumers" value="5"/>
+        <!--0:CACHE_NONE,1:CACHE_CONNECTION,2:CACHE_SESSION,3:CACHE_CONSUMER,4:CACHE_AUTO-->
+        <property name="cacheLevel" value="0"/>
+    </bean>
+
+</beans>

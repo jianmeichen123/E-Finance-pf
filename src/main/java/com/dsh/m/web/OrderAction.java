@@ -9,16 +9,20 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.dsh.m.dao.PurchaseorderChildMapper;
 import com.dsh.m.dao.PurchaseorderMapper;
 import com.dsh.m.dao.SupplyCustomerMapper;
+import com.dsh.m.enumtype.OrderStatusEnum;
 import com.dsh.m.model.Purchaseorder;
 import com.dsh.m.model.PurchaseorderChild;
 import com.dsh.m.model.PurchaseorderChildExample;
 import com.dsh.m.model.PurchaseorderExample;
 import com.dsh.m.model.SupplyCustomer;
 import com.dsh.m.model.SupplyCustomerExample;
+import com.dsh.m.service.OrderService;
 
 @RequestMapping("/order")
 @Controller
@@ -30,6 +34,8 @@ public class OrderAction extends BaseAction {
 	private PurchaseorderChildMapper purchaseorderChildMapper;
 	@Autowired
 	private SupplyCustomerMapper supplyCustomerMapper;
+	@Autowired
+	private OrderService orderService;
 	
 	@RequestMapping("/list")
 	public String list(HttpSession session, ModelMap modelMap) {
@@ -60,6 +66,46 @@ public class OrderAction extends BaseAction {
 		if(CollectionUtils.isNotEmpty(scs))
 			model.addAttribute("deliver", scs.get(0));
 		return "order/detail";
+	}
+	
+	@ResponseBody
+	@RequestMapping("/cancel")
+	public String cancel(Integer orderid) {
+		Purchaseorder order = new Purchaseorder();
+		order.setId(orderid);
+		order.setOrdertype(OrderStatusEnum.CANCELED.getCode());
+		try {
+			purchaseorderMapper.updateByPrimaryKeySelective(order);
+			return success("取消成功！！");
+		} catch (Exception e) {
+			e.printStackTrace();
+			return fail("取消失败！！");
+		}
+	}
+	
+	@RequestMapping(value="/confirm", method=RequestMethod.GET)
+	public String toconfirm(Integer orderid, ModelMap model) {
+		Purchaseorder order = purchaseorderMapper.selectByPrimaryKey(orderid);
+		
+		PurchaseorderChildExample orderChildExample = new PurchaseorderChildExample();
+		orderChildExample.createCriteria().andOrderidEqualTo(orderid);
+		List<PurchaseorderChild> details = purchaseorderChildMapper.selectByExample(orderChildExample);
+		
+		model.addAttribute("order", order);
+		model.addAttribute("details", details);
+		return "order/confirm";
+	}
+	
+	@ResponseBody
+	@RequestMapping(value="/confirm", method=RequestMethod.POST)
+	public String confirm(Integer orderid, String json) {
+		try {
+			orderService.confirm(orderid, json);
+			return success("确认成功！！");
+		} catch (Exception e) {
+			e.printStackTrace();
+			return fail("确认失败！！");
+		}
 	}
 	
 }

@@ -15,7 +15,6 @@ public class SupplyService {
 	private SupplyMapper supplyMapper;
 	
 	public Supply getCacheSupplyById(Integer id) {
-		System.err.println(id);
 		Cache cache = Redis.use();
 		String key = "supply:"+id;
 		Supply supply = cache.get(key);

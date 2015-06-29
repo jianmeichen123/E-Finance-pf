@@ -8,7 +8,7 @@ import org.apache.activemq.command.ActiveMQTextMessage;
 import org.springframework.stereotype.Component;
 
 @Component
-public class OrderMessageListener implements MessageListener {
+public class OrderMessageConsumer implements MessageListener {
 
 	@Override
 	public void onMessage(Message message) {

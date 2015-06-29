@@ -15,7 +15,7 @@
 <body>
 <header>
   <nav>
-     <div class="set"><a href="javascript:history.go(-1)"><img src="/images/icon_set.png"></a></div>
+     <div class="set"><a href="/user/setting"><img src="/images/icon_set.png"></a></div>
      <h1>个人中心</h1>
   </nav>
 </header>
@@ -25,7 +25,7 @@
    </div>
 </div>
 <div class="box">
-  <h2><b>我的订单</b><span><a href="#">全部订单</a></span></h2>
+  <h2><b>我的订单</b><span><a href="/order/list">全部订单</a></span></h2>
   <div class="nav-list">
      <a href="#" class="js">待结算</a>
      <a href="#" class="sh">待收货</a>
@@ -72,6 +72,6 @@
 
 </body>
 <script>
-　$("a,input,button").focus(function(){this.blur()});
+$("a,input,button").focus(function(){this.blur()});
 </script>
 </html>

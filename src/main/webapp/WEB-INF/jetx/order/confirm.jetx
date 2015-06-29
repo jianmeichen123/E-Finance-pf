@@ -1,0 +1,100 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+<meta name="format-detection" content="telephone=no"/>  
+<title>多省汇</title>
+<meta name="keywords" content="多省汇">
+<meta name="description" content="多省汇">
+<link rel="stylesheet" href="/css/reset.css" />
+<link rel="stylesheet" href="/css/fenlei.css" />
+<link rel="stylesheet" href="/css/foot.css" />
+<script src="/js/jquery-1.10.1.min.js" ></script>
+<script type="text/javascript">
+	function confirm() {
+		var array = []
+		$.each($('.biaoge').find('tbody').find('tr'), function(i, n){
+			var tds = $(this).children()
+			var inputs = $(tds.get(3)).children()
+			var num = inputs.get(0).value
+			var goodsid = inputs.get(1).value
+			var json = {}
+			json.num = num
+			json.goodsid = goodsid
+			array.push(json)
+		})
+		var jsonArray = JSON.stringify(array)
+		$.ajax({
+			url:'/order/confirm',
+			type:'post',
+			data:{
+				orderid:'${order.id}',
+				json:jsonArray
+			},
+			dataType:'json'
+		}).done(function(data){
+			alert(data.msg)
+			if(data.isSuccess)
+				window.location = '/order/list'
+		})
+	}
+</script>
+</head>
+<body>
+<header>
+  <nav>
+     <div class="set back"><a href="javascript:history.go(-1);"><img src="/images/reg01.png"></a></div>
+     <h1>确认收货</h1>
+  </nav>
+</header>
+<div class="main">  
+     
+     <div class="dingdan-list">
+        <ul>
+          <li class="noborderbottom"><span class="namebg2">商品列表</span><span class="bianhao">订单编号：${order.ordernum }</span></li>
+          <li class="noborderbottom">
+              <table class="biaoge">
+                 <thead>
+                    <tr><th>商品</th><th>下单数量</th><th>配送数量</th><th>收货数量</th><th>单价</th><th>小计</th></tr>
+                 </thead>
+                 <tbody>
+                 	#for(detail : details)
+	                    <tr>
+	                    	<td>${getProductById(detail.goodsid).gname }</td>
+	                    	<td>${detail.amount.format() }</td>
+	                    	<td>${detail.realAmount.format() }</td>
+	                    	<td>
+	                    		<input type="text" value="${detail.amount.format() }">
+	                    		<input type="hidden" value="${detail.goodsid }">
+	                    	</td>
+	                    	<td>￥${detail.unitPrice.format() }</td>
+	                    	<td>￥${detail.totalPrice.format() }</td>
+	                    </tr>
+                    #end
+                 </tbody>
+              </table>
+          </li>  
+          <li class="noborderbottom"><span class="zs-l">商品种数</span> <span class="zs-r" >${order.childcount }</span></li>
+          <li class="noborderbottom"><span class="zs-l">订单总金额</span> <span class="zs-r" >￥${order.totalprice.format() }</span></li>
+          <li class="noborderbottom">  <a href="javascript:;" class="shouhuo-btn" onclick="confirm()">确认收货</a></li>        
+         
+        </ul>  
+     </div>     
+</div>
+
+<footer>
+    <div class="daohang">
+      <a href="/cat" class="nav1">商品分类</a>
+      <a href="/product/common" class="nav2">常用商品</a>
+      <a href="/cart" class="nav3">购物车</a>
+      <a href="/order/list" class="nav4">订单管理</a>   
+    </div>
+</footer>
+
+</body>
+<script src="/js/fenlei_slidedoor.js" ></script>
+<script>
+
+</script>
+</html>

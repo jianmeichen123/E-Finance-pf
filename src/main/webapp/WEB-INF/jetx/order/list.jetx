@@ -30,13 +30,18 @@
 					<dt>商品种数</dt><dd class="color_black font14">${order.childcount }</dd>
 				</dl>
 				<dl>
-					<dt>订单状态</dt><dd class="color_red"><em class="state1"></em><em class="state2" style="display:none;"></em><em class="state3" style="display:none;"></em><span>代发货</span></dd>
+					<dt>订单状态</dt>
+					<dd class="color_red">
+						#set(stateJson = getOrderTypeDesc(order.ordertype))
+						<em class="${stateJson.css }"></em>
+						<span>${stateJson.desc }</span>
+					</dd>
 				</dl>
 				<dl>
 					<dt>结算状态</dt><dd class="color_red font20">×√</dd>
 				</dl>
 				<dl>
-					<dt>下单时间</dt><dd class="line-hight13">${dateformat(order.ordertime, 'YYYY-MM-DD hh:mm:ss') }</dd>
+					<dt>下单时间</dt><dd class="line-hight13">${order.ordertime.format("yyyy-MM-dd HH:mm:ss") }</dd>
 				</dl>
 			</li>
 			<li class=" noborderbottom">

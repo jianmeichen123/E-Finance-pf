@@ -4,7 +4,8 @@ public enum OrderStatusEnum {
 	
 	WAIT(1, "待发货"),
 	SENDED(2, "已发货"),
-	FINISHED(3, "已完成");
+	FINISHED(3, "已完成"),
+	CANCELED(4, "已取消");
 	
 	private int code;
 	private String desc;
