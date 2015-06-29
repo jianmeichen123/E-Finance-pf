@@ -23,6 +23,8 @@
     <table tableName="supply_customer" ></table>
     <table tableName="index_date"></table> -->
     <!-- <table tableName="index_date_child"></table> -->
-    <table tableName="sys_log"/>
+    <!-- <table tableName="sys_log"/> -->
+    <table tableName = "settleaccount"/>
+    <table tableName = "settleaccountchild"/>
   </context>
 </generatorConfiguration>
