@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+ 	<!-- ActiveMQ 连接 -->
+    <bean id="connectionFactory" class="org.apache.activemq.ActiveMQConnectionFactory">
+        <property name="brokerURL" value="${mq.url}" />
+        <property name="useAsyncSend" value="${mq.true}"/>
+        <property name="userName" value="${mq.username}"/>
+        <property name="password" value="${mq.password}"/>
+    </bean>
+    
+    <bean id="destination" class="org.apache.activemq.command.ActiveMQQueue">
+    	<constructor-arg index="0" value="myqueue"/>
+    </bean>
+    
+    <bean id="jmsTemplate"
+            class="org.springframework.jms.core.JmsTemplate">
+        <property name="connectionFactory" ref="connectionFactory"/>
+        <property name="defaultDestination" ref="destination"/>
+        <property name="messageConverter">
+        	<bean class="org.springframework.jms.support.converter.SimpleMessageConverter"/>
+        </property>
+    </bean>
+    
+    <bean id="jmsContainer" class="org.springframework.jms.listener.DefaultMessageListenerContainer" lazy-init="false">
+        <property name="connectionFactory" ref="connectionFactory"/>
+        <property name="destination" ref="destination"/>
+        <property name="messageListener" ref="orderMessageListener"/>
+        <property name="concurrentConsumers" value="5"/>
+        <!--0:CACHE_NONE,1:CACHE_CONNECTION,2:CACHE_SESSION,3:CACHE_CONSUMER,4:CACHE_AUTO-->
+        <property name="cacheLevel" value="0"/>
+    </bean>
+
+</beans>
