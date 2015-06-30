@@ -4,7 +4,7 @@
 	</thead>
 	<tbody>
 		#for(child : childs)
-		<tr>
+		<tr style="cursor:pointer;" onclick="javascript:window.location = '/order/settle?orderid=${child.orderid}'">
 			<td>${child.ordernum }</td>
 			<td>${getIndexOrderByOrderId(child.orderid).t2.format() }PMI</td>
 			<td>￥${child.realamount.format() }</td>

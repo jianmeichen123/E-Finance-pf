@@ -3,8 +3,10 @@ package com.dsh.m.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.dsh.m.dao.GoodsBclassMapper;
 import com.dsh.m.dao.GoodsMapper;
 import com.dsh.m.model.Goods;
+import com.dsh.m.model.GoodsBclass;
 import com.dsh.m.util.redis.Cache;
 import com.dsh.m.util.redis.Redis;
 
@@ -13,6 +15,8 @@ public class GoodsService {
 	
 	@Autowired
 	private GoodsMapper goodsMapper;
+	@Autowired
+	private GoodsBclassMapper goodsBclassMapper;
 	
 	public Goods getCacheGoodsById(Integer id) {
 		Cache cache = Redis.use();
@@ -24,6 +28,18 @@ public class GoodsService {
 				cache.set(key, goods);
 		}
 		return goods;
+	}
+	
+	public GoodsBclass getCacheBclassById(Integer id) {
+		Cache cache = Redis.use();
+		String key = "bclass:"+id;
+		GoodsBclass bclass = cache.get(key);
+		if(null==bclass) {
+			bclass = goodsBclassMapper.selectByPrimaryKey(id);
+			if(null!=bclass)
+				cache.set(key, bclass);
+		}
+		return bclass;
 	}
 
 }

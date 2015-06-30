@@ -119,7 +119,8 @@ public class OrderAction extends BaseAction {
 	}
 	
 	@RequestMapping("/settle")
-	public String settle() {
+	public String settle(Integer orderid, ModelMap model) {
+		detail(orderid, model);
 		return "order/settle";
 	}
 	

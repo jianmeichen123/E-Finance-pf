@@ -5,6 +5,7 @@ import jetbrick.template.JetAnnotations.Functions;
 import com.alibaba.fastjson.JSONObject;
 import com.dsh.m.enumtype.OrderStatusEnum;
 import com.dsh.m.model.Goods;
+import com.dsh.m.model.GoodsBclass;
 import com.dsh.m.model.Supply;
 import com.dsh.m.service.GoodsService;
 import com.dsh.m.service.SupplyService;
@@ -17,6 +18,14 @@ public class OrderFuctions {
 		SupplyService supplyService = SpringUtil.getBean(SupplyService.class);
 		Supply supply = supplyService.getCacheSupplyById(supplyid);
 		return supply==null?"":supply.getShopname();
+	}
+	
+	public static Supply getSupplyById(Integer supplyid) {
+		return SpringUtil.getBean(SupplyService.class).getCacheSupplyById(supplyid);
+	}
+	
+	public static GoodsBclass getBclassById(Integer classid) {
+		return SpringUtil.getBean(GoodsService.class).getCacheBclassById(classid);
 	}
 	
 	public static Goods getProductById(Integer goodsid) {
