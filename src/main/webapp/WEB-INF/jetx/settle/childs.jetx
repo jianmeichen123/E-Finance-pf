@@ -1,0 +1,18 @@
+<table>
+	<thead>
+		<tr><th>订单编号</th><th>订单指数</th><th>结算金额</th><th>返款</th><th>结算状态</th></tr>
+	</thead>
+	<tbody>
+		#for(child : childs)
+		<tr>
+			<td>${child.ordernum }</td>
+			<td>${getIndexOrderByOrderId(child.orderid).t2.format() }PMI</td>
+			<td>￥${child.realamount.format() }</td>
+			<td class="color_black">￥${child.returnmoney.format() }</td>
+			<td><i class="state1">&nbsp;</i></td></tr>
+		#end
+		#if(settle.returnstateid == 0)
+		<tr><td colspan="5"><a href="javascript:;" class="btn" onclick='confirmreturn("${settle.id}", this)'>确认已返现</a></td></tr>
+		#end
+	</tbody>
+</table>

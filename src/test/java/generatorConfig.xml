@@ -5,7 +5,7 @@
 	<!-- <classPathEntry location="C:/Users/cuihuan/.m2/repository/mysql/mysql-connector-java/5.1.27/mysql-connector-java-5.1.27.jar"/> -->
   <context id="context1" >
   	<plugin type="com.dsh.m.plugin.PaginationPlugin" />
-    <jdbcConnection driverClass="com.mysql.jdbc.Driver" connectionURL="jdbc:mysql://122.112.89.215/procurebj" userId="root" password="mycloud" />
+    <jdbcConnection driverClass="com.mysql.jdbc.Driver" connectionURL="jdbc:mysql://localhost/procurebj" userId="root" password="" />
     <javaModelGenerator targetPackage="com.dsh.m.model" targetProject="dsh_m" />
     <sqlMapGenerator targetPackage="com.dsh.m.sqlmap" targetProject="dsh_m" />
     <javaClientGenerator targetPackage="com.dsh.m.dao" targetProject="dsh_m" type="XMLMAPPER" />
@@ -24,7 +24,8 @@
     <table tableName="index_date"></table> -->
     <!-- <table tableName="index_date_child"></table> -->
     <!-- <table tableName="sys_log"/> -->
-    <table tableName = "settleaccount"/>
+    <!-- <table tableName = "settleaccount"/>-->
     <table tableName = "settleaccountchild"/>
+    <!-- <table tableName = "index_order"/> -->
   </context>
 </generatorConfiguration>

@@ -113,6 +113,7 @@ public class OrderService {
 		Date ordertime = data.getDate("ordertime");
 		int customerid = data.getIntValue("customerid");
 		int supplyid = data.getIntValue("supplyid");
+		String ordernum = data.getString("ordernum");
 		BigDecimal totalprice = data.getBigDecimal("totalprice");
 		SettleaccountExample example = new SettleaccountExample();
 		example.createCriteria().andCustomeridEqualTo(customerid);
@@ -153,6 +154,7 @@ public class OrderService {
 		}
 		Settleaccountchild child = new Settleaccountchild();
 		child.setOrderid(orderid);
+		child.setOrdernum(ordernum);
 		child.setOrderdate(ordertime);
 		child.setOrdertotalmoney(totalprice);
 		child.setSettleid(settleid);
