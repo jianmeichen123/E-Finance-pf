@@ -1,6 +1,9 @@
 package com.dsh.m.web;
 
+import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
@@ -48,6 +51,23 @@ public class IndexNumberAction extends BaseAction {
 		model.addAttribute("index", JSON.parse(JSON.toJSONStringWithDateFormat(index, "yyyy年MM月dd日")));
 		model.addAttribute("childs", childs);
 		return "index/detail";
+	}
+	
+	@SuppressWarnings({ "unchecked", "rawtypes" })
+	@RequestMapping("/warn")
+	public String warn(HttpSession session, ModelMap model) {
+		Map param = new HashMap();
+		param.put("start", 0);
+		param.put("pagesize", 7);
+		param.put("userid", super.getUserId(session));
+		Map data = indexDateMapper.summaryIndexDate(param);
+		Date mintime = (Date)data.get("indextime");
+		param.put("indextime", mintime);
+		List childs = indexDateChildMapper.getIndexDateChilds(param);
+		
+		model.addAttribute("data", data);
+		model.addAttribute("childs", childs);
+		return "index/warn";
 	}
 
 }

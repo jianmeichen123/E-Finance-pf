@@ -1536,4 +1536,10 @@
       dr = #{dr,jdbcType=CHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
+  
+  <select id="summaryIndexDate" parameterType="map" resultType="map">
+  	select sum(t5) as t5, sum(t14) as t14, sum(t20) as t20, sum(t26) as t26, min(indextime) as indextime from 
+  	(select t5, t14, t20, t26, indextime from index_date where customerid = #{userid} order by indextime desc limit #{start}, #{pagesize}) as t
+  </select>
+  
 </mapper>

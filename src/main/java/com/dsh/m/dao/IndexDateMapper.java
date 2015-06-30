@@ -1,10 +1,14 @@
 package com.dsh.m.dao;
 
-import com.dsh.m.model.IndexDate;
-import com.dsh.m.model.IndexDateExample;
 import java.util.List;
+import java.util.Map;
+
 import org.apache.ibatis.annotations.Param;
 
+import com.dsh.m.model.IndexDate;
+import com.dsh.m.model.IndexDateExample;
+
+@SuppressWarnings("rawtypes")
 public interface IndexDateMapper {
 
 	/**
@@ -74,4 +78,6 @@ public interface IndexDateMapper {
 	 * @mbggenerated  Sun Jun 28 10:58:04 CST 2015
 	 */
 	int updateByPrimaryKey(IndexDate record);
+	
+	Map summaryIndexDate(Map map);
 }
