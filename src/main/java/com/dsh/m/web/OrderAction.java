@@ -118,4 +118,9 @@ public class OrderAction extends BaseAction {
 		}
 	}
 	
+	@RequestMapping("/settle")
+	public String settle() {
+		return "order/settle";
+	}
+	
 }
