@@ -46,7 +46,7 @@
 <body>
 <header>
   <nav>
-     <div class="set"><a href="#"><img src="/images/fenlei01.png"></a></div>
+     <div class="set"><a href="javascript:;"><img src="/images/fenlei01.png"></a></div>
      <div class="search" style="cursor:pointer;" onclick="search()"><input id="searchText" name="key" type="text" placeholder="请输入商品名称"></div>
   </nav>
 </header>
@@ -85,8 +85,8 @@
       <a href="/cat" class="nav1">商品分类</a>
       <a href="/product/common" class="nav2">常用商品</a>
       <a href="/cart" class="nav3">购物车</a>
-      <a href="/order" class="nav4">订单管理</a>
-      <a href="/member" class="nav5">个人中心</a>    
+      <a href="/order/list" class="nav4">订单管理</a>
+      <a href="/user" class="nav5">个人中心</a>    
     </div>
 </footer>
 

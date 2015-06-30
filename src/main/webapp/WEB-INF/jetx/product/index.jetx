@@ -79,7 +79,7 @@
 <body>
 <header>
   <nav>
-     <div class="set"><a href="#"><img src="/images/fenlei01.png"></a></div>
+     <div class="set"><a href="javascript:;"><img src="/images/fenlei01.png"></a></div>
      <div class="search"><input id="searchText" name="key" type="text" placeholder="请输入商品名称" onclick="search()"></div>
   </nav>
 </header>
