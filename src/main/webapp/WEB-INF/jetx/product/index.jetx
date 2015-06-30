@@ -64,13 +64,23 @@
 			alert(data.msg)
 		})
 	}
+	
+	function search() {
+		var text = $('#searchText').val()||''
+		if(text!='') {
+			$('dl').hide()
+			$.each($('a:contains("'+text+'")'), function(i, n){
+				$(n).closest('dl').show()
+			})
+		}
+	}
 </script>
 </head>
 <body>
 <header>
   <nav>
      <div class="set"><a href="#"><img src="/images/fenlei01.png"></a></div>
-     <div class="search"><input name="key" type="text" placeholder="请输入商品名称"></div>
+     <div class="search"><input id="searchText" name="key" type="text" placeholder="请输入商品名称" onclick="search()"></div>
   </nav>
 </header>
 <div class="main">
@@ -95,7 +105,7 @@
 					<dt><a href="javascript:;"><img src="/images/fenlei04.png"></a></dt>
 					<dd>
 						<div class="dd-left">
-							<b><a href="#">${good.gname }</a></b>
+							<b><a href="javascipt:;">${good.gname }</a></b>
 							单位：${good.unit }<br>
 							${good.beizhu }
 						</div>
@@ -120,10 +130,10 @@
     <div class="tongji">共 <span class="font16">${goods.size() }</span> 种商品<a href="/cart">下一步</a></div>
     <div class="daohang1">
       <a href="/cat" class="nav1">商品分类</a>
-      <a href="/" class="nav2">常用商品</a>
+      <a href="/product/common" class="nav2">常用商品</a>
       <a href="/cart" class="nav3">购物车</a>
-      <a href="/order" class="nav4">订单管理</a>
-      <a href="/member" class="nav5">个人中心</a>    
+      <a href="/order/list" class="nav4">订单管理</a>
+      <a href="/user" class="nav5">个人中心</a>    
     </div>
 </footer>
 

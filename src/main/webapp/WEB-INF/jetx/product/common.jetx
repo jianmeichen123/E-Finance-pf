@@ -11,43 +11,76 @@
 <link rel="stylesheet" href="/css/fenlei.css" />
 <link rel="stylesheet" href="/css/foot.css" />
 <script src="/js/jquery-1.10.1.min.js" ></script>
+<script type="text/javascript">
+	function add(num, a) {
+		var li = $(a).parent().parent().children().eq(1)
+		var oldnum = Number(li.text())
+		var newnum = oldnum+num
+		if(newnum==0) return
+		li.text(newnum)
+	}
+	
+	function buy(id, a) {
+		var li = $(a).parent().prev().children().eq(1)
+		var num = li.text()
+		$.ajax({
+			url:'/cart/add?goodsid='+id+'&num='+num,
+			dataType:'json'
+		}).done(function(data){
+			alert(data.msg)
+		})
+	}
+	
+	function search() {
+		var text = $('#searchText').val()||''
+		if(text!='') {
+			$('dl').hide()
+			$.each($('a:contains("'+text+'")'), function(i, n){
+				$(n).closest('dl').show()
+			})
+		}
+	}
+</script>
 </head>
 
 <body>
 <header>
   <nav>
      <div class="set"><a href="#"><img src="/images/fenlei01.png"></a></div>
-     <div class="search"><input name="key" type="text" placeholder="请输入商品名称"></div>
+     <div class="search" style="cursor:pointer;" onclick="search()"><input id="searchText" name="key" type="text" placeholder="请输入商品名称"></div>
   </nav>
 </header>
 <div class="main">  
 	<div class="pro-list">
 		<div class="dis"  id="tbc_01">
+			#for(product : products)
 			<dl>
 				<dt><a href="#"><img src="/images/fenlei04.png"></a></dt>
 				<dd>
 					<div class="dd-left">
-						<b><a href="#">大白1菜</a></b>
-						单位：斤<br>
-						这里是描述这里是描述
+						#set(goods = getProductById(product.goodsid))
+						<b><a href="javascript:;">${goods.gname }</a></b>
+						单位：${goods.unit }<br>
+						${goods.beizhu }
 					</div>
 					<div class="dd-right">
 						<ul>
-							<li><a href="#">&#8211;</a></li>
+							<li><a href="javascript:;" onclick="add(-1, this)">&#8211;</a></li>
 							<li>1</li>
-							<li><a href="#">+</a></li>
+							<li><a href="javascript:;" onclick="add(1, this)">+</a></li>
 						</ul>
-						<p><a href="#">购买</a></p>
+						<p><a href="javascript:;" onclick='buy("${goods.goodsid}", this)'>购买</a></p>
 					</div>               
 				</dd>
 			</dl>
+			#end
 		</div>  
 	</div>
 </div>
 
 
 <footer>
-    <div class="tongji">共 <span class="font16">145</span> 种商品<a href="#">下一步</a></div>
+    <div class="tongji">共 <span class="font16">${products.size() }</span> 种商品<a href="/cart">下一步</a></div>
     <div class="daohang1">
       <a href="/cat" class="nav1">商品分类</a>
       <a href="/product/common" class="nav2">常用商品</a>
