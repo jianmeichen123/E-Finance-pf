@@ -61,14 +61,15 @@
                     <tr>
                     	<td>${order.childcount }</td>
                     	<td>￥${order.totalprice.format() }</td>
-                    	<td>￥0.00</td>
+                    	<td>￥${sub(order.totalprice, order.settleprice).format() }</td>
                     	<td>￥${order.settleprice.format() }</td>
                     </tr>
                  </tbody>
               </table> 
           </li>
-          <li class="noborderbottom"><span class="zs-m">订单指数</span> <span class="zs-r" >PMI ${getIndexOrderByOrderId(order.id).t1.format() }</span></li>
-          <li class="noborderbottom"><span class="zs-m">协议返款</span> <span class="zs-r" >￥234.00</span></li>
+          #set(indexorder = getIndexOrderByOrderId(order.id))
+          <li class="noborderbottom"><span class="zs-m">订单指数</span> <span class="zs-r" >PMI ${indexorder.t1.format() }</span></li>
+          <li class="noborderbottom"><span class="zs-m">协议返款</span> <span class="zs-r" >￥${indexorder.t17.format() }</span></li>
         </ul>  
      </div> 
 </div>

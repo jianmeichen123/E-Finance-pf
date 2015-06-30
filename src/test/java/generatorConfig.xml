@@ -9,8 +9,8 @@
     <javaModelGenerator targetPackage="com.dsh.m.model" targetProject="dsh_m" />
     <sqlMapGenerator targetPackage="com.dsh.m.sqlmap" targetProject="dsh_m" />
     <javaClientGenerator targetPackage="com.dsh.m.dao" targetProject="dsh_m" type="XMLMAPPER" />
-    <!-- <table tableName="purchaseorder" ></table>
-    <table tableName="purchaseorder_child" ></table>
+    <!-- <table tableName="purchaseorder" ></table> -->
+    <!-- <table tableName="purchaseorder_child" ></table>
     <table tableName="sys_ordernum" ></table>
     <table tableName="sys_config" ></table>
     <table tableName="sys_dictionary" ></table>
@@ -26,7 +26,7 @@
     <!-- <table tableName="sys_log"/> -->
     <!-- <table tableName = "settleaccount"/>-->
     <!-- <table tableName = "settleaccountchild"/> -->
-    <!-- <table tableName = "index_order"/> -->
-    <table tableName = "customer_goods"/>
+    <table tableName = "index_order"/>
+   <!--  <table tableName = "customer_goods"/> -->
   </context>
 </generatorConfiguration>

@@ -24,6 +24,10 @@ public class CommonFunctions {
 		return sb.toString();
 	}
 	
+	public static BigDecimal sub(BigDecimal b1, BigDecimal b2) {
+		return b1.subtract(b2);
+	}
+	
 	public static void main(String[] args) {
 		System.out.println(cutZero(new BigDecimal("25.6000")));
 	}
