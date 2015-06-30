@@ -120,7 +120,7 @@ public class OrderService {
 		example.setLimitStart(0);
 		example.setLimitEnd(1);
 		List<Settleaccount> sas = settleaccountMapper.selectByExample(example);
-		boolean flag = false;
+		boolean flag = true;
 		int settleid = 0;
 		if(CollectionUtils.isNotEmpty(sas)) {
 			Settleaccount fsa = sas.get(0);
@@ -133,8 +133,7 @@ public class OrderService {
 				newfsa.setId(settleid);
 				newfsa.setOrdertotalmoney(orgtotal.add(totalprice));
 				settleaccountMapper.updateByPrimaryKeySelective(newfsa);
-			} else {
-				flag = true;
+				flag = false;
 			}
 		}
 		if(flag) {

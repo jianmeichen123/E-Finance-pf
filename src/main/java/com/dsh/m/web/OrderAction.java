@@ -2,16 +2,19 @@ package com.dsh.m.web;
 
 import java.util.List;
 
+import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
 
 import org.apache.commons.collections.CollectionUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jms.core.JmsTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.alibaba.fastjson.JSONObject;
 import com.dsh.m.dao.PurchaseorderChildMapper;
 import com.dsh.m.dao.PurchaseorderMapper;
 import com.dsh.m.dao.SupplyCustomerMapper;
@@ -36,6 +39,8 @@ public class OrderAction extends BaseAction {
 	private SupplyCustomerMapper supplyCustomerMapper;
 	@Autowired
 	private OrderService orderService;
+	@Resource(name="orderJmsTemplate")
+	private JmsTemplate orderJmsTemplate;
 	
 	@RequestMapping("/list")
 	public String list(HttpSession session, ModelMap modelMap) {
@@ -101,6 +106,11 @@ public class OrderAction extends BaseAction {
 	public String confirm(Integer orderid, String json) {
 		try {
 			orderService.confirm(orderid, json);
+			Purchaseorder purchaseorder = purchaseorderMapper.selectByPrimaryKey(orderid);
+			JSONObject data = new JSONObject();
+			data.put("type", 2);
+			data.put("data", purchaseorder);
+			orderJmsTemplate.convertAndSend(data.toString());
 			return success("确认成功！！");
 		} catch (Exception e) {
 			e.printStackTrace();
