@@ -3,9 +3,11 @@ package com.dsh.m.enumtype;
 public enum OrderStatusEnum {
 	
 	WAIT(1, "待发货"),
-	SENDED(2, "已发货"),
-	FINISHED(3, "已完成"),
-	CANCELED(4, "已取消");
+	RECEIVED(2, "接受订单"),
+	MODIFYED(3, "修改待确认"),
+	SENDED(4, "已发货"),
+	FINISHED(5, "已完成"),
+	CANCELED(6, "已取消");
 	
 	private int code;
 	private String desc;

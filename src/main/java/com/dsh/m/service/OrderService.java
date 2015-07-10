@@ -66,6 +66,7 @@ public class OrderService {
 		order.setOrdertype(OrderStatusEnum.WAIT.getCode());
 		order.setChildcount(products.size());
 		order.setOrdertime(new Date());
+		order.setCreateuser(userid);
 		purchaseorderMapper.insertSelective(order);
 		int orderid = order.getId();
 		@SuppressWarnings("rawtypes")
