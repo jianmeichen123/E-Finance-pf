@@ -46,7 +46,8 @@ public class OrderAction extends BaseAction {
 	public String list(HttpSession session, ModelMap modelMap) {
 		PurchaseorderExample orderExample = new PurchaseorderExample();
 		Integer userid = super.getUserId(session);
-		orderExample.createCriteria().andCustomeridEqualTo(userid);
+		orderExample.createCriteria().andCustomeridEqualTo(userid)
+			.andOrdertypeNotEqualTo(0);
 		List<Purchaseorder> orders = purchaseorderMapper.selectByExample(orderExample);
 //		PurchaseorderChildExample orderChildExample = new PurchaseorderChildExample();
 //		orderChildExample.createCriteria().
