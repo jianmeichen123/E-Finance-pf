@@ -52,6 +52,7 @@
 		var newnum = oldnum+num
 		if(newnum==0) return
 		li.text(newnum)
+		alert('成功！！')
 	}
 	
 	function buy(id, a) {
