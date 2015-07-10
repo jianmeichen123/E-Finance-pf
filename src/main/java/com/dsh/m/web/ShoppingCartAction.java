@@ -69,7 +69,7 @@ public class ShoppingCartAction extends BaseAction {
 		try {
 			JSONArray array = shoppingCartService.loadUserCart(userId);
 			int orderid = orderService.createOrder(userId, array);
-			return success("提交成功！！", orderid);
+			return success("订单提交成功，等待供应商处理！！", orderid);
 		} catch (Exception e) {
 			e.printStackTrace();
 			return fail("提交失败！！");
