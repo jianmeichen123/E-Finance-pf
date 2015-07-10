@@ -67,7 +67,7 @@
 	</div>
 </div>
 <footer>
-    <div class="tongji">共 <span class="font16">${goods.size() }</span> 种商品<a href="javascript:;" onclick="submit()">下一步</a></div>
+    <div class="tongji">共 <span class="font16">${goods.size() }</span> 种商品<a href="javascript:;" onclick="submit()">提交订单</a></div>
     <div class="daohang1">
       <a href="/cat" class="nav1">商品分类</a>
       <a href="/" class="nav2">常用商品</a>
