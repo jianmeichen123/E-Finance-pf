@@ -43,6 +43,10 @@
 	}
 	
 	function submit() {
+		if($('#tbc_01').find('dl').size()==0) {
+			alert('请选择要购买的商品！！')
+			return
+		}
 		$.ajax({
 			url:'/cart/submit',
 			dataType:'json'
