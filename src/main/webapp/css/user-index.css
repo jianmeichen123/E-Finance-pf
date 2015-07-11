@@ -17,19 +17,19 @@ header nav ul li a.current1{color:#fff;text-decoration:none; background-color:#9
 .box .nav-list a{ display:block; float:left; width:25%; padding-top:70px; text-align:center;font-size:14px;} 
 .box .nav-list a.js{ background:url(../images/user02.png) no-repeat center top;} 
 .box .nav-list a.sh{ background:url(../images/user03.png) no-repeat center top;} 
-.box .nav-list a.th{ background:url(../images/user04.png) no-repeat center top;} 
-.box .nav-list a.pj{ background:url(../images/user05.png) no-repeat center top;}
+.box .nav-list a.th{ background:url(../images/user05.png) no-repeat center top;} 
+.box .nav-list a.pj{ background:url(../images/user16.png) no-repeat center top;}
 
 .box .table-list{float:left; width:100%; margin-bottom:15px; text-align:center; vertical-align:middle; border-collapse:collapse;border:1px solid #DFDFDD;} 
 .box .table-list td{  padding:10px 0;border-left:1px solid #DFDFDD;border-right:1px solid #DFDFDD; font-size:14px; color:#747474;}
 .box .table-list td.top0{ padding-top:0;}
-.box .table-list td span{ color:#C53335; font-size:16px;}
+.box .table-list td span{ color:#008000; font-size:16px;}
 .box h2 a{ display:block; color:#727272;}
 .box h2 b.b1{background:url(../images/user08.png) no-repeat left center; margin-bottom:15px;}
 .box h2 b.b2{background:url(../images/user09.png) no-repeat left center; margin-bottom:15px;}
 .box h2 b.b3{background:url(../images/user10.png) no-repeat left center; margin-bottom:15px;}
 .box h2 b.b4{background:url(../images/user11.png) no-repeat left center; margin-bottom:15px;}
-
+.box h2 b.b5{background:url(../images/user17.png) no-repeat left center; margin-bottom:15px;}
 .box .account{ float:left; width:100%; margin:10px 0;}
 .box .account li{ float:left;width:90%; margin:5px 0 5px 5%; line-height:30px; color:#666;}
 .box .account li input{ width:80%; height:30px; border:none; font-size:14px; border-bottom:1px solid #DFDFDD;}

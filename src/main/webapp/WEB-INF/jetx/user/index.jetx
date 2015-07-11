@@ -25,40 +25,43 @@
    </div>
 </div>
 <div class="box">
-  <h2><b>我的订单</b><span><a href="/order/list">全部订单</a></span></h2>
+  <h2><b>我的订单</b><span><a href="#">全部订单</a></span></h2>
   <div class="nav-list">
-     <a href="#" class="js">待结算</a>
+     <a href="/settle/list" class="js">待结算</a>
      <a href="#" class="sh">待收货</a>
-     <a href="#" class="th">退换货</a>
+     <a href="#" class="th">已完成</a>
      <a href="#" class="pj">待评价</a>     
   </div>
 </div>
 <div class="box">
-  <h2><b class="gaikuang">我的概况</b><span><a href="#">详细</a></span></h2>
+  <h2><b class="gaikuang">账户概况</b><span><a href="#">详细</a></span></h2>
 
      <table class="table-list">
        <tbody>
          <tr>
-           <td><span>103.90</span> PMI</td><td><span>20</span> 条</td><td><span>2020.23</span> ￥</td><td><span>120.23</span> ￥</td>
+           <td><span>103.90PMI</span></td><td><span>￥202023.32</span></td><td><span>￥23434.02</span></td>
          </tr>
          <tr>
-           <td class="top0">最近指数</td><td class="top0">预警条数</td><td class="top0">采购金额</td><td class="top0">节省金额</td>
+           <td class="top0">最近指数</td><td class="top0">采购金额</td><td class="top0">节省金额</td>
          </tr>
        </tbody>
      </table>    
 
 </div>
 <div class="box bottom0">
-  <h2><a href="#"><b class="b1">最新农贸价格商品列表</b><span>&nbsp;</span></a></h2>
+  <h2><a href="#"><b class="b1">账目录入</b><span>&nbsp;</span></a></h2>
 </div>
 <div class="box bottom0">
-  <h2><a href="#"><b class="b2">最新农贸价格查询</b><span>&nbsp;</span></a></h2>
+  <h2><a href="/settle/list"><b class="b5">结算中心</b><span>&nbsp;</span></a></h2>
+</div>
+<div class="box bottom0">
+  <h2><a href="#"><b class="b2">农贸均价</b><span>&nbsp;</span></a></h2>
 </div>
 <div class="box bottom0">
   <h2><a href="#"><b class="b3">指数详情</b><span>&nbsp;</span></a></h2>
 </div>
 <div class="box">
-  <h2><a href="#"><b class="b4">账目预警</b><span>&nbsp;</span></a></h2>
+  <h2><a href="/index/warn"><b class="b4">账目预警</b><span>&nbsp;</span></a></h2>
 </div>
 
 <footer>

@@ -1,10 +1,10 @@
 @charset "utf-8";
 /* CSS Document */
 /*html5*/
-.main{ float:left; width:100%;}
+.main{ position:relative; float:left; width:100%;}
 .main-left{ float:left; width:28%; height:100%;  }
 .main-left ul{ float:left; width:100%; padding-top:5px;}
-.main-left ul li{  position:relative; float:left;width:95%; margin:5px 0;  margin-left:5%; height:30px; line-height:30px;} 
+.main-left ul li{  position:relative; float:left;width:95%; margin:5px 0;  margin-left:5%; height:30px; line-height:30px; text-align:center;} 
 .main-left ul li a{overflow:hidden; display:block;width:95%;padding-left:5%; color:#666;font-size:14px; }
 .main-left ul li .hovertab{ position:absolute;width:97%; left:0; top:0;  color:#000; background-color:#fff; border:1px solid #ddd; border-right:none;}
 .main-left ul li .normaltab{ display:block;width:95%;padding-left:5%; color:#666; }
@@ -18,19 +18,25 @@
 .pro-list dl dt{ overflow:hidden;float:left; width:24%; margin:0 3%; height:60px; }
 .pro-list dl dt img{ width:100%; height:100%;}
 .pro-list dl dd{float:left; width:70%; color:#B2B2B2; font-size:12px;line-height:15px;}
-.pro-list dl dd .dd-left{float:left; width:65%; height:60px; overflow:hidden;}
+.pro-list dl dd .dd-left{float:left; width:65%; height:65px; overflow:hidden;}
 .pro-list dl dd .dd-left b{float:left; width:100%; color:#000;font-size:14px; margin-bottom:5px;}
-.pro-list dl dd .dd-right{float:right; width:35%; }
+.pro-list dl dd .dd-right{float:right; width:35%; color:#000;}
+.pro-list dl dd .dd-right b{ float:left; width:100%; margin-bottom:5px;}
 .pro-list dl dd .dd-right ul{float:left;width:99%;border-collapse:collapse; border:1px solid #DFDFDD; }
 .pro-list dl dd .dd-right ul li{float:left;width:32%;height:20px; line-height:20px; text-align:center; color:#b2b2b2; border-left:1px solid #DFDFDD;border-collapse:collapse; }
 .pro-list dl dd .dd-right ul li a{ display:block;color:#dfdfdd; font-size:14px;}
-.pro-list dl dd .dd-right p{float:left;width:79%; height:20px; padding-left:20%;line-height:20px; margin-top:15px; border-radius:20px; text-align:center;border:1px solid #DFDFDD; font-size:10px; background: url(../images/fenlei05.png) no-repeat 10% 35%; background-size:13px 13px;}
-.pro-list dl dd .dd-right p.del{padding-left:15%;background: url(../images/fenlei07.png) no-repeat 10% 41%; background-size:13px 13px;font-size:12px; line-height:18px;}
+.pro-list dl dd .dd-right p{float:left;width:79%; height:20px; padding-left:20%;line-height:20px; margin-top:12px; border-radius:20px; text-align:center;border:1px solid #DFDFDD; font-size:10px; background: url(../images/fenlei05.png) no-repeat 10% 35%;background-size:13px 13px;}
+.pro-list dl dd .dd-right p.sec{width:100%;padding-left:0; border:none;  background:none; background-color:#9ece51;}
+.pro-list dl dd .dd-right p.sec a{color:#fff;}
+.pro-list dl dd .dd-right p.edit{margin-top:0px;padding-left:15%;background: url(../images/edit.png) no-repeat 10% 41%; background-size:13px 13px;font-size:12px; }
+.pro-list dl dd .dd-right p.del{padding-left:15%;background: url(../images/fenlei07.png) no-repeat 10% 41%; background-size:13px 13px;font-size:12px; }
 .pro-list dl dd .dd-right p a{ display:block; width:100%;color:#b2b2b2; }
-.pro-list dl dd.count{ width:90%; height:20px; line-height:20px; text-align:right; margin-top:10px; padding-top:5px; padding-right:10%;border-top:1px dashed #dfdfdd; font-size:14px;}
+.pro-list dl dd.count{ width:95%; height:20px; line-height:20px; text-align:right; margin-top:10px; padding-top:5px; padding-right:5%;border-top:1px dashed #dfdfdd; font-size:12px;}
 
 .dingdan-list{float:left; width:90%; padding:10px 5% 10px; margin-bottom:10px;background-color:#fff; border-bottom:1px solid #ddd;}
+.zhangmutable{width:96%;padding:0px 2% 10px;}
 .dingdan-list ul{float:left; width:100%; }
+.dingdan-list ul.zhangmu-list li{ color:#666;}
 .dingdan-list li{float:left; width:100%; color:#B2B2B2; border-bottom:1px solid #DFDFDD; padding:5px 0; line-height:18px; font-size:12px;}
 .dingdan-list li dl{float:left; width:25%; text-align:center;}
 .dingdan-list li dl dt{ color:#000; font-size:14px; margin-bottom:5px;} 
@@ -46,6 +52,9 @@
 .dingdan-list li.noborderbottom{ border-bottom:none;}
 .dingdan-list li.noborderbottom i{ float:left; margin-top:8px; font-size:30px; color:#AED968;}
 .dingdan-list li .chakan-btn,.dingdan-list li .shouhuo-btn{ float:right; width: 80px; height:25px; line-height:25px; margin-top:5px; margin-right:3%;font-size:14px; background-color:#91CC32; text-align:center; border-radius:15px; color:#fff; }
+.dingdan-list li dl dd .chakan-btn1{ position:relative; float:right; width:80%; margin:0 10%; height:18px; line-height:15px; border:1px solid #dfdfdd; text-align:center; border-radius:15px;}
+.dingdan-list li dl dd .chakan-btn1 i{ position:absolute; width:10px; height:6px; left:20%; top:-2px; background:url(../images/zhangmu01.png) no-repeat center; background-size:10px 6px;} 
+.dingdan-list li dl dd .chakan-btn1 span{position:absolute;left:40%;}
 .dingdan-list li .shouhuo-btn{width: 100px;margin-right:1%;}
 .dingdan-list li .dfh,.dingdan-list li .yfh{ float:right; padding-left:18px;background:url(../images/dingdan02.png) no-repeat left center; background-size:30%; color:#f00; }
 .dingdan-list li .yfh{ background:url(../images/dingdan03.png) no-repeat left center;color:#B2B2B2;background-size:30%; }
@@ -131,6 +140,20 @@
 .jiesuan-list li.biaoge table td .state1{ display:block; background:url(../images/jiesuan01.png) no-repeat center center; background-size:14px 14px;}
 .jiesuan-list li.biaoge table td .state2{ display:block; background:url(../images/jiesuan02.png) no-repeat center center; background-size:14px 14px;}
 .jiesuan-list li.biaoge table td .btn{  display:block; width:80px; border-radius:15px; background-color:#91CC32; margin:5px auto; color:#fff; font-size:12px; }
-
+.dingdan-list li table.zmxq thead tr{border:1px solid #DFDFDD; }
+.dingdan-list li table.zmxq thead tr th{background-color:#e4e4e4; border-color:#fff; font-size:12px;padding:5px 0; }
+.dingdan-list li table.zmxq tbody td{font-size:12px; line-height:15px;border:1px solid #DFDFDD; padding:5px 0; }
+.dingdan-list li table.zmxq tbody tr.bgcolor-gray{ background-color:#f1f1f1;}
 .dis{display:block;}
 .undis{display:none;}
+.main-top{ position:relative; z-index:2;  float:left; width:100%;  padding:0px 0 0; background-color:#fff; font-size:18px; }
+.main-top p{ overflow:hidden; float:left; width:96%;padding:0 2% 0 2%;height:45px;  line-height:45px;background-color:#fff;border-bottom:1px solid #DFDFDD;  }
+.main-top .p-t { display:none;}
+
+.main-top .p-f1{ position:absolute; top:46px; height:auto;  }
+.main-top p a{ float:left; height:45px; margin-right:4%;}
+.main-top p a.cur{height:44px;border-bottom:1px solid #99cc66; }
+.main-top i{ position:absolute;width:39px; height:35px; top:5px; right:3%;background:url(../images/zhangmu02-01.png) no-repeat right top; }
+.main-top i.i1{background:url(../images/zhangmu02-02.png) no-repeat right top;}
+.main .tanchu1{ display:none;position: absolute;top:0;z-index:1; left:0; width:100%; height:100%; margin:0 auto; }
+
