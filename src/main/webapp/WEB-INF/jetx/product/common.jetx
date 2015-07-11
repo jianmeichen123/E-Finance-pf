@@ -54,11 +54,11 @@
 	<div class="pro-list">
 		<div class="dis"  id="tbc_01">
 			#for(product : products)
+			#set(goods = getProductById(product.goodsid))
 			<dl>
-				<dt><a href="#"><img src="/images/fenlei04.png"></a></dt>
+				<dt><a href="#"><img src='${request.getAttribute("config.img.prefix") }${goods.image}'></a></dt>
 				<dd>
 					<div class="dd-left">
-						#set(goods = getProductById(product.goodsid))
 						<b><a href="javascript:;">${goods.gname }</a></b>
 						单位：${goods.unit }<br>
 						${goods.beizhu }
