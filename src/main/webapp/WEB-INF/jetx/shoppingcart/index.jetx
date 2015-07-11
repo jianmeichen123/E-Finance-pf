@@ -38,7 +38,13 @@
 	
 	function refresh() {
 		$('#tbc_01').load('/cart/refresh', function() {
-			$('#product-count').text($('#tbc_01').find('dl').size())
+			var count = $('#tbc_01').find('dl').size()
+			if(count==0)
+				$('.tongji').hide()
+			else {
+				$('#product-count').text($('#tbc_01').find('dl').size())
+				$('.tongji').show()
+			}
 		})
 	}
 	
@@ -56,6 +62,15 @@
 				window.location = '/order/detail?orderid='+data.obj
 		})
 	}
+	
+	$(function() {
+		var count = $('#tbc_01').find('dl').size()
+		if(count==0)
+			$('.tongji').hide()
+		else {
+			$('.tongji').show()
+		}
+	})
 </script>
 </head>
 <body>
