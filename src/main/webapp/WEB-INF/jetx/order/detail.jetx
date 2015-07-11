@@ -83,9 +83,9 @@
    
     <div class="daohang">
       <a href="/cat" class="nav1">商品分类</a>
-      <a href="/" class="nav2">常用商品</a>
+      <a href="/product/common" class="nav2">常用商品</a>
       <a href="/cart" class="nav3">购物车</a>
-      <a href="/order" class="nav4">订单管理</a>   
+      <a href="/order/list" class="nav4">订单管理</a>   
     </div>
 </footer>
 
