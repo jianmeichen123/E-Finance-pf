@@ -47,7 +47,7 @@ public class ShoppingCartAction extends BaseAction {
 	public String del(Integer goodsid, HttpSession session) {
 		try {
 			Redis.use().hdel("shoppingcart:"+getUserId(session), goodsid);
-			return success("成功！！");
+			return success("商品已移除！！");
 		} catch (Exception e) {
 			e.printStackTrace();
 			return fail("失败！！");
