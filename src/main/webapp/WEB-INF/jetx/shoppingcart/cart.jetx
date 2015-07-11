@@ -1,6 +1,6 @@
 #for(good : goods)
 <dl>
-	<dt><a href="javascript:;"><img src="/images/fenlei04.png"></a></dt>
+	<dt><a href="javascript:;"><img src='${request.getAttribute("config.img.prefix") }${good.goods.image }'></a></dt>
 	<dd>
 		<div class="dd-left">
 			<b><a href="#">${good.goods.gname }</a></b>
