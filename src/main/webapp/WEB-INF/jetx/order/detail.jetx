@@ -37,7 +37,9 @@
 <div class="main">  
 	<div class="dingdan-list">
 		<ul>
-			<li><span class="namebg1">${getSupplyName(order.supplyid) }</span> <span class="dfh">待发货</span></li>
+			<li><span class="namebg1">${getSupplyName(order.supplyid) }</span> 
+			#set(stateJson = getOrderTypeDesc(order.ordertype))
+			<span class="dfh">${stateJson.desc }</span></li>
 			<li class="noborderbottom">${dateformat(order.ordertime, 'YYYY-MM-DD hh:mm:ss') }&nbsp; 创建订单  
 				<span class="role">用户<i>&#8250;</i></span>
 			</li>
