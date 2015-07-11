@@ -44,7 +44,18 @@ public class IndexNumberAction extends BaseAction {
 	
 	@RequestMapping("/detail")
 	public String detail(Integer id, ModelMap model) {
-		IndexDate index = indexDateMapper.selectByPrimaryKey(id);
+		IndexDate index = null;
+		if(id==null) {
+			IndexDateExample example = new IndexDateExample();
+			example.setOrderByClause("id desc");
+			example.setLimitStart(0);
+			example.setLimitEnd(1);
+			List<IndexDate> indexs = indexDateMapper.selectByExample(example);
+			index = indexs.get(0);
+			id = index.getId();
+		} else {
+			index = indexDateMapper.selectByPrimaryKey(id);
+		}
 		IndexDateChildExample childExample = new IndexDateChildExample();
 		childExample.createCriteria().andIndexDateIdEqualTo(id);
 		List<IndexDateChild> childs = indexDateChildMapper.selectByExample(childExample);

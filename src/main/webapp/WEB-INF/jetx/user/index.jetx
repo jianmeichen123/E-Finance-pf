@@ -34,7 +34,7 @@
   </div>
 </div>
 <div class="box">
-  <h2><b class="gaikuang">账户概况</b><span><a href="#">详细</a></span></h2>
+  <h2><b class="gaikuang">账户概况</b><span><a href="/index/warn">详细</a></span></h2>
 
      <table class="table-list">
        <tbody>
@@ -58,7 +58,7 @@
   <h2><a href="#"><b class="b2">农贸均价</b><span>&nbsp;</span></a></h2>
 </div>
 <div class="box bottom0">
-  <h2><a href="#"><b class="b3">指数详情</b><span>&nbsp;</span></a></h2>
+  <h2><a href="/index/detail"><b class="b3">指数详情</b><span>&nbsp;</span></a></h2>
 </div>
 <div class="box">
   <h2><a href="/index/warn"><b class="b4">账目预警</b><span>&nbsp;</span></a></h2>
