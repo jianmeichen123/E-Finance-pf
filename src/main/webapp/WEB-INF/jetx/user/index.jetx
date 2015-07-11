@@ -25,7 +25,7 @@
    </div>
 </div>
 <div class="box">
-  <h2><b>我的订单</b><span><a href="#">全部订单</a></span></h2>
+  <h2><b>我的订单</b><span><a href="/order/list">全部订单</a></span></h2>
   <div class="nav-list">
      <a href="/settle/list" class="js">待结算</a>
      <a href="#" class="sh">待收货</a>
