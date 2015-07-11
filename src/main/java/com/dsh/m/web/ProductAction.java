@@ -40,6 +40,11 @@ public class ProductAction extends BaseAction {
 		List<Goods> goods = goodsMapper.selectByExample(goodsExample);
 		
 		GoodsSclassExample goodsSclassExample = new GoodsSclassExample();
+		goodsSclassExample.createCriteria().andSclassidEqualTo(catid);
+		GoodsSclass sclass = goodsSclassMapper.selectByPrimaryKey(catid);
+		Integer bclassid = sclass.getBclassid();
+		goodsSclassExample = new GoodsSclassExample();
+		goodsSclassExample.createCriteria().andBclassidEqualTo(bclassid);
 		List<GoodsSclass> cats = goodsSclassMapper.selectByExample(goodsSclassExample);
 		
 		model.addAttribute("goods", goods);
