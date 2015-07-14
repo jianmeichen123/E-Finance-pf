@@ -23,7 +23,7 @@
 			$.each(data, function(i, n){
 				var img = n.image||'';
 				if(img=='')
-					img = 'http://bj.dosaing.com/customer/deal/img/load.jpg'
+					img = 'http://bj.dosaing.com/upload/load.jpg'
 				else
 					img = '${request.getAttribute("config.img.prefix") }'+img	
 				var html = 
@@ -110,7 +110,7 @@
 				<dl>
 					<dt><a href="javascript:;"><img src='
 					#if(good.image=='')
-						http://bj.dosaing.com/customer/deal/img/load.jpg
+						http://bj.dosaing.com/upload/load.jpg
 					#else
 						${request.getAttribute("config.img.prefix") }${good.image}
 					#end

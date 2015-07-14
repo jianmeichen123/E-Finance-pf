@@ -58,7 +58,7 @@
 			<dl>
 				<dt><a href="#"><img src='
 					#if(goods.image=='')
-						http://bj.dosaing.com/customer/deal/img/load.jpg
+						http://bj.dosaing.com/upload/load.jpg
 					#else
 						${request.getAttribute("config.img.prefix") }${goods.image}
 					#end
