@@ -45,7 +45,7 @@
 					<span>￥${settle.realamount.format() }</span>
 					<span>￥${settle.returnmoney.format() }</span>
 					#set(returndate = settle.returndate)
-					<span class="date">${returndate==null?'':returndate.format("MM/dd") }</span>
+					<span class="date">${returndate==null?'--':returndate.format("MM/dd") }</span>
 				</li>
 				<li class="biaoge"></li>  
 			</ul> 
