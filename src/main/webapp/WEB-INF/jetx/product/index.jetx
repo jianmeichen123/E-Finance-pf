@@ -21,9 +21,14 @@
 			dataType:'json'
 		}).done(function(data){
 			$.each(data, function(i, n){
+				var img = n.image||'';
+				if(img=='')
+					img = 'http://bj.dosaing.com/customer/deal/img/load.jpg'
+				else
+					img = '${request.getAttribute("config.img.prefix") }'+img	
 				var html = 
 					'<dl>'+
-					'	<dt><a href="javascript:;"><img src=\'${request.getAttribute("config.img.prefix") }'+n.image+'\'></a></dt>'+
+					'	<dt><a href="javascript:;"><img src=\''+img+'\'></a></dt>'+
 					'	<dd>'+
 					'		<div class="dd-left">'+
 					'			<b><a href="javascript:;">'+n.gname+'</a></b>'+
@@ -103,7 +108,13 @@
 			<div class="dis" id="tbc">
 				#for(good : goods)
 				<dl>
-					<dt><a href="javascript:;"><img src='${request.getAttribute("config.img.prefix") }${good.image}'></a></dt>
+					<dt><a href="javascript:;"><img src='
+					#if(good.image=='')
+						http://bj.dosaing.com/customer/deal/img/load.jpg
+					#else
+						${request.getAttribute("config.img.prefix") }${good.image}
+					#end
+					'></a></dt>
 					<dd>
 						<div class="dd-left">
 							<b><a href="javascipt:;">${good.gname }</a></b>
