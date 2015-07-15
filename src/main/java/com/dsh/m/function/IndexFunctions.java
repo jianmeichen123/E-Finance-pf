@@ -52,6 +52,10 @@ public class IndexFunctions {
 		return null;
 	}
 	
+	public static BigDecimal multiplyIndex(BigDecimal org) {
+		return org.multiply(new BigDecimal(100));
+	}
+	
 	public static void main(String[] args) {
 		getColorByRate(new BigDecimal("0.01"));
 	}

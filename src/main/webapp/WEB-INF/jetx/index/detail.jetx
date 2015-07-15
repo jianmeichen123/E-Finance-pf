@@ -25,7 +25,7 @@
 		<ul>
 			<li class="zhishu-xq">
 				<p>${index.indextime }</p>
-				<p><b>${index.t1 }<i>PMI</i></b> </p>
+				<p><b>${multiplyIndex(index.t1).format() }<i>PMI</i></b> </p>
 				<p class="f">指数有点高哦，还可以再降降！</p>
 			</li>
 			<li class="zhishu-dl">
@@ -34,11 +34,11 @@
 					<dd>预警/总条数</dd>
 				</dl>
 				<dl>
-					<dt>${index.t5 }</dt>
+					<dt>${index.t5.format() }</dt>
 					<dd>采购总额</dd>
 				</dl>
 				<dl style="border-right:0;">
-					<dt>${index.t14 }</dt>
+					<dt>${index.t14.format() }</dt>
 					<dd>多花费</dd>
 				</dl>
 			</li>
@@ -65,8 +65,8 @@
 						#for(child : childs)
 						<tr class="bgcolor-${getColorByRate(child.t7) }">
 							<td>${getProductById(child.goodsid).gname }</td>
-							<td>￥${child.t3 }</td>
-							<td>￥${child.t6 }</td>
+							<td>￥${child.t3.format() }</td>
+							<td>￥${child.t6.format() }</td>
 							<td>${child.t8 }</td>
 						</tr>
 						#end
