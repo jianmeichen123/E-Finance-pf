@@ -1,12 +1,12 @@
 @charset "utf-8";
 /* CSS Document */
 /*html5*/
-.main{ position:relative; float:left; width:100%;}
+.main{ position:relative; float:left; width:100%; margin:60px auto 73px auto;}
 .main-left{ float:left; width:28%; height:100%;  }
 .main-left ul{ float:left; width:100%; padding-top:5px;}
 .main-left ul li{  position:relative; float:left;width:95%; margin:5px 0;  margin-left:5%; height:30px; line-height:30px; text-align:center;} 
 .main-left ul li a{overflow:hidden; display:block;width:95%;padding-left:5%; color:#666;font-size:14px; }
-.main-left ul li .hovertab{ position:absolute;width:97%; left:0; top:0;  color:#000; background-color:#fff; border:1px solid #ddd; border-right:none;}
+.main-left ul li .hovertab{ position:absolute;width:96.5%; left:0; top:0;  color:#000; background-color:#fff; border:1px solid #ddd; border-right:none;}
 .main-left ul li .normaltab{ display:block;width:95%;padding-left:5%; color:#666; }
 .main-right{ float:left; width:71%; min-height:400px; background-color:#fff;border-left:1px solid #ddd;}
 .main-right .tab-list{ float:left; width:100%; }
