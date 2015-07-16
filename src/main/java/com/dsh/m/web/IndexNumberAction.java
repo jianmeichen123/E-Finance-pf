@@ -1,5 +1,6 @@
 package com.dsh.m.web;
 
+import java.math.BigDecimal;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -57,7 +58,7 @@ public class IndexNumberAction extends BaseAction {
 			index = indexDateMapper.selectByPrimaryKey(id);
 		}
 		IndexDateChildExample childExample = new IndexDateChildExample();
-		childExample.createCriteria().andIndexDateIdEqualTo(id);
+		childExample.createCriteria().andIndexDateIdEqualTo(id).andT6GreaterThan(new BigDecimal(0));
 		List<IndexDateChild> childs = indexDateChildMapper.selectByExample(childExample);
 		model.addAttribute("index", JSON.parse(JSON.toJSONStringWithDateFormat(index, "yyyy年MM月dd日")));
 		model.addAttribute("childs", childs);
