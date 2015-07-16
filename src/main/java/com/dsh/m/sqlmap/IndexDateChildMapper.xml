@@ -758,6 +758,7 @@
   <select id="getIndexDateChilds" parameterType="map" resultType="map">
   	select b.goodsid,b.t3,b.t6,b.t7,b.t8 from index_date a left join index_date_child b
   	 on a.id = b.index_date_id where a.customerid = #{userid} and a.indextime >= #{indextime}
+  	 and b.t4>0 and b.t6>0
   	 order by b.date,b.t6 desc 
   </select>
   
