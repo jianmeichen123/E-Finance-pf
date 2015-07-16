@@ -56,6 +56,10 @@ public class IndexFunctions {
 		return org.multiply(new BigDecimal(100));
 	}
 	
+	public static boolean isPositive(BigDecimal big) {
+		return big.compareTo(new BigDecimal(0))==1;
+	}
+	
 	public static void main(String[] args) {
 		getColorByRate(new BigDecimal("0.01"));
 	}

@@ -33,8 +33,14 @@
                <dd>采购总额</dd>
              </dl>
              <dl style="border-right:0;">
-               <dt>${data.t14.format() }</dt>
-               <dd>多花费</dd>
+               <dt>${data.t14.abs().format() }</dt>
+               <dd>
+               	#if(isPositive(data.t14))
+               	多花费
+               	#else
+               	节省
+               	#end
+               </dd>
              </dl>
            </li>
         </ul>  
