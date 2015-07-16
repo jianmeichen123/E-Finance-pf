@@ -72,7 +72,7 @@
 				#if(order.ordertype == 1)
 					<a href="javascript:;" class="chakan-btn" onclick='cancel("${order.id}")'>取消订单</a>
 				#elseif(order.ordertype == 5)
-					<a href="/order/confirm?orderid=${order.id }" class="chakan-btn">确认收货商品</a>
+					<a href="/order/confirm?orderid=${order.id }" class="chakan-btn">确认收货</a>
 				#end
 			</li>
 		</ul>  
