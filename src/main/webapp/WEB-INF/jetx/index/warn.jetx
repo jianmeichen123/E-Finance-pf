@@ -51,13 +51,20 @@
           <li class="noborderbottom">
             <table>
               <tbody>
-                 <tr><th width="41%">商品</th><th width="22%">总价</th><th width="22%">超出</th><th width="15%">级别</th></tr>
+                 <tr>
+                 	<th width="20%">商品</th>
+                 	<th width="22%">总价</th>
+                 	<th width="22%">超出</th>
+                 	<th width="15%">级别</th>
+                 	<th width="21%">日期</th>
+                 </tr>
                  #for(child : childs)
                  <tr class="bgcolor-${getColorByRate(child.t7) }">
                  	<td>${getProductById(child.goodsid).gname }</td>
                  	<td>￥${child.t3 }</td>
                  	<td>￥${child.t6 }</td>
                  	<td>${child.t8 }</td>
+                 	<td>${child.createtime.format("yyyy-MM-dd") }</td>
                  </tr>
                  #end
               </tbody>
