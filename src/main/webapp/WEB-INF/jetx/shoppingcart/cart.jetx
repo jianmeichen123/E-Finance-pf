@@ -1,10 +1,11 @@
 #for(good : goods)
+#set(product = good.goods)
 <dl>
-	<dt><a href="javascript:;"><img src='
-	#if(good.image==null)
+	<dt><a href="javascript:;" title="${product.image }"><img src='
+	#if(product.image=="")
 		http://bj.dosaing.com/upload/load.jpg
 	#else
-		${request.getAttribute("config.img.prefix") }${good.image}
+		${request.getAttribute("config.img.prefix") }${product.image}
 	#end
 	'></a></dt>
 	<dd>
@@ -15,11 +16,11 @@
 		</div>
 		<div class="dd-right">
 			<ul>
-				<li><a href="javascript:;" onclick='add("${good.goods.goodsid}", -1, this)'>&#8211;</a></li>
+				<li><a href="javascript:;" onclick='add("${product.goodsid}", -1, this)'>&#8211;</a></li>
 				<li>${good.num }</li>
-				<li><a href="javascript:;" onclick='add("${good.goods.goodsid}", 1, this)'>+</a></li>
+				<li><a href="javascript:;" onclick='add("${product.goodsid}", 1, this)'>+</a></li>
 			</ul>
-			<p class="del"><a href="javascript:;" onclick='del("${good.goods.goodsid}")'>删除</a></p>
+			<p class="del"><a href="javascript:;" onclick='del("${product.goodsid}")'>删除</a></p>
 		</div>               
 	</dd>
 	<dd class="count">数量：${good.num }</dd>

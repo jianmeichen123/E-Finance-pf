@@ -38,6 +38,7 @@ public class ShoppingCartAction extends BaseAction {
 	public String index(HttpSession session, ModelMap model) {
 		Integer userId = getUserId(session);
 		JSONArray array = shoppingCartService.loadUserCart(userId);
+		System.err.println(array);
 		model.addAttribute("goods", array);
 		return "shoppingcart/index";
 	}
