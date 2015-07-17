@@ -76,6 +76,9 @@ public class IndexNumberAction extends BaseAction {
 		Map data = indexDateMapper.summaryIndexDate(param);
 		Date mintime = (Date)data.get("indextime");
 		param.put("indextime", mintime);
+		
+		BigDecimal amount = indexDateMapper.getTotalMinusAmount(param);
+		model.addAttribute("amount", amount);
 		List childs = indexDateChildMapper.getIndexDateChilds(param);
 		
 		model.addAttribute("data", data);

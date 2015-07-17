@@ -1542,4 +1542,11 @@
   	(select t5, t14, t21, t26, indextime from index_date where customerid = #{userid} order by indextime desc limit #{start}, #{pagesize}) as t
   </select>
   
+  <select id="getTotalMinusAmount" parameterType="map" resultType="java.math.BigDecimal">
+	select sum(t6) as amount
+	from index_date_child where index_date_id in
+	(select t.id from (select id from index_date 
+	where customerid = #{userid} order by indextime desc limit #{start}, #{pagesize}) as t)
+  </select>
+  
 </mapper>

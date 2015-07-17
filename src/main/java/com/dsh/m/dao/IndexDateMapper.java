@@ -1,5 +1,6 @@
 package com.dsh.m.dao;
 
+import java.math.BigDecimal;
 import java.util.List;
 import java.util.Map;
 
@@ -80,4 +81,6 @@ public interface IndexDateMapper {
 	int updateByPrimaryKey(IndexDate record);
 	
 	Map summaryIndexDate(Map map);
+	
+	BigDecimal getTotalMinusAmount(Map map);
 }
