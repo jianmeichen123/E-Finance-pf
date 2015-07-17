@@ -19,7 +19,6 @@
 			url:'/cart/add?goodsid='+id+'&num='+num,
 			dataType:'json'
 		}).done(function(data){
-			alert(data.msg)
 			if(data.isSuccess)
 				refresh()
 		})
