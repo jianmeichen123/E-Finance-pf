@@ -28,6 +28,11 @@
 			dataType:'json'
 		}).done(function(data){
 			alert(data.msg)
+			$('.tongji').find('span').text(data.obj)
+			var isshow = $('.tongji').css('display')
+			if(isshow=='none') {
+				$('.tongji').show()
+			}
 		})
 	}
 	
@@ -86,7 +91,12 @@
 
 
 <footer>
-    <div class="tongji">共 <span class="font16">${products.size() }</span> 种商品<a href="/cart">下一步</a></div>
+	
+    <div class="tongji"
+    #if(num==0)
+    	style="display:none;"
+   	#end
+    >共 <span class="font16">${num }</span> 种商品<a href="/cart">下一步</a></div>
     <div class="daohang1">
       <a href="/cat" class="nav1">商品分类</a>
       <a href="/product/common" class="nav2">常用商品</a>

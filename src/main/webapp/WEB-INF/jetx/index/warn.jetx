@@ -25,7 +25,7 @@
         <ul>
            <li class="zhishu-dl">
              <dl>
-               <dt>${data.t26 }/${data.t20 }</dt>
+               <dt>${data.t26 }/${data.t21 }</dt>
                <dd>预警/总条数</dd>
              </dl>
              <dl>

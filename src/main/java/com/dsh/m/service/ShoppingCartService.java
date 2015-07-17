@@ -34,6 +34,12 @@ public class ShoppingCartService {
 		return array;
 	}
 	
+	public int getCartNum(Integer userid) {
+		Cache cache = Redis.use();
+		String hkey = "shoppingcart:"+userid;
+		return cache.hlen(hkey).intValue();
+	}
+	
 	public void clearUserCart(Integer userid) {
 		Cache cache = Redis.use();
 		String hkey = "shoppingcart:"+userid;

@@ -20,6 +20,7 @@ import com.dsh.m.model.Goods;
 import com.dsh.m.model.GoodsExample;
 import com.dsh.m.model.GoodsSclass;
 import com.dsh.m.model.GoodsSclassExample;
+import com.dsh.m.service.ShoppingCartService;
 
 @RequestMapping("/product")
 @Controller
@@ -31,9 +32,12 @@ public class ProductAction extends BaseAction {
 	private GoodsSclassMapper goodsSclassMapper;
 	@Autowired
 	private CustomerGoodsMapper customerGoodsMapper;
+	@Autowired
+	private ShoppingCartService shoppingCartService;
 	
 	@RequestMapping
-	public String index(Integer catid, ModelMap model) {
+	public String index(Integer catid, ModelMap model, HttpSession session) {
+		Integer userid = super.getUserId(session);
 		//传入二级分类
 		GoodsExample goodsExample = new GoodsExample();
 		goodsExample.createCriteria().andSclassidEqualTo(catid);
@@ -49,6 +53,7 @@ public class ProductAction extends BaseAction {
 		
 		model.addAttribute("goods", goods);
 		model.addAttribute("cats", cats);
+		model.addAttribute("num", shoppingCartService.getCartNum(userid));
 		return "product/index";
 	}
 	
@@ -69,6 +74,7 @@ public class ProductAction extends BaseAction {
 		example.setOrderByClause("count, lastdate desc");
 		List<CustomerGoods> list = customerGoodsMapper.selectByExample(example);
 		model.addAttribute("products", list);
+		model.addAttribute("num", shoppingCartService.getCartNum(userid));
 		return "product/common";
 	}
 	

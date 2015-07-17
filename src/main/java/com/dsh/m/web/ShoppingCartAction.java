@@ -26,8 +26,9 @@ public class ShoppingCartAction extends BaseAction {
 	@RequestMapping("/add")
 	public String add(Integer goodsid, long num, HttpSession session) {
 		try {
-			Redis.use().hincrBy("shoppingcart:"+getUserId(session), goodsid, num);
-			return success("商品已添加到购物车！！");
+			Integer userid = getUserId(session);
+			Redis.use().hincrBy("shoppingcart:"+userid, goodsid, num);
+			return success("商品已添加到购物车！！", shoppingCartService.getCartNum(userid));
 		} catch (Exception e) {
 			e.printStackTrace();
 			return fail("失败！！");
