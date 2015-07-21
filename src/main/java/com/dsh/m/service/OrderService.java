@@ -28,9 +28,9 @@ import com.dsh.m.model.PurchaseorderChildExample;
 import com.dsh.m.model.Settleaccount;
 import com.dsh.m.model.SettleaccountExample;
 import com.dsh.m.model.Settleaccountchild;
-import com.dsh.m.model.SupplyCustomer;
-import com.dsh.m.model.SupplyCustomerExample;
+import com.dsh.m.util.Lang;
 import com.dsh.m.util.OrderUtil;
+import com.dsh.m.util.ThreadLocalUtil;
 
 @Service
 public class OrderService {
@@ -51,22 +51,25 @@ public class OrderService {
 	@Transactional
 	public int createOrder(Integer userid, JSONArray products) {
 		
-		SupplyCustomerExample example = new SupplyCustomerExample();
-		example.createCriteria().andCustomeridEqualTo(userid);
-		List<SupplyCustomer> list = supplyCustomerMapper.selectByExample(example);
-		Integer supplyid = null;
-		if(CollectionUtils.isNotEmpty(list)) {
-			supplyid = list.get(0).getSupplyid();
-		}
+//		SupplyCustomerExample example = new SupplyCustomerExample();
+//		example.createCriteria().andCustomeridEqualTo(userid);
+//		List<SupplyCustomer> list = supplyCustomerMapper.selectByExample(example);
+//		Integer supplyid = null;
+//		if(CollectionUtils.isNotEmpty(list)) {
+//			supplyid = list.get(0).getSupplyid();
+//		}
 		
 		Purchaseorder order = new Purchaseorder();
 		order.setOrdernum(OrderUtil.generateOrderNo());
 		order.setCustomerid(userid);
-		order.setSupplyid(supplyid);
+//		order.setSupplyid(supplyid);
 		order.setOrdertype(OrderStatusEnum.WAIT.getCode());
 		order.setChildcount(products.size());
 		order.setOrdertime(new Date());
 		order.setCreateuser(userid);
+		
+		Object obj  = ThreadLocalUtil.get("supplyid");
+		order.setSupplyid(Lang.toInt(obj));
 		purchaseorderMapper.insertSelective(order);
 		int orderid = order.getId();
 		@SuppressWarnings("rawtypes")

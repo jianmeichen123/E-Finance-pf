@@ -1,7 +1,10 @@
 package com.dsh.m.web;
 
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
+import org.apache.commons.collections.CollectionUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -9,8 +12,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.alibaba.fastjson.JSONArray;
+import com.dsh.m.dao.SupplyCustomerMapper;
+import com.dsh.m.model.SupplyCustomer;
+import com.dsh.m.model.SupplyCustomerExample;
 import com.dsh.m.service.OrderService;
 import com.dsh.m.service.ShoppingCartService;
+import com.dsh.m.util.ThreadLocalUtil;
 import com.dsh.m.util.redis.Redis;
 
 @RequestMapping("/cart")
@@ -21,6 +28,8 @@ public class ShoppingCartAction extends BaseAction {
 	private ShoppingCartService shoppingCartService;
 	@Autowired
 	private OrderService orderService;
+	@Autowired
+	private SupplyCustomerMapper supplyCustomerMapper;
 	
 	@ResponseBody
 	@RequestMapping("/add")
@@ -67,7 +76,16 @@ public class ShoppingCartAction extends BaseAction {
 	@RequestMapping("/submit")
 	public String submit(HttpSession session) {
 		Integer userId = getUserId(session);
+		Integer supplyid = null;
 		try {
+			SupplyCustomerExample example = new SupplyCustomerExample();
+			example.createCriteria().andCustomeridEqualTo(userId);
+			List<SupplyCustomer> list = supplyCustomerMapper.selectByExample(example);
+			if(CollectionUtils.isEmpty(list)) {
+				return fail("暂无供应商处理！！");
+			}
+			supplyid = list.get(0).getSupplyid();
+			ThreadLocalUtil.put("supplyid", supplyid);
 			JSONArray array = shoppingCartService.loadUserCart(userId);
 			int orderid = orderService.createOrder(userId, array);
 			return success("订单提交成功，等待供应商处理！！", orderid);
