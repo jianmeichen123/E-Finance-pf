@@ -90,7 +90,7 @@
 <header>
   <nav>
      <div class="set"><a href="javascript:;"><img src="/images/fenlei01.png"></a></div>
-     <div class="search"><input id="searchText" name="key" type="text" placeholder="请输入商品名称" onclick="search()"></div>
+     <div class="search" style="cursor:pointer;" onclick="search()"><input id="searchText" name="key" type="text" placeholder="请输入商品名称"></div>
   </nav>
 </header>
 <div class="main">

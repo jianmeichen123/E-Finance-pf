@@ -27,6 +27,16 @@
 			})
 		})
 	}
+	
+	function search() {
+		var text = $('#searchText').val()||''
+		if(text!='') {
+			$('#sectab').find('a').hide()
+			$.each($('#sectab').find('a:contains("'+text+'")'), function(i, n){
+				$(n).show()
+			})
+		}
+	}
 </script>
 </head>
 
@@ -34,7 +44,7 @@
 <header>
   <nav>
      <div class="set"><a href="#"><img src="/images/fenlei01.png"></a></div>
-     <div class="search"><input name="key" type="text" placeholder="请输入商品名称"></div>
+     <div class="search" style="cursor:pointer;" onclick="search()"><input id="searchText" name="key" type="text" placeholder="请输入商品名称"></div>
   </nav>
 </header>
 <div class="main">
