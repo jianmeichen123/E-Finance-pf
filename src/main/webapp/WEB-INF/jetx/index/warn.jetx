@@ -67,8 +67,8 @@
                  #for(child : childs)
                  <tr class="bgcolor-${getColorByRate(child.t7) }">
                  	<td>${getProductById(child.goodsid).gname }</td>
-                 	<td>￥${child.t3 }</td>
-                 	<td>￥${child.t6 }</td>
+                 	<td>￥${child.t3.format() }</td>
+                 	<td>￥${child.t6.format() }</td>
                  	<td>${child.t8 }</td>
                  	<td>${child.date.format("yyyy-MM-dd") }</td>
                  </tr>
