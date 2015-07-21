@@ -70,7 +70,7 @@
                  	<td>￥${child.t3 }</td>
                  	<td>￥${child.t6 }</td>
                  	<td>${child.t8 }</td>
-                 	<td>${child.createtime.format("yyyy-MM-dd") }</td>
+                 	<td>${child.date.format("yyyy-MM-dd") }</td>
                  </tr>
                  #end
               </tbody>

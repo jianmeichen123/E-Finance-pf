@@ -44,13 +44,14 @@ public class IndexNumberAction extends BaseAction {
 	}
 	
 	@RequestMapping("/detail")
-	public String detail(Integer id, ModelMap model) {
+	public String detail(HttpSession session,Integer id, ModelMap model) {
 		IndexDate index = null;
 		if(id==null) {
 			IndexDateExample example = new IndexDateExample();
 			example.setOrderByClause("id desc");
 			example.setLimitStart(0);
 			example.setLimitEnd(1);
+			example.createCriteria().andCustomeridEqualTo(super.getUserId(session)).andT1GreaterThan(new BigDecimal(0));
 			List<IndexDate> indexs = indexDateMapper.selectByExample(example);
 			index = indexs.get(0);
 			id = index.getId();
@@ -58,8 +59,8 @@ public class IndexNumberAction extends BaseAction {
 			index = indexDateMapper.selectByPrimaryKey(id);
 		}
 		IndexDateChildExample childExample = new IndexDateChildExample();
-		childExample.createCriteria().andIndexDateIdEqualTo(id)
-			.andT6GreaterThan(new BigDecimal(0)).andT4GreaterThan(new BigDecimal(0));
+		childExample.createCriteria().andIndexDateIdEqualTo(id).andT8GreaterThan(0).andDrEqualTo("1");
+			
 		List<IndexDateChild> childs = indexDateChildMapper.selectByExample(childExample);
 		model.addAttribute("index", JSON.parse(JSON.toJSONStringWithDateFormat(index, "yyyy年MM月dd日")));
 		model.addAttribute("childs", childs);
