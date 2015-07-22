@@ -70,6 +70,9 @@
 							<td>${child.t8 }</td>
 						</tr>
 						#end
+						<tr>
+							<td colspan="4"><a href="/index/list">查看更多指数</a></td>
+						</tr>
 					</tbody>
 				</table>
 			</li>
