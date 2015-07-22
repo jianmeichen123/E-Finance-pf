@@ -25,10 +25,12 @@ public class IndexFunctions {
 	}
 	
 	public static IndexLevelEnum getDescByIndex(Double index) {
+		System.err.println(index);
 		IndexLevelEnum[] enums = IndexLevelEnum.values();
 		for(IndexLevelEnum enumtype:enums) {
 			Double min = enumtype.getMin();
 			Double max = enumtype.getMax();
+			System.err.println("min="+min+",max="+max);
 			if(min!=null&&max!=null) {
 				if(index>min&&index<=max) {
 					return enumtype;

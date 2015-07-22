@@ -26,7 +26,7 @@
 			<li class="zhishu-xq">
 				<p>${index.indextime }</p>
 				<p><b>${multiplyIndex(index.t1).format() }<i>PMI</i></b> </p>
-				<p class="f">指数有点高哦，还可以再降降！</p>
+				<p class="f">${getDescByIndex(multiplyIndex(index.t1).format().asDouble()).getDesc() }</p>
 			</li>
 			<li class="zhishu-dl">
 				<dl>

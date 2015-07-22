@@ -9,7 +9,7 @@ public enum IndexLevelEnum {
 	LEVEL4("适中", 97d, 105d, "价格适中，其实还能再少花点~"),
 	LEVEL5("略高", 105d, 110d, "价格稍微有点高，该注意控制采购了~"),
 	LEVEL6("偏高", 110d, 118d, "价格很高啦，再不控制就疯啦~"),
-	LEVEL7("极高", 118d, null, "这是一个悲剧，价格太高了，供应商都乐翻了~");
+	LEVEL7("极高", null, 118d, "这是一个悲剧，价格太高了，供应商都乐翻了~");
 	
 	private String level;
 	private Double min;
