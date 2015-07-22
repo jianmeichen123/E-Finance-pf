@@ -26,7 +26,7 @@
 			<li class="zhishu-xq">
 				<p>${index.indextime }</p>
 				<p><b>${multiplyIndex(index.t1).format() }<i>PMI</i></b> </p>
-				<p class="f">指数有点高哦，还可以再降降！</p>
+				<p class="f">${getDescByIndex(multiplyIndex(index.t1).format().asDouble()).getDesc() }</p>
 			</li>
 			<li class="zhishu-dl">
 				<dl>
@@ -38,8 +38,14 @@
 					<dd>采购总额</dd>
 				</dl>
 				<dl style="border-right:0;">
-					<dt>${index.t14.format() }</dt>
-					<dd>多花费</dd>
+					<dt>${index.t14.abs().format() }</dt>
+					<dd>
+						#if(isDuo(multiplyIndex(index.t1)))
+						多花费
+						#else
+						节省
+						#end
+					</dd>
 				</dl>
 			</li>
 		</ul>  
@@ -70,6 +76,9 @@
 							<td>${child.t8 }</td>
 						</tr>
 						#end
+						<tr>
+							<td colspan="4"><a href="/index/list">查看更多指数</a></td>
+						</tr>
 					</tbody>
 				</table>
 			</li>
