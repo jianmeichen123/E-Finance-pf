@@ -38,7 +38,13 @@
 					</dd>
 				</dl>
 				<dl>
-					<dt>结算状态</dt><dd class="color_red font20">×√</dd>
+					<dt>结算状态</dt><dd class="color_red font20">
+					#if(order.balancestate==0)
+					×
+					#else
+					√	
+					#end
+					</dd>
 				</dl>
 				<dl>
 					<dt>下单时间</dt><dd class="line-hight13">${order.ordertime.format("yyyy-MM-dd HH:mm:ss") }</dd>
