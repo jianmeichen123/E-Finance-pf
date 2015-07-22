@@ -54,7 +54,7 @@
   <div class="account">
      <ul>
         <li>账号：<input id="loginname" type="text" placeholder="请输入用户名"></li>
-        <li>密码：<input id="password" type="text" placeholder="请输入密码"></li>
+        <li>密码：<input id="password" type="password" placeholder="请输入密码"></li>
         <input type="hidden" id="returnUrl" value="${request.getParameter('returnUrl') }">
      </ul>
   </div>
