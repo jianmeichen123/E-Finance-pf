@@ -76,12 +76,20 @@
 	}
 	
 	function search() {
-		var text = $('#searchText').val()||''
+		/* var text = $('#searchText').val()||''
 		if(text!='') {
 			$('dl').hide()
 			$.each($('a:contains("'+text+'")'), function(i, n){
 				$(n).closest('dl').show()
 			})
+		} */
+		
+		var form = $('<form action = "/product/search" method = "post"></form>')
+		var text = $('#searchText').val()||''
+		if(text!='') {
+			var input = $('<input type="hidden" name="word" value="'+text+'">')
+			form.append(input)
+			form.submit()
 		}
 	}
 </script>
