@@ -48,7 +48,7 @@ public class OrderAction extends BaseAction {
 		Integer userid = super.getUserId(session);
 		orderExample.createCriteria().andCustomeridEqualTo(userid)
 			.andOrdertypeNotEqualTo(0);
-		orderExample.setOrderByClause("order by ordertime desc");
+		orderExample.setOrderByClause("ordertime desc");
 		List<Purchaseorder> orders = purchaseorderMapper.selectByExample(orderExample);
 //		PurchaseorderChildExample orderChildExample = new PurchaseorderChildExample();
 //		orderChildExample.createCriteria().
