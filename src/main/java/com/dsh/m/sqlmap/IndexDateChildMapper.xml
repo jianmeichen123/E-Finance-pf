@@ -759,7 +759,7 @@
   	select b.goodsid,b.t3,b.t6,b.t7,b.t8,b.date from index_date a left join index_date_child b
   	 on a.id = b.index_date_id where a.customerid = #{userid} and a.indextime >= #{indextime}
   	 and a.t1>0 and b.dr=1 and b.t8>0
-  	 order by b.date,b.t6 desc 
+  	 order by b.date desc,b.t6 desc 
   </select>
   
 </mapper>
