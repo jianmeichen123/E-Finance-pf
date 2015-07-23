@@ -34,7 +34,7 @@ public class IndexNumberAction extends BaseAction {
 	public String list(HttpSession session, ModelMap model) {
 		IndexDateExample ide = new IndexDateExample();
 		Integer userid = super.getUserId(session);
-		ide.createCriteria().andCustomeridEqualTo(userid);
+		ide.createCriteria().andCustomeridEqualTo(userid).andT1GreaterThan(new BigDecimal(0));
 		ide.setLimitStart(0);
 		ide.setLimitEnd(7);
 		ide.setOrderByClause("indextime desc");

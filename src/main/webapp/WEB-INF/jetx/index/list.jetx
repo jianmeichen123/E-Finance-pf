@@ -43,7 +43,7 @@
 			#for(index : indexs)
 			<li class="zhishu-liebiao" >
 				   	<span class="zhishu-date">${index.indextime }</span>
-					<span class="zhishu-count">${index.t1.format() }<i>PMI</i></span>
+					<span class="zhishu-count">${multiplyIndex(index.t1).format() }<i>PMI</i></span>
 					<span class="zhishu-state">
 						<img src="/images/up.png" >
 					</span>
@@ -59,8 +59,8 @@
      <div class="dingdan-list bottom0">
         <ul>
           <li><span class="zs-title">综合分析</span> </li>
-          <li class="zs-word">平均指数：${average.format() }PMI</span></li>
-          #set(level = getDescByIndex(average))
+          <li class="zs-word">平均指数：${(average*100).format() }PMI</span></li>
+          #set(level = getDescByIndex(average*100))
           <li class="zs-word">指数趋势：${level.level }</li>
           <li class="zs-word noborderbottom">
           	<span class="l">综合评定：</span>
