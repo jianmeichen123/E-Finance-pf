@@ -4,8 +4,6 @@ import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
-import jetbrick.util.StringUtils;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -83,8 +81,10 @@ public class ProductAction extends BaseAction {
 	@RequestMapping("/search")
 	public String search(HttpSession session, String word, ModelMap model) {
 		GoodsExample example = new GoodsExample();
+		System.err.println(word);
 		example.createCriteria().andGnameLike("%"+word+"%");
 		List<Goods> list = goodsMapper.selectByExample(example);
+		System.err.println(list.size());
 		model.addAttribute("products", list);
 		Integer userid = super.getUserId(session);
 		model.addAttribute("num", shoppingCartService.getCartNum(userid));
