@@ -28,6 +28,8 @@ import com.dsh.m.model.PurchaseorderChildExample;
 import com.dsh.m.model.Settleaccount;
 import com.dsh.m.model.SettleaccountExample;
 import com.dsh.m.model.Settleaccountchild;
+import com.dsh.m.model.SupplyCustomer;
+import com.dsh.m.model.SupplyCustomerExample;
 import com.dsh.m.util.Lang;
 import com.dsh.m.util.OrderUtil;
 import com.dsh.m.util.ThreadLocalUtil;
@@ -118,6 +120,7 @@ public class OrderService {
 		int customerid = data.getIntValue("customerid");
 		int supplyid = data.getIntValue("supplyid");
 		String ordernum = data.getString("ordernum");
+		BigDecimal orderindex = data.getBigDecimal("orderindex");
 		BigDecimal totalprice = data.getBigDecimal("totalprice");
 		SettleaccountExample example = new SettleaccountExample();
 		example.createCriteria().andCustomeridEqualTo(customerid);
@@ -127,6 +130,9 @@ public class OrderService {
 		List<Settleaccount> sas = settleaccountMapper.selectByExample(example);
 		boolean flag = true;
 		int settleid = 0;
+		
+		BigDecimal realamount = purchaseorderChildMapper.getRealAmountByOrderId(orderid);
+		
 		if(CollectionUtils.isNotEmpty(sas)) {
 			Settleaccount fsa = sas.get(0);
 			Date starttime = fsa.getStarttime();
@@ -134,20 +140,33 @@ public class OrderService {
 			if(ordertime.after(starttime)&&ordertime.before(endtime)) {
 				settleid = fsa.getId();
 				BigDecimal orgtotal = fsa.getOrdertotalmoney();
+				BigDecimal orgReal = fsa.getRealamount();
 				Settleaccount newfsa = new Settleaccount();
 				newfsa.setId(settleid);
 				newfsa.setOrdertotalmoney(orgtotal.add(totalprice));
+				newfsa.setRealamount(orgReal.add(realamount));
 				settleaccountMapper.updateByPrimaryKeySelective(newfsa);
 				flag = false;
 			}
 		}
 		if(flag) {
+			SupplyCustomerExample sce = new SupplyCustomerExample();
+			sce.createCriteria().andCustomeridEqualTo(customerid);
+			List<SupplyCustomer> list = supplyCustomerMapper.selectByExample(sce);
+			Float exponent = null;
+			if(CollectionUtils.isNotEmpty(list)) {
+				exponent = list.get(0).getExponent();
+			}
+			
 			Settleaccount sa = new Settleaccount();
 			sa.setCustomerid(customerid);
 			sa.setSupplyid(supplyid);
+			sa.setDealindex((double)exponent);
 			sa.setSettlenum(OrderUtil.generateSettleNo());
 			sa.setOrderperoidnum(OrderUtil.generatePeriodNo());
 			sa.setOrdernum(1);
+			sa.setReturndays("7");
+			sa.setRealamount(realamount);
 			Date start = new JDateTime(ordertime).setHour(0).setMinute(0).setSecond(0, 0).convertToDate();
 			Date end = new JDateTime(start).addDay(7).convertToDate();
 			sa.setStarttime(start);
@@ -156,11 +175,14 @@ public class OrderService {
 			settleaccountMapper.insertSelective(sa);
 			settleid = sa.getId();
 		}
+		
 		Settleaccountchild child = new Settleaccountchild();
 		child.setOrderid(orderid);
 		child.setOrdernum(ordernum);
+		child.setOrderindex(orderindex.doubleValue());
 		child.setOrderdate(ordertime);
 		child.setOrdertotalmoney(totalprice);
+		child.setRealamount(realamount);
 		child.setSettleid(settleid);
 		settleaccountchildMapper.insertSelective(child);
 	}

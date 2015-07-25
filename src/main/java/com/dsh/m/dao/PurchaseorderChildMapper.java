@@ -1,9 +1,12 @@
 package com.dsh.m.dao;
 
+import java.math.BigDecimal;
+import java.util.List;
+
+import org.apache.ibatis.annotations.Param;
+
 import com.dsh.m.model.PurchaseorderChild;
 import com.dsh.m.model.PurchaseorderChildExample;
-import java.util.List;
-import org.apache.ibatis.annotations.Param;
 
 public interface PurchaseorderChildMapper {
 
@@ -74,4 +77,6 @@ public interface PurchaseorderChildMapper {
 	 * @mbggenerated  Sun Jun 28 10:58:04 CST 2015
 	 */
 	int updateByPrimaryKey(PurchaseorderChild record);
+	
+	BigDecimal getRealAmountByOrderId(Integer orderid);
 }

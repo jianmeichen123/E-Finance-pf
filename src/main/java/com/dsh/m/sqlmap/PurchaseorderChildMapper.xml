@@ -570,4 +570,8 @@
       checkamount = #{checkamount,jdbcType=DECIMAL}
     where id = #{id,jdbcType=INTEGER}
   </update>
+  
+  <select id="getRealAmountByOrderId" parameterType="int" resultType="java.math.BigDecimal">
+  	select sum(unit_price*checkamount) as total where orderid = #{orderid}
+  </select>
 </mapper>
