@@ -1,5 +1,6 @@
 package com.dsh.m.web;
 
+import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
 
@@ -12,9 +13,13 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.alibaba.fastjson.JSON;
 import com.dsh.m.dao.CustomerMapper;
+import com.dsh.m.dao.IndexDateMapper;
 import com.dsh.m.model.Customer;
 import com.dsh.m.model.CustomerExample;
+import com.dsh.m.model.IndexDate;
+import com.dsh.m.model.IndexDateExample;
 import com.dsh.m.util.PasswordUtil;
 
 @RequestMapping("/user")
@@ -23,6 +28,8 @@ public class UserAction extends BaseAction {
 	
 	@Autowired
 	private CustomerMapper customerMapper;
+	@Autowired
+	private IndexDateMapper indexDateMapper;
 	
 	@RequestMapping("/toreg")
 	public String toreg() {
@@ -68,7 +75,15 @@ public class UserAction extends BaseAction {
 	}
 	
 	@RequestMapping
-	public String index() {
+	public String index(ModelMap model, HttpSession session) {
+		IndexDateExample example = new IndexDateExample();
+		example.setOrderByClause("id desc");
+		example.setLimitStart(0);
+		example.setLimitEnd(1);
+		example.createCriteria().andCustomeridEqualTo(super.getUserId(session)).andT1GreaterThan(new BigDecimal(0));
+		List<IndexDate> indexs = indexDateMapper.selectByExample(example);
+		IndexDate index = indexs.get(0);
+		model.addAttribute("index", JSON.parse(JSON.toJSONStringWithDateFormat(index, "yyyy年MM月dd日")));
 		return "user/index";
 	}
 	

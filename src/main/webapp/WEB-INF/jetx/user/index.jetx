@@ -34,18 +34,33 @@
   </div>
 </div>
 <div class="box">
-  <h2><b class="gaikuang">账户概况</b><span><a href="/index/detail">详细</a></span></h2>
+	<h2><b class="gaikuang">账户概况</b><span><a href="/index/detail">详细</a></span></h2>
 
-     <table class="table-list">
-       <tbody>
-         <tr>
-           <td><span>103.90PMI</span></td><td><span>￥202023.32</span></td><td><span>￥23434.02</span></td>
-         </tr>
-         <tr>
-           <td class="top0">最近指数</td><td class="top0">采购金额</td><td class="top0">节省金额</td>
-         </tr>
-       </tbody>
-     </table>    
+	<table class="table-list">
+		<tbody>
+			<tr>
+				<td>
+					<span>${multiplyIndex(index.t1).format() }PMI</span>
+				</td>
+				<td>
+					<span>￥${index.t5.format() }</span>
+				</td>
+				<td>
+					<span>￥${index.t14.abs().format() }</span>
+				</td>
+			</tr>
+			<tr>
+				<td class="top0">最近指数</td><td class="top0">采购金额</td>
+				<td class="top0">
+				#if(isDuo(multiplyIndex(index.t1)))
+				多花费
+				#else
+				节省
+				#end
+				</td>
+			</tr>
+		</tbody>
+	</table>    
 
 </div>
 <div class="box bottom0">
