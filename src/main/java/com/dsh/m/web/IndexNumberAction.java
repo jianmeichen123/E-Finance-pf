@@ -20,6 +20,7 @@ import com.dsh.m.model.IndexDate;
 import com.dsh.m.model.IndexDateChild;
 import com.dsh.m.model.IndexDateChildExample;
 import com.dsh.m.model.IndexDateExample;
+import com.dsh.m.util.Lang;
 
 @RequestMapping("/index")
 @Controller
@@ -69,10 +70,18 @@ public class IndexNumberAction extends BaseAction {
 	
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	@RequestMapping("/warn")
-	public String warn(HttpSession session, ModelMap model) {
+	public String warn(Integer type, HttpSession session, ModelMap model) {
+		type = Lang.toInt(type);
+		int days = 0;
+		switch(type) {
+		case 0:days = 7;break;
+		case 1:days = 1;break;
+		case 2:days = 7;break;
+		case 3:days = 30;break;
+		}
 		Map param = new HashMap();
 		param.put("start", 0);
-		param.put("pagesize", 7);
+		param.put("pagesize", days);
 		param.put("userid", super.getUserId(session));
 		Map data = indexDateMapper.summaryIndexDate(param);
 		Date mintime = (Date)data.get("indextime");

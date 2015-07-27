@@ -1,14 +1,14 @@
 @charset "utf-8";
 /* CSS Document */
 /*html5*/
-.main{ position:relative; float:left; width:100%; margin:60px auto 73px auto;}
-.main-left{ float:left; width:28%; height:100%;  }
+.main{ position:relative; float:left; width:100%; margin:60px auto 110px auto;}
+.main-left{ float:left; width:28%; height:100%;}
 .main-left ul{ float:left; width:100%; padding-top:5px;}
 .main-left ul li{  position:relative; float:left;width:95%; margin:5px 0;  margin-left:5%; height:30px; line-height:30px; text-align:center;} 
 .main-left ul li a{overflow:hidden; display:block;width:95%;padding-left:5%; color:#666;font-size:14px; }
-.main-left ul li .hovertab{ position:absolute;width:96.5%; left:0; top:0;  color:#000; background-color:#fff; border:1px solid #ddd; border-right:none;}
+.main-left ul li .hovertab{ position:absolute;width:96.5%; left:0; top:0;  color:#000; background-color:#fff;  border-right:none;}
 .main-left ul li .normaltab{ display:block;width:95%;padding-left:5%; color:#666; }
-.main-right{ float:left; width:71%; min-height:400px; background-color:#fff;border-left:1px solid #ddd;}
+.main-right{ float:left; width:72%; min-height:400px; background-color:#fff;}
 .main-right .tab-list{ float:left; width:100%; }
 .main-right .tab-list a{overflow:hidden; float:left; width:50%; margin:10px 0; text-align:center; line-height:25px; }
 .main-right .tab-list a img{ overflow:hidden; width:70%; height:80px; }
@@ -23,7 +23,7 @@
 .pro-list dl dd .dd-right{float:right; width:35%; color:#000;}
 .pro-list dl dd .dd-right b{ float:left; width:100%; margin-bottom:5px;}
 .pro-list dl dd .dd-right ul{float:left;width:99%;border-collapse:collapse; border:1px solid #DFDFDD; }
-.pro-list dl dd .dd-right ul li{float:left;width:32%;height:20px; line-height:20px; text-align:center; color:#b2b2b2; border-left:1px solid #DFDFDD;border-collapse:collapse; }
+.pro-list dl dd .dd-right ul li{float:left;width:30%;height:20px; line-height:20px; text-align:center; color:#b2b2b2; border-left:1px solid #DFDFDD;border-collapse:collapse; }
 .pro-list dl dd .dd-right ul li a{ display:block;color:#dfdfdd; font-size:14px;}
 .pro-list dl dd .dd-right p{float:left;width:79%; height:20px; padding-left:20%;line-height:20px; margin-top:12px; border-radius:20px; text-align:center;border:1px solid #DFDFDD; font-size:10px; background: url(../images/fenlei05.png) no-repeat 10% 35%;background-size:13px 13px;}
 .pro-list dl dd .dd-right p.sec{width:100%;padding-left:0; border:none;  background:none; background-color:#9ece51;}
@@ -113,10 +113,10 @@
 .dingdan-list li table tr.bgcolor-red{ background-color:#ff0500;}
 
 .dingdan-list li table.biaoge{ border:none;} 
-.dingdan-list li table.biaoge th{font-size:12px; background-color:#f1f1f1; border:none; border-top:1px solid #DFDFDD;font-weight:bold;}
-.dingdan-list li table.biaoge tbody tr{border-bottom:1px solid #DFDFDD; line-height:28px;font-size:10px; }
+.dingdan-list li table.biaoge th{font-size:12px; background-color:#f1f1f1; line-height:20px; border:none; border-top:1px solid #DFDFDD;font-weight:bold;}
+.dingdan-list li table.biaoge tbody tr{border-bottom:1px solid #DFDFDD; line-height:18px;font-size:10px; }
 .dingdan-list li table.biaoge tbody td span{ line-height:20px; display:block; border:1px solid #DFDFDD;background-color:#f1f1f1;}
-
+.dingdan-list li table.biaoge tbody td span input{ background:none; border:none; width:30px; text-align:center;}
 .dingdan-list li.black{ color:#666; border-bottom: 1px solid #efefee;}
 .dingdan-list li table.jiesuan{ color:#999;}
 .dingdan-list li table.jiesuan th{font-size:12px;} 
