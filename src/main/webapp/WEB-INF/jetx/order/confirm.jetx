@@ -84,11 +84,12 @@
 </div>
 
 <footer>
-    <div class="daohang">
+    <div class="daohang1">
       <a href="/cat" class="nav1">商品分类</a>
       <a href="/product/common" class="nav2">常用商品</a>
       <a href="/cart" class="nav3">购物车</a>
-      <a href="/order/list" class="nav4">订单管理</a>   
+      <a href="/order/list" class="nav4">订单管理</a> 
+      <a href="/user" class="nav5">个人中心</a>  
     </div>
 </footer>
 
