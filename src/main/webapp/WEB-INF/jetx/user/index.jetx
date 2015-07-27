@@ -11,6 +11,19 @@
 <link rel="stylesheet" href="/css/user-index.css" />
 <link rel="stylesheet" href="/css/foot.css" />
 <script src="/js/jquery-1.10.1.min.js" ></script>
+<script type="text/javascript">
+
+	$(function() {
+		$.ajax({
+			url:'/user/fetch',
+			dataType:'json'
+		}).done(function(data) {
+			var user = data
+			$('dd[class="name"]').find('a').text(user.username)
+		})
+	})
+
+</script>
 </head>
 <body>
 <header>
@@ -20,8 +33,12 @@
   </nav>
 </header>
 <div class="banner">
-   <div class="head">
-     <a href="#"><span><img src="/images/head_pic.png"></span><span>登录/注册</span></a>
+   <div class="logined">
+     <dl>
+       <dt><a href="#"><img src="images/head_pic.png"></a></dt>
+       <dd class="name"><a href="#"></a></dd>
+       <dd><span><a href="#">天使用户</a></span></dd>
+     </dl>
    </div>
 </div>
 <div class="box">
