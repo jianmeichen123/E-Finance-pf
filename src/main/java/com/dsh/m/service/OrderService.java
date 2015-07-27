@@ -122,6 +122,7 @@ public class OrderService {
 		String ordernum = data.getString("ordernum");
 		BigDecimal orderindex = data.getBigDecimal("orderindex");
 		BigDecimal totalprice = data.getBigDecimal("totalprice");
+		BigDecimal returnmoney = data.getBigDecimal("returnmoney");
 		SettleaccountExample example = new SettleaccountExample();
 		example.createCriteria().andCustomeridEqualTo(customerid);
 		example.setOrderByClause("createtime desc");
@@ -141,10 +142,12 @@ public class OrderService {
 				settleid = fsa.getId();
 				BigDecimal orgtotal = fsa.getOrdertotalmoney();
 				BigDecimal orgReal = fsa.getRealamount();
+				BigDecimal orgReturn = fsa.getReturnmoney();
 				Settleaccount newfsa = new Settleaccount();
 				newfsa.setId(settleid);
 				newfsa.setOrdertotalmoney(orgtotal.add(totalprice));
 				newfsa.setRealamount(orgReal.add(realamount));
+				newfsa.setReturnmoney(orgReturn.add(returnmoney));
 				settleaccountMapper.updateByPrimaryKeySelective(newfsa);
 				flag = false;
 			}
@@ -167,6 +170,7 @@ public class OrderService {
 			sa.setOrdernum(1);
 			sa.setReturndays("7");
 			sa.setRealamount(realamount);
+			sa.setReturnmoney(returnmoney);
 			Date start = new JDateTime(ordertime).setHour(0).setMinute(0).setSecond(0, 0).convertToDate();
 			Date end = new JDateTime(start).addDay(7).convertToDate();
 			sa.setStarttime(start);
