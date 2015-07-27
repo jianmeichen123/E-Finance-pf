@@ -15,6 +15,8 @@ import org.springframework.transaction.annotation.Transactional;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
+import com.dsh.m.dao.OrderLogisticsMapper;
+import com.dsh.m.dao.OrderStateMapper;
 import com.dsh.m.dao.PurchaseorderChildMapper;
 import com.dsh.m.dao.PurchaseorderMapper;
 import com.dsh.m.dao.SettleaccountMapper;
@@ -22,6 +24,8 @@ import com.dsh.m.dao.SettleaccountchildMapper;
 import com.dsh.m.dao.SupplyCustomerMapper;
 import com.dsh.m.enumtype.OrderStatusEnum;
 import com.dsh.m.model.Goods;
+import com.dsh.m.model.OrderLogistics;
+import com.dsh.m.model.OrderState;
 import com.dsh.m.model.Purchaseorder;
 import com.dsh.m.model.PurchaseorderChild;
 import com.dsh.m.model.PurchaseorderChildExample;
@@ -49,9 +53,13 @@ public class OrderService {
 	private SettleaccountMapper settleaccountMapper;
 	@Autowired
 	private SettleaccountchildMapper settleaccountchildMapper;
+	@Autowired
+	private OrderLogisticsMapper orderLogisticsMapper;
+	@Autowired
+	private OrderStateMapper orderStateMapper;
 	
 	@Transactional
-	public int createOrder(Integer userid, JSONArray products) {
+	public Purchaseorder createOrder(Integer userid, JSONArray products) {
 		
 //		SupplyCustomerExample example = new SupplyCustomerExample();
 //		example.createCriteria().andCustomeridEqualTo(userid);
@@ -73,7 +81,6 @@ public class OrderService {
 		Object obj  = ThreadLocalUtil.get("supplyid");
 		order.setSupplyid(Lang.toInt(obj));
 		purchaseorderMapper.insertSelective(order);
-		int orderid = order.getId();
 		@SuppressWarnings("rawtypes")
 		Iterator iter = products.iterator();
 		while(iter.hasNext()) {
@@ -81,14 +88,14 @@ public class OrderService {
 			Goods goods = (Goods)json.get("goods");
 			int num = json.getIntValue("num");
 			PurchaseorderChild child = new PurchaseorderChild();
-			child.setOrderid(orderid);
+			child.setOrderid(order.getId());
 			child.setGoodsid(goods.getGoodsid());
 			child.setAmount(new BigDecimal(num));
 			purchaseorderChildMapper.insertSelective(child);
 		}
 		
 		shoppingcartService.clearUserCart(userid);
-		return orderid;
+		return order;
 	}
 	
 	@Transactional
@@ -193,11 +200,43 @@ public class OrderService {
 		child.setRealamount(realamount);
 		child.setSettleid(settleid);
 		settleaccountchildMapper.insertSelective(child);
+		
+		Date currdate = new Date();
+		
+		OrderLogistics orderLogistics = new OrderLogistics();
+		orderLogistics.setOrderid(orderid);
+		orderLogistics.setOperationinfor("客户已经确认收货");
+		orderLogistics.setStateid(new BigDecimal(6));
+		orderLogistics.setOperationtime(currdate);
+		orderLogistics.setOperationuser(customerid);
+		orderLogisticsMapper.insertSelective(orderLogistics);
+		
+		OrderState orderState = new OrderState();
+		orderState.setOrderid(orderid);
+		orderState.setStateid(6);
+		orderState.setStatetime(currdate);
+		orderStateMapper.insertSelective(orderState);
 	}
 
 	@Transactional
 	public void aftercreate(JSONObject data) {
+		Integer orderid = data.getInteger("id");
+		Integer userid = data.getInteger("customerid");
+		Date ordertime = data.getDate("ordertime");
 		
+		OrderLogistics orderLogistics = new OrderLogistics();
+		orderLogistics.setOrderid(orderid);
+		orderLogistics.setOperationinfor("客户提交了订单");
+		orderLogistics.setStateid(new BigDecimal(1));
+		orderLogistics.setOperationtime(ordertime);
+		orderLogistics.setOperationuser(userid);
+		orderLogisticsMapper.insertSelective(orderLogistics);
+		
+		OrderState orderState = new OrderState();
+		orderState.setOrderid(orderid);
+		orderState.setStateid(1);
+		orderState.setStatetime(ordertime);
+		orderStateMapper.insertSelective(orderState);
 	}
 
 }

@@ -2,17 +2,21 @@ package com.dsh.m.web;
 
 import java.util.List;
 
+import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
 
 import org.apache.commons.collections.CollectionUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jms.core.JmsTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.alibaba.fastjson.JSONArray;
+import com.alibaba.fastjson.JSONObject;
 import com.dsh.m.dao.SupplyCustomerMapper;
+import com.dsh.m.model.Purchaseorder;
 import com.dsh.m.model.SupplyCustomer;
 import com.dsh.m.model.SupplyCustomerExample;
 import com.dsh.m.service.OrderService;
@@ -30,6 +34,8 @@ public class ShoppingCartAction extends BaseAction {
 	private OrderService orderService;
 	@Autowired
 	private SupplyCustomerMapper supplyCustomerMapper;
+	@Resource(name="orderJmsTemplate")
+	private JmsTemplate orderJmsTemplate;
 	
 	@ResponseBody
 	@RequestMapping("/add")
@@ -87,8 +93,12 @@ public class ShoppingCartAction extends BaseAction {
 			supplyid = list.get(0).getSupplyid();
 			ThreadLocalUtil.put("supplyid", supplyid);
 			JSONArray array = shoppingCartService.loadUserCart(userId);
-			int orderid = orderService.createOrder(userId, array);
-			return success("订单提交成功，等待供应商处理！！", orderid);
+			Purchaseorder order = orderService.createOrder(userId, array);
+			JSONObject data = new JSONObject();
+			data.put("type", 1);
+			data.put("data", order);
+			orderJmsTemplate.convertAndSend(data.toString());
+			return success("订单提交成功，等待供应商处理！！", order.getId());
 		} catch (Exception e) {
 			e.printStackTrace();
 			return fail("提交失败！！");
