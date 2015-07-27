@@ -172,6 +172,7 @@ public class OrderService {
 			sa.setStarttime(start);
 			sa.setEndtime(end);
 			sa.setOrdertotalmoney(totalprice);
+			sa.setCreateuser(customerid);
 			settleaccountMapper.insertSelective(sa);
 			settleid = sa.getId();
 		}
@@ -179,6 +180,9 @@ public class OrderService {
 		Settleaccountchild child = new Settleaccountchild();
 		child.setOrderid(orderid);
 		child.setOrdernum(ordernum);
+		if(orderindex == null) {
+			orderindex = new BigDecimal(0);
+		}
 		child.setOrderindex(orderindex.doubleValue());
 		child.setOrderdate(ordertime);
 		child.setOrdertotalmoney(totalprice);
