@@ -572,6 +572,6 @@
   </update>
   
   <select id="getRealAmountByOrderId" parameterType="int" resultType="java.math.BigDecimal">
-  	select sum(unit_price*checkamount) as total where orderid = #{orderid}
+  	select sum(unit_price*checkamount) as total from purchaseorder_child where orderid = #{orderid}
   </select>
 </mapper>
