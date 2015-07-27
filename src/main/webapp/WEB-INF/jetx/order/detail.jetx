@@ -53,16 +53,37 @@
 	</div>
 	<div class="dingdan-list">
 		<ul>
-			<li><span class="namebg1">商品列表</span><span class="bianhao">订单编号：${order.ordernum }</span></li>
-			#for(detail : details)
-			<li class="liebiao" >
-				#set(product = getProductById(detail.goodsid))
-			    <span class="p-name">${product.gname }</span>
-			    <span class="p-unit">单位：${product.unit }</span>
-			    <span class="p-count">数量：${detail.amount.format() }</span>
-			</li>
-			#end
-		</ul>  
+          <li><span class="namebg2">商品列表</span><span class="namebg1 bianhao">供货商名称</span></li>
+         
+          <li class="noborderbottom">
+              <table class="biaoge">
+                 <thead>
+                    <tr>
+                    	<th>商品</th>
+                    	<th>单位</th>
+                    	<th>下单数量</th>
+                    	<th>配送数量</th>
+                    	<th>单价</th>
+                    	<th>小计</th>
+                    </tr>
+                 </thead>
+                 <tbody>
+                 	#for(detail : details)
+                 	#set(product = getProductById(detail.goodsid))
+                    <tr>
+                    	<td>${product.gname }</td>
+                    	<td>${product.unit }</td>
+                    	<td>${detail.amount.format() }${product.unit }</td>
+                    	<td>${detail.realAmount.format() }${product.unit }</td>
+                    	<td>￥${detail.unitPrice.format() }</td>
+                    	<td>￥${detail.totalPrice.format() }</td>
+                    </tr>
+                    #end
+                 </tbody>
+              </table>
+              
+          </li>  
+        </ul>
 	</div>
 	
 	<div class="dingdan-list bottom0">
