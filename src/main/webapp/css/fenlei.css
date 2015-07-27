@@ -58,8 +58,9 @@
 .dingdan-list li .shouhuo-btn{width: 100px;margin-right:1%;}
 .dingdan-list li .dfh,.dingdan-list li .yfh{ float:right; padding-left:18px;background:url(../images/dingdan02.png) no-repeat left center; background-size:30%; color:#f00; }
 .dingdan-list li .yfh{ background:url(../images/dingdan03.png) no-repeat left center;color:#B2B2B2;background-size:30%; }
-.dingdan-list li .role{float:right;}
+.dingdan-list li .role{float:right; cursor:pointer;}
 .dingdan-list li .role i{float:right; margin-top:-2px;}
+.dingdan-list li.genzong{ display:none; color:#000;}
 .dingdan-list li .bianhao{ float:right;}
 .dingdan-list li.liebiao{ border-bottom:1px dashed #f1f1f0;}
 .dingdan-list li.liebiao .p-name{ float:left; width:40%; color:#000;}

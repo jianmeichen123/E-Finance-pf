@@ -20,6 +20,7 @@ import com.dsh.m.model.Customer;
 import com.dsh.m.model.CustomerExample;
 import com.dsh.m.model.IndexDate;
 import com.dsh.m.model.IndexDateExample;
+import com.dsh.m.service.CustomerService;
 import com.dsh.m.util.PasswordUtil;
 
 @RequestMapping("/user")
@@ -30,6 +31,8 @@ public class UserAction extends BaseAction {
 	private CustomerMapper customerMapper;
 	@Autowired
 	private IndexDateMapper indexDateMapper;
+	@Autowired
+	private CustomerService customerService;
 	
 	@RequestMapping("/toreg")
 	public String toreg() {
@@ -92,6 +95,13 @@ public class UserAction extends BaseAction {
 		Customer customer = customerMapper.selectByPrimaryKey(super.getUserId(session));
 		model.addAttribute("user", customer);
 		return "user/setting";
+	}
+	
+	@ResponseBody
+	@RequestMapping("/fetch")
+	public String fetch(HttpSession session) {
+		Customer customer = customerService.getCacheCustomerById(super.getUserId(session));
+		return JSON.toJSONString(customer);
 	}
 
 }
