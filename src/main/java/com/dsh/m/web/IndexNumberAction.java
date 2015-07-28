@@ -41,7 +41,8 @@ public class IndexNumberAction extends BaseAction {
 		ide.setLimitEnd(7);
 		ide.setOrderByClause("indextime desc");
 		List<IndexDate> indexs = indexDateMapper.selectByExample(ide);
-		model.addAttribute("indexs", JSON.parse(JSON.toJSONStringWithDateFormat(indexs, "yyyy-MM-dd")));
+		if(CollectionUtils.isNotEmpty(indexs))
+			model.addAttribute("indexs", JSON.parse(JSON.toJSONStringWithDateFormat(indexs, "yyyy-MM-dd")));
 		return "index/list";
 	}
 	
@@ -89,15 +90,17 @@ public class IndexNumberAction extends BaseAction {
 		param.put("pagesize", days);
 		param.put("userid", super.getUserId(session));
 		Map data = indexDateMapper.summaryIndexDate(param);
-		Date mintime = (Date)data.get("indextime");
-		param.put("indextime", mintime);
+		if(data!=null) {
+			Date mintime = (Date)data.get("indextime");
+			param.put("indextime", mintime);
+			model.addAttribute("data", data);
+		}
 		
 		BigDecimal amount = indexDateMapper.getTotalMinusAmount(param);
 		model.addAttribute("amount", amount);
 		List childs = indexDateChildMapper.getIndexDateChilds(param);
-		
-		model.addAttribute("data", data);
-		model.addAttribute("childs", childs);
+		if(CollectionUtils.isNotEmpty(childs))
+			model.addAttribute("childs", childs);
 		return "index/warn";
 	}
 
