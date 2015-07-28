@@ -18,7 +18,18 @@
   <nav>
      <div class="set back"><a href="javascript:history.go(-1)"><img src="/images/reg01.png"></a></div>
      <h1>
-     	<b>7天账目预警</b>
+     	<b>
+     	#set(type = request.getParameter('type'))
+     	#if(type=='1')
+     		最新账目预警
+     	#elseif(type=='2')
+     		7天账目预警
+     	#elseif(type=='3')
+     		30天账目预警
+     	#else
+     		7天账目预警
+     	#end
+     	</b>
      	<span class="qushi" id="yjlb">
      		<ul>
      			<li><a href="/index/warn?type=1">最新账目预警</a></li>

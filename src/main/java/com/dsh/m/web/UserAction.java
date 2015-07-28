@@ -105,5 +105,11 @@ public class UserAction extends BaseAction {
 		Customer customer = customerService.getCacheCustomerById(super.getUserId(session));
 		return JSON.toJSONString(customer);
 	}
+	
+	@RequestMapping("/logout")
+	public String logout(HttpSession session) {
+		session.removeAttribute("login_id");
+		return "已注销";
+	}
 
 }
