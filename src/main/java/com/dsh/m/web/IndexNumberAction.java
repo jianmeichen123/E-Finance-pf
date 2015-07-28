@@ -8,6 +8,7 @@ import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
+import org.apache.commons.collections.CollectionUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -54,8 +55,12 @@ public class IndexNumberAction extends BaseAction {
 			example.setLimitEnd(1);
 			example.createCriteria().andCustomeridEqualTo(super.getUserId(session)).andT1GreaterThan(new BigDecimal(0));
 			List<IndexDate> indexs = indexDateMapper.selectByExample(example);
-			index = indexs.get(0);
-			id = index.getId();
+			if(CollectionUtils.isEmpty(indexs)) {
+				return "index/detail";
+			} else {
+				index = indexs.get(0);
+				id = index.getId();
+			}
 		} else {
 			index = indexDateMapper.selectByPrimaryKey(id);
 		}

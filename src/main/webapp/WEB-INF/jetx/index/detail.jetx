@@ -22,6 +22,7 @@
 </header>
 <div class="main">  
 	<div class="dingdan-list">
+		#if(index!=null)
 		<ul>
 			<li class="zhishu-xq">
 				<p>${index.indextime }</p>
@@ -84,7 +85,9 @@
 			</li>
 		</ul>  
 	</div>
-     
+     #else
+     	暂无数据
+     #end
 </div>
 
 

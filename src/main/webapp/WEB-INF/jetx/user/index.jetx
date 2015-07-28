@@ -52,7 +52,7 @@
 </div>
 <div class="box">
 	<h2><b class="gaikuang">账户概况</b><span><a href="/index/detail">详细</a></span></h2>
-
+	#if(index!=null)
 	<table class="table-list">
 		<tbody>
 			<tr>
@@ -78,7 +78,7 @@
 			</tr>
 		</tbody>
 	</table>    
-
+	#end
 </div>
 <div class="box bottom0">
   <h2><a href="#"><b class="b1">账目录入</b><span>&nbsp;</span></a></h2>

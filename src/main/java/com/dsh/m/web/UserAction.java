@@ -85,8 +85,10 @@ public class UserAction extends BaseAction {
 		example.setLimitEnd(1);
 		example.createCriteria().andCustomeridEqualTo(super.getUserId(session)).andT1GreaterThan(new BigDecimal(0));
 		List<IndexDate> indexs = indexDateMapper.selectByExample(example);
-		IndexDate index = indexs.get(0);
-		model.addAttribute("index", JSON.parse(JSON.toJSONStringWithDateFormat(index, "yyyy年MM月dd日")));
+		if(CollectionUtils.isNotEmpty(indexs)) {
+			IndexDate index = indexs.get(0);
+			model.addAttribute("index", JSON.parse(JSON.toJSONStringWithDateFormat(index, "yyyy年MM月dd日")));
+		}
 		return "user/index";
 	}
 	
