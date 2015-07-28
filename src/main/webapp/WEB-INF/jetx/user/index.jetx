@@ -81,13 +81,13 @@
 	#end
 </div>
 <div class="box bottom0">
-  <h2><a href="#"><b class="b1">账目录入</b><span>&nbsp;</span></a></h2>
+  <h2><a href="javascript:alert('功能开发中，敬请期待！')"><b class="b1">账目录入</b><span>&nbsp;</span></a></h2>
 </div>
 <div class="box bottom0">
   <h2><a href="/settle/list"><b class="b5">结算中心</b><span>&nbsp;</span></a></h2>
 </div>
 <div class="box bottom0">
-  <h2><a href="#"><b class="b2">农贸均价</b><span>&nbsp;</span></a></h2>
+  <h2><a href="javascript:alert('功能开发中，敬请期待！')"><b class="b2">农贸均价</b><span>&nbsp;</span></a></h2>
 </div>
 <div class="box bottom0">
   <h2><a href="/index/detail"><b class="b3">指数详情</b><span>&nbsp;</span></a></h2>
