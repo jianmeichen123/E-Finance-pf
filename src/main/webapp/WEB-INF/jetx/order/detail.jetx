@@ -90,7 +90,7 @@
                     	<td>${detail.realAmount==null?"--":detail.realAmount.format() }${product.unit }</td>
                     	<td>${detail.checkamount==null?"--":detail.checkamount.format() }${product.unit }</td>
                     	<td>￥${detail.unitPrice==null?"--":detail.unitPrice.format() }</td>
-                    	<td>￥${detail.totalPrice==null?"--":detail.totalPrice.format() }</td>
+                    	<td><b>￥${detail.totalPrice==null?"--":detail.totalPrice.format() }</b></td>
                     </tr>
                     #end
                  </tbody>
