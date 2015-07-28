@@ -68,8 +68,8 @@
               </table> 
           </li>
           #set(indexorder = getIndexOrderByOrderId(order.id))
-          <li class="noborderbottom"><span class="zs-m">订单指数</span> <span class="zs-r" >PMI ${indexorder.t1.format() }</span></li>
-          <li class="noborderbottom"><span class="zs-m">协议返款</span> <span class="zs-r" >￥${indexorder.t17.format() }</span></li>
+          <li class="noborderbottom"><span class="zs-m">订单指数</span> <span class="zs-r" >PMI ${indexorder==null?"--":indexorder.t1.format() }</span></li>
+          <li class="noborderbottom"><span class="zs-m">协议返款</span> <span class="zs-r" >￥${indexorder==null?"--":indexorder.t17.format() }</span></li>
         </ul>  
      </div> 
 </div>
