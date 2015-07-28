@@ -74,9 +74,16 @@
                     	<th>商品</th>
                     	<th>单位</th>
                     	<th>下单数量</th>
+                    	#set(status = order.ordertype)
+                    	#if(status==5||status==6)
                     	<th>配送数量</th>
+                    	#end
+                    	#if(status==6)
                     	<th>收货数量</th>
+                    	#end
+                    	#if(status==5||status==6)
                     	<th>单价</th>
+                    	#end
                     	<th>小计</th>
                     </tr>
                  </thead>
@@ -87,9 +94,15 @@
                     	<td>${product.gname }</td>
                     	<td>${product.unit }</td>
                     	<td>${detail.amount.format() }${product.unit }</td>
+                    	#if(status==5||status==6)
                     	<td>${detail.realAmount==null?"--":detail.realAmount.format() }${product.unit }</td>
+                    	#end
+                    	#if(status==6)
                     	<td>${detail.checkamount==null?"--":detail.checkamount.format() }${product.unit }</td>
+                    	#end
+                    	#if(status==5||status==6)
                     	<td>￥${detail.unitPrice==null?"--":detail.unitPrice.format() }</td>
+                    	#end
                     	<td><b>￥${detail.totalPrice==null?"--":detail.totalPrice.format() }</b></td>
                     </tr>
                     #end
