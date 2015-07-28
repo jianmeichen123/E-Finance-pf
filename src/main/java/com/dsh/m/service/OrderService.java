@@ -151,11 +151,13 @@ public class OrderService {
 				BigDecimal orgtotal = fsa.getOrdertotalmoney();
 				BigDecimal orgReal = fsa.getRealamount();
 				BigDecimal orgReturn = fsa.getReturnmoney();
+				int orgnum = fsa.getOrdernum();
 				Settleaccount newfsa = new Settleaccount();
 				newfsa.setId(settleid);
 				newfsa.setOrdertotalmoney(orgtotal.add(totalprice));
 				newfsa.setRealamount(orgReal.add(realamount));
 				newfsa.setReturnmoney(orgReturn.add(returnmoney));
+				newfsa.setOrdernum(orgnum+1);
 				settleaccountMapper.updateByPrimaryKeySelective(newfsa);
 				flag = false;
 			}
