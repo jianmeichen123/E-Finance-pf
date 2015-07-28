@@ -15,10 +15,13 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.alibaba.fastjson.JSONObject;
+import com.dsh.m.dao.OrderLogisticsMapper;
 import com.dsh.m.dao.PurchaseorderChildMapper;
 import com.dsh.m.dao.PurchaseorderMapper;
 import com.dsh.m.dao.SupplyCustomerMapper;
 import com.dsh.m.enumtype.OrderStatusEnum;
+import com.dsh.m.model.OrderLogistics;
+import com.dsh.m.model.OrderLogisticsExample;
 import com.dsh.m.model.Purchaseorder;
 import com.dsh.m.model.PurchaseorderChild;
 import com.dsh.m.model.PurchaseorderChildExample;
@@ -41,6 +44,8 @@ public class OrderAction extends BaseAction {
 	private OrderService orderService;
 	@Resource(name="orderJmsTemplate")
 	private JmsTemplate orderJmsTemplate;
+	@Autowired
+	private OrderLogisticsMapper orderLogisticsMapper;
 	
 	@RequestMapping("/list")
 	public String list(HttpSession session, ModelMap modelMap) {
@@ -68,8 +73,14 @@ public class OrderAction extends BaseAction {
 		Integer supplyid = order.getSupplyid(); 
 		sce.createCriteria().andCustomeridEqualTo(customerid).andSupplyidEqualTo(supplyid);
 		List<SupplyCustomer> scs = supplyCustomerMapper.selectByExample(sce);
+		
+		OrderLogisticsExample logisticsExample = new OrderLogisticsExample();
+		logisticsExample.createCriteria().andOrderidEqualTo(orderid);
+		List<OrderLogistics> logs = orderLogisticsMapper.selectByExample(logisticsExample);
+		
 		model.addAttribute("details", details);
 		model.addAttribute("order", order);
+		model.addAttribute("logs", logs);
 		if(CollectionUtils.isNotEmpty(scs))
 			model.addAttribute("deliver", scs.get(0));
 		return "order/detail";
