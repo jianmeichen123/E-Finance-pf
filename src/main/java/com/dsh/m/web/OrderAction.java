@@ -26,9 +26,11 @@ import com.dsh.m.model.Purchaseorder;
 import com.dsh.m.model.PurchaseorderChild;
 import com.dsh.m.model.PurchaseorderChildExample;
 import com.dsh.m.model.PurchaseorderExample;
+import com.dsh.m.model.PurchaseorderExample.Criteria;
 import com.dsh.m.model.SupplyCustomer;
 import com.dsh.m.model.SupplyCustomerExample;
 import com.dsh.m.service.OrderService;
+import com.dsh.m.util.Lang;
 
 @RequestMapping("/order")
 @Controller
@@ -48,11 +50,18 @@ public class OrderAction extends BaseAction {
 	private OrderLogisticsMapper orderLogisticsMapper;
 	
 	@RequestMapping("/list")
-	public String list(HttpSession session, ModelMap modelMap) {
+	public String list(Integer type, HttpSession session, ModelMap modelMap) {
 		PurchaseorderExample orderExample = new PurchaseorderExample();
 		Integer userid = super.getUserId(session);
-		orderExample.createCriteria().andCustomeridEqualTo(userid)
-			.andOrdertypeNotEqualTo(0);
+		Criteria criteria = orderExample.createCriteria().andCustomeridEqualTo(userid);
+		type = Lang.toInt(type);
+		switch(type) {
+		case 0:criteria.andOrdertypeNotEqualTo(0);break;
+		case 1:criteria.andBalancestateEqualTo(0);break;
+		case 2:criteria.andOrdertypeEqualTo(5);break;
+		case 3:criteria.andOrdertypeEqualTo(6);break;
+		}
+			
 		orderExample.setOrderByClause("ordertime desc");
 		List<Purchaseorder> orders = purchaseorderMapper.selectByExample(orderExample);
 //		PurchaseorderChildExample orderChildExample = new PurchaseorderChildExample();

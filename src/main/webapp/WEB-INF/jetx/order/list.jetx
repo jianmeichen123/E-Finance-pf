@@ -17,7 +17,16 @@
 <header>
   <nav>
      <div class="set"><a href="javascript:history.go(-1)"><img src="/images/fenlei01.png"></a></div>
-     <h1>订单列表<span></span></h1>
+     <h1><b>订单列表</b>
+     <span class="qushi" id="yjlb">
+   		<ul>
+   			<li><a href="/order/list">全部</a></li>
+   			<li><a href="/order/list?type=1">待结算</a></li>
+   			<li><a href="/order/list?type=2">待收货</a></li>
+   			<li><a href="/order/list?type=3">已完成</a></li>
+   		</ul>
+   	</span>
+   	</h1>
   </nav>
 </header>
 <div class="main">
@@ -74,6 +83,11 @@
 </body>
 <script src="/js/fenlei_slidedoor.js" ></script>
 <script>
-
+$('#yjlb').click(function(){
+	$('#yjlb ul').slideToggle();
+	$('#yjlb ul li').click(function(){
+		//$('nav h1 b').text($(this).text()); 
+	})
+})
 </script>
 </html>
