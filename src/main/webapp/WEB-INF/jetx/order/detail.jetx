@@ -65,7 +65,7 @@
 	</div>
 	<div class="dingdan-list">
 		<ul>
-          <li><span class="namebg2">商品列表</span><span class="namebg1 bianhao">供货商名称</span></li>
+          <li><span class="namebg2">商品列表</span><span class="namebg1 bianhao">${getSupplyName(order.supplyid) }</span></li>
          
           <li class="noborderbottom">
               <table class="biaoge">
