@@ -20,9 +20,11 @@
 			var inputs = $(span).children()
 			var num = inputs.get(0).value
 			var goodsid = inputs.get(1).value
+			var unitPrice = inputs.get(2).value
 			var json = {}
 			json.num = num
 			json.goodsid = goodsid
+			json.totalprice = num*unitPrice
 			array.push(json)
 		})
 		var jsonArray = JSON.stringify(array)
@@ -69,6 +71,7 @@
 	                    		<span>
 	                    		<input type="text" value="${detail.amount.format() }">
 	                    		<input type="hidden" value="${detail.goodsid }">
+	                    		<input type="hidden" value="${detail.unitPrice }">
 	                    		</span>
 	                    	</td>
 	                    	<td>￥${detail.unitPrice.format() }</td>

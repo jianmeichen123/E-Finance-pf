@@ -108,8 +108,10 @@ public class OrderService {
 			JSONObject obj = (JSONObject)iter.next();
 			BigDecimal num = obj.getBigDecimal("num");
 			int goodsid = obj.getIntValue("goodsid");
+			BigDecimal checktotalprice = obj.getBigDecimal("totalprice");
 			PurchaseorderChild child = new PurchaseorderChild();
 			child.setCheckamount(num);
+			child.setChecktotalprice(checktotalprice);
 			PurchaseorderChildExample example = new PurchaseorderChildExample();
 			example.createCriteria().andOrderidEqualTo(orderid).andGoodsidEqualTo(goodsid);
 			purchaseorderChildMapper.updateByExampleSelective(child, example);

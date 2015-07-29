@@ -30,6 +30,7 @@
     <result column="referenceprice" jdbcType="DECIMAL" property="referenceprice" />
     <result column="referencesum" jdbcType="DECIMAL" property="referencesum" />
     <result column="checkamount" jdbcType="DECIMAL" property="checkamount" />
+    <result column="checktotalprice" jdbcType="DECIMAL" property="checktotalprice" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <!--
@@ -107,7 +108,7 @@
     -->
     id, orderid, goodsid, amount, real_amount, unit_price, total_price, issettle, remark, 
     createuser, createtime, updateuser, updatetime, ts, dr, zyx1, zyx2, zyx3, zyx4, zyx5, 
-    referenceprice, referencesum, checkamount
+    referenceprice, referencesum, checkamount, checktotalprice
   </sql>
   <select id="selectByExample" parameterType="com.dsh.m.model.PurchaseorderChildExample" resultMap="BaseResultMap">
     <!--
@@ -174,7 +175,7 @@
       createuser, createtime, updateuser, 
       updatetime, ts, dr, zyx1, 
       zyx2, zyx3, zyx4, zyx5, 
-      referenceprice, referencesum, checkamount
+      referenceprice, referencesum, checkamount, checktotalprice
       )
     values (#{id,jdbcType=INTEGER}, #{orderid,jdbcType=INTEGER}, #{goodsid,jdbcType=INTEGER}, 
       #{amount,jdbcType=DECIMAL}, #{realAmount,jdbcType=DECIMAL}, #{unitPrice,jdbcType=DECIMAL}, 
@@ -182,8 +183,8 @@
       #{createuser,jdbcType=INTEGER}, #{createtime,jdbcType=TIMESTAMP}, #{updateuser,jdbcType=INTEGER}, 
       #{updatetime,jdbcType=TIMESTAMP}, #{ts,jdbcType=CHAR}, #{dr,jdbcType=CHAR}, #{zyx1,jdbcType=VARCHAR}, 
       #{zyx2,jdbcType=VARCHAR}, #{zyx3,jdbcType=VARCHAR}, #{zyx4,jdbcType=VARCHAR}, #{zyx5,jdbcType=VARCHAR}, 
-      #{referenceprice,jdbcType=DECIMAL}, #{referencesum,jdbcType=DECIMAL}, #{checkamount,jdbcType=DECIMAL}
-      )
+      #{referenceprice,jdbcType=DECIMAL}, #{referencesum,jdbcType=DECIMAL}, #{checkamount,jdbcType=DECIMAL},
+      #{checktotalprice,jdbcType=DECIMAL})
   </insert>
   <insert id="insertSelective" parameterType="com.dsh.m.model.PurchaseorderChild">
     <!--
@@ -262,6 +263,9 @@
       <if test="checkamount != null">
         checkamount,
       </if>
+      <if test="checktotalprice != null">
+        checktotalprice,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="id != null">
@@ -332,6 +336,9 @@
       </if>
       <if test="checkamount != null">
         #{checkamount,jdbcType=DECIMAL},
+      </if>
+      <if test="checktotalprice != null">
+        #{checktotalprice,jdbcType=DECIMAL},
       </if>
     </trim>
   </insert>
@@ -423,6 +430,9 @@
       <if test="record.checkamount != null">
         checkamount = #{record.checkamount,jdbcType=DECIMAL},
       </if>
+      <if test="record.checktotalprice != null">
+        checktotalprice = #{record.checktotalprice,jdbcType=DECIMAL},
+      </if>
     </set>
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
@@ -457,7 +467,8 @@
       zyx5 = #{record.zyx5,jdbcType=VARCHAR},
       referenceprice = #{record.referenceprice,jdbcType=DECIMAL},
       referencesum = #{record.referencesum,jdbcType=DECIMAL},
-      checkamount = #{record.checkamount,jdbcType=DECIMAL}
+      checkamount = #{record.checkamount,jdbcType=DECIMAL},
+      checktotalprice = #{record.checktotalprice,jdbcType=DECIMAL}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -536,6 +547,9 @@
       <if test="checkamount != null">
         checkamount = #{checkamount,jdbcType=DECIMAL},
       </if>
+      <if test="checktotalprice != null">
+        checktotalprice = #{checktotalprice,jdbcType=DECIMAL},
+      </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
@@ -567,7 +581,8 @@
       zyx5 = #{zyx5,jdbcType=VARCHAR},
       referenceprice = #{referenceprice,jdbcType=DECIMAL},
       referencesum = #{referencesum,jdbcType=DECIMAL},
-      checkamount = #{checkamount,jdbcType=DECIMAL}
+      checkamount = #{checkamount,jdbcType=DECIMAL},
+      checktotalprice = #{checktotalprice,jdbcType=DECIMAL}
     where id = #{id,jdbcType=INTEGER}
   </update>
   

@@ -534,4 +534,14 @@ public class PurchaseorderChild {
 	public void setCheckamount(BigDecimal checkamount) {
 		this.checkamount = checkamount;
 	}
+	
+	private BigDecimal checktotalprice;
+
+	public BigDecimal getChecktotalprice() {
+		return checktotalprice;
+	}
+
+	public void setChecktotalprice(BigDecimal checktotalprice) {
+		this.checktotalprice = checktotalprice;
+	}
 }
