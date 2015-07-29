@@ -69,7 +69,7 @@
 	                    	<td>${detail.realAmount.format() }</td>
 	                    	<td>
 	                    		<span>
-	                    		<input type="text" value="${detail.amount.format() }">
+	                    		<input type="text" value="${detail.realAmount.format() }">
 	                    		<input type="hidden" value="${detail.goodsid }">
 	                    		<input type="hidden" value="${detail.unitPrice }">
 	                    		</span>
