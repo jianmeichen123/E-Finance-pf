@@ -22,6 +22,7 @@ import com.dsh.m.model.Settleaccount;
 import com.dsh.m.model.SettleaccountExample;
 import com.dsh.m.model.Settleaccountchild;
 import com.dsh.m.model.SettleaccountchildExample;
+import com.dsh.m.service.SettleService;
 
 @RequestMapping("/settle")
 @Controller
@@ -33,6 +34,8 @@ public class SettleAction extends BaseAction {
 	private SettleaccountchildMapper settleaccountchildMapper;
 	@Autowired
 	private PurchaseorderMapper purchaseorderMapper;
+	@Autowired
+	private SettleService settleService;
 	
 	@RequestMapping("/list")
 	public String list(HttpSession session, ModelMap model) {
@@ -71,11 +74,8 @@ public class SettleAction extends BaseAction {
 	@ResponseBody
 	@RequestMapping("/confirm")
 	public String confirm(Integer id) {
-		Settleaccount settle = new Settleaccount();
-		settle.setId(id);
-		settle.setReturnstateid(1);
 		try {
-			settleaccountMapper.updateByPrimaryKeySelective(settle);
+			settleService.confirm(id);
 			return success("确认成功！！");
 		} catch (Exception e) {
 			e.printStackTrace();

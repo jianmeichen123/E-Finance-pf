@@ -553,4 +553,9 @@
       zyx5 = #{zyx5,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
+  
+  <update id="batchUpdateReturnState" parameterType="int">
+  	update settleaccountchild set returnstateid = 1 where settleid = #{id}
+  </update>
+  
 </mapper>

@@ -74,4 +74,6 @@ public interface SettleaccountchildMapper {
 	 * @mbggenerated  Tue Jun 30 16:05:27 CST 2015
 	 */
 	int updateByPrimaryKey(Settleaccountchild record);
+	
+	void batchUpdateReturnState(Integer id);
 }
