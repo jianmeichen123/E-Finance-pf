@@ -41,7 +41,7 @@
 			#set(stateJson = getOrderTypeDesc(order.ordertype))
 			<span class="dfh">${stateJson.desc }</span></li>
 			<li class="noborderbottom">
-				#set(lastlog = logs.get(logs.size()-1))
+				#set(lastlog = logs.get(0))
 				${lastlog.operationtime }&nbsp; ${lastlog.operationinfor } 
 				<span class="role" id="gzxq">
 				${lastlog.name }

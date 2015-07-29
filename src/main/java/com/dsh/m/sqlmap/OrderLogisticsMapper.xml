@@ -120,7 +120,6 @@
     <if test="limitStart != null and limitStart >=0" >
       limit ${limitStart} , ${limitEnd}
     </if>
-    order by operationtime desc
   </select>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     <!--
