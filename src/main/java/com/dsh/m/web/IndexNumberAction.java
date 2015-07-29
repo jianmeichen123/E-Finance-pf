@@ -33,12 +33,22 @@ public class IndexNumberAction extends BaseAction {
 	private IndexDateChildMapper indexDateChildMapper;
 	
 	@RequestMapping("/list")
-	public String list(HttpSession session, ModelMap model) {
+	public String list(Integer type, HttpSession session, ModelMap model) {
+		
+		type = Lang.toInt(type);
+		int days = 0;
+		switch(type) {
+		case 0:days = 7;break;
+		case 1:days = 1;break;
+		case 2:days = 7;break;
+		case 3:days = 30;break;
+		}
+		
 		IndexDateExample ide = new IndexDateExample();
 		Integer userid = super.getUserId(session);
 		ide.createCriteria().andCustomeridEqualTo(userid).andT1GreaterThan(new BigDecimal(0));
 		ide.setLimitStart(0);
-		ide.setLimitEnd(7);
+		ide.setLimitEnd(days);
 		ide.setOrderByClause("indextime desc");
 		List<IndexDate> indexs = indexDateMapper.selectByExample(ide);
 		if(CollectionUtils.isNotEmpty(indexs))
