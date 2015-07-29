@@ -32,7 +32,27 @@
 <header>
   <nav>
      <div class="set back"><a href="javascript:history.go(-1);"><img src="/images/reg01.png"></a></div>
-     <h1>7天指数趋势<span class="qushi"></span></h1>
+     <h1>
+     	<b>
+     	#set(type = request.getParameter('type'))
+     	#if(type=='1')
+     		最新指数趋势
+     	#elseif(type=='2')
+     		7天指数趋势
+     	#elseif(type=='3')
+     		30天指数趋势
+     	#else
+     		7天指数趋势
+     	#end
+     	</b>
+     	<span class="qushi" id="yjlb">
+     		<ul>
+     			<li><a href="/index/list?type=1">最新指数趋势</a></li>
+     			<li><a href="/index/list?type=2">7天指数趋势</a></li>
+     			<li><a href="/index/list?type=3">30天指数趋势</a></li>
+     		</ul>
+     	</span>
+     	</h1>
   </nav>
 </header>
 <div class="main">  
@@ -88,6 +108,11 @@
 </body>
 <script src="/js/fenlei_slidedoor.js" ></script>
 <script>
-
+$('#yjlb').click(function(){
+	$('#yjlb ul').slideToggle();
+	$('#yjlb ul li').click(function(){
+		$('nav h1 b').text($(this).text()); 
+	})
+})
 </script>
 </html>
