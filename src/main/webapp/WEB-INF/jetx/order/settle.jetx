@@ -35,14 +35,15 @@
           <li class="noborderbottom">
               <table class="biaoge">
                  <thead>
-                    <tr><th>商品</th><th>数量</th><th>单价</th><th>小计</th></tr>
+                    <tr><th>商品</th><th>配送数量</th><th>收货数量</th><th>单价</th><th>小计</th></tr>
                  </thead>
                  <tbody>
                  	#for(detail : details)
                     <tr>
                     	#set(product = getProductById(detail.goodsid))
                     	<td>${product.gname }</td>
-                    	<td>${detail.amount.format() }</td>
+                    	<td>${detail.realAmount.format() }</td>
+                    	<td>${detail.checkamount.format() }</td>
                     	<td>￥${detail.unitPrice.format() }</td>
                     	<td>￥${detail.totalPrice.format() }</td>
                     </tr>
