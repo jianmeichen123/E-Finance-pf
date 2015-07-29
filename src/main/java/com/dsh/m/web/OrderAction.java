@@ -1,5 +1,7 @@
 package com.dsh.m.web;
 
+import java.util.Collections;
+import java.util.Iterator;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -14,12 +16,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.dsh.m.dao.OrderLogisticsMapper;
 import com.dsh.m.dao.PurchaseorderChildMapper;
 import com.dsh.m.dao.PurchaseorderMapper;
 import com.dsh.m.dao.SupplyCustomerMapper;
 import com.dsh.m.enumtype.OrderStatusEnum;
+import com.dsh.m.model.Customer;
 import com.dsh.m.model.OrderLogistics;
 import com.dsh.m.model.OrderLogisticsExample;
 import com.dsh.m.model.Purchaseorder;
@@ -27,9 +32,12 @@ import com.dsh.m.model.PurchaseorderChild;
 import com.dsh.m.model.PurchaseorderChildExample;
 import com.dsh.m.model.PurchaseorderExample;
 import com.dsh.m.model.PurchaseorderExample.Criteria;
+import com.dsh.m.model.Supply;
 import com.dsh.m.model.SupplyCustomer;
 import com.dsh.m.model.SupplyCustomerExample;
+import com.dsh.m.service.CustomerService;
 import com.dsh.m.service.OrderService;
+import com.dsh.m.service.SupplyService;
 import com.dsh.m.util.Lang;
 
 @RequestMapping("/order")
@@ -48,6 +56,10 @@ public class OrderAction extends BaseAction {
 	private JmsTemplate orderJmsTemplate;
 	@Autowired
 	private OrderLogisticsMapper orderLogisticsMapper;
+	@Autowired
+	private CustomerService customerService;
+	@Autowired
+	private SupplyService supplyService;
 	
 	@RequestMapping("/list")
 	public String list(Integer type, HttpSession session, ModelMap modelMap) {
@@ -86,10 +98,25 @@ public class OrderAction extends BaseAction {
 		OrderLogisticsExample logisticsExample = new OrderLogisticsExample();
 		logisticsExample.createCriteria().andOrderidEqualTo(orderid);
 		List<OrderLogistics> logs = orderLogisticsMapper.selectByExample(logisticsExample);
-		
+		JSONArray array = JSON.parseArray(JSON.toJSONStringWithDateFormat(logs, "yyyy-MM-dd HH:mm:ss"));
+		@SuppressWarnings("rawtypes")
+		Iterator iter = array.iterator();
+		while(iter.hasNext()) {
+			JSONObject json = (JSONObject)iter.next();
+			Integer userid = json.getInteger("operationuser");
+			Integer stateid = json.getBigDecimal("stateid").intValue();
+			if(stateid==1||stateid==6) {
+				Customer customer = customerService.getCacheCustomerById(userid);
+				json.put("name", customer.getLoginname());
+			} else if(stateid==2||stateid==5) {
+				Supply supply = supplyService.getCacheSupplyById(userid);
+				json.put("name", supply.getLoginname());
+			}
+		}
+		Collections.reverse(array);
 		model.addAttribute("details", details);
 		model.addAttribute("order", order);
-		model.addAttribute("logs", logs);
+		model.addAttribute("logs", array);
 		if(CollectionUtils.isNotEmpty(scs))
 			model.addAttribute("deliver", scs.get(0));
 		return "order/detail";

@@ -42,25 +42,15 @@
 			<span class="dfh">${stateJson.desc }</span></li>
 			<li class="noborderbottom">
 				#set(lastlog = logs.get(logs.size()-1))
-				${dateformat(lastlog.operationtime, 'YYYY-MM-DD hh:mm:ss') }&nbsp; ${lastlog.operationinfor } 
+				${lastlog.operationtime }&nbsp; ${lastlog.operationinfor } 
 				<span class="role" id="gzxq">
-				#set(state = lastlog.stateid.intValue())
-				#if(state==1||state==6)
-					客户
-				#elseif(state==2||state==5)
-					供应商
-				#end
+				${lastlog.name }
 				<i>&#8250;</i></span>
 			</li>
 			<li class="noborderbottom genzong">
 				#for(log : logs)
-				<p>${log.operationtime.format('yyyy-MM-dd HH:mm:ss') }&nbsp;&nbsp; ${log.operationinfor }&nbsp;&nbsp;&nbsp;&nbsp;
-				#set(state = log.stateid.intValue())
-				#if(state==1||state==6)
-					客户
-				#elseif(state==2||state==5)
-					供应商
-				#end
+				<p>${log.operationtime }&nbsp;&nbsp; ${log.operationinfor }&nbsp;&nbsp;&nbsp;&nbsp;
+				${log.name }
 				</p>
 				#end
 			</li>
