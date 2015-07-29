@@ -107,10 +107,10 @@ public class OrderAction extends BaseAction {
 			Integer stateid = json.getBigDecimal("stateid").intValue();
 			if(stateid==1||stateid==6) {
 				Customer customer = customerService.getCacheCustomerById(userid);
-				json.put("name", customer.getLoginname());
+				json.put("name", customer.getUsername());
 			} else if(stateid==2||stateid==5) {
 				Supply supply = supplyService.getCacheSupplyById(userid);
-				json.put("name", supply.getLoginname());
+				json.put("name", supply.getUsername());
 			}
 		}
 		Collections.reverse(array);
