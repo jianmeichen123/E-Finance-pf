@@ -6,9 +6,9 @@
 		#for(child : childs)
 		<tr style="cursor:pointer;" onclick="javascript:window.location = '/order/settle?orderid=${child.orderid}'">
 			<td>${child.ordernum }</td>
-			<td>${getIndexOrderByOrderId(child.orderid).t2.format() }PMI</td>
-			<td>￥${child.realamount.format() }</td>
-			<td class="color_black">￥${child.returnmoney.format() }</td>
+			<td>${getIndexOrderByOrderId(child.orderid)==null?"--":getIndexOrderByOrderId(child.orderid).t2.format() }PMI</td>
+			<td>￥${child.realamount==null?"--":child.realamount.format() }</td>
+			<td class="color_black">￥${child.returnmoney==null?"--":child.returnmoney.format() }</td>
 			<td><i class="state1">&nbsp;</i></td></tr>
 		#end
 		#if(settle.returnstateid == 0)
