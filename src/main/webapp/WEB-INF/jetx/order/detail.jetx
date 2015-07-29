@@ -92,12 +92,12 @@
                     <tr>
                     	<td>${product.gname }</td>
                     	<td>${product.unit }</td>
-                    	<td>${detail.amount.format() }${product.unit }</td>
+                    	<td>${detail.amount.format() }</td>
                     	#if(status==5||status==6)
-                    	<td>${detail.realAmount==null?"--":detail.realAmount.format() }${product.unit }</td>
+                    	<td>${detail.realAmount==null?"--":detail.realAmount.format() }</td>
                     	#end
                     	#if(status==6)
-                    	<td>${detail.checkamount==null?"--":detail.checkamount.format() }${product.unit }</td>
+                    	<td>${detail.checkamount==null?"--":detail.checkamount.format() }</td>
                     	#end
                     	#if(status==5||status==6)
                     	<td>￥${detail.unitPrice==null?"--":detail.unitPrice.format() }</td>
