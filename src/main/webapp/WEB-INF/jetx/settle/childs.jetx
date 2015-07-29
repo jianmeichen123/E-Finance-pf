@@ -9,9 +9,15 @@
 			<td>${getIndexOrderByOrderId(child.orderid)==null?"--":getIndexOrderByOrderId(child.orderid).t2.format() }PMI</td>
 			<td>￥${child.realamount==null?"--":child.realamount.format() }</td>
 			<td class="color_black">￥${child.returnmoney==null?"--":child.returnmoney.format() }</td>
-			<td><i class="state1">&nbsp;</i></td></tr>
+			<td>
+				#if(child.order.balancestate==0)
+				<i class="state1">&nbsp;</i>
+				#elseif(child.order.balancestate==1)
+				<i class="state2">&nbsp;</i>
+				#end
+			</td></tr>
 		#end
-		#if(settle.returnstateid == 0)
+		#if(settle.returnstateid == 0 && cansettle)
 		<tr><td colspan="5"><a href="javascript:;" class="btn" onclick='confirmreturn("${settle.id}", this)'>确认已返现</a></td></tr>
 		#end
 	</tbody>
