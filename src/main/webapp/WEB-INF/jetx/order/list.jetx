@@ -14,9 +14,19 @@
 </head>
 
 <body>
+<div class="tanchu">
+	<div class="toumingbg"></div> 
+	<div class="menu">
+	     <a href="/user">个人中心</a>
+	     <a href="javascript:alert('开发中，敬请期待')">账目录入</a>
+	     <a href="/settle/list">结算中心</a>
+	     <a href="javascript:alert('开发中，敬请期待')">农贸均价</a>  
+	</div>
+</div>
+
 <header>
   <nav>
-     <div class="set"><a href="javascript:history.go(-1)"><img src="/images/fenlei01.png"></a></div>
+     <div class="set"><a href="javascript:;" id="setbtn"><img src="/images/fenlei01.png"></a></div>
      <h1><b>订单列表</b>
      <span class="qushi" id="yjlb">
    		<ul>
@@ -89,5 +99,14 @@ $('#yjlb').click(function(){
 		//$('nav h1 b').text($(this).text()); 
 	})
 })
+$('#setbtn').click(function(){
+	$('.tanchu').show();
+	$('.menu').slideToggle(500);
+	$('.toumingbg,.menu a').click(function(){
+		$('.tanchu').hide();
+		$('.menu').hide();
+	});
+});
+
 </script>
 </html>
