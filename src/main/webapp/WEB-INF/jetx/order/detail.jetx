@@ -80,7 +80,7 @@
                     	#if(status==6)
                     	<th>收货数量</th>
                     	#end
-                    	#if(status==5||status==6)
+                    	#if(status==2||status==5||status==6)
                     	<th>单价</th>
                     	#end
                     	<th>小计</th>
@@ -99,10 +99,15 @@
                     	#if(status==6)
                     	<td>${detail.checkamount==null?"--":detail.checkamount.format() }</td>
                     	#end
-                    	#if(status==5||status==6)
+                    	#if(status==2||status==5||status==6)
                     	<td>￥${detail.unitPrice==null?"--":detail.unitPrice.format() }</td>
                     	#end
+                    	#if(status==6)
+                    	<td><b>￥${detail.checktotalprice==null?"--":detail.checktotalprice.format() }</b></td>
+                    	#end
+                    	#if(status!=6)
                     	<td><b>￥${detail.totalPrice==null?"--":detail.totalPrice.format() }</b></td>
+                    	#end
                     </tr>
                     #end
                  </tbody>
