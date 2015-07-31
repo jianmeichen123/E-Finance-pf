@@ -97,6 +97,7 @@ public class OrderAction extends BaseAction {
 		
 		OrderLogisticsExample logisticsExample = new OrderLogisticsExample();
 		logisticsExample.createCriteria().andOrderidEqualTo(orderid);
+		logisticsExample.setOrderByClause("operationtime desc");
 		List<OrderLogistics> logs = orderLogisticsMapper.selectByExample(logisticsExample);
 		JSONArray array = JSON.parseArray(JSON.toJSONStringWithDateFormat(logs, "yyyy-MM-dd HH:mm:ss"));
 		@SuppressWarnings("rawtypes")
@@ -113,7 +114,6 @@ public class OrderAction extends BaseAction {
 				json.put("name", supply.getUsername());
 			}
 		}
-		Collections.reverse(array);
 		model.addAttribute("details", details);
 		model.addAttribute("order", order);
 		model.addAttribute("logs", array);

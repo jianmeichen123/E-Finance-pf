@@ -49,9 +49,11 @@
 			</li>
 			<li class="noborderbottom genzong">
 				#for(log : logs)
+				#if(for.index>1)
 				<p>${log.operationtime }&nbsp;&nbsp; ${log.operationinfor }&nbsp;&nbsp;&nbsp;&nbsp;
 				${log.name }
 				</p>
+				#end
 				#end
 			</li>
 		</ul>      
