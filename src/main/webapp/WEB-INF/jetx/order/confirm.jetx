@@ -24,7 +24,7 @@
 			var json = {}
 			json.num = num
 			json.goodsid = goodsid
-			json.totalprice = num*unitPrice
+			json.totalprice = Number(num*unitPrice).toFixed(2)
 			array.push(json)
 		})
 		var jsonArray = JSON.stringify(array)
