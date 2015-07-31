@@ -41,7 +41,7 @@
 				<li class="row-t">
 					<input type="hidden" value="${settle.id }">
 					<span class="id">${settle.settlenum }</span>
-					<span>102.00PMI</span>
+					<span>${settle.dealindex }PMI</span>
 					<span>￥${settle.realamount.format() }</span>
 					<span>￥${settle.returnmoney.format() }</span>
 					#set(returndate = settle.returndate)
