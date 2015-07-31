@@ -45,7 +45,7 @@
                     	<td>${detail.realAmount.format() }</td>
                     	<td>${detail.checkamount.format() }</td>
                     	<td>￥${detail.unitPrice.format() }</td>
-                    	<td>￥${detail.totalPrice.format() }</td>
+                    	<td>￥${detail.checktotalprice.format() }</td>
                     </tr>
                     #end
                  </tbody>
