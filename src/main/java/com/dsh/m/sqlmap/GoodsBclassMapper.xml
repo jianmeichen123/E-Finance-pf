@@ -99,6 +99,7 @@
     </if>
     <include refid="Base_Column_List" />
     from goods_bclass
+    where bclassid != 28
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
