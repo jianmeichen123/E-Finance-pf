@@ -104,11 +104,13 @@ public class OrderService {
 		JSONArray array = JSON.parseArray(json);
 		@SuppressWarnings("rawtypes")
 		Iterator iter = array.iterator();
+		BigDecimal settleprice = new BigDecimal(0);
 		while(iter.hasNext()) {
 			JSONObject obj = (JSONObject)iter.next();
 			BigDecimal num = obj.getBigDecimal("num");
 			int goodsid = obj.getIntValue("goodsid");
 			BigDecimal checktotalprice = obj.getBigDecimal("totalprice");
+			settleprice = settleprice.add(checktotalprice);
 			PurchaseorderChild child = new PurchaseorderChild();
 			child.setCheckamount(num);
 			child.setChecktotalprice(checktotalprice);
@@ -119,6 +121,7 @@ public class OrderService {
 		
 		Purchaseorder order = new Purchaseorder();
 		order.setId(orderid);
+		order.setSettleprice(settleprice);
 		order.setOrdertype(OrderStatusEnum.FINISHED.getCode());
 		purchaseorderMapper.updateByPrimaryKeySelective(order);
 	}
