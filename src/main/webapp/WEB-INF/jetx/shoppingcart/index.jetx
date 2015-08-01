@@ -73,9 +73,18 @@
 </script>
 </head>
 <body>
+<div class="tanchu">
+	<div class="toumingbg"></div> 
+	<div class="menu">
+	     <a href="/user">个人中心</a>
+	     <a href="javascript:alert('开发中，敬请期待')">账目录入</a>
+	     <a href="/settle/list">结算中心</a>
+	     <a href="javascript:alert('开发中，敬请期待')">农贸均价</a>  
+	</div>
+</div>
 <header>
 	<nav>
-		<div class="set"><a href="javascript:;"><img src="/images/fenlei01.png"></a></div>
+		<div class="set"><a href="javascript:;" id="setbtn"><img src="/images/fenlei01.png"></a></div>
 		<h1>购物车</h1>
 	</nav>
 </header>
@@ -98,6 +107,13 @@
 </footer>
 </body>
 <script>
-
+$('#setbtn').click(function(){
+	$('.tanchu').show();
+	$('.menu').slideToggle(500);
+	$('.toumingbg,.menu a').click(function(){
+		$('.tanchu').hide();
+		$('.menu').hide();
+	});
+});
 </script>
 </html>
