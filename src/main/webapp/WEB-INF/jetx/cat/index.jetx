@@ -22,7 +22,7 @@
 		}).done(function(data){
 			$.each(data, function(i, n){
 				var html = '<a href="/product?catid='+n.sclassid
-						+'"><img src="/images/fenlei04.png"><br>'+n.sclassname+'</a>'
+						+'"><img src="'+ n.image +'"><br>'+n.sclassname+'</a>'
 				$('#sectab').append(html)
 			})
 		})
@@ -83,7 +83,7 @@
 		<div class="tab-list">
 			<div class="dis" id="sectab">
 				#for(cat : secondcats)
-			    <a href="/product?catid=${cat.sclassid}"><img src="/images/fenlei04.png"><br>${cat.sclassname}</a>
+			    <a href="/product?catid=${cat.sclassid}"><img src="${cat.image}"><br>${cat.sclassname}</a>
 			    #end
 			</div>
 		</div>
