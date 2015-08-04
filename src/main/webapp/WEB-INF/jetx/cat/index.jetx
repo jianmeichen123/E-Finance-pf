@@ -13,6 +13,7 @@
 <script src="/js/jquery-1.10.1.min.js" ></script>
 <script type="text/javascript">
 	function loadcat(catid, a) {
+	
 		$('#sectab').html('')
 		$('#tb_').find('a').attr('class', 'normaltab')
 		$(a).addClass('hovertab')
@@ -20,9 +21,13 @@
 			url:'/cat/load?catid='+catid,
 			dataType:'json'
 		}).done(function(data){
+		
 			$.each(data, function(i, n){
+		       if( n.image==null){
+		         n.image="load.jpg";
+		       }
 				var html = '<a href="/product?catid='+n.sclassid
-						+'"><img src="'+ n.image +'"><br>'+n.sclassname+'</a>'
+						+'"><img src="http://bj.dosaing.com/upload/'+ n.image +'"><br>'+n.sclassname+'</a>'
 				$('#sectab').append(html)
 			})
 		})
@@ -83,7 +88,15 @@
 		<div class="tab-list">
 			<div class="dis" id="sectab">
 				#for(cat : secondcats)
-			    <a href="/product?catid=${cat.sclassid}"><img src="${cat.image}"><br>${cat.sclassname}</a>
+			    <a href="/product?catid=${cat.sclassid}"><img src='
+					#if(cat.image=='')
+						http://bj.dosaing.com/upload/load.jpg
+					#else
+						${request.getAttribute("config.img.prefix") }${cat.image}
+					#end
+					'>
+			    
+			    <br>${cat.sclassname}</a>
 			    #end
 			</div>
 		</div>
