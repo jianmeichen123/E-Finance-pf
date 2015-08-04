@@ -169,4 +169,14 @@ public class Goods implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 7578038818792809124L;
+	private String is_sale;
+
+	public String getIs_sale() {
+		return is_sale;
+	}
+
+	public void setIs_sale(String is_sale) {
+		this.is_sale = is_sale;
+	}
+	
 }
