@@ -76,6 +76,7 @@ public class IndexNumberAction extends BaseAction {
 			index = indexDateMapper.selectByPrimaryKey(id);
 		}
 		IndexDateChildExample childExample = new IndexDateChildExample();
+		childExample.setOrderByClause("t6 desc");
 		childExample.createCriteria().andIndexDateIdEqualTo(id).andT8GreaterThan(0).andDrEqualTo("1");
 			
 		List<IndexDateChild> childs = indexDateChildMapper.selectByExample(childExample);
