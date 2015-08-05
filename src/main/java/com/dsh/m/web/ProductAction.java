@@ -39,7 +39,7 @@ public class ProductAction extends BaseAction {
 	public String index(Integer catid, ModelMap model, HttpSession session) {
 		Integer userid = super.getUserId(session);
 		//传入二级分类
-		GoodsExample goodsExample = new GoodsExample();
+ 		GoodsExample goodsExample = new GoodsExample();
 		goodsExample.createCriteria().andSclassidEqualTo(catid);
 		List<Goods> goods = goodsMapper.selectByExample(goodsExample);
 		
@@ -81,7 +81,7 @@ public class ProductAction extends BaseAction {
 	@RequestMapping("/search")
 	public String search(HttpSession session, String word, ModelMap model) {
 		GoodsExample example = new GoodsExample();
-		example.createCriteria().andGnameLike("%"+word+"%");
+		example.createCriteria().andGnameLike("%"+word+"%").andIsSaleEqualTo("1");
 		List<Goods> list = goodsMapper.selectByExample(example);
 		model.addAttribute("products", list);
 		Integer userid = super.getUserId(session);

@@ -123,7 +123,7 @@
     select 
     <include refid="Base_Column_List" />
     from goods
-    where goodsid = #{goodsid,jdbcType=INTEGER}
+    where goodsid = #{goodsid,jdbcType=INTEGER} and is_sale='1'
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     <!--
