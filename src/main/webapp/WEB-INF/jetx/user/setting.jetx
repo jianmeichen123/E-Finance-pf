@@ -42,6 +42,11 @@
       <li><b>收获地址</b><span class="addr">北京市海淀区西小口世华龙樾9号楼1单元101</span></li>
    </ul>
 </div>
+<div class="u-info bottom0">
+   <ul>
+      <li><a href="/user/logout">退出</a></li>
+   </ul>
+</div>
 <div class="blank"></div>
 <footer>
     <div class="daohang">

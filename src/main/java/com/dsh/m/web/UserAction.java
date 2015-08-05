@@ -109,7 +109,7 @@ public class UserAction extends BaseAction {
 	@RequestMapping("/logout")
 	public String logout(HttpSession session) {
 		session.removeAttribute("login_id");
-		return "已注销";
+		return "redirect:/";
 	}
 
 }
