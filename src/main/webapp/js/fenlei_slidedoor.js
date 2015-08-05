@@ -3,12 +3,14 @@
 function g(o){return document.getElementById(o);}
 function HoverLi(n){
 //如果有N个标签,就将i<=N;
-var aa=$('.main-left ul li').length;
-for(var i=1;i<=aa;i++){
-	g('tb_'+i).className='normaltab';
-	g('tbc_0'+i).className='undis';
+	var aa=$('.main-left ul li').length;
+	for(var i=1;i<=aa;i++){
+		g('tb_'+i).className='normaltab';
+		if(g('tbc_0'+i)!=null)
+			g('tbc_0'+i).className='undis';
 	}
-	g('tbc_0'+n).className='dis';
+	if(g('tbc_0'+n)!=null)
+		g('tbc_0'+n).className='dis';
 	g('tb_'+n).className='hovertab';
 		
 }

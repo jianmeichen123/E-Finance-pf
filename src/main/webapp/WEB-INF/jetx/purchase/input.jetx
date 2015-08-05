@@ -1,0 +1,243 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+<meta name="format-detection" content="telephone=no"/>  
+<title>账目录入</title>
+<meta name="keywords" content="多省汇">
+<meta name="description" content="多省汇">
+<link rel="stylesheet" href="/css/reset.css" />
+<link rel="stylesheet" href="/css/fenlei.css" />
+<link rel="stylesheet" href="/css/foot.css" />
+<script src="/js/jquery-1.10.1.min.js" ></script>
+<script type="text/javascript">
+	function search() {
+		/* var text = $('#searchText').val()||''
+		if(text!='') {
+			$('dl').hide()
+			$.each($('a:contains("'+text+'")'), function(i, n){
+				$(n).closest('dl').show()
+			})
+		} */
+		
+		var form = $('<form action = "/product/search" method = "post"></form>')
+		$('body').append(form)
+		var text = $('#searchText').val()||''
+		if(text!='') {
+			var input = $('<input type="hidden" name="word" value="'+text+'">')
+			form.append(input)
+			form.submit()
+		}
+	}
+	
+	$(function() {
+		$('.p-f').find('a').click(function() {
+			$.ajax({
+				url:'/purchase/loadsclass?bclassid='+$(this).attr('bclassid'),
+				dataType:'json'
+			}).done(function(data) {
+				if(data.isSuccess) {
+					$('#tb_').find('ul').html('')
+					$('#tbc_01').html('')
+					$.each(data.obj.sclasses, function(i, n) {
+						var html = '<li><a href="javascript:;" onClick="HoverLi('+(i+1)+');" id="tb_'+(i+1)+'"'; 
+									if(i==0) 
+										html+='class="hovertab"'
+									else 
+										html+='class="normaltab"'
+									html+='>'+n.sclassname+'</a></li>';
+						$('#tb_').find('ul').append(html)
+					})
+					$.each(data.obj.goods, function(i, n) {
+						var html = 	'<dl>'+
+							        '    <dt><a href="#"><img src="';
+							    			if(n.image=='')
+							    				html+='http://bj.dosaing.com/upload/load.jpg'
+							    			else
+							    				html+='${request.getAttribute("config.img.prefix") }'+n.image
+							  html+='		"></a></dt>'+
+							        '        <dd>'+
+							        '           <div class="dd-left">'+
+							        '              <b><a href="#">'+n.gname+'</a></b>'+n.beizhu+
+							        '           </div>'+
+							        '           <div class="dd-right">'+
+							        '              <b class="color_black">单位：'+n.unit+'</b>'+
+							        '              <p class="sec"><a href="#">选择</a></p>'+
+							        '           </div>'+             
+							        '        </dd>'+
+							        '    </dl>'
+						$('#tbc_01').append(html)
+					})
+				}
+			})
+		})
+		
+		$('#tb_').find('a').click(function() {
+			$('#tb_').find('a').attr('class', 'normaltab')
+			$(this).addClass('hovertab')
+			$.ajax({
+				url:'/purchase/loadgoods?sclassid='+$(this).attr('sclassid'),
+				dataType:'json'
+			}).done(function(data) {
+				if(data.isSuccess) {
+					$('#tbc_01').html('')
+					$.each(data.obj, function(i, n) {
+						var html = 	'<dl>'+
+							        '    <dt><a href="#"><img src="';
+							    			if(n.image=='')
+							    				html+='http://bj.dosaing.com/upload/load.jpg'
+							    			else
+							    				html+='${request.getAttribute("config.img.prefix") }'+n.image
+							  html+='		"></a></dt>'+
+							        '        <dd>'+
+							        '           <div class="dd-left">'+
+							        '              <b><a href="#">'+n.gname+'</a></b>'+n.beizhu+
+							        '           </div>'+
+							        '           <div class="dd-right">'+
+							        '              <b class="color_black">单位：'+n.unit+'</b>'+
+							        '              <p class="sec"><a href="#">选择</a></p>'+
+							        '           </div>'+             
+							        '        </dd>'+
+							        '    </dl>'
+						$('#tbc_01').append(html)
+					})
+				}
+			})
+		})
+	})
+</script>
+</head>
+<body>
+<!--左上下拉菜单begin-->
+<div class="tanchu" id="menu">
+<div class="toumingbg"></div> 
+<div class="menu">
+     <a href="/user">个人中心</a>
+     <a href="/purchase/input">账目录入</a>
+     <a href="/settle/list">结算中心</a>
+     <a href="javascript:alert('开发中，敬请期待')">农贸均价</a>        
+</div>
+</div>
+<!--左上下拉菜单end-->
+<header>
+  <nav>
+     <div class="set"><a href="#" id="setbtn"><img src="/images/fenlei01.png"></a></div>
+     <div class="search" style="cursor:pointer;" onclick="search()"><input id="searchText" name="key" type="text" placeholder="请输入商品名称"></div>
+  </nav>
+</header>
+<div class="main">
+<div class="tanchu1">
+<div class="toumingbg"></div>         
+</div>
+  <div class="main-top">
+     <p class="p-t">共 <span class="color_green">8</span> 种分类</p>
+     <i></i>
+     <p class="p-f">
+     	#for(bclass : bclasses)
+        <a href="javascript:;" bclassid="${bclass.bclassid}"
+        
+        #if(for.index==1)
+        class="cur"
+        #end
+        
+        >${bclass.bclassname }</a>
+        #end
+     </p>
+  </div>
+  <div class="main-left" id="tb_">
+     <ul>
+     	#for(sclass : sclasses)
+		<li><a href="javascript:;" onClick="HoverLi(${for.index});" id="tb_${for.index }" sclassid="${sclass.sclassid }"
+		
+		#if(for.index==1)
+		class="hovertab"
+		#else
+		class="normaltab"
+		#end
+				
+		>${sclass.sclassname }</a></li>
+		#end
+     </ul>
+  </div>
+  <div class="main-right">
+	<div class="pro-list">
+      <div class="dis" id="tbc_01">
+      	#for(good : goods)
+        <dl>
+            <dt><a href="#"><img src="
+			#if(good.image=='')
+				http://bj.dosaing.com/upload/load.jpg
+			#else
+				${request.getAttribute("config.img.prefix") }${good.image}
+			#end	
+			"></a></dt>
+            <dd>
+               <div class="dd-left">
+                  <b><a href="#">${good.gname }</a></b>${good.beizhu }
+               </div>
+               <div class="dd-right">
+                  <b class="color_black">单位：${good.unit }</b>
+                  <p class="sec"><a href="#">选择</a></p>
+               </div>               
+            </dd>
+        </dl>
+        #end
+       </div>  
+     </div>
+  </div>
+</div>
+<footer>
+    <div class="tongji">共 <span class="font16">9</span> 种商品，总价 ￥2342.23<a href="yixuanshangpin.html">确认</a></div>
+    <div class="daohang">
+      <a href="#" class="nav5">指数趋势</a>
+      <a href="#" class="nav6">账目预警</a>
+      <a href="#" class="nav3">采购管理</a>
+      <a href="#" class="nav7">资讯信息</a>    
+    </div>
+</footer>
+<!--选择弹出框begin-->
+<div class="tanchu" id="xuanze">
+<div class="toumingbg"></div> 
+<div class="luruform">
+     <p>商品：大白菜</p>
+     <p>数量：<input name="" type="text"> 单价：<input name="" type="text"></p>
+     <p>备注：<input name="" type="text" class="beizhu"></p>
+     <p><a href="#" class="btn">确 认</a></p>
+</div>
+</div>
+<!--选择弹出框end-->
+</body>
+<script src="/js/fenlei_slidedoor.js" ></script>
+<script>
+$('#setbtn').click(function(){
+	$('#menu').show();
+	$('.menu').slideToggle(500);
+	$('.toumingbg,.menu a').click(function(){
+		$('#menu').hide();
+		$('.menu').hide();
+		});
+	});
+$('.main-top i').click(function(){
+	$('.main .tanchu1').slideToggle(500);
+	$('.main-top .p-t').toggle();
+	$('.main-top .p-f').toggleClass('p-f1');
+	$('.main-top i').toggleClass('i1');
+	});	
+$('.main-top p a').click(function(){
+	$(this).addClass('cur');
+	$(this).siblings().removeClass('cur');
+	$('.main .tanchu1').hide();
+	$('.main-top .p-t').hide();
+	$('.main-top .p-f1').removeClass('p-f1');
+	$('.main-top i').removeClass('i1');
+	});		
+$('.sec a').click(function(){
+	$('#xuanze').show();
+	$('.toumingbg,.luruform p a').click(function(){
+		$('#xuanze').hide();
+
+		});
+	});	
+</script>
+</html>
