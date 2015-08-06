@@ -41,12 +41,12 @@
 					$('#tb_').find('ul').html('')
 					$('#tbc_01').html('')
 					$.each(data.obj.sclasses, function(i, n) {
-						var html = '<li><a href="javascript:;" onClick="HoverLi('+(i+1)+');" id="tb_'+(i+1)+'"'; 
+						var html = '<li><a href="javascript:;" id="tb_'+(i+1)+'"'; 
 									if(i==0) 
-										html+='class="hovertab"'
+										html+='class="hovertab test"'
 									else 
-										html+='class="normaltab"'
-									html+='>'+n.sclassname+'</a></li>';
+										html+='class="normaltab test"'
+									html+=' sclassid="'+n.sclassid+'">'+n.sclassname+'</a></li>';
 						$('#tb_').find('ul').append(html)
 					})
 					$.each(data.obj.goods, function(i, n) {
@@ -73,11 +73,12 @@
 			})
 		})
 		
-		$('#tb_').find('a').click(function() {
-			$('#tb_').find('a').attr('class', 'normaltab')
-			$(this).addClass('hovertab')
+		$(document).on('click', '.test', function(e) {
+			$('#tb_').find('a').attr('class', 'normaltab test')
+			$(e.target).attr('class', 'hovertab test')
+			
 			$.ajax({
-				url:'/purchase/loadgoods?sclassid='+$(this).attr('sclassid'),
+				url:'/purchase/loadgoods?sclassid='+$(e.target).attr('sclassid'),
 				dataType:'json'
 			}).done(function(data) {
 				if(data.isSuccess) {
@@ -131,7 +132,7 @@
 <div class="toumingbg"></div>         
 </div>
   <div class="main-top">
-     <p class="p-t">共 <span class="color_green">8</span> 种分类</p>
+     <p class="p-t">共 <span class="color_green">${bclasses.size() }</span> 种分类</p>
      <i></i>
      <p class="p-f">
      	#for(bclass : bclasses)
@@ -148,12 +149,12 @@
   <div class="main-left" id="tb_">
      <ul>
      	#for(sclass : sclasses)
-		<li><a href="javascript:;" onClick="HoverLi(${for.index});" id="tb_${for.index }" sclassid="${sclass.sclassid }"
+		<li><a href="javascript:;" id="tb_${for.index }" sclassid="${sclass.sclassid }"
 		
 		#if(for.index==1)
-		class="hovertab"
+		class="hovertab test"
 		#else
-		class="normaltab"
+		class="normaltab test"
 		#end
 				
 		>${sclass.sclassname }</a></li>
