@@ -32,6 +32,8 @@
 	}
 	
 	$(function() {
+		loadCart()
+		
 		$('.p-f').find('a').click(function() {
 			$.ajax({
 				url:'/purchase/loadsclass?bclassid='+$(this).attr('bclassid'),
@@ -107,6 +109,40 @@
 			})
 		})
 	})
+	
+	function confirm() {
+		var amount = $('.luruform').find('input[name="amount"]')
+		var unitprice = $('.luruform').find('input[name="unitPrice"]')
+		if(amount=='') {
+			alert('数量不能为空！！')
+			return
+		}
+		if(unitprice=='') {
+			alert('单价不能为空！！')
+			return
+		}
+		$.ajax({
+			url:'/purchase/confirmDetail',
+			type:'post',
+			data:$('.luruform').find('form').serialize(),
+			dataType:'json'
+		}).done(function(data) {
+			alert(data.msg)
+			if(data.isSuccess) {
+				loadCart()
+			}
+		})
+	}
+	
+	function loadCart() {
+		$.ajax({
+			url:'/purchase/loadCart',
+			dataType:'json'
+		}).done(function(data) {
+			$('.tongji').find('span').eq(0).text(data.num)
+			$('.tongji').find('span').eq(1).text(data.total)
+		})
+	}
 </script>
 </head>
 <body>
@@ -175,11 +211,11 @@
 			"></a></dt>
             <dd>
                <div class="dd-left">
-                  <b><a href="#">${good.gname }</a></b>${good.beizhu }
+                  <b><a href="#" goodsid='${good.goodsid }'>${good.gname }</a></b>${good.beizhu }
                </div>
                <div class="dd-right">
                   <b class="color_black">单位：${good.unit }</b>
-                  <p class="sec"><a href="#">选择</a></p>
+                  <p class="sec"><a href="javascript:;">选择</a></p>
                </div>               
             </dd>
         </dl>
@@ -189,7 +225,7 @@
   </div>
 </div>
 <footer>
-    <div class="tongji">共 <span class="font16">9</span> 种商品，总价 ￥2342.23<a href="yixuanshangpin.html">确认</a></div>
+    <div class="tongji">共 <span class="font16">9</span> 种商品，总价 ￥<span>2342.23</span><a href="/purchase/cart">确认</a></div>
     <div class="daohang">
       <a href="#" class="nav5">指数趋势</a>
       <a href="#" class="nav6">账目预警</a>
@@ -201,10 +237,13 @@
 <div class="tanchu" id="xuanze">
 <div class="toumingbg"></div> 
 <div class="luruform">
-     <p>商品：大白菜</p>
-     <p>数量：<input name="" type="text"> 单价：<input name="" type="text"></p>
-     <p>备注：<input name="" type="text" class="beizhu"></p>
-     <p><a href="#" class="btn">确 认</a></p>
+	<form>
+		<input type='hidden' name='goodsid'>
+    	<p>商品：大白菜</p>
+     	<p>数量：<input name="amount" type="text"> 单价：<input name="unitPrice" type="text"></p>
+     	<p>备注：<input name="beizhu" type="text" class="beizhu"></p>
+     	<p><a href="javascript:;" class="btn" onclick='confirm()'>确 认</a></p>
+	</form>
 </div>
 </div>
 <!--选择弹出框end-->
@@ -233,12 +272,19 @@ $('.main-top p a').click(function(){
 	$('.main-top .p-f1').removeClass('p-f1');
 	$('.main-top i').removeClass('i1');
 	});		
-$('.sec a').click(function(){
+$(document).on('click', '.sec a', function(){
 	$('#xuanze').show();
+	var a = $(this).parent().parent().prev().find('a')
+	var gname = a.text()
+	var gid = a.attr('goodsid')
+	$('.luruform').find('p').eq(0).text('商品：'+gname)
+	$('.luruform').find('input[name="goodsid"]').val(gid)
+	$('.luruform').find('input[name="amount"]').val('')
+	$('.luruform').find('input[name="unitPrice"]').val('')
+	$('.luruform').find('input[name="beizhu"]').val('')
 	$('.toumingbg,.luruform p a').click(function(){
 		$('#xuanze').hide();
-
-		});
-	});	
+	});
+});	
 </script>
 </html>

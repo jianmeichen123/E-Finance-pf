@@ -1,0 +1,147 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+<meta name="format-detection" content="telephone=no"/>  
+<title>已选商品</title>
+<meta name="keywords" content="多省汇">
+<meta name="description" content="多省汇">
+<link rel="stylesheet" href="/css/reset.css" />
+<link rel="stylesheet" href="/css/fenlei.css" />
+<link rel="stylesheet" href="/css/foot.css" />
+<script src="/js/jquery-1.10.1.min.js" ></script>
+<script type="text/javascript">
+	$(function() {
+		$.ajax({
+			url:'/purchase/loadCart',
+			dataType:'json'
+		}).done(function(data) {
+			$('.tongji').find('span').eq(0).text(data.num)
+			$('.tongji').find('span').eq(1).text(data.total)
+		})
+	})
+	
+	function del(goodsid) {
+		if(confirm('确定删除？')) {
+			$.ajax({
+				url:'/purchase/cartdel?goodsid='+goodsid,
+				dataType:'json'
+			}).done(function(data) {
+				alert(data.msg)
+				if(data.isSuccess)
+					location = location
+			})
+		}
+	}
+	
+</script>
+</head>
+<body>
+<header>
+  <nav>
+     <div class="set back"><a href="javascript:history.go(-1);"><img src="/images/reg01.png"></a></div>
+     <h1>已选商品</h1>
+  </nav>
+</header>
+<div class="main">  
+	<div class="pro-list">
+		<div class="dis"  id="tbc_01">
+			#for(good : goods)
+			#set(product = getProductById(good.goodsid.asInt()))
+			<dl>
+				<dt><a href="#"><img src="
+				#if(product.image=='')
+					http://bj.dosaing.com/upload/load.jpg
+				#else
+					${request.getAttribute("config.img.prefix") }${product.image}
+				#end
+				"></a></dt>
+				<dd>
+					<div class="dd-left">
+						<b><a href="#">${product.gname }</a></b>单位：${product.unit }<br>${product.beizhu }
+					</div>
+					<div class="dd-right">
+						<p class="edit"><a href="javascript:;" goodsid="${good.goodsid }">修改</a></p>
+						<p class="del"><a href="javascript:;" onclick='del("${good.goodsid}")'>删除</a></p>
+					</div>               
+				</dd>
+				<dd class="count">单价：￥<span>${good.unitprice }</span>&nbsp; 数量：x <span>${good.amount }</span> &nbsp;总价：<span class="color_black">￥${good.total }</span></dd>
+			</dl>
+			#end
+	     </div>
+	</div>
+
+
+<footer>
+    <div class="tongji">共 <span>9</span> 种商品，总价 ￥<span>2342.23</span><a href="javascript:;" id="tijiao">提交</a></div>
+    <div class="daohang1">
+      <a href="/cat" class="nav1">商品分类</a>
+      <a href="/product/common" class="nav2">常用商品</a>
+      <a href="/cart" class="nav3">购物车</a>
+      <a href="/order/list" class="nav4">订单管理</a>
+      <a href="/user" class="nav5">个人中心</a>    
+    </div>
+</footer>
+<!--修改弹出框begin-->
+<div class="tanchu" id="edit">
+<div class="toumingbg"></div> 
+<div class="luruform">
+	<form>
+     <p>商品：大白菜</p>
+     <input type="hidden" name="goodsid">
+     <p>数量：<input name="amount" type="text"> 单价：<input name="unitPrice" type="text"></p>
+     <p><a href="javascript:;" class="btn">确 认</a></p>
+    </form>
+</div>
+</div>
+<!--修改弹出框end-->
+<!--提交弹出框begin-->
+<div class="tanchu" id="tijiao-tishi">
+<div class="toumingbg"></div> 
+<div class="luruform">
+     <p class="success">提交成功</p>
+      
+</div>
+</div>
+<!--提交弹出框end-->
+</body>
+<script src="/js/fenlei_slidedoor.js" ></script>
+<script>
+$('#tijiao').click(function(){
+	$.ajax({
+		url:'/purchase/confirmPurchase',
+		dataType:'json'
+	}).done(function(data) {
+		alert(data.msg)
+		if(data.isSuccess)
+			location = '/purchase/detail?purchaseid='+data.obj
+	})
+});	
+$('.edit a').click(function(){
+	$('#edit').show();
+	var goodsid = $(this).attr('goodsid')
+	var dd = $(this).parent().parent().parent().next()
+	var unitprice = dd.find('span').eq(0).text()
+	var amount = dd.find('span').eq(1).text()
+	var gname = $(this).parent().parent().prev().find('a').text()
+	$('.luruform').find('p').eq(0).text('商品：'+gname)
+	$('.luruform').find('input[name="goodsid"]').val(goodsid)
+	$('.luruform').find('input[name="amount"]').val(amount)
+	$('.luruform').find('input[name="unitPrice"]').val(unitprice)
+	$('.toumingbg,.luruform form p a').click(function(){
+		$.ajax({
+			url:'/purchase/confirmDetail',
+			type:'post',
+			data:$('.luruform').find('form').serialize(),
+			dataType:'json'
+		}).done(function(data) {
+			alert(data.msg)
+			if(data.isSuccess)
+				location = location
+		})
+	});
+});		
+	
+</script>
+</html>
