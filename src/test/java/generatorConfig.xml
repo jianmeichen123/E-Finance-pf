@@ -31,7 +31,8 @@
    <!-- <table tableName = "order_state"/>
    <table tableName = "order_logistics"/> -->
    <!-- <table tableName="goods" ></table> -->
-   <table tableName="purchase"></table>
-   <table tableName="purchase_detail"></table>
+   <!-- <table tableName="purchase"></table>
+   <table tableName="purchase_detail"></table> -->
+   <table tableName="goods_price"></table>
   </context>
 </generatorConfiguration>
