@@ -129,7 +129,7 @@ $('.edit a').click(function(){
 	$('.luruform').find('input[name="goodsid"]').val(goodsid)
 	$('.luruform').find('input[name="amount"]').val(amount)
 	$('.luruform').find('input[name="unitPrice"]').val(unitprice)
-	$('.toumingbg,.luruform form p a').click(function(){
+	$('.luruform form p a').click(function(){
 		$.ajax({
 			url:'/purchase/confirmDetail',
 			type:'post',
@@ -141,6 +141,9 @@ $('.edit a').click(function(){
 				location = location
 		})
 	});
+	$('.toumingbg').click(function() {
+		$('#edit').hide()
+	})
 });		
 	
 </script>
