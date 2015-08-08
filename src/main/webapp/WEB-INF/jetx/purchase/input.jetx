@@ -61,7 +61,7 @@
 							  html+='		"></a></dt>'+
 							        '        <dd>'+
 							        '           <div class="dd-left">'+
-							        '              <b><a href="#">'+n.gname+'</a></b>'+n.beizhu+
+							        '              <b><a href="#" goodsid="'+n.goodsid+'">'+n.gname+'</a></b>'+n.beizhu+
 							        '           </div>'+
 							        '           <div class="dd-right">'+
 							        '              <b class="color_black">单位：'+n.unit+'</b>'+
@@ -95,7 +95,7 @@
 							  html+='		"></a></dt>'+
 							        '        <dd>'+
 							        '           <div class="dd-left">'+
-							        '              <b><a href="#">'+n.gname+'</a></b>'+n.beizhu+
+							        '              <b><a href="#" goodsid="'+n.goodsid+'">'+n.gname+'</a></b>'+n.beizhu+
 							        '           </div>'+
 							        '           <div class="dd-right">'+
 							        '              <b class="color_black">单位：'+n.unit+'</b>'+
