@@ -205,7 +205,7 @@ public class PurchaseAction extends BaseAction {
 	@RequestMapping("/search")
 	public String search(HttpSession session, String word, ModelMap model) {
 		GoodsExample example = new GoodsExample();
-		example.createCriteria().andGnameLike("%"+word+"%").andIsSaleEqualTo("1");
+		example.createCriteria().andGnameLike("%"+word+"%");
 		List<Goods> list = goodsMapper.selectByExample(example);
 		model.addAttribute("goods", list);
 		return "purchase/search";
