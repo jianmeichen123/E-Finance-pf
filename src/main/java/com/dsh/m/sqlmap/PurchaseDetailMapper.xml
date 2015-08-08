@@ -428,4 +428,10 @@
       dr = #{dr,jdbcType=CHAR}
     where pur_detailid = #{purDetailid,jdbcType=INTEGER}
   </update>
+  
+  <select id="getPurchaseDetailByUserId" parameterType="int" resultType="map">
+  	select b.unit_price as unitPrice, total_price as totalPrice, b.deal_time as dealTime, b.* 
+  	from purchase a left join purchase_detail b on a.purid = b.purchaseid where a.customerid = #{customerid} 
+  	order by b.deal_time desc limit 150
+  </select>
 </mapper>

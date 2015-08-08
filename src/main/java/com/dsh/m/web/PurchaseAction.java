@@ -37,7 +37,6 @@ import com.dsh.m.util.redis.Redis;
 @RequestMapping("/purchase")
 @Controller
 public class PurchaseAction extends BaseAction {
-	
 	@Autowired
 	private PurchaseDetailMapper purchaseDetailMapper;
 	@Autowired
@@ -50,17 +49,28 @@ public class PurchaseAction extends BaseAction {
 	private PurchaseService purchaseService;
 	
 	@RequestMapping("/detail")
-	public String detail(Integer purchaseid, ModelMap model) {
+	public String detail(Integer purchaseid, HttpSession session, ModelMap model) {
 		PurchaseDetailExample example = new PurchaseDetailExample();
-		example.createCriteria().andPurchaseidEqualTo(purchaseid);
-		List<PurchaseDetail> details = purchaseDetailMapper.selectByExample(example);
-		model.addAttribute("details", details);
+		if(purchaseid==null) {
+			@SuppressWarnings("rawtypes")
+			List list = purchaseDetailMapper.getPurchaseDetailByUserId(super.getUserId(session));
+			System.out.println(list);
+			model.addAttribute("details", list);
+		} else {
+			example.createCriteria().andPurchaseidEqualTo(purchaseid);
+			List<PurchaseDetail> details = purchaseDetailMapper.selectByExample(example);
+			model.addAttribute("details", details);
+		}
+		
 		return "purchase/detail";
 	}
 	
 	@RequestMapping("/input")
 	public String input(ModelMap model) {
-		List<GoodsBclass> bclasses = goodsBclassMapper.selectByExample(new GoodsBclassExample());
+		GoodsBclassExample bclassExample = new GoodsBclassExample();
+		bclassExample.createCriteria().andBclassidNotEqualTo(28);
+		List<GoodsBclass> bclasses = goodsBclassMapper.selectByExample(bclassExample);
+		
 		Integer bclassid = bclasses.get(0).getBclassid();
 		GoodsSclassExample sclassExample = new GoodsSclassExample();
 		sclassExample.createCriteria().andBclassidEqualTo(bclassid);

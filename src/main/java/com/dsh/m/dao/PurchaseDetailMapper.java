@@ -93,4 +93,6 @@ public interface PurchaseDetailMapper {
      * @mbggenerated Wed Aug 05 15:48:39 CST 2015
      */
     int updateByPrimaryKey(PurchaseDetail record);
+    
+    List getPurchaseDetailByUserId(Integer customerid);
 }
