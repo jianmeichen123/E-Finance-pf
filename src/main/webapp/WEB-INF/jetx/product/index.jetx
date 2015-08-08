@@ -47,7 +47,7 @@
 					'</dl>'
 				$('#tbc').append(html)
 			})
-			$('.tongji').find('span').text(data.length)
+			refresh()
 		})
 	}
 	
@@ -92,6 +92,15 @@
 			form.append(input)
 			form.submit()
 		}
+	}
+	
+	function refresh() {
+		$.ajax({
+			url:'/product/cart',
+			dataType:'json'
+		}).done(function(data) {
+			$('.tongji').find('span').text(data)
+		})
 	}
 </script>
 </head>
