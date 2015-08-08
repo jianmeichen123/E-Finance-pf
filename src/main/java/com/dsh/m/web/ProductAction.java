@@ -21,6 +21,8 @@ import com.dsh.m.model.GoodsExample;
 import com.dsh.m.model.GoodsSclass;
 import com.dsh.m.model.GoodsSclassExample;
 import com.dsh.m.service.ShoppingCartService;
+import com.dsh.m.util.redis.Cache;
+import com.dsh.m.util.redis.Redis;
 
 @RequestMapping("/product")
 @Controller
@@ -40,15 +42,15 @@ public class ProductAction extends BaseAction {
 		Integer userid = super.getUserId(session);
 		//传入二级分类
  		GoodsExample goodsExample = new GoodsExample();
-		goodsExample.createCriteria().andSclassidEqualTo(catid);
+		goodsExample.createCriteria().andSclassidEqualTo(catid).andIsSaleEqualTo("1");
 		List<Goods> goods = goodsMapper.selectByExample(goodsExample);
 		
 		GoodsSclassExample goodsSclassExample = new GoodsSclassExample();
-		goodsSclassExample.createCriteria().andSclassidEqualTo(catid);
+		goodsSclassExample.createCriteria().andSclassidEqualTo(catid).andIsSaleEqualTo("1");
 		GoodsSclass sclass = goodsSclassMapper.selectByPrimaryKey(catid);
 		Integer bclassid = sclass.getBclassid();
 		goodsSclassExample = new GoodsSclassExample();
-		goodsSclassExample.createCriteria().andBclassidEqualTo(bclassid);
+		goodsSclassExample.createCriteria().andBclassidEqualTo(bclassid).andIsSaleEqualTo("1");
 		List<GoodsSclass> cats = goodsSclassMapper.selectByExample(goodsSclassExample);
 		
 		model.addAttribute("goods", goods);
@@ -61,7 +63,7 @@ public class ProductAction extends BaseAction {
 	@RequestMapping("/load")
 	public String load(Integer catid) {
 		GoodsExample goodsExample = new GoodsExample();
-		goodsExample.createCriteria().andSclassidEqualTo(catid);
+		goodsExample.createCriteria().andSclassidEqualTo(catid).andIsSaleEqualTo("1");
 		List<Goods> goods = goodsMapper.selectByExample(goodsExample);
 		return JSON.toJSONString(goods);
 	}
@@ -87,6 +89,15 @@ public class ProductAction extends BaseAction {
 		Integer userid = super.getUserId(session);
 		model.addAttribute("num", shoppingCartService.getCartNum(userid));
 		return "product/search";
+	}
+	
+	@ResponseBody
+	@RequestMapping("/cart")
+	public String cart(HttpSession session) {
+		Integer userid = super.getUserId(session);
+		Cache cache = Redis.use();
+		int total = cache.hlen("shoppingcart:"+userid).intValue();
+		return total+"";
 	}
 	
 }

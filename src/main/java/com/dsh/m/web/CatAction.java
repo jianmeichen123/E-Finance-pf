@@ -27,11 +27,13 @@ public class CatAction extends BaseAction {
 	
 	@RequestMapping
 	public String index(ModelMap model) {
-		List<GoodsBclass> firstcats = goodsBclassMapper.selectByExample(new GoodsBclassExample());
+		GoodsBclassExample goodsBclassExample = new GoodsBclassExample();
+		goodsBclassExample.createCriteria().andBclassidNotEqualTo(28).andIsSaleEqualTo("1");
+		List<GoodsBclass> firstcats = goodsBclassMapper.selectByExample(goodsBclassExample);
 		
 		Integer catid = firstcats.get(0).getBclassid();
 		GoodsSclassExample goodsSclassExample = new GoodsSclassExample();
-		goodsSclassExample.createCriteria().andBclassidEqualTo(catid);
+		goodsSclassExample.createCriteria().andBclassidEqualTo(catid).andIsSaleEqualTo("1");
 		List<GoodsSclass> secondcats = goodsSclassMapper.selectByExample(goodsSclassExample);
 		
 		model.addAttribute("firstcats", firstcats);
@@ -43,7 +45,7 @@ public class CatAction extends BaseAction {
 	@RequestMapping("/load")
 	public String load(Integer catid) {
 		GoodsSclassExample goodsSclassExample = new GoodsSclassExample();
-		goodsSclassExample.createCriteria().andBclassidEqualTo(catid);
+		goodsSclassExample.createCriteria().andBclassidEqualTo(catid).andIsSaleEqualTo("1");
 		List<GoodsSclass> secondcats = goodsSclassMapper.selectByExample(goodsSclassExample);
 		return JSON.toJSONString(secondcats);
 	}
