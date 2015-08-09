@@ -31,81 +31,6 @@ function search() {
 	}
 }
 
-$(function() {
-	
-	$('.p-f').find('a').click(function() {
-		$.ajax({
-			url:'/price/loadsclass?bclassid='+$(this).attr('bclassid'),
-			dataType:'json'
-		}).done(function(data) {
-			if(data.isSuccess) {
-				$('#tb_').find('ul').html('')
-				$('#tbc_01').html('')
-				$.each(data.obj.sclasses, function(i, n) {
-					var html = '<li><a href="javascript:;" id="tb_'+(i+1)+'"'; 
-								if(i==0) 
-									html+='class="hovertab test"'
-								else 
-									html+='class="normaltab test"'
-								html+=' sclassid="'+n.sclassid+'">'+n.sclassname+'</a></li>';
-					$('#tb_').find('ul').append(html)
-				})
-				$.each(data.obj.goods, function(i, n) {
-					var html = 	'<dl>'+
-						        '    <dt><a href="#"><img src="';
-						    			if(n.image=='')
-						    				html+='http://bj.dosaing.com/upload/load.jpg'
-						    			else
-						    				html+='${request.getAttribute("config.img.prefix") }'+n.image
-						  html+='		"></a></dt>'+
-						        '        <dd>'+
-						        '           <div class="dd-left">'+
-						        '              <b><a href="#">'+n.gname+'</a></b>'+n.beizhu+
-						        '           </div>'+
-						        '           <div class="dd-right">'+
-						        '              <b class="color_black">￥'+n.price+'</b>单位：'+n.unit+
-						        '           </div>'+             
-						        '        </dd>'+
-						        '    </dl>'
-					$('#tbc_01').append(html)
-				})
-			}
-		})
-	})
-	
-	$(document).on('click', '.test', function(e) {
-		$('#tb_').find('a').attr('class', 'normaltab test')
-		$(e.target).attr('class', 'hovertab test')
-		
-		$.ajax({
-			url:'/price/loadgoods?sclassid='+$(e.target).attr('sclassid'),
-			dataType:'json'
-		}).done(function(data) {
-			if(data.isSuccess) {
-				$('#tbc_01').html('')
-				$.each(data.obj, function(i, n) {
-					var html = 	'<dl>'+
-						        '    <dt><a href="#"><img src="';
-						    			if(n.image=='')
-						    				html+='http://bj.dosaing.com/upload/load.jpg'
-						    			else
-						    				html+='${request.getAttribute("config.img.prefix") }'+n.image
-						  html+='		"></a></dt>'+
-						        '        <dd>'+
-						        '           <div class="dd-left">'+
-						        '              <b><a href="#">'+n.gname+'</a></b>'+n.beizhu+
-						        '           </div>'+
-						        '           <div class="dd-right">'+
-						        '              <b class="color_black">￥'+n.price+'</b>单位：'+n.unit+
-						        '           </div>'+             
-						        '        </dd>'+
-						        '    </dl>'
-					$('#tbc_01').append(html)
-				})
-			}
-		})
-	})
-})
 </script>
 </head>
 
@@ -117,7 +42,7 @@ $(function() {
      <a href="/user">个人中心</a>
      <a href="/purchase/input">账目录入</a>
      <a href="/settle/list">结算中心</a>
-     <a href="javascript:;">农贸均价</a>        
+     <a href="/price/search">农贸均价</a>        
 </div>
 </div>
 <!--左上下拉菜单end-->
@@ -131,37 +56,6 @@ $(function() {
 <div class="tanchu1">
 <div class="toumingbg"></div>         
 </div>
-  <div class="main-top">
-     <p class="p-t">共 <span class="color_green">${bclasses.size() }</span> 种分类</p>
-     <i></i>
-     <p class="p-f">
-     	#for(bclass : bclasses)
-        <a href="javascript:;" bclassid="${bclass.bclassid}"
-        
-        #if(for.index==1)
-        class="cur"
-        #end
-        
-        >${bclass.bclassname }</a>
-        #end
-     </p>
-  </div>
-  <div class="main-left" id="tb_">
-     <ul>
-     	#for(sclass : sclasses)
-		<li><a href="javascript:;" id="tb_${for.index }" sclassid="${sclass.sclassid }"
-		
-		#if(for.index==1)
-		class="hovertab test"
-		#else
-		class="normaltab test"
-		#end
-				
-		>${sclass.sclassname }</a></li>
-		#end
-     </ul>
-  </div>
-  <div class="main-right">
      <div class="pro-list">
       <div class="dis"  id="tbc_01">
       	#for(good : goods)
@@ -177,7 +71,7 @@ $(function() {
                <div class="dd-left">
                  <b><a href="#">${good.gname }</a></b>${good.beizhu }</div>
                <div class="dd-right">
-                  <b class="color_black">￥${good.price.format() }</b>单位：${good.unit }
+                  <b class="color_black">￥${good.marketPrice.format() }</b>单位：${good.unit }
                </div>               
             </dd>
         </dl>
@@ -187,7 +81,6 @@ $(function() {
      </div>
      
   </div>
-</div>
 
 
 <footer>

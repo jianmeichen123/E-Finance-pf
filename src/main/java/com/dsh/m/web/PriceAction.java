@@ -43,7 +43,9 @@ public class PriceAction extends BaseAction {
 	
 	@RequestMapping("/search")
 	public String search(ModelMap model) {
-		List<GoodsBclass> bclasses = goodsBclassMapper.selectByExample(new GoodsBclassExample());
+		GoodsBclassExample bclassExample = new GoodsBclassExample();
+		bclassExample.createCriteria().andBclassidNotEqualTo(28);
+		List<GoodsBclass> bclasses = goodsBclassMapper.selectByExample(bclassExample);
 		Integer bclassid = bclasses.get(0).getBclassid();
 		GoodsSclassExample sclassExample = new GoodsSclassExample();
 		sclassExample.createCriteria().andBclassidEqualTo(bclassid);
@@ -125,6 +127,14 @@ public class PriceAction extends BaseAction {
 			}
 		}
 		return success(null, array);
+	}
+	
+	@RequestMapping("/search2")
+	public String search2(String word, ModelMap model) {
+		@SuppressWarnings("rawtypes")
+		List goods = goodsPriceMapper.fuzzyGetGoodsWithPrice("%"+word+"%");
+		model.addAttribute("goods", goods);
+		return "price/search2";
 	}
 
 }

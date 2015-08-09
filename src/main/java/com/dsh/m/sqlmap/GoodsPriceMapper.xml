@@ -286,4 +286,8 @@
       date = #{date,jdbcType=DATE}
     where id = #{id,jdbcType=INTEGER}
   </update>
+  
+  <select id="fuzzyGetGoodsWithPrice" parameterType="string" resultType="map">
+  	select * from goods a left join goods_price b on a.goodsid = b.goodsid where a.gname like #{gname}
+  </select>
 </mapper>

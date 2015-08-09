@@ -2,7 +2,9 @@ package com.dsh.m.dao;
 
 import com.dsh.m.model.GoodsPrice;
 import com.dsh.m.model.GoodsPriceExample;
+
 import java.util.List;
+
 import org.apache.ibatis.annotations.Param;
 
 public interface GoodsPriceMapper {
@@ -93,4 +95,7 @@ public interface GoodsPriceMapper {
      * @mbggenerated Thu Aug 06 15:53:39 CST 2015
      */
     int updateByPrimaryKey(GoodsPrice record);
+    
+    @SuppressWarnings("rawtypes")
+	List fuzzyGetGoodsWithPrice(String gname);
 }
