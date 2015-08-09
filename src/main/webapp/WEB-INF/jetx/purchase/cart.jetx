@@ -20,6 +20,14 @@
 			$('.tongji').find('span').eq(0).text(data.num)
 			$('.tongji').find('span').eq(1).text(data.total)
 		})
+		
+		$('input[name="amount"], input[name="unitPrice"]').blur(function() {
+			var txt = $(this).val()
+			if(!/^\d+(\.\d+)?$/.test(txt)) {
+				alert('数量和单价只能为数字！！')
+				$(this).val('')
+			}
+		})
 	})
 	
 	function del(goodsid) {
