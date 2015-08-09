@@ -42,6 +42,16 @@
 				window.location = '/order/list'
 		})
 	}
+	
+	$(function() {
+		$('.biaoge').find('input[type="text"]').blur(function() {
+			var txt = $(this).val()
+			if(!/^\d+(\.\d+)?$/.test(txt)) {
+				alert('收货数量只能为数字！！')
+				$(this).val('')
+			}
+		})
+	})
 </script>
 </head>
 <body>
