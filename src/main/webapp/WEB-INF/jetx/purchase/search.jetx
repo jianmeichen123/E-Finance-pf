@@ -14,6 +14,13 @@
 <script type="text/javascript">
 	$(function() {
 		loadCart()
+		$('input[name="amount"], input[name="unitPrice"]').blur(function() {
+			var txt = $(this).val()
+			if(!/^\d+(\.\d+)?$/.test(txt)) {
+				alert('数量和单价只能为数字！！')
+				$(this).val('')
+			}
+		})
 	})
 
 	function search() {
