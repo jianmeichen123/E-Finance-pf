@@ -44,7 +44,11 @@ public class PurchaseService {
 			BigDecimal totalPrice = amount.multiply(unitPrice);
 			PurchaseDetail detail = new PurchaseDetail();
 			detail.setAmount(amount);
-			detail.setBeizhu(strs[2]);
+			if(strs.length == 2){
+				detail.setBeizhu("");
+			}else{
+				detail.setBeizhu(strs[2]);
+			}
 			detail.setGoodsid(Integer.parseInt(k));
 			detail.setOrderid(ordernum);
 			detail.setUnitPrice(unitPrice);

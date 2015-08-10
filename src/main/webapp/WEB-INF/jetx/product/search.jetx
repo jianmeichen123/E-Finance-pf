@@ -62,9 +62,9 @@
 	<div class="toumingbg"></div> 
 	<div class="menu">
 	     <a href="/user">个人中心</a>
-	     <a href="javascript:alert('开发中，敬请期待')">账目录入</a>
+	     <a href="/purchase/input">账目录入</a>
 	     <a href="/settle/list">结算中心</a>
-	     <a href="javascript:alert('开发中，敬请期待')">农贸均价</a>  
+	     <a href="/price/search">农贸均价</a>  
 	</div>
 </div>
 <header>
