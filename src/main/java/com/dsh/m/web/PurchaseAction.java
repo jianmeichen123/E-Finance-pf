@@ -10,11 +10,15 @@ import java.util.Set;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import jetbrick.util.StringUtils;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+
+import redis.clients.jedis.Jedis;
 
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
@@ -120,15 +124,17 @@ public class PurchaseAction extends BaseAction {
 		BigDecimal unitPrice = new BigDecimal(request.getParameter("unitPrice"));
 		String remark = request.getParameter("beizhu");
 		Integer userid = super.getUserId(request.getSession());
-		
+		Cache cache = Redis.use();
+		Jedis jedis = cache.getJedis();
 		try {
-			Cache cache = Redis.use();
-			cache.getJedis().hset("purchasecart:"+userid, goodsid+"", amount.setScale(2, RoundingMode.CEILING).toString()
+			jedis.hset("purchasecart:"+userid, goodsid+"", amount.setScale(2, RoundingMode.CEILING).toString()
 					+"|"+unitPrice.setScale(2, RoundingMode.CEILING).toString()+"|"+remark);
 			return success("成功！！");
 		} catch (Exception e) {
 			e.printStackTrace();
 			return fail("失败！！");
+		} finally {
+			jedis.close();
 		}
 	}
 	
@@ -193,12 +199,15 @@ public class PurchaseAction extends BaseAction {
 	public String cartdel(HttpSession session, Integer goodsid) {
 		Cache cache = Redis.use();
 		String key = "purchasecart:"+super.getUserId(session);
+		Jedis jedis = cache.getJedis();
 		try {
-			cache.getJedis().hdel(key, goodsid+"");
+			jedis.hdel(key, goodsid+"");
 			return success("删除成功！！");
 		} catch (Exception e) {
 			e.printStackTrace();
 			return fail("删除失败！！");
+		} finally {
+			jedis.close();
 		}
 	}
 	
@@ -209,6 +218,35 @@ public class PurchaseAction extends BaseAction {
 		List<Goods> list = goodsMapper.selectByExample(example);
 		model.addAttribute("goods", list);
 		return "purchase/search";
+	}
+	
+	@ResponseBody
+	@RequestMapping("/cartcheck")
+	public String cartcheck(HttpSession session, Integer goodsid) {
+		Cache cache = Redis.use();
+		Jedis jedis = cache.getJedis();
+		String key = "purchasecart:"+super.getUserId(session);
+		String result = null;
+		try {
+			result = jedis.hget(key, goodsid+"");
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			jedis.close();
+		}
+		if(StringUtils.isNotBlank(result)) {
+			String[] array = result.split("\\|");
+			JSONObject json = new JSONObject();
+			String amount = array[0];
+			String unitPrice = array[1];
+			String remark = array[2];
+			json.put("amount", amount);
+			json.put("unitprice", unitPrice);
+			json.put("remark", remark);
+			return success(null, json.toString());
+		} else {
+			return fail(null);
+		}
 	}
 	
 }

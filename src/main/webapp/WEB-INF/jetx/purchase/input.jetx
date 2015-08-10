@@ -258,41 +258,58 @@
 </body>
 <script src="/js/fenlei_slidedoor.js" ></script>
 <script>
-$('#setbtn').click(function(){
-	$('#menu').show();
-	$('.menu').slideToggle(500);
-	$('.toumingbg,.menu a').click(function(){
-		$('#menu').hide();
-		$('.menu').hide();
+
+$(function() {
+	$('#setbtn').click(function(){
+		$('#menu').show();
+		$('.menu').slideToggle(500);
+		$('.toumingbg,.menu a').click(function(){
+			$('#menu').hide();
+			$('.menu').hide();
+			});
 		});
-	});
-$('.main-top i').click(function(){
-	$('.main .tanchu1').slideToggle(500);
-	$('.main-top .p-t').toggle();
-	$('.main-top .p-f').toggleClass('p-f1');
-	$('.main-top i').toggleClass('i1');
+	$('.main-top i').click(function(){
+		$('.main .tanchu1').slideToggle(500);
+		$('.main-top .p-t').toggle();
+		$('.main-top .p-f').toggleClass('p-f1');
+		$('.main-top i').toggleClass('i1');
+		});	
+	$('.main-top p a').click(function(){
+		$(this).addClass('cur');
+		$(this).siblings().removeClass('cur');
+		$('.main .tanchu1').hide();
+		$('.main-top .p-t').hide();
+		$('.main-top .p-f1').removeClass('p-f1');
+		$('.main-top i').removeClass('i1');
+		});		
+	$(document).on('click', '.sec a', function(){
+		var a = $(this).parent().parent().prev().find('a')
+		var gname = a.text()
+		var gid = a.attr('goodsid')
+		$.ajax({
+			url:'/purchase/cartcheck?goodsid='+gid,
+			async:false,
+			dataType:'json'
+		}).done(function(data) {
+			if(data.isSuccess) {
+				var obj = eval('('+data.obj+')')
+				$('.luruform').find('input[name="amount"]').val(obj.amount)
+				$('.luruform').find('input[name="unitPrice"]').val(obj.unitprice)
+				$('.luruform').find('input[name="beizhu"]').val(obj.beizhu)
+			} else {
+				$('.luruform').find('input[name="amount"]').val('')
+				$('.luruform').find('input[name="unitPrice"]').val('')
+				$('.luruform').find('input[name="beizhu"]').val('')
+			}
+		})
+		$('#xuanze').show();
+		$('.luruform').find('p').eq(0).text('商品：'+gname)
+		$('.luruform').find('input[name="goodsid"]').val(gid)
+		$('.toumingbg,.luruform p a').click(function(){
+			$('#xuanze').hide();
+		});
 	});	
-$('.main-top p a').click(function(){
-	$(this).addClass('cur');
-	$(this).siblings().removeClass('cur');
-	$('.main .tanchu1').hide();
-	$('.main-top .p-t').hide();
-	$('.main-top .p-f1').removeClass('p-f1');
-	$('.main-top i').removeClass('i1');
-	});		
-$(document).on('click', '.sec a', function(){
-	$('#xuanze').show();
-	var a = $(this).parent().parent().prev().find('a')
-	var gname = a.text()
-	var gid = a.attr('goodsid')
-	$('.luruform').find('p').eq(0).text('商品：'+gname)
-	$('.luruform').find('input[name="goodsid"]').val(gid)
-	$('.luruform').find('input[name="amount"]').val('')
-	$('.luruform').find('input[name="unitPrice"]').val('')
-	$('.luruform').find('input[name="beizhu"]').val('')
-	$('.toumingbg,.luruform p a').click(function(){
-		$('#xuanze').hide();
-	});
-});	
+})
+
 </script>
 </html>
