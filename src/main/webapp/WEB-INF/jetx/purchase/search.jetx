@@ -85,7 +85,7 @@
 	     <a href="/user">个人中心</a>
 	     <a href="/purchase/input">账目录入</a>
 	     <a href="/settle/list">结算中心</a>
-	     <a href="javascript:alert('开发中，敬请期待')">农贸均价</a>  
+	     <a href="/price/search">农贸均价</a>  
 	</div>
 </div>
 <header>
@@ -123,10 +123,10 @@
 <footer>
     <div class="tongji">共 <span class="font16">9</span> 种商品，总价 ￥<span>2342.23</span><a href="/purchase/cart">确认</a></div>
     <div class="daohang">
-      <a href="#" class="nav5">指数趋势</a>
-      <a href="#" class="nav6">账目预警</a>
-      <a href="#" class="nav3">采购管理</a>
-      <a href="#" class="nav7">资讯信息</a>    
+      <a href="/index/list" class="nav5">指数趋势</a>
+      <a href="/index/warn" class="nav6">账目预警</a>
+      <a href="/cat" class="nav3">采购管理</a>
+      <a href="javascript:alert('开发中，敬请期待')" class="nav7">资讯信息</a>    
     </div>
 </footer>
 <!--选择弹出框begin-->

@@ -45,9 +45,9 @@
   <h2><b>我的订单</b><span><a href="/order/list">全部订单</a></span></h2>
   <div class="nav-list">
      <a href="/settle/list" class="js">待结算</a>
-     <a href="#" class="sh">待收货</a>
-     <a href="#" class="th">已完成</a>
-     <a href="#" class="pj">待评价</a>     
+     <a href="/order/list?type=2" class="sh">待收货</a>
+     <a href="/order/list?type=3" class="th">已完成</a>
+     <a href="javascript:alert('开发中，敬请期待')" class="pj">待评价</a>     
   </div>
 </div>
 <div class="box">
