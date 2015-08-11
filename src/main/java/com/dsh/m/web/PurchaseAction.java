@@ -58,7 +58,6 @@ public class PurchaseAction extends BaseAction {
 		if(purchaseid==null) {
 			@SuppressWarnings("rawtypes")
 			List list = purchaseDetailMapper.getPurchaseDetailByUserId(super.getUserId(session));
-			System.out.println(list);
 			model.addAttribute("details", list);
 		} else {
 			example.createCriteria().andPurchaseidEqualTo(purchaseid);
