@@ -17,8 +17,13 @@
 			url:'/purchase/loadCart',
 			dataType:'json'
 		}).done(function(data) {
-			$('.tongji').find('span').eq(0).text(data.num)
-			$('.tongji').find('span').eq(1).text(data.total)
+			if(data.num == 0){
+				$('.tongji').attr("style","display:none;");
+			}else{
+				$('.tongji').attr("style","display:block;")
+				$('.tongji').find('span').eq(0).text(data.num)
+				$('.tongji').find('span').eq(1).text(data.total)
+			}
 		})
 		
 		$('input[name="amount"], input[name="unitPrice"]').blur(function() {
