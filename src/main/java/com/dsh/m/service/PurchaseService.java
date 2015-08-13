@@ -4,6 +4,8 @@ import java.math.BigDecimal;
 import java.util.Date;
 import java.util.Set;
 
+import jodd.datetime.JDateTime;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -49,6 +51,7 @@ public class PurchaseService {
 			}else{
 				detail.setBeizhu(strs[2]);
 			}
+			detail.setDealTime(new JDateTime(strs[3], "YYYY-MM-DD").convertToDate());
 			detail.setGoodsid(Integer.parseInt(k));
 			detail.setOrderid(ordernum);
 			detail.setUnitPrice(unitPrice);

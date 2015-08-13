@@ -122,12 +122,13 @@ public class PurchaseAction extends BaseAction {
 		BigDecimal amount = new BigDecimal(request.getParameter("amount"));
 		BigDecimal unitPrice = new BigDecimal(request.getParameter("unitPrice"));
 		String remark = request.getParameter("beizhu");
+		String dealTime = request.getParameter("dealTime");
 		Integer userid = super.getUserId(request.getSession());
 		Cache cache = Redis.use();
 		Jedis jedis = cache.getJedis();
 		try {
 			jedis.hset("purchasecart:"+userid, goodsid+"", amount.setScale(2, RoundingMode.CEILING).toString()
-					+"|"+unitPrice.setScale(2, RoundingMode.CEILING).toString()+"|"+remark);
+					+"|"+unitPrice.setScale(2, RoundingMode.CEILING).toString()+"|"+remark+"|"+dealTime);
 			return success("成功！！");
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -239,9 +240,11 @@ public class PurchaseAction extends BaseAction {
 			String amount = array[0];
 			String unitPrice = array[1];
 			String remark = array[2];
+			String dealTime = array[3];
 			json.put("amount", amount);
 			json.put("unitprice", unitPrice);
 			json.put("remark", remark);
+			json.put("dealTime", dealTime);
 			return success(null, json.toString());
 		} else {
 			return fail(null);

@@ -255,6 +255,7 @@
     	<p>商品：大白菜</p>
      	<p>数量：<input name="amount" type="text"> 单价：<input name="unitPrice" type="text"></p>
      	<p>备注：<input name="beizhu" type="text" class="beizhu"></p>
+     	<p>时间：<input name="dealTime" type="date" class="beizhu"></p>
      	<p><a href="javascript:;" class="btn" onclick='confirm()'>确 认</a></p>
 	</form>
 </div>
@@ -301,10 +302,12 @@ $(function() {
 				$('.luruform').find('input[name="amount"]').val(obj.amount)
 				$('.luruform').find('input[name="unitPrice"]').val(obj.unitprice)
 				$('.luruform').find('input[name="beizhu"]').val(obj.beizhu)
+				$('.luruform').find('input[name="dealTime"]').val(obj.dealTime)
 			} else {
 				$('.luruform').find('input[name="amount"]').val('')
 				$('.luruform').find('input[name="unitPrice"]').val('')
 				$('.luruform').find('input[name="beizhu"]').val('')
+				$('.luruform').find('input[name="dealTime"]').val('')
 			}
 		})
 		$('#xuanze').show();
