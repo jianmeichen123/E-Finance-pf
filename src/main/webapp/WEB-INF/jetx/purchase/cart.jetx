@@ -75,7 +75,7 @@
 						<b><a href="#">${product.gname }</a></b>单位：${product.unit }<br>${product.beizhu }
 					</div>
 					<div class="dd-right">
-						<p class="edit"><a href="javascript:;" goodsid="${good.goodsid }">修改</a></p>
+						<p class="edit"><a href="javascript:;" goodsid="${good.goodsid }" beizhu="${good.remark }">修改</a></p>
 						<p class="del"><a href="javascript:;" onclick='del("${good.goodsid}")'>删除</a></p>
 					</div>               
 				</dd>
@@ -104,6 +104,8 @@
      <p>商品：大白菜</p>
      <input type="hidden" name="goodsid">
      <p>数量：<input name="amount" type="text"> 单价：<input name="unitPrice" type="text"></p>
+     <p>备注：<input name="beizhu" type="text" class="beizhu"></p>
+     <p>时间：<input name="dealTime" type="date" class="beizhu"></p>
      <p><a href="javascript:;" class="btn">确 认</a></p>
     </form>
 </div>
@@ -134,6 +136,7 @@ $('#tijiao').click(function(){
 $('.edit a').click(function(){
 	$('#edit').show();
 	var goodsid = $(this).attr('goodsid')
+	var beizhu = $(this).attr('beizhu')
 	var dd = $(this).parent().parent().parent().next()
 	var unitprice = dd.find('span').eq(0).text()
 	var amount = dd.find('span').eq(1).text()
@@ -142,7 +145,13 @@ $('.edit a').click(function(){
 	$('.luruform').find('input[name="goodsid"]').val(goodsid)
 	$('.luruform').find('input[name="amount"]').val(amount)
 	$('.luruform').find('input[name="unitPrice"]').val(unitprice)
+	$('.luruform').find('input[name="beizhu"]').val(beizhu)
 	$('.luruform form p a').click(function(){
+		var dealTime = $('.luruform').find('input[name="dealTime"]').val()
+		if(dealTime=='') {
+			alert('请录入时间！！')
+			return
+		}
 		$.ajax({
 			url:'/purchase/confirmDetail',
 			type:'post',

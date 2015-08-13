@@ -122,13 +122,17 @@ public class PurchaseAction extends BaseAction {
 		BigDecimal amount = new BigDecimal(request.getParameter("amount"));
 		BigDecimal unitPrice = new BigDecimal(request.getParameter("unitPrice"));
 		String remark = request.getParameter("beizhu");
+		System.err.println(remark);
 		String dealTime = request.getParameter("dealTime");
 		Integer userid = super.getUserId(request.getSession());
 		Cache cache = Redis.use();
 		Jedis jedis = cache.getJedis();
 		try {
-			jedis.hset("purchasecart:"+userid, goodsid+"", amount.setScale(2, RoundingMode.CEILING).toString()
-					+"|"+unitPrice.setScale(2, RoundingMode.CEILING).toString()+"|"+remark+"|"+dealTime);
+			String content = amount.setScale(2, RoundingMode.CEILING).toString()
+					+"|"+unitPrice.setScale(2, RoundingMode.CEILING).toString()+"|"+remark+"|";
+			if(StringUtils.isNotBlank(dealTime))
+				content += dealTime;
+			jedis.hset("purchasecart:"+userid, goodsid+"", content);
 			return success("成功！！");
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -180,7 +184,7 @@ public class PurchaseAction extends BaseAction {
 		for(String k:keys) {
 			JSONObject json = new JSONObject();
 			String text = cache.hget(key, k);
-			String[] strs = text.split("\\|");
+			String[] strs = text.split("\\|", -1);
 			BigDecimal amount = new BigDecimal(strs[0]);
 			BigDecimal unitPrice = new BigDecimal(strs[1]);
 			BigDecimal total = amount.multiply(unitPrice);
@@ -188,6 +192,7 @@ public class PurchaseAction extends BaseAction {
 			json.put("amount", amount.setScale(2, RoundingMode.CEILING).toString());
 			json.put("unitprice", unitPrice.setScale(2, RoundingMode.CEILING).toString());
 			json.put("total", total.setScale(2, RoundingMode.CEILING).toString());
+			json.put("remark", strs[2]);
 			array.add(json);
 		}
 		model.addAttribute("goods", array);
@@ -240,11 +245,9 @@ public class PurchaseAction extends BaseAction {
 			String amount = array[0];
 			String unitPrice = array[1];
 			String remark = array[2];
-			String dealTime = array[3];
 			json.put("amount", amount);
 			json.put("unitprice", unitPrice);
 			json.put("remark", remark);
-			json.put("dealTime", dealTime);
 			return success(null, json.toString());
 		} else {
 			return fail(null);

@@ -4,6 +4,7 @@ import java.math.BigDecimal;
 import java.util.Date;
 import java.util.Set;
 
+import jetbrick.util.StringUtils;
 import jodd.datetime.JDateTime;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,7 +41,8 @@ public class PurchaseService {
 		Set<String> keys = cache.hkeys(key);
 		for(String k:keys) {
 			String text = cache.hget(key, k);
-			String[] strs = text.split("\\|");
+			String[] strs = text.split("\\|", -1);
+			System.err.println(strs.length);
 			BigDecimal amount = new BigDecimal(strs[0]);
 			BigDecimal unitPrice = new BigDecimal(strs[1]);
 			BigDecimal totalPrice = amount.multiply(unitPrice);
@@ -51,7 +53,9 @@ public class PurchaseService {
 			}else{
 				detail.setBeizhu(strs[2]);
 			}
-			detail.setDealTime(new JDateTime(strs[3], "YYYY-MM-DD").convertToDate());
+			if(StringUtils.isNotBlank(strs[3])) {
+				detail.setDealTime(new JDateTime(strs[3], "YYYY-MM-DD").convertToDate());
+			}
 			detail.setGoodsid(Integer.parseInt(k));
 			detail.setOrderid(ordernum);
 			detail.setUnitPrice(unitPrice);
