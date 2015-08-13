@@ -28,7 +28,7 @@ public class PurchaseService {
 	private PurchaseDetailMapper purchaseDetailMapper;
 	
 	@Transactional
-	public Integer savePurchase(Integer userid) {
+	public Integer savePurchase(Integer userid, String dealTime) {
 		Purchase purchase = new Purchase();
 		String ordernum = OrderUtil.generateOrderNo();
 		purchase.setOrderid(ordernum);
@@ -42,7 +42,6 @@ public class PurchaseService {
 		for(String k:keys) {
 			String text = cache.hget(key, k);
 			String[] strs = text.split("\\|", -1);
-			System.err.println(strs.length);
 			BigDecimal amount = new BigDecimal(strs[0]);
 			BigDecimal unitPrice = new BigDecimal(strs[1]);
 			BigDecimal totalPrice = amount.multiply(unitPrice);
@@ -53,9 +52,7 @@ public class PurchaseService {
 			}else{
 				detail.setBeizhu(strs[2]);
 			}
-			if(StringUtils.isNotBlank(strs[3])) {
-				detail.setDealTime(new JDateTime(strs[3], "YYYY-MM-DD").convertToDate());
-			}
+			detail.setDealTime(new JDateTime(dealTime, "YYYY-MM-DD").convertToDate());
 			detail.setGoodsid(Integer.parseInt(k));
 			detail.setOrderid(ordernum);
 			detail.setUnitPrice(unitPrice);

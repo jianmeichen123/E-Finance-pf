@@ -60,6 +60,7 @@
 <div class="main">  
 	<div class="pro-list">
 		<div class="dis"  id="tbc_01">
+			时间：<input type="date">
 			#for(good : goods)
 			#set(product = getProductById(good.goodsid.asInt()))
 			<dl>
@@ -105,7 +106,6 @@
      <input type="hidden" name="goodsid">
      <p>数量：<input name="amount" type="text"> 单价：<input name="unitPrice" type="text"></p>
      <p>备注：<input name="beizhu" type="text" class="beizhu"></p>
-     <p>时间：<input name="dealTime" type="date" class="beizhu"></p>
      <p><a href="javascript:;" class="btn">确 认</a></p>
     </form>
 </div>
@@ -124,8 +124,13 @@
 <script src="/js/fenlei_slidedoor.js" ></script>
 <script>
 $('#tijiao').click(function(){
+	var dealTime = $('input[type="date"]').val()
+	if(dealTime=='') {
+		alert('请录入时间！！')
+		return
+	}
 	$.ajax({
-		url:'/purchase/confirmPurchase',
+		url:'/purchase/confirmPurchase?dealTime='+dealTime,
 		dataType:'json'
 	}).done(function(data) {
 		alert(data.msg)
@@ -147,11 +152,7 @@ $('.edit a').click(function(){
 	$('.luruform').find('input[name="unitPrice"]').val(unitprice)
 	$('.luruform').find('input[name="beizhu"]').val(beizhu)
 	$('.luruform form p a').click(function(){
-		var dealTime = $('.luruform').find('input[name="dealTime"]').val()
-		if(dealTime=='') {
-			alert('请录入时间！！')
-			return
-		}
+		
 		$.ajax({
 			url:'/purchase/confirmDetail',
 			type:'post',

@@ -122,16 +122,12 @@ public class PurchaseAction extends BaseAction {
 		BigDecimal amount = new BigDecimal(request.getParameter("amount"));
 		BigDecimal unitPrice = new BigDecimal(request.getParameter("unitPrice"));
 		String remark = request.getParameter("beizhu");
-		System.err.println(remark);
-		String dealTime = request.getParameter("dealTime");
 		Integer userid = super.getUserId(request.getSession());
 		Cache cache = Redis.use();
 		Jedis jedis = cache.getJedis();
 		try {
 			String content = amount.setScale(2, RoundingMode.CEILING).toString()
-					+"|"+unitPrice.setScale(2, RoundingMode.CEILING).toString()+"|"+remark+"|";
-			if(StringUtils.isNotBlank(dealTime))
-				content += dealTime;
+					+"|"+unitPrice.setScale(2, RoundingMode.CEILING).toString()+"|"+remark;
 			jedis.hset("purchasecart:"+userid, goodsid+"", content);
 			return success("成功！！");
 		} catch (Exception e) {
@@ -144,9 +140,9 @@ public class PurchaseAction extends BaseAction {
 	
 	@ResponseBody
 	@RequestMapping("/confirmPurchase")
-	public String confirmPurchase(HttpSession session) {
+	public String confirmPurchase(HttpSession session, String dealTime) {
 		try {
-			Integer purchaseid = purchaseService.savePurchase(super.getUserId(session));
+			Integer purchaseid = purchaseService.savePurchase(super.getUserId(session), dealTime);
 			return success("成功！！", purchaseid);
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -240,7 +236,7 @@ public class PurchaseAction extends BaseAction {
 			jedis.close();
 		}
 		if(StringUtils.isNotBlank(result)) {
-			String[] array = result.split("\\|");
+			String[] array = result.split("\\|", -1);
 			JSONObject json = new JSONObject();
 			String amount = array[0];
 			String unitPrice = array[1];
