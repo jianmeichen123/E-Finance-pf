@@ -288,6 +288,6 @@
   </update>
   
   <select id="fuzzyGetGoodsWithPrice" parameterType="string" resultType="map">
-  	select * from goods a left join goods_price b on a.goodsid = b.goodsid where a.gname like #{gname}
+  	select * from goods a left join goods_price b on a.goodsid = b.goodsid where a.gname like #{gname} and a.is_sale='1'
   </select>
 </mapper>
