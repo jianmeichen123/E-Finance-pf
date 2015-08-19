@@ -38,11 +38,13 @@
 	function refresh() {
 		$('#tbc_01').load('/cart/refresh', function() {
 			var count = $('#tbc_01').find('dl').size()
-			if(count==0)
+			if(count==0){
 				$('.tongji').hide()
-			else {
+				$('#remark').hide()
+			}else {
 				$('#product-count').text($('#tbc_01').find('dl').size())
 				$('.tongji').show()
+				$('#remark').show()
 			}
 		})
 	}
@@ -66,10 +68,12 @@
 	
 	$(function() {
 		var count = $('#tbc_01').find('dl').size()
-		if(count==0)
+		if(count==0){
 			$('.tongji').hide()
-		else {
+			$('#remark').hide()
+		}else {
 			$('.tongji').show()
+			$('#remark').show()
 		}
 	})
 </script>
@@ -94,7 +98,9 @@
 	<div class="pro-list">
 		<div class="dis"  id="tbc_01">
 			#include("cart.jetx")
+			<div id="remark" >
 			订单备注：<textarea id='orderRemark'></textarea>
+			</div>
 		</div>
 	</div>
 </div>
