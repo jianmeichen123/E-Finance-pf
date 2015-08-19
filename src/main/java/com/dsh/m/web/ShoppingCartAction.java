@@ -3,6 +3,7 @@ package com.dsh.m.web;
 import java.util.List;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.apache.commons.collections.CollectionUtils;
@@ -80,8 +81,8 @@ public class ShoppingCartAction extends BaseAction {
 	
 	@ResponseBody
 	@RequestMapping("/submit")
-	public String submit(HttpSession session) {
-		Integer userId = getUserId(session);
+	public String submit(HttpServletRequest request) {
+		Integer userId = getUserId(request.getSession());
 		Integer supplyid = null;
 		try {
 			SupplyCustomerExample example = new SupplyCustomerExample();
@@ -92,6 +93,7 @@ public class ShoppingCartAction extends BaseAction {
 			}
 			supplyid = list.get(0).getSupplyid();
 			ThreadLocalUtil.put("supplyid", supplyid);
+			ThreadLocalUtil.put("remark", request.getParameter("remark"));
 			JSONArray array = shoppingCartService.loadUserCart(userId);
 			Purchaseorder order = orderService.createOrder(userId, array);
 			JSONObject data = new JSONObject();

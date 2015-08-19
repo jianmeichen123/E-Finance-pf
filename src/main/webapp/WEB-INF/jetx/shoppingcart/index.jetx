@@ -54,6 +54,8 @@
 		}
 		$.ajax({
 			url:'/cart/submit',
+			type:'post',
+			data:{remark:$('#orderRemark').val()},
 			dataType:'json'
 		}).done(function(data){
 			alert(data.msg)
@@ -92,6 +94,7 @@
 	<div class="pro-list">
 		<div class="dis"  id="tbc_01">
 			#include("cart.jetx")
+			订单备注：<textarea id='orderRemark'></textarea>
 		</div>
 	</div>
 </div>

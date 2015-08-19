@@ -33,6 +33,7 @@
    <!-- <table tableName="goods" ></table> -->
    <!-- <table tableName="purchase"></table>
    <table tableName="purchase_detail"></table> -->
-   <table tableName="goods_price"></table>
+   <!-- <table tableName="goods_price"></table> -->
+   <table tableName="purchaseorder" ></table>
   </context>
 </generatorConfiguration>

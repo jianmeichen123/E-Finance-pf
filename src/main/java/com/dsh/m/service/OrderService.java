@@ -80,6 +80,10 @@ public class OrderService {
 		
 		Object obj  = ThreadLocalUtil.get("supplyid");
 		order.setSupplyid(Lang.toInt(obj));
+		
+		obj = ThreadLocalUtil.get("remark");
+		order.setRemark(Lang.toString(obj));
+		
 		purchaseorderMapper.insertSelective(order);
 		@SuppressWarnings("rawtypes")
 		Iterator iter = products.iterator();
