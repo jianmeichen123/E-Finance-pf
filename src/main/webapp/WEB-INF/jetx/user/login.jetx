@@ -65,11 +65,11 @@
 
 
 <footer>
-    <div class="daohang2">
+    <!-- <div class="daohang2">
       <a href="#" class="nav1">QQ登录</a>
       <a href="#" class="nav2">微信登录</a>
       <a href="#" class="nav3">微博登录</a>   
-    </div>
+    </div> -->
 </footer>
 
 </body>
