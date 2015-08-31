@@ -60,8 +60,8 @@
 	</div>
 	<div class="send-box">
 		<ul>
-          <li>配送时间：${deliver.delivertime }&nbsp;&nbsp;&nbsp; 配送人员：习大大</li>
-          <li>联系电话：15321971787</li>
+          <li>配送时间：${deliver.delivertime }&nbsp;&nbsp;&nbsp; 配送人员：</li>
+          <li>联系电话：</li>
         </ul>
 	</div>
 	<div class="dingdan-list">
