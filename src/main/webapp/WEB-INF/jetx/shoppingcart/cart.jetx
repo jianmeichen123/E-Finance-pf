@@ -25,7 +25,7 @@
 	</dd>
 	<dd class="count">数量：${good.num }</dd>
 </dl>
+#end
 <div id="remark" >
 订单备注：<textarea id='orderRemark'></textarea>
 </div>
-#end
