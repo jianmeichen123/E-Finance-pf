@@ -96,6 +96,7 @@ public class OrderService {
 			child.setGoodsid(goods.getGoodsid());
 			child.setAmount(new BigDecimal(num));
 			child.setRealAmount(new BigDecimal(num));
+			child.setCreateuser(userid);
 			purchaseorderChildMapper.insertSelective(child);
 		}
 		
