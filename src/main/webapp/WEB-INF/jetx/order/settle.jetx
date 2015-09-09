@@ -62,7 +62,7 @@
                     <tr>
                     	<td>${order.childcount }</td>
                     	<td>￥${order.totalprice.format() }</td>
-                    	<td>￥${sub(order.totalprice, order.settleprice).format() }</td>
+                    	<td>￥${returnprice.format() }</td>
                     	<td>￥${order.settleprice.format() }</td>
                     </tr>
                  </tbody>

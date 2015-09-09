@@ -1,5 +1,6 @@
 package com.dsh.m.web;
 
+import java.math.BigDecimal;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
@@ -114,8 +115,13 @@ public class OrderAction extends BaseAction {
 				json.put("name", supply.getUsername());
 			}
 		}
+		BigDecimal returnprice = order.getTotalprice().subtract(order.getSettleprice());
+		if(returnprice.compareTo(BigDecimal.ZERO)<=0){
+			returnprice = new BigDecimal(0);
+		}
 		model.addAttribute("details", details);
 		model.addAttribute("order", order);
+		model.addAttribute("returnprice", returnprice);
 		model.addAttribute("logs", array);
 		if(CollectionUtils.isNotEmpty(scs))
 			model.addAttribute("deliver", scs.get(0));
