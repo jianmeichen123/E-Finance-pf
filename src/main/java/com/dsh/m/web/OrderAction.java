@@ -115,7 +115,10 @@ public class OrderAction extends BaseAction {
 				json.put("name", supply.getUsername());
 			}
 		}
-		BigDecimal returnprice = order.getTotalprice().subtract(order.getSettleprice());
+		BigDecimal returnprice = new BigDecimal(0);
+		if(order.getTotalprice() != null && order.getSettleprice() != null){
+			returnprice = order.getTotalprice().subtract(order.getSettleprice());
+		}
 		if(returnprice.compareTo(BigDecimal.ZERO)<=0){
 			returnprice = new BigDecimal(0);
 		}
