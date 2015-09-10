@@ -122,6 +122,14 @@
 	<div class="dingdan-list bottom0">
 		<ul>
 			<li class="noborderbottom"><span class="zs-l">协议配送指数</span> <span class="zs-r" >${deliver.exponent.format() }PMI</span></li>
+			#if(order.balancestate == 1)
+				#set(indexorder = getIndexOrderByOrderId(order.id))
+       			<li class="noborderbottom"><span class="zs-l">订单指数</span> <span class="zs-r" >${indexorder==null?"--":multiplyIndex(indexorder.t1).format() }PMI</span></li>
+       			<li class="noborderbottom"><span class="zs-l">订单总金额</span> <span class="zs-r" >￥${order.totalprice.format() }</span></li>
+       			<li class="noborderbottom"><span class="zs-l">实际结算金额</span> <span class="zs-r" >￥${order.settleprice.format() }</span></li>
+       			<li class="noborderbottom"><span class="zs-l">退货金额</span> <span class="zs-r" >￥${returnprice.format() }</span></li>
+       			<li class="noborderbottom"><span class="zs-l">协议返款</span> <span class="zs-r" >￥${indexorder==null?"--":indexorder.t17.format() }</span></li>
+			#end
 			<li class="noborderbottom">
 				#if(order.ordertype == 1)
 					<a href="javascript:;" class="chakan-btn" onclick='cancel("${order.id}")'>取消订单</a>
