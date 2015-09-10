@@ -9,7 +9,7 @@
 			<td>${getIndexOrderByOrderId(child.orderid)==null?"--":multiplyIndex(getIndexOrderByOrderId(child.orderid).t1).format() }PMI</td>
 			<td>￥${child.realamount==null?"--":child.realamount.format() }</td>
 			#set(indexorder = getIndexOrderByOrderId(child.orderid))
-			<td class="color_black">￥${indexorder==null?"--":indexorder.t17.format() }</td>
+			<td class="color_black">￥${indexorder==null?"--":numHandle(indexorder.t17).format() }</td>
 			<td>
 				#if(child.order.balancestate==0)
 				<i class="state1">&nbsp;</i>

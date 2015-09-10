@@ -67,5 +67,13 @@ public class IndexFunctions {
 	public static void main(String[] args) {
 		getColorByRate(new BigDecimal("0.01"));
 	}
+	
+	public static BigDecimal numHandle(BigDecimal org) {
+		if(org.compareTo(new BigDecimal(0))==-1){
+			return new BigDecimal(0);
+		}else{
+			return org;
+		}
+	}
 
 }
