@@ -2,7 +2,11 @@ package com.dsh.m.dao;
 
 import com.dsh.m.model.IndexOrder;
 import com.dsh.m.model.IndexOrderExample;
+
+import java.math.BigDecimal;
 import java.util.List;
+import java.util.Map;
+
 import org.apache.ibatis.annotations.Param;
 
 public interface IndexOrderMapper {
@@ -74,4 +78,6 @@ public interface IndexOrderMapper {
 	 * @mbggenerated  Tue Jun 30 16:53:08 CST 2015
 	 */
 	int updateByPrimaryKey(IndexOrder record);
+	
+	BigDecimal getReturnMoney(Integer settleid);
 }

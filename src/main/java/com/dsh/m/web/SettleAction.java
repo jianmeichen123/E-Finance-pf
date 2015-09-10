@@ -1,5 +1,6 @@
 package com.dsh.m.web;
 
+import java.math.BigDecimal;
 import java.util.Iterator;
 import java.util.List;
 
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
+import com.dsh.m.dao.IndexOrderMapper;
 import com.dsh.m.dao.PurchaseorderMapper;
 import com.dsh.m.dao.SettleaccountMapper;
 import com.dsh.m.dao.SettleaccountchildMapper;
@@ -36,6 +38,8 @@ public class SettleAction extends BaseAction {
 	private PurchaseorderMapper purchaseorderMapper;
 	@Autowired
 	private SettleService settleService;
+	@Autowired
+	private IndexOrderMapper indexOrderMapper;
 	
 	@RequestMapping("/list")
 	public String list(HttpSession session, ModelMap model) {
@@ -43,6 +47,14 @@ public class SettleAction extends BaseAction {
 		SettleaccountExample example = new SettleaccountExample();
 		example.createCriteria().andCustomeridEqualTo(userid);
 		List<Settleaccount> settles = settleaccountMapper.selectByExample(example);
+		for (int i = 0; i < settles.size(); i++) {
+			BigDecimal returnMoney = indexOrderMapper.getReturnMoney(settles.get(i).getId());
+			if(returnMoney == null){
+				settles.get(i).setReturnmoney(new BigDecimal(0));
+			}else{
+				settles.get(i).setReturnmoney(returnMoney);
+			}
+		}
 		model.addAttribute("settles", settles);
 		return "settle/list";
 	}

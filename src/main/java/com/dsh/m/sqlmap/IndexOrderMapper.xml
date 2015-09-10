@@ -975,4 +975,7 @@
       dr = #{dr,jdbcType=CHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
+  <select id="getReturnMoney" parameterType="java.lang.Integer" resultType="java.math.BigDecimal">
+  	select sum(t17) from index_order where orderid in (select orderid from settleaccountchild where settleid=#{settleid}) and t17>0
+  </select>
 </mapper>
