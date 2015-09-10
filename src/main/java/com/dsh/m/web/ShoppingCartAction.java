@@ -96,11 +96,15 @@ public class ShoppingCartAction extends BaseAction {
 			ThreadLocalUtil.put("remark", request.getParameter("remark"));
 			JSONArray array = shoppingCartService.loadUserCart(userId);
 			Purchaseorder order = orderService.createOrder(userId, array);
-			JSONObject data = new JSONObject();
-			data.put("type", 1);
-			data.put("data", order);
-			orderJmsTemplate.convertAndSend(data.toString());
-			return success("订单提交成功，等待供应商处理！！", order.getId());
+			if(order != null && order.getId() != null){
+				JSONObject data = new JSONObject();
+				data.put("type", 1);
+				data.put("data", order);
+				orderJmsTemplate.convertAndSend(data.toString());
+				return success("订单提交成功，等待供应商处理！！", order.getId());
+			}else{
+				return fail("请选择商品！！");
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
 			return fail("提交失败！！");

@@ -68,39 +68,40 @@ public class OrderService {
 //		if(CollectionUtils.isNotEmpty(list)) {
 //			supplyid = list.get(0).getSupplyid();
 //		}
-		
 		Purchaseorder order = new Purchaseorder();
-		order.setOrdernum(OrderUtil.generateOrderNo());
-		order.setCustomerid(userid);
-//		order.setSupplyid(supplyid);
-		order.setOrdertype(OrderStatusEnum.WAIT.getCode());
-		order.setChildcount(products.size());
-		order.setOrdertime(new Date());
-		order.setCreateuser(userid);
-		
-		Object obj  = ThreadLocalUtil.get("supplyid");
-		order.setSupplyid(Lang.toInt(obj));
-		
-		obj = ThreadLocalUtil.get("remark");
-		order.setRemark(Lang.toString(obj));
-		
-		purchaseorderMapper.insertSelective(order);
-		@SuppressWarnings("rawtypes")
-		Iterator iter = products.iterator();
-		while(iter.hasNext()) {
-			JSONObject json = (JSONObject)iter.next();
-			Goods goods = (Goods)json.get("goods");
-			int num = json.getIntValue("num");
-			PurchaseorderChild child = new PurchaseorderChild();
-			child.setOrderid(order.getId());
-			child.setGoodsid(goods.getGoodsid());
-			child.setAmount(new BigDecimal(num));
-			child.setRealAmount(new BigDecimal(num));
-			child.setCreateuser(userid);
-			purchaseorderChildMapper.insertSelective(child);
+		if(products.size() > 0){
+			order.setOrdernum(OrderUtil.generateOrderNo());
+			order.setCustomerid(userid);
+//			order.setSupplyid(supplyid);
+			order.setOrdertype(OrderStatusEnum.WAIT.getCode());
+			order.setChildcount(products.size());
+			order.setOrdertime(new Date());
+			order.setCreateuser(userid);
+			
+			Object obj  = ThreadLocalUtil.get("supplyid");
+			order.setSupplyid(Lang.toInt(obj));
+			
+			obj = ThreadLocalUtil.get("remark");
+			order.setRemark(Lang.toString(obj));
+			
+			purchaseorderMapper.insertSelective(order);
+			@SuppressWarnings("rawtypes")
+			Iterator iter = products.iterator();
+			while(iter.hasNext()) {
+				JSONObject json = (JSONObject)iter.next();
+				Goods goods = (Goods)json.get("goods");
+				int num = json.getIntValue("num");
+				PurchaseorderChild child = new PurchaseorderChild();
+				child.setOrderid(order.getId());
+				child.setGoodsid(goods.getGoodsid());
+				child.setAmount(new BigDecimal(num));
+				child.setRealAmount(new BigDecimal(num));
+				child.setCreateuser(userid);
+				purchaseorderChildMapper.insertSelective(child);
+			}
+			
+			shoppingcartService.clearUserCart(userid);
 		}
-		
-		shoppingcartService.clearUserCart(userid);
 		return order;
 	}
 	
