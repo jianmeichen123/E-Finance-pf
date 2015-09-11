@@ -13,19 +13,22 @@
 <script src="/js/jquery-1.10.1.min.js" ></script>
 <script type="text/javascript">
 	function login() {
-		var loginname = $('#loginname').val()||'',
-		password = $('#password').val()||''
+		var userloginname=$("#loginname").val();    
+	    var userpassword=$("#password").val();    
+	    var storage = window.localStorage; 
 		if(loginname=='')
 			alert('用户名不能为空！！')
 		else if(password=='')
 			alert('密码不能为空！！')
-		else 
+		else {
+	        storage["loginname"] = userloginname;    
+	        storage["password"] =  userpassword;    
 			$.ajax({
 				url:'/user/login',
 				type:'post',
 				data:{
-					loginname:loginname,
-					loginpass:password
+					loginname:userloginname,
+					loginpass:userpassword
 				},
 				dataType:'json'
 			}).done(function(data) {
@@ -39,7 +42,38 @@
 						window.location = '/'
 				}
 			})
+		}
 	}
+	 
+	$(document).ready(function(){    
+		var storage = window.localStorage;    
+		var getloginname = storage["loginname"];    
+		var getpassword = storage["password"];    
+		if(getloginname != undefined && getloginname != "" && getpassword != undefined && getpassword != ""){    
+			// alert('正在自动登录');  
+			$("#loginname").val(getloginname);  
+			$("#password").val(getpassword);    
+			$.ajax({
+				url:'/user/login',
+				type:'post',
+				data:{
+					loginname:getloginname,
+					loginpass:getpassword
+				},
+				dataType:'json'
+			}).done(function(data) {
+				if(!data.isSuccess)
+					alert(data.msg)
+				else {
+					var returnUrl = $('#returnUrl').val()
+					if(returnUrl!='')
+						window.location = returnUrl
+					else
+						window.location = '/'
+				}
+			})
+		}    
+	});    
 </script>
 </head>
 <body>
