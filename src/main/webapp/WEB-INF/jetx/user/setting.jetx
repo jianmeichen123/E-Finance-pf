@@ -46,7 +46,7 @@ function logout() {
    <ul>
       <li><b>收货人</b><span></span></li>
       <li><b>联系电话</b><span></span></li>
-      <li><b>收获地址</b><span class="addr">北京市海淀区西小口世华龙樾9号楼1单元101</span></li>
+      <li><b>收获地址</b><span class="addr"></span></li>
    </ul>
 </div>
 <div class="u-info bottom0">
