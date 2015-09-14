@@ -215,7 +215,7 @@ $(function() {
 <script>
 $('#setbtn').click(function(){
 	$('#menu').show();
-	$('.menu').slideToggle(500);
+	$('.menu').slideToggle(50);
 	$('.toumingbg,.menu a').click(function(){
 		$('#menu').hide();
 		$('.menu').hide();

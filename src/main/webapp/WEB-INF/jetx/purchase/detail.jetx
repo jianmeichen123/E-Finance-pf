@@ -71,7 +71,7 @@
 <script>
 $('#setbtn').click(function(){
 	$('.tanchu').show();
-	$('.menu').slideToggle(500);
+	$('.menu').slideToggle(50);
 	$('.toumingbg,.menu a').click(function(){
 		$('.tanchu').hide();
 		$('.menu').hide();
