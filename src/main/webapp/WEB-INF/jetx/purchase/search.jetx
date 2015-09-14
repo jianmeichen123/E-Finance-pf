@@ -148,12 +148,23 @@
 </div>
 </div>
 <!--选择弹出框end-->
+<!--左上下拉菜单begin-->
+<div class="tanchu" id="menu">
+<div class="toumingbg"></div> 
+<div class="menu">
+     <a href="/user">个人中心</a>
+     <a href="/purchase/input">账目录入</a>
+     <a href="/settle/list">结算中心</a>
+     <a href="/price/search">农贸均价</a>        
+</div>
+</div>
+<!--左上下拉菜单end-->
 </body>
 <script src="/js/fenlei_slidedoor.js" ></script>
 <script type="text/javascript">
 $('#setbtn').click(function(){
 	$('#menu').show();
-	$('.menu').slideToggle(500);
+	$('.menu').slideToggle(50);
 	$('.toumingbg,.menu a').click(function(){
 		$('#menu').hide();
 		$('.menu').hide();
