@@ -70,7 +70,7 @@ public class OrderAction extends BaseAction {
 		type = Lang.toInt(type);
 		switch(type) {
 		case 0:criteria.andOrdertypeNotEqualTo(0);break;
-		case 1:criteria.andBalancestateEqualTo(0);break;
+		case 1:criteria.andBalancestateEqualTo(0).andOrdertypeNotEqualTo(0);break;
 		case 2:criteria.andOrdertypeEqualTo(5);break;
 		case 3:criteria.andOrdertypeEqualTo(6);break;
 		}
