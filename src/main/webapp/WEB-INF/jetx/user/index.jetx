@@ -84,9 +84,6 @@
   <h2><a href="/purchase/input"><b class="b1">账目录入</b><span>&nbsp;</span></a></h2>
 </div>
 <div class="box bottom0">
-  <h2><a href="/purchase/cart"><b class="b1">已选商品</b><span>&nbsp;</span></a></h2>
-</div>
-<div class="box bottom0">
   <h2><a href="/purchase/detail"><b class="b1">历史账目</b><span>&nbsp;</span></a></h2>
 </div>
 <div class="box bottom0">
