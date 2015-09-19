@@ -69,7 +69,9 @@
 	function addBeizhu(id){
 		var beizhu = $("#"+id).val();
 		$.ajax({
-			url:'/cart/addbeizhu?goodsid='+id+'&beizhu='+beizhu,
+			type:'post',
+			data:{goodsid:id,beizhu:beizhu},
+			url:'/cart/addbeizhu',
 			dataType:'json'
 		}).done(function(data){
 			//alert(data.msg)
