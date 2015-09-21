@@ -88,7 +88,8 @@ function search() {
       <a href="/index/list" class="nav5">指数趋势</a>
       <a href="/index/warn" class="nav6">账目预警</a>
       <a href="/cat" class="nav3">采购管理</a>
-      <a href="javascript:alert('开发中，敬请期待')" class="nav7">资讯信息</a>     
+      <!-- <a href="javascript:alert('开发中，敬请期待')" class="nav7">资讯信息</a> -->
+      <a href="/user" class="nav8">个人中心</a>     
     </div>
 </footer>
 <!--选择弹出框begin-->
