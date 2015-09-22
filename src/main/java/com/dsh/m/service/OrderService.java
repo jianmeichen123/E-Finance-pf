@@ -204,6 +204,7 @@ public class OrderService {
 			Date end = new JDateTime(start).addDay(7).convertToDate();
 			sa.setStarttime(start);
 			sa.setEndtime(end);
+			sa.setReturndate(end);
 			sa.setOrdertotalmoney(totalprice);
 			sa.setCreateuser(customerid);
 			settleaccountMapper.insertSelective(sa);
