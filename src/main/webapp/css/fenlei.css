@@ -1,7 +1,7 @@
 @charset "utf-8";
 /* CSS Document */
 /*html5*/
-.main{ position:relative; float:left; width:100%; margin:60px auto 110px auto;}
+.main{ position:relative; float:left; width:100%; margin:40px auto 110px auto;}
 .main-left{ float:left; width:28%; height:100%;}
 .main-left ul{ float:left; width:100%; padding-top:5px;}
 .main-left ul li{  position:relative; float:left;width:95%; margin:5px 0;  margin-left:5%; height:30px; line-height:30px; text-align:center;} 
@@ -11,7 +11,7 @@
 .main-right{ float:left; width:72%; min-height:400px; background-color:#fff;}
 .main-right .tab-list{ float:left; width:100%; }
 .main-right .tab-list a{overflow:hidden; float:left; width:50%; margin:10px 0; text-align:center; line-height:25px; }
-.main-right .tab-list a img{ overflow:hidden; width:70%; height:80px; }
+.main-right .tab-list a img{ overflow:hidden; width:60%; height:80px; }
 
 .pro-list{ float:left; width:100%;background-color:#fff; }
 .pro-list dl{float:left; width:100%; padding:10px 0; border-bottom:1px solid #dfdfdd;  }
@@ -31,7 +31,13 @@
 .pro-list dl dd .dd-right p.edit{margin-top:0px;padding-left:15%;background: url(../images/edit.png) no-repeat 10% 41%; background-size:13px 13px;font-size:12px; }
 .pro-list dl dd .dd-right p.del{padding-left:15%;background: url(../images/fenlei07.png) no-repeat 10% 41%; background-size:13px 13px;font-size:12px; }
 .pro-list dl dd .dd-right p a{ display:block; width:100%;color:#b2b2b2; }
-.pro-list dl dd.count{ width:95%; height:20px; line-height:20px; text-align:right; margin-top:10px; padding-top:5px; padding-right:5%;border-top:1px dashed #dfdfdd; font-size:12px;}
+.pro-list dl dd.count{ width:100%; height:20px; line-height:20px; text-align:right; margin-top:10px; padding-top:5px; border-top:1px dashed #dfdfdd; font-size:12px;}
+.pro-list dl dd.count .note{ width:65%; float:left;text-align: left; padding-left: 5%;}
+.pro-list dl dd.count .count-d{ width:25%; float:right; padding-right: 5%;}
+.pro-list dl dd.count .note input{border:1px solid #bdbdbd;height: 25px; width: 75%;}
+.pro-list #remark{ padding-top:25px; height: 110px; clear: both; padding-left: 5%; padding-right:5%; }
+.pro-list #remark label{ display: block; float: left; height: 100px; line-height: 100px;}
+.pro-list #remark textarea { height: 90px; width: 70%;border:1px solid #bdbdbd;}
 
 .dingdan-list{float:left; width:90%; padding:10px 5% 10px; margin-bottom:10px;background-color:#fff; border-bottom:1px solid #ddd;}
 .zhangmutable{width:96%;padding:0px 2% 10px;}
@@ -50,13 +56,13 @@
 .dingdan-list li .namebg1 em{float:right; font-size:30px;margin-top:-2px; color:#AED968;}
 
 .dingdan-list li.noborderbottom{ border-bottom:none;}
-.dingdan-list li.noborderbottom i{ float:left; margin-top:8px; font-size:30px; color:#AED968;}
+.dingdan-list li.noborderbottom i{ float:left; margin-top:10px; font-size:30px; color:#AED968;}
 .dingdan-list li .chakan-btn,.dingdan-list li .shouhuo-btn{ float:right; width: 80px; height:25px; line-height:25px; margin-top:5px; margin-right:3%;font-size:14px; background-color:#91CC32; text-align:center; border-radius:15px; color:#fff; }
 .dingdan-list li dl dd .chakan-btn1{ position:relative; float:right; width:80%; margin:0 10%; height:18px; line-height:15px; border:1px solid #dfdfdd; text-align:center; border-radius:15px;}
 .dingdan-list li dl dd .chakan-btn1 i{ position:absolute; width:10px; height:6px; left:20%; top:-2px; background:url(../images/zhangmu01.png) no-repeat center; background-size:10px 6px;} 
 .dingdan-list li dl dd .chakan-btn1 span{position:absolute;left:40%;}
 .dingdan-list li .shouhuo-btn{width: 100px;margin-right:1%;}
-.dingdan-list li .dfh,.dingdan-list li .yfh{ float:right; padding-left:18px;background:url(../images/dingdan02.png) no-repeat left center; background-size:30%; color:#f00; }
+.dingdan-list li .dfh,.dingdan-list li .yfh{ float:right; padding-left:25px;background:url(../images/dingdan02.png) no-repeat left center; background-size:22%; color:#f00; }
 .dingdan-list li .yfh{ background:url(../images/dingdan03.png) no-repeat left center;color:#B2B2B2;background-size:30%; }
 .dingdan-list li .role{float:right; cursor:pointer;}
 .dingdan-list li .role i{float:right; margin-top:-2px;}
