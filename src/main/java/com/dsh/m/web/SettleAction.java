@@ -1,6 +1,7 @@
 package com.dsh.m.web;
 
 import java.math.BigDecimal;
+import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 
@@ -74,7 +75,7 @@ public class SettleAction extends BaseAction {
 			Integer orderid = json.getInteger("orderid");
 			Purchaseorder order = purchaseorderMapper.selectByPrimaryKey(orderid);
 			Integer balancestate = order.getBalancestate();
-			if(balancestate==0) cansettle = false;
+			if(balancestate==0 || settle.getEndtime().compareTo(new Date()) < 0) cansettle = false;
 			json.put("order", order);
 		}
 		model.addAttribute("settle", settle);
