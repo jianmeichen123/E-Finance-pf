@@ -72,7 +72,7 @@ public class OrderAction extends BaseAction {
 		case 0:criteria.andOrdertypeNotEqualTo(0);break;
 		case 1:criteria.andBalancestateEqualTo(0).andOrdertypeNotEqualTo(0);break;
 		case 2:criteria.andOrdertypeEqualTo(5);break;
-		case 3:criteria.andOrdertypeEqualTo(6);break;
+		case 3:criteria.andOrdertypeGreaterThanOrEqualTo(6);break;
 		}
 			
 		orderExample.setOrderByClause("ordertime desc");
