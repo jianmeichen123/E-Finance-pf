@@ -66,6 +66,19 @@
 		})
 	}
 	
+	function addBeizhu(id){
+		var beizhu = $("#"+id).val();
+		$.ajax({
+			url:'/cart/addbeizhu?goodsid='+id+'&beizhu='+beizhu,
+			dataType:'json'
+		}).done(function(data){
+			//alert(data.msg)
+			if(data.isSuccess){
+				//refresh()
+			}
+		})
+	}
+	
 	$(function() {
 		var count = $('#tbc_01').find('dl').size()
 		if(count==0){

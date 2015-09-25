@@ -37,6 +37,7 @@ import com.dsh.m.model.SupplyCustomerExample;
 import com.dsh.m.util.Lang;
 import com.dsh.m.util.OrderUtil;
 import com.dsh.m.util.ThreadLocalUtil;
+import com.dsh.m.util.redis.Redis;
 
 @Service
 public class OrderService {
@@ -70,6 +71,7 @@ public class OrderService {
 //		}
 		Purchaseorder order = new Purchaseorder();
 		if(products.size() > 0){
+			String hkey = "shoppingcart:"+userid;
 			order.setOrdernum(OrderUtil.generateOrderNo());
 			order.setCustomerid(userid);
 //			order.setSupplyid(supplyid);
@@ -97,7 +99,10 @@ public class OrderService {
 				child.setAmount(new BigDecimal(num));
 				child.setRealAmount(new BigDecimal(num));
 				child.setCreateuser(userid);
+				String beizhu = Redis.use().get(hkey+goods.getGoodsid());
+				child.setRemark(beizhu);
 				purchaseorderChildMapper.insertSelective(child);
+				shoppingcartService.clearRemark(userid,goods.getGoodsid());
 			}
 			
 			shoppingcartService.clearUserCart(userid);
@@ -161,7 +166,10 @@ public class OrderService {
 				settleid = fsa.getId();
 				BigDecimal orgtotal = fsa.getOrdertotalmoney();
 				BigDecimal orgReal = fsa.getRealamount();
-				BigDecimal orgReturn = fsa.getReturnmoney();
+				BigDecimal orgReturn = new BigDecimal(0);
+				if(fsa.getReturnmoney() != null){
+					orgReturn = fsa.getReturnmoney();
+				}
 				int orgnum = fsa.getOrdernum();
 				Settleaccount newfsa = new Settleaccount();
 				newfsa.setId(settleid);

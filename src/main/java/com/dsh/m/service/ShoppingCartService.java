@@ -29,6 +29,7 @@ public class ShoppingCartService {
 			JSONObject json = new JSONObject();
 			json.put("goods", goods);
 			json.put("num", num);
+			json.put("beizhu", cache.get(hkey+goodsid));
 			array.add(json);
 		}
 		return array;
@@ -43,6 +44,12 @@ public class ShoppingCartService {
 	public void clearUserCart(Integer userid) {
 		Cache cache = Redis.use();
 		String hkey = "shoppingcart:"+userid;
+		cache.del(hkey);
+	}
+	
+	public void clearRemark(Integer userid,Integer goodsid) {
+		Cache cache = Redis.use();
+		String hkey = "shoppingcart:"+userid+goodsid;
 		cache.del(hkey);
 	}
 

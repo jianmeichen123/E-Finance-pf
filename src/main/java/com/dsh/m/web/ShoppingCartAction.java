@@ -111,4 +111,17 @@ public class ShoppingCartAction extends BaseAction {
 		}
 	}
 
+	@ResponseBody
+	@RequestMapping("/addbeizhu")
+	public String addbeizhu(Integer goodsid, String beizhu, HttpSession session) {
+		try {
+			System.out.println("商品ID："+goodsid+"~~~"+"备注："+beizhu);
+			Integer userid = getUserId(session);
+			Redis.use().set("shoppingcart:"+userid + goodsid, beizhu);
+			return success("备注缓存添加成功！！", shoppingCartService.getCartNum(userid));
+		} catch (Exception e) {
+			e.printStackTrace();
+			return fail("失败！！");
+		}
+	} 
 }
