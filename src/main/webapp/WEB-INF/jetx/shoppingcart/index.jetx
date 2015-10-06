@@ -25,14 +25,16 @@
 	}
 	
 	function del(id) {
-		$.ajax({
-			url:'/cart/del?goodsid='+id,
-			dataType:'json'
-		}).done(function(data){
-			alert(data.msg)
-			if(data.isSuccess)
-				refresh()
-		})
+		if(window.confirm("是否删除？")) {
+			$.ajax({
+				url:'/cart/del?goodsid='+id,
+				dataType:'json'
+			}).done(function(data){
+				//alert(data.msg)
+				if(data.isSuccess)
+					refresh()
+			})
+		}
 	}
 	
 	function refresh() {
