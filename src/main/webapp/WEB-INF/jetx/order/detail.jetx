@@ -76,13 +76,13 @@
                     	<th>单位</th>
                     	<th>下单数量</th>
                     	#set(status = order.ordertype)
-                    	#if(status==5||status==6)
+                    	#if(status==5||status==6||status==8||status==9)
                     	<th>配送数量</th>
                     	#end
-                    	#if(status==6)
+                    	#if(status==6||status==8||status==9)
                     	<th>收货数量</th>
                     	#end
-                    	#if(status==2||status==5||status==6)
+                    	#if(status==2||status==5||status==6||status==8||status==9)
                     	<th>单价</th>
                     	#end
                     	<th>小计</th>
@@ -95,19 +95,19 @@
                     	<td>${product.gname }</td>
                     	<td>${product.unit }</td>
                     	<td>${detail.amount.format() }</td>
-                    	#if(status==5||status==6)
+                    	#if(status==5||status==6||status==8||status==9)
                     	<td>${detail.realAmount==null?"--":detail.realAmount.format() }</td>
                     	#end
-                    	#if(status==6)
+                    	#if(status==6||status==8||status==9)
                     	<td>${detail.checkamount==null?"--":detail.checkamount.format() }</td>
                     	#end
-                    	#if(status==2||status==5||status==6)
+                    	#if(status==2||status==5||status==6||status==8||status==9)
                     	<td>￥${detail.unitPrice==null?"--":detail.unitPrice.format() }</td>
                     	#end
-                    	#if(status==6)
+                    	#if(status==6||status==8||status==9)
                     	<td><b>￥${detail.checktotalprice==null?"--":detail.checktotalprice.format() }</b></td>
                     	#end
-                    	#if(status!=6)
+                    	#if(status!=6&&status!=8&&status!=9)
                     	<td><b>￥${detail.totalPrice==null?"--":detail.totalPrice.format() }</b></td>
                     	#end
                     </tr>
