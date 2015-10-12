@@ -1,6 +1,7 @@
 package com.dsh.m.service;
 
 import java.math.BigDecimal;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
@@ -200,11 +201,23 @@ public class OrderService {
 			sa.setReturndays("7");
 			sa.setRealamount(realamount);
 			sa.setReturnmoney(returnmoney);
-			Date start = new JDateTime(ordertime).setHour(0).setMinute(0).setSecond(0, 0).convertToDate();
-			Date end = new JDateTime(start).addDay(7).convertToDate();
-			sa.setStarttime(start);
-			sa.setEndtime(end);
-			sa.setReturndate(end);
+			
+			Date orderdate = new JDateTime(ordertime).setHour(0).setMinute(0).setSecond(0, 0).convertToDate(); 
+			Calendar cal = Calendar.getInstance();  
+			cal.setTime(orderdate);  
+			int iWeek = cal.get(Calendar.DAY_OF_WEEK);  
+		    if(iWeek == 1){  
+				iWeek = 8;  
+			} 
+		    Date monday =  new JDateTime(orderdate).addDay(2 - iWeek).convertToDate();
+		    Date sunday =  new JDateTime(monday).addDay(6).setHour(23).setMinute(59).setSecond(59, 0).convertToDate();
+		    Date returnday =  new JDateTime(sunday).addDay(1).setHour(0).setMinute(0).setSecond(0, 0).convertToDate();
+			
+//		    Date start = new JDateTime(ordertime).setHour(0).setMinute(0).setSecond(0, 0).convertToDate();
+//			Date end = new JDateTime(start).addDay(7).convertToDate();
+			sa.setStarttime(monday);
+			sa.setEndtime(sunday);
+			sa.setReturndate(returnday);
 			sa.setOrdertotalmoney(totalprice);
 			sa.setCreateuser(customerid);
 			settleaccountMapper.insertSelective(sa);
