@@ -7,7 +7,7 @@
     .middleBox{ width: 65%}
 }*/
 article,aside,details,dialog,figcaption,figure,footer,header,hgroup,menu,nav,section,ul,li,dl,dt,dd {display:block;}
-body{padding:0;margin:0;font-family:"黑体","microsoft yahei",Verdana,Arial,Helvetica,sans-serif;font-size:100%; background-color:#F1F1F1; }
+body{padding:0;margin:0;font-family:"黑体-简","microsoft yahei",Verdana,Arial,Helvetica,sans-serif;font-size:100%; background-color:#F1F1F1; }
 ul,li,h1,h2,h3,h4,h5,p,form,input,dl,dt,dd{ padding:0; margin:0;}	
 ul,li{ list-style:none;}
 i,em{ font-style:normal;}

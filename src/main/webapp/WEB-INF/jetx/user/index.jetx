@@ -51,6 +51,20 @@
   </div>
 </div>
 <div class="box">
+  <h2><b class="gaikuang">我的钱包</b><span><a href="/user/money">详细</a></span></h2>
+
+     <table class="table-list">
+       <tbody>
+         <tr>
+           <td>￥<span>${accountBalance.format() }</span></td><td>￥<span>${cautionmoney.format() }</span></td>
+         </tr> 
+         <tr>
+           <td class="top0">账户余额</td><td class="top0">保证金</td>
+         </tr>
+       </tbody>
+     </table>    
+</div>
+<div class="box">
 	<h2><b class="gaikuang">账户概况</b><span><a href="/index/detail">详细</a></span></h2>
 	#if(index!=null)
 	<table class="table-list">

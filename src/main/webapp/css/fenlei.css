@@ -118,6 +118,8 @@
 .dingdan-list li table tr.bgcolor-yellow{ background-color:#fffd03;}
 .dingdan-list li table tr.bgcolor-orange{ background-color:#ff7f00;}
 .dingdan-list li table tr.bgcolor-red{ background-color:#ff0500;}
+.dingdan-list li table tr.bgcolor-gray{background-color:#F1F1F1;}
+.dingdan-list li table .fontred{ color:#F00;}
 
 .dingdan-list li table.biaoge{ border:none;} 
 .dingdan-list li table.biaoge th{font-size:12px; background-color:#f1f1f1; line-height:20px; border:none; border-top:1px solid #DFDFDD;font-weight:bold;}

@@ -16,10 +16,13 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.alibaba.fastjson.JSON;
 import com.dsh.m.dao.CustomerMapper;
 import com.dsh.m.dao.IndexDateMapper;
+import com.dsh.m.dao.PipelineMapper;
 import com.dsh.m.model.Customer;
 import com.dsh.m.model.CustomerExample;
 import com.dsh.m.model.IndexDate;
 import com.dsh.m.model.IndexDateExample;
+import com.dsh.m.model.Pipeline;
+import com.dsh.m.model.PipelineExample;
 import com.dsh.m.service.CustomerService;
 import com.dsh.m.util.PasswordUtil;
 
@@ -33,6 +36,8 @@ public class UserAction extends BaseAction {
 	private IndexDateMapper indexDateMapper;
 	@Autowired
 	private CustomerService customerService;
+	@Autowired
+	private PipelineMapper pipelineMapper;
 	
 	@RequestMapping("/toreg")
 	public String toreg() {
@@ -79,6 +84,25 @@ public class UserAction extends BaseAction {
 	
 	@RequestMapping
 	public String index(ModelMap model, HttpSession session) {
+		Customer customer = customerMapper.selectByPrimaryKey(super.getUserId(session));
+		if(customer.getAccountBalance() == null){
+			model.addAttribute("accountBalance", new BigDecimal(0));
+		}else{
+			model.addAttribute("accountBalance", customer.getAccountBalance());
+		}
+		PipelineExample pipelineexample = new PipelineExample();
+		pipelineexample.setOrderByClause("p_datetime desc");
+		pipelineexample.createCriteria().andAccountTypeEqualTo("2").andUseridEqualTo(super.getUserId(session)).andSubidEqualTo(1);
+		List<Pipeline> pipelines = pipelineMapper.selectByExample(pipelineexample);
+		BigDecimal cautionmoney = new BigDecimal(0);
+		for (int i = 0; i < pipelines.size(); i++) {
+			if("1".equals(pipelines.get(i).getAccountChange())){
+				cautionmoney = cautionmoney.add(pipelines.get(i).getpMoney());
+			}else if("2".equals(pipelines.get(i).getAccountChange())){
+				cautionmoney = cautionmoney.subtract(pipelines.get(i).getpMoney());
+			}
+		}
+		model.addAttribute("cautionmoney", cautionmoney);
 		IndexDateExample example = new IndexDateExample();
 		example.setOrderByClause("id desc");
 		example.setLimitStart(0);
@@ -112,4 +136,32 @@ public class UserAction extends BaseAction {
 		return "redirect:/";
 	}
 
+	@RequestMapping("/money")
+	public String money(ModelMap model, HttpSession session) {
+		Customer customer = customerMapper.selectByPrimaryKey(super.getUserId(session));
+		if(customer.getAccountBalance() == null){
+			model.addAttribute("accountBalance", "--");
+		}else{
+			model.addAttribute("accountBalance", customer.getAccountBalance());
+		}
+		PipelineExample pipelineexample = new PipelineExample();
+		pipelineexample.setOrderByClause("p_datetime desc");
+		pipelineexample.createCriteria().andAccountTypeEqualTo("2").andUseridEqualTo(super.getUserId(session)).andSubidEqualTo(1);
+		List<Pipeline> cautionpipeline = pipelineMapper.selectByExample(pipelineexample);
+		BigDecimal cautionmoney = new BigDecimal(0);
+		for (int i = 0; i < cautionpipeline.size(); i++) {
+			if("1".equals(cautionpipeline.get(i).getAccountChange())){
+				cautionmoney = cautionmoney.add(cautionpipeline.get(i).getpMoney());
+			}else if("2".equals(cautionpipeline.get(i).getAccountChange())){
+				cautionmoney = cautionmoney.subtract(cautionpipeline.get(i).getpMoney());
+			}
+		}
+		model.addAttribute("cautionmoney", cautionmoney);
+		PipelineExample example = new PipelineExample();
+		example.setOrderByClause("p_datetime desc");
+		example.createCriteria().andAccountTypeEqualTo("2").andUseridEqualTo(super.getUserId(session));
+		List<Pipeline> pipelines = pipelineMapper.selectByExample(example);
+		model.addAttribute("pipelines", pipelines);
+		return "money/index";
+	}
 }
