@@ -6,6 +6,12 @@ import java.util.Date;
 import jetbrick.template.JetAnnotations.Functions;
 import jodd.datetime.JDateTime;
 
+import com.dsh.m.model.Subject;
+import com.dsh.m.model.SysDictionary;
+import com.dsh.m.service.SubjectService;
+import com.dsh.m.service.SysDictionaryService;
+import com.dsh.m.util.SpringUtil;
+
 @Functions
 public class CommonFunctions {
 	
@@ -26,6 +32,18 @@ public class CommonFunctions {
 	
 	public static BigDecimal sub(BigDecimal b1, BigDecimal b2) {
 		return b1.subtract(b2);
+	}
+	
+	public static String getSubjectNameById(Integer id){
+		SubjectService subjectService = SpringUtil.getBean(SubjectService.class);
+		Subject subject = subjectService.getCacheSubjectById(id);
+		return subject==null?"":subject.getSubname();
+	}
+	
+	public static String getDicName(String dictype, String dicnum){
+		SysDictionaryService sysDictionaryService = SpringUtil.getBean(SysDictionaryService.class);
+		SysDictionary sysDictionary = sysDictionaryService.getCacheSysDictionary(dictype, dicnum);
+		return sysDictionary==null?"":sysDictionary.getName();
 	}
 	
 	public static void main(String[] args) {
