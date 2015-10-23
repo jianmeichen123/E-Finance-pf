@@ -1,5 +1,6 @@
 package com.dsh.m.web;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -16,7 +17,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
+import com.dsh.m.dao.CustomerMapper;
 import com.dsh.m.dao.SupplyCustomerMapper;
+import com.dsh.m.model.Customer;
 import com.dsh.m.model.Purchaseorder;
 import com.dsh.m.model.SupplyCustomer;
 import com.dsh.m.model.SupplyCustomerExample;
@@ -35,6 +38,8 @@ public class ShoppingCartAction extends BaseAction {
 	private OrderService orderService;
 	@Autowired
 	private SupplyCustomerMapper supplyCustomerMapper;
+	@Autowired
+	private CustomerMapper customerMapper; 
 	@Resource(name="orderJmsTemplate")
 	private JmsTemplate orderJmsTemplate;
 	
@@ -85,6 +90,13 @@ public class ShoppingCartAction extends BaseAction {
 		Integer userId = getUserId(request.getSession());
 		Integer supplyid = null;
 		try {
+			Customer customer = customerMapper.selectByPrimaryKey(userId);
+			if(customer.getAccountBalance() == null){
+				customer.setAccountBalance(new BigDecimal(0));
+			}
+			if("0".equals(customer.getIsOnline()) && customer.getAccountBalance().compareTo(new BigDecimal(0)) == -1){
+				return fail("您的账户余额不足，请及时充值！！");
+			}
 			SupplyCustomerExample example = new SupplyCustomerExample();
 			example.createCriteria().andCustomeridEqualTo(userId);
 			List<SupplyCustomer> list = supplyCustomerMapper.selectByExample(example);
