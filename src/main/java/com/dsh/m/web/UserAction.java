@@ -140,7 +140,7 @@ public class UserAction extends BaseAction {
 	public String money(ModelMap model, HttpSession session) {
 		Customer customer = customerMapper.selectByPrimaryKey(super.getUserId(session));
 		if(customer.getAccountBalance() == null){
-			model.addAttribute("accountBalance", "--");
+			model.addAttribute("accountBalance", new BigDecimal(0));
 		}else{
 			model.addAttribute("accountBalance", customer.getAccountBalance());
 		}
