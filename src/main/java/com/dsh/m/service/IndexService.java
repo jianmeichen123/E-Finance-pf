@@ -1,5 +1,6 @@
 package com.dsh.m.service;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 import org.apache.commons.collections.CollectionUtils;
@@ -23,6 +24,15 @@ public class IndexService {
 		String key = "index:order:"+orderid;
 		IndexOrder index = cache.get(key);
 		if(null==index) {
+			IndexOrderExample example = new IndexOrderExample();
+			example.createCriteria().andOrderidEqualTo(orderid);
+			List<IndexOrder> indexs = indexOrderMapper.selectByExample(example);
+			if(CollectionUtils.isNotEmpty(indexs)) {
+				index = indexs.get(0);
+				cache.set(key, index);
+			}
+		}else if(null != index && index.getT1().compareTo(new BigDecimal(0)) == 0){
+			cache.del(key);
 			IndexOrderExample example = new IndexOrderExample();
 			example.createCriteria().andOrderidEqualTo(orderid);
 			List<IndexOrder> indexs = indexOrderMapper.selectByExample(example);
