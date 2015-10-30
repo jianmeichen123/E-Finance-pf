@@ -149,8 +149,8 @@ public class OrderService {
 		BigDecimal totalprice = data.getBigDecimal("totalprice");
 		BigDecimal returnmoney = data.getBigDecimal("returnmoney");
 		SettleaccountExample example = new SettleaccountExample();
-		example.createCriteria().andCustomeridEqualTo(customerid);
-		example.setOrderByClause("createtime desc");
+		example.createCriteria().andCustomeridEqualTo(customerid).andStarttimeLessThanOrEqualTo(ordertime).andEndtimeGreaterThanOrEqualTo(ordertime);
+		example.setOrderByClause("endtime desc");
 		example.setLimitStart(0);
 		example.setLimitEnd(1);
 		List<Settleaccount> sas = settleaccountMapper.selectByExample(example);
