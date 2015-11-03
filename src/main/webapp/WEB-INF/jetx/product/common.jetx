@@ -78,7 +78,7 @@
 		<div class="dis"  id="tbc_01">
 			#for(product : products)
 			#set(goods = getProductById(product.goodsid))
-			#if(goods.isSale=='1')
+			#if(goods != null && goods.isSale=='1')
 			<dl>
 				<dt><a href="#"><img src='
 					#if(goods.image=='')
