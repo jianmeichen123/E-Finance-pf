@@ -8,6 +8,8 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import jodd.datetime.JDateTime;
+
 import org.apache.commons.collections.CollectionUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jms.core.JmsTemplate;
@@ -102,6 +104,11 @@ public class ShoppingCartAction extends BaseAction {
 			}
 			if("0".equals(customer.getIsOnline()) && customer.getAccountBalance().compareTo(new BigDecimal(0)) == -1){
 				return fail("您的账户余额不足，请及时充值！！");
+			}
+			Date starttime = new JDateTime(new Date()).setHour(10).setMinute(0).setSecond(0, 0).convertToDate();
+			Date endtime = new JDateTime(new Date()).setHour(22).setMinute(30).setSecond(0, 0).convertToDate();
+			if(!(new Date().after(starttime)&&new Date().before(endtime))){
+				return fail("请在10:00--22:30之间下单！");
 			}
 			SupplyCustomerExample example = new SupplyCustomerExample();
 			example.createCriteria().andCustomeridEqualTo(userId);
