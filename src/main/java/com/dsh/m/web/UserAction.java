@@ -164,4 +164,35 @@ public class UserAction extends BaseAction {
 		model.addAttribute("pipelines", pipelines);
 		return "money/index";
 	}
+	
+	@RequestMapping("/toeditPwd")
+	public String toeditPwd(ModelMap model, HttpSession session) {
+		Customer customer = customerMapper.selectByPrimaryKey(super.getUserId(session));
+		model.addAttribute("customer", customer);
+		return "user/editpwd";
+	}
+	
+	@ResponseBody
+	@RequestMapping("/checkpwd")
+	public String checkpwd(String oldpwd, String inputpwd) {
+		if(!PasswordUtil.encript(inputpwd).equals(oldpwd)){
+			return fail("与原始密码不一致，请重新输入！");
+		}else{
+			return success("ok！");
+		}
+	}
+	
+	@ResponseBody
+	@RequestMapping("/savepwd")
+	public String savepwd(String newpwd, HttpSession session) {
+		Customer customer = customerMapper.selectByPrimaryKey(super.getUserId(session));
+		newpwd = PasswordUtil.encript(newpwd);
+		if(!newpwd.equals(customer.getLoginpass())){
+			customer.setLoginpass(newpwd);
+			customerMapper.updateByPrimaryKey(customer);
+			return success("ok！");
+		}else{
+			return fail("与原始密码不一致，请重新输入！");
+		}
+	}
 }

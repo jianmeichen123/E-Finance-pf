@@ -33,6 +33,7 @@ header nav ul li a.current1{color:#fff;text-decoration:none; background-color:#9
 .box .nav-list a.sh{ background:url(../images/user03.png) no-repeat center top;} 
 .box .nav-list a.th{ background:url(../images/user05.png) no-repeat center top;} 
 .box .nav-list a.pj{ background:url(../images/user16.png) no-repeat center top;}
+.retrieve{ width:70% !important;}
 
 .box .table-list{float:left; width:100%; margin-bottom:15px; text-align:center; vertical-align:middle; border-collapse:collapse;border:1px solid #DFDFDD;} 
 .box .table-list td{  padding:10px 0;border-left:1px solid #DFDFDD;border-right:1px solid #DFDFDD; font-size:14px; color:#747474;}

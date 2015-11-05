@@ -1,0 +1,109 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+<meta name="format-detection" content="telephone=no"/>  
+<title>多省汇</title>
+<meta name="keywords" content="多省汇">
+<meta name="description" content="多省汇">
+<link rel="icon" href="/images/favicon.ico"  type="/image/x-icon" />
+<link rel="shortcut icon" href="/images/favicon.ico"  type="/image/x-icon" />
+<link rel="stylesheet" href="/css/reset.css" />
+<link rel="stylesheet" href="/css/user-index.css" />
+<link rel="stylesheet" href="/css/foot.css" />
+<script src="/js/jquery-1.10.1.min.js" ></script>
+</head>
+
+<body>
+<header>
+  <nav>
+     <div class="set back"><a href="javascript:history.go(-1);"><img src="/images/reg01.png"></a></div>
+     <h1>修改密码</h1>
+  </nav>
+</header>
+<div class="banner"></div>
+<form id="editpwd" action="/user/savepwd" method="post">
+<div class="box">
+  <div class="account">
+     <ul>
+        <li>账号：${customer.loginname }</li>
+        <li>原始密码：<input name="oldpwd" id="oldpwd" type="password" placeholder="请输入原始密码" class="reg retrieve"></li>
+        <li>修改密码：<input name="newpwd" id="newpwd" type="password" placeholder="请输入修改密码" class="reg retrieve"></li>
+        <li>确认密码：<input name="confirmpwd" id="confirmpwd" type="password" placeholder="再次输入修改密码" class="reg retrieve"></li>
+     </ul>
+  </div>
+</div>
+
+<div class="u-btn"><input type="button" value="确认修改" onclick="confirm();"></div>
+</form>
+<div class="u-f"></div>
+
+
+<footer>
+    <div class="daohang1">
+      <a href="/cat" class="nav1">商品分类</a>
+      <a href="/product/common" class="nav2">常用商品</a>
+      <a href="/cart" class="nav3">购物车</a>
+      <a href="/order/list" class="nav4">订单管理</a>
+      <a href="/user" class="nav5">个人中心</a>    
+    </div>
+</footer>
+
+</body>
+<script>
+$(function() {
+	$("#oldpwd").blur(function(){ 
+		var inputpwd = $("#oldpwd").val();
+		if(inputpwd == null || inputpwd == ""){
+			alert("原始密码不能为空！");
+			return false;
+		}
+		var param = {oldpwd:"${customer.loginpass}",inputpwd:inputpwd};
+		$.ajax({
+			type: "post", //以post方式与后台沟通 
+			url : "/user/checkpwd",
+			data: param,
+		    success: function(data){
+		    	data = eval('(' + data + ')');
+		    	if(!data.isSuccess){
+					alert(data.msg)
+					return false;
+		    	}
+		    }
+		});
+	});
+})
+function confirm(){
+	var newpwd = $("#newpwd").val();
+	var confirmpwd = $("#confirmpwd").val();
+	if(newpwd == null || newpwd == ""){
+		alert("修改密码不能为空！");
+		return false;
+	}
+	if(confirmpwd == null || confirmpwd == ""){
+		alert("确认密码不能为空！");
+		return false;
+	}
+	if(newpwd != confirmpwd){
+		alert("两次输入的密码不一致！");
+		return false;
+	}
+	//$("#editpwd").submit();
+	var param = {newpwd:newpwd};
+	$.ajax({
+		type: "post", //以post方式与后台沟通 
+		url : "/user/savepwd",
+		data: param,
+	    success: function(data){
+	    	data = eval('(' + data + ')');
+	    	if(data.isSuccess){
+	    		var storage = window.localStorage; 
+	    		storage.clear();
+	    		window.location = "/user/logout";
+	    	}
+	    }
+	});
+}
+</script>
+</html>

@@ -51,6 +51,7 @@ function logout() {
 </div>
 <div class="u-info bottom0">
    <ul>
+   	  <li><a href="/user/toeditPwd">修改密码</a></li>
       <li><a href="#" onclick="logout()">退出</a></li>
    </ul>
 </div>
