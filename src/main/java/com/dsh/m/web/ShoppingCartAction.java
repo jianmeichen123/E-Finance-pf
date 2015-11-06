@@ -23,9 +23,11 @@ import com.alibaba.fastjson.JSONObject;
 import com.dsh.m.dao.CustomerMapper;
 import com.dsh.m.dao.PurchaseorderMapper;
 import com.dsh.m.dao.SupplyCustomerMapper;
+import com.dsh.m.dao.SupplyMapper;
 import com.dsh.m.dao.SysSmsMapper;
 import com.dsh.m.model.Customer;
 import com.dsh.m.model.Purchaseorder;
+import com.dsh.m.model.Supply;
 import com.dsh.m.model.SupplyCustomer;
 import com.dsh.m.model.SupplyCustomerExample;
 import com.dsh.m.model.SysSms;
@@ -50,6 +52,8 @@ public class ShoppingCartAction extends BaseAction {
 	private JmsTemplate orderJmsTemplate;
 	@Autowired
 	private SysSmsMapper sysSmsMapper;
+	@Autowired
+	private SupplyMapper supplyMapper; 
 	
 	@ResponseBody
 	@RequestMapping("/add")
@@ -117,6 +121,7 @@ public class ShoppingCartAction extends BaseAction {
 				return fail("暂无供应商处理！ ！");
 			}
 			supplyid = list.get(0).getSupplyid();
+			Supply supply = supplyMapper.selectByPrimaryKey(supplyid);
 			ThreadLocalUtil.put("supplyid", supplyid);
 			ThreadLocalUtil.put("remark", request.getParameter("remark"));
 			JSONArray array = shoppingCartService.loadUserCart(userId);
@@ -127,8 +132,10 @@ public class ShoppingCartAction extends BaseAction {
 				data.put("data", order);
 				orderJmsTemplate.convertAndSend(data.toString());
 				 //订单提交成功发短信提示供应商
-				SysSms sendMessage=creatMessage(customer);
-				sysSmsMapper.insert(sendMessage);
+				SysSms sendMessage=creatMessage(supply,customer);
+				if(sendMessage != null){
+					sysSmsMapper.insert(sendMessage);
+				}
 				return success("订单提交成功，等待供应商处理！！", order.getId());
 			}else{
 				return fail("请选择商品！！");
@@ -151,16 +158,17 @@ public class ShoppingCartAction extends BaseAction {
 			return fail("失败！！");
 		}
 	} 
-	 public SysSms creatMessage(Customer cu){
-			SysSms syssms = new SysSms();
-			syssms.setContent("用户" + cu.getShopname() + "已经下单，请您及时登录处理！有问题请咨询客服电话010-622999432");
-			syssms.setTel(cu.getMobile());
+	public SysSms creatMessage(Supply supply,Customer customer){
+		SysSms syssms = new SysSms();
+		if(supply.getMobile() != null && supply.getMobile().length() > 11){
+			syssms.setContent("用户" + customer.getShopname() + "已经下单，请您及时登录处理！有问题请咨询客服电话010-622999432");
+			syssms.setTel(supply.getMobile());
 			syssms.setSendtime(new Date());
 			syssms.setType("0");
 			syssms.setDr("0");
-			syssms.setCreateuser(cu.getCusid());
+			syssms.setCreateuser(customer.getCusid());
 			syssms.setCreattime(new Date());
-			return syssms;
-
-	 }
+		}
+		return syssms;
+	}
 }
