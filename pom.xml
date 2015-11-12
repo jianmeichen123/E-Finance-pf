@@ -125,12 +125,17 @@
 			<artifactId>activemq-all</artifactId>
 			<version>5.9.0</version>
 		</dependency>
+		<dependency>
+            <groupId>org.apache.httpcomponents</groupId>
+            <artifactId>httpclient</artifactId>
+            <version>4.2.3</version>
+        </dependency>
 	</dependencies>
 	<build>
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-compiler-plugin</artifactId>
+				<artifactId>maven-compiler-plugin</artifactId>	
 				<configuration>
 					<source>1.7</source>
 					<target>1.7</target>
