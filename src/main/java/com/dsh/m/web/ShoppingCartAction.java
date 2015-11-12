@@ -133,7 +133,7 @@ public class ShoppingCartAction extends BaseAction {
 				orderJmsTemplate.convertAndSend(data.toString());
 				 //订单提交成功发短信提示供应商
 				SysSms sendMessage=creatMessage(supply,customer);
-				if(sendMessage != null){
+				if(sendMessage != null && sendMessage.getTel() != null && sendMessage.getTel().length() == 11){
 					sysSmsMapper.insert(sendMessage);
 				}
 				return success("订单提交成功，等待供应商处理！！", order.getId());
@@ -159,8 +159,9 @@ public class ShoppingCartAction extends BaseAction {
 		}
 	} 
 	public SysSms creatMessage(Supply supply,Customer customer){
-		SysSms syssms = new SysSms();
-		if(supply.getMobile() != null && supply.getMobile().length() > 11){
+		SysSms syssms = null;
+		if(supply.getMobile() != null && supply.getMobile().length() == 11){
+			syssms = new SysSms();
 			syssms.setContent("用户" + customer.getShopname() + "已经下单，请您及时登录处理！有问题请咨询客服电话010-622999432");
 			syssms.setTel(supply.getMobile());
 			syssms.setSendtime(new Date());
