@@ -2,6 +2,8 @@ package com.dsh.m.web;
 
 import java.util.Date;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -30,9 +32,17 @@ public class PaymentAction extends BaseAction {
 		return "success";
 	}
 	
+	@RequestMapping("tosign")
+	public String signing() {
+		return "account/signing";
+	}
 	
-	
-	
+	@RequestMapping("appoint")
+	@ResponseBody
+	public String appoint(HttpServletRequest request, PayAppoint payAppoint){
+		
+		return "";
+	}
 	
 
 }

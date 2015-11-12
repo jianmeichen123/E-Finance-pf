@@ -55,6 +55,11 @@ function logout() {
       <li><a href="#" onclick="logout()">退出</a></li>
    </ul>
 </div>
+<div class="u-info bottom0">
+   <ul>
+      <li><a href="/payment/tosign">支付签约</a></li>
+   </ul>
+</div>
 <div class="blank"></div>
 <footer>
     <div class="daohang">

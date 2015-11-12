@@ -1,0 +1,112 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+<meta name="format-detection" content="telephone=no"/>  
+<title>支付签约</title>
+<meta name="keywords" content="多省汇">
+<meta name="description" content="多省汇">
+<link rel="icon" href="/images/favicon.ico"  type="/image/x-icon" />
+<link rel="shortcut icon" href="/images/favicon.ico"  type="/image/x-icon" />
+<link rel="stylesheet" href="/css/reset.css" />
+<link rel="stylesheet" href="/css/fenlei.css" />
+<link rel="stylesheet" href="/css/signing.css" />
+<link rel="stylesheet" href="/css/foot.css" />
+<script src="/js/jquery-1.10.1.min.js" ></script>
+</head> 
+
+<body class="signing-bg">
+<header>
+  <nav>
+     <div class="set"><a href="#"><img src="/images/fenlei01.png"></a></div>
+     <h1>支付签约</h1>
+  </nav>
+</header>
+<div class="main">  
+     <div class="diy-list">
+     	<form id="msform" name="msform" action="/payment/appoint">
+     		<fieldset>
+     			<div class="diy-note">请绑定持卡人本人的银行卡</div>
+		
+        		<div class="signing-from">
+        			<div class="input-div">
+            			<div class="name"><label>持卡人</label><input type="text" name="cardname" placeholder="持卡人姓名" /></div>
+                		<!-- <div class="bank"><label>发卡行</label><input type="text" name="c-bank" placeholder="选择发卡银行" /></div> -->
+                		<div class="number"><label>卡号</label><input type="text" name="cardno" placeholder="绑定银行卡号" /></div>
+            		</div>
+        		</div>
+        		<div class="diy-note"></div>
+        		<input name="next" type="button" class="next action-button u-btn" value="下一步" />
+       		</fieldset>
+    
+     		<fieldset>
+     			<div class="diy-note">请验证持卡人信息</div>
+        		<div class="signing-from">
+        			<div class="input-div">
+            			<div class="name"><label>证件类型</label><input type="text" name="idtype" placeholder="持卡人姓名" /></div>
+                		<div class="bank"><label>证件号码</label><input type="text" name="idno" placeholder="身份证号码" /></div>
+            		</div>
+        		</div>
+        		<div class="diy-note"></div>
+        		<input name="next" type="button" class="next action-button u-btn" value="下一步" />
+                <input type="button" name="previous" class="previous action-button u-btn u-btn-b" value="上一步" />
+       		</fieldset>            
+
+     		<fieldset> 
+     			<div class="diy-note">银行短信验证</div>
+        		<div class="signing-from">
+        			<div class="input-div">
+            			<div class="name"><label>预留号码</label><input type="text" name="mobileno" placeholder="银行预留手机号码" class="c-phone" /><input type="button" name="send" class="send" value="发送验证码" onClick="showtime(30)"  /></div>
+                		<div class="bank"><label>验证码</label><input type="text" name="verifyno" placeholder="输入接收到的验证码" /></div>
+            		</div>
+        		</div>
+        		<div class="diy-note"></div>
+        		<input name="next" type="submit" class="next action-button u-btn" value="确认签约" />
+                <input type="button" name="previous" class="previous action-button u-btn u-btn-b" value="上一步" />
+       		</fieldset> 
+           
+        </form>
+     </div>
+
+</div> 
+ 
+
+<footer>
+    <div class="daohang1">
+      <a href="/cat" class="nav1">商品分类</a>
+      <a href="/product/common" class="nav2">常用商品</a>
+      <a href="/cart" class="nav3">购物车</a>
+      <a href="/order/list" class="nav4">订单管理</a>
+      <a href="/user" class="nav5">个人中心</a>    
+    </div>
+</footer> 
+
+</body>
+<script type="text/javascript" src="/js/jquery.easing.min.js"></script>
+<script type="text/javascript" src="/js/script.js"></script>
+
+<script type="text/javascript">
+
+
+function showtime(t){
+	document.msform.send.disabled=true;
+	for(i=1;i<=t;i++) {
+		window.setTimeout("update_p(" + i + ","+t+")", i * 1000);
+	}
+
+}
+
+function update_p(num,t) {
+	if(num == t) {
+		document.msform.send.value =" 重新发送 ";
+		document.msform.send.disabled=false;
+	}
+	else {
+		printnr = t-num;
+		document.msform.send.value =  + printnr +"秒重新发送";
+	}
+}
+
+</script>
+</html>
