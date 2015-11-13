@@ -17,6 +17,14 @@
 package com.dsh.m.util;
 
 import java.security.MessageDigest;
+import java.util.Map;
+
+import net.sf.json.JSONObject;
+
+import com.dsh.m.model.PayAppoint;
+import com.dsh.m.model.PayPayment;
+import com.dsh.m.model.PayResult;
+import com.dsh.m.model.PaySmscode;
 
 public class EncriptUtil {
 	
@@ -57,6 +65,56 @@ public class EncriptUtil {
 			throw new RuntimeException(e);
 		}
 	}
+	public static PaySmscode UpdateSmsCode(PaySmscode paySmscodeold,
+			PaySmscode paySmscodetnew) {
+		paySmscodeold.setReturnCode(paySmscodetnew.getReturnCode());
+		paySmscodeold.setMessage(paySmscodetnew.getMessage());
+		paySmscodeold.setTradeNo(paySmscodetnew.getTradeNo());
+		return paySmscodeold;
+	}
+	public static PayAppoint UpdateAppiont(PayAppoint payAppointold,
+			PayAppoint payAppointnew) {
+		payAppointold.setReturnCode(payAppointnew.getReturnCode());
+		payAppointold.setMessage(payAppointnew.getMessage());
+		payAppointold.setAgrNo(payAppointnew.getAgrNo());;
+		return payAppointold;
+	}
+	public static PayPayment UpdatePayPayment(PayPayment PayPaymentold,
+			PayPayment PayPaymentnew) {
+		PayPaymentold.setReturnCode(PayPaymentnew.getReturnCode());
+		PayPaymentold.setMessage(PayPaymentnew.getMessage());
+		PayPaymentold.setOrderId(PayPaymentnew.getOrderId());
+		PayPaymentold.setOrderAmt(PayPaymentnew.getOrderAmt());
+		return PayPaymentold;
+	}
+    public static PaySmscode toJsonSmsCode(String post){
+    	JSONObject jsStr = JSONObject.fromObject(post);
+		PaySmscode paySmscodeReturn = (PaySmscode) JSONObject.toBean(jsStr,
+				PaySmscode.class);
+		return paySmscodeReturn;
+    }
+    public static PayAppoint toJsonAppiont(String post){
+    	JSONObject jsStr = JSONObject.fromObject(post);
+    	PayAppoint payPayAppointReturn = (PayAppoint) JSONObject.toBean(jsStr,
+    			PayAppoint.class);
+		return payPayAppointReturn;
+    }
+    public static PayPayment toJsonPayment(String post){
+    	JSONObject jsStr = JSONObject.fromObject(post);
+    	PayPayment payPayPaymentReturn = (PayPayment) JSONObject.toBean(jsStr,
+    			PayPayment.class);
+		return payPayPaymentReturn;
+    }
+    public static PayResult toJsonResult(String post){
+    	JSONObject jsStr = JSONObject.fromObject(post);
+    	PayResult payPayResultReturn = (PayResult) JSONObject.toBean(jsStr,
+    			PayResult.class);
+		return payPayResultReturn;
+    }
+    public static JSONObject toJson(Map map){
+    	JSONObject json=JSONObject.fromObject(map);
+    	return json;
+    }
 }
 
 

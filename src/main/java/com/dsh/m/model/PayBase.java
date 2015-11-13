@@ -112,7 +112,7 @@ public class PayBase {
     /**
      *  签名方式
      */
-    private byte[] signtype;
+    private String signtype;
 
     /**
      *  pay_base.主键
@@ -411,14 +411,14 @@ public class PayBase {
     /**
      *  pay_base.签名方式
      */
-    public byte[] getSigntype() {
+    public String getSigntype() {
         return signtype;
     }
 
     /**
      *  pay_base.签名方式
      */
-    public void setSigntype(byte[] signtype) {
+    public void setSigntype(String signtype) {
         this.signtype = signtype;
     }
 }

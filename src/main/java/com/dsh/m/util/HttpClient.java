@@ -6,7 +6,10 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Random;
 import java.util.Set;
+
+import jodd.datetime.JDateTime;
 
 import org.apache.activemq.protobuf.compiler.TextFormat.ParseException;
 import org.apache.http.HttpEntity;
@@ -25,6 +28,7 @@ import org.apache.log4j.Logger;
 
 import com.dsh.m.constant.Consstants;
 import com.infosight.open.api.utils.MD5;
+import com.infosight.open.api.utils.TribleDesEncrypt;
 
 /**
  * httpclient工具类
@@ -153,4 +157,35 @@ public class HttpClient {
 		return httpost;
 	}
 
+	/**
+	 * 加密字段加密处理
+	 * 
+	 * @author 陈建梅 2015-11-12
+	 * @return
+	 */
+	public static String encript(String cardNo) {
+		// 字段加密,密钥必须为32位,不足位数右补0
+		String signKey = "aff167ff067e4dbe999d37af0bb848f6";
+		String signKey1 = "";
+		int psw_len = signKey.length();
+		if (psw_len >= 32) {
+			signKey1 = signKey.substring(0, 32);
+		} else {
+			signKey1 = signKey;
+			for (int i = 0; i < 32 - psw_len; i++) {
+				signKey1 = signKey1 + "0";
+			}
+		}
+		String cardNoNew = "";
+		try {
+			cardNoNew = TribleDesEncrypt.encryptMode(signKey1, cardNo);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return cardNoNew;
+	}
+	public static String basegenerate() {
+		return new JDateTime().toString("YYYYMMDDhhmmss")+new Random().nextInt(100);
+	}
 }

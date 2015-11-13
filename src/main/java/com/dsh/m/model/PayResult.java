@@ -1,424 +1,481 @@
-ï»¿package com.dsh.m.model;
+package com.dsh.m.model;
 
 import java.math.BigDecimal;
 import java.util.Date;
 
 public class PayResult {
     /**
-     *  ä¸»é”®
+     *  Ö÷¼ü
      */
     private Integer id;
 
     /**
-     *  å•†æˆ·è®¢å•å·
+     *  ÉÌ»§¶©µ¥ºÅ
      */
-    private String orderid;
+    private String orderId;
 
     /**
      *  
      */
-    private String interfacename;
+    private String interfaceName;
 
     /**
      *  
      */
-    private String requestid;
+    private String requestId;
 
     /**
-     *  æ”¯ä»˜ä¿¡æ¯id
+     *  Ö§¸¶ĞÅÏ¢id
      */
-    private Integer paymentid;
+    private Integer paymentId;
 
     /**
-     *  è®¢é‡‘é¢å•
+     *  ¶©½ğ¶îµ¥
      */
-    private String amount;
+    private String orderAmt;
 
     /**
-     *  æ‰‹ç»­è´¹
+     *  ÊÖĞø·Ñ
      */
     private String fee;
 
     /**
-     *  æ”¯ä»˜çŠ¶æ€
+     *  Ö§¸¶×´Ì¬
      */
-    private String paysts;
+    private String paySts;
 
     /**
-     *  æ”¯ä»˜æ—¥æœŸ
+     *  Ö§¸¶ÈÕÆÚ
      */
-    private String paydt;
+    private String payDt;
 
     /**
-     *  æ”¯ä»˜æ—¶é—´
+     *  Ö§¸¶Ê±¼ä
      */
-    private String paytime;
+    private String payTime;
 
     /**
-     *  ç­¾åæ•°æ®
+     *  Ç©ÃûÊı¾İ
      */
     private String hmac;
 
     /**
-     *  è¿”å›ç 
+     *  ·µ»ØÂë
      */
-    private String returncode;
+    private String returnCode;
 
     /**
-     *  è¿”å›ç æè¿°ä¿¡æ¯
+     *  ·µ»ØÂëÃèÊöĞÅÏ¢
      */
     private String message;
 
     /**
-     *  åˆ›å»ºæ—¶é—´
+     *  ´´½¨Ê±¼ä
      */
     private Date createTime;
 
     /**
-     *  åˆ›å»ºäºº
+     *  ´´½¨ÈË
      */
     private Integer createUser;
 
     /**
-     *  ä¿®æ”¹æ—¶é—´
+     *  ĞŞ¸ÄÊ±¼ä
      */
     private Date updateTime;
 
     /**
-     *  ä¿®æ”¹äºº
+     *  ĞŞ¸ÄÈË
      */
     private Integer updateUser;
 
     /**
-     *  è‡ªå®šä¹‰é¡¹1
+     *  ×Ô¶¨ÒåÏî1
      */
     private Integer zyx1;
 
     /**
-     *  è‡ªå®šä¹‰é¡¹2
+     *  ×Ô¶¨ÒåÏî2
      */
     private String zyx2;
 
     /**
-     *  è‡ªå®šä¹‰é¡¹3
+     *  ×Ô¶¨ÒåÏî3
      */
     private String zyx3;
 
     /**
-     *  è‡ªå®šä¹‰é¡¹4
+     *  ×Ô¶¨ÒåÏî4
      */
     private Date zyx4;
 
     /**
-     *  è‡ªå®šä¹‰é¡¹5
+     *  ×Ô¶¨ÒåÏî5
      */
     private BigDecimal zyx5;
 
     /**
-     *  pay_result.ä¸»é”®
+     *  ÉÌ»§±àºÅ
+     */
+    private String mercId;
+
+    /**
+     *  °æ±¾ºÅ
+     */
+    private String version;
+
+    /**
+     *  Ç©Ãû·½Ê½
+     */
+    private String signType;
+
+    /**
+     *  pay_result.Ö÷¼ü
      */
     public Integer getId() {
         return id;
     }
 
     /**
-     *  pay_result.ä¸»é”®
+     *  pay_result.Ö÷¼ü
      */
     public void setId(Integer id) {
         this.id = id;
     }
 
     /**
-     *  pay_result.å•†æˆ·è®¢å•å·
+     *  pay_result.ÉÌ»§¶©µ¥ºÅ
      */
-    public String getOrderid() {
-        return orderid;
+    public String getOrderId() {
+        return orderId;
     }
 
     /**
-     *  pay_result.å•†æˆ·è®¢å•å·
+     *  pay_result.ÉÌ»§¶©µ¥ºÅ
      */
-    public void setOrderid(String orderid) {
-        this.orderid = orderid;
-    }
-
-    /**
-     *  pay_result.
-     */
-    public String getInterfacename() {
-        return interfacename;
+    public void setOrderId(String orderId) {
+        this.orderId = orderId;
     }
 
     /**
      *  pay_result.
      */
-    public void setInterfacename(String interfacename) {
-        this.interfacename = interfacename;
+    public String getInterfaceName() {
+        return interfaceName;
     }
 
     /**
      *  pay_result.
      */
-    public String getRequestid() {
-        return requestid;
+    public void setInterfaceName(String interfaceName) {
+        this.interfaceName = interfaceName;
     }
 
     /**
      *  pay_result.
      */
-    public void setRequestid(String requestid) {
-        this.requestid = requestid;
+    public String getRequestId() {
+        return requestId;
     }
 
     /**
-     *  pay_result.æ”¯ä»˜ä¿¡æ¯id
+     *  pay_result.
      */
-    public Integer getPaymentid() {
-        return paymentid;
+    public void setRequestId(String requestId) {
+        this.requestId = requestId;
     }
 
     /**
-     *  pay_result.æ”¯ä»˜ä¿¡æ¯id
+     *  pay_result.Ö§¸¶ĞÅÏ¢id
      */
-    public void setPaymentid(Integer paymentid) {
-        this.paymentid = paymentid;
+    public Integer getPaymentId() {
+        return paymentId;
     }
 
     /**
-     *  pay_result.è®¢é‡‘é¢å•
+     *  pay_result.Ö§¸¶ĞÅÏ¢id
      */
-    public String getAmount() {
-        return amount;
+    public void setPaymentId(Integer paymentId) {
+        this.paymentId = paymentId;
     }
 
     /**
-     *  pay_result.è®¢é‡‘é¢å•
+     *  pay_result.¶©½ğ¶îµ¥
      */
-    public void setAmount(String amount) {
-        this.amount = amount;
+    public String getOrderAmt() {
+        return orderAmt;
     }
 
     /**
-     *  pay_result.æ‰‹ç»­è´¹
+     *  pay_result.¶©½ğ¶îµ¥
+     */
+    public void setOrderAmt(String orderAmt) {
+        this.orderAmt = orderAmt;
+    }
+
+    /**
+     *  pay_result.ÊÖĞø·Ñ
      */
     public String getFee() {
         return fee;
     }
 
     /**
-     *  pay_result.æ‰‹ç»­è´¹
+     *  pay_result.ÊÖĞø·Ñ
      */
     public void setFee(String fee) {
         this.fee = fee;
     }
 
     /**
-     *  pay_result.æ”¯ä»˜çŠ¶æ€
+     *  pay_result.Ö§¸¶×´Ì¬
      */
-    public String getPaysts() {
-        return paysts;
+    public String getPaySts() {
+        return paySts;
     }
 
     /**
-     *  pay_result.æ”¯ä»˜çŠ¶æ€
+     *  pay_result.Ö§¸¶×´Ì¬
      */
-    public void setPaysts(String paysts) {
-        this.paysts = paysts;
+    public void setPaySts(String paySts) {
+        this.paySts = paySts;
     }
 
     /**
-     *  pay_result.æ”¯ä»˜æ—¥æœŸ
+     *  pay_result.Ö§¸¶ÈÕÆÚ
      */
-    public String getPaydt() {
-        return paydt;
+    public String getPayDt() {
+        return payDt;
     }
 
     /**
-     *  pay_result.æ”¯ä»˜æ—¥æœŸ
+     *  pay_result.Ö§¸¶ÈÕÆÚ
      */
-    public void setPaydt(String paydt) {
-        this.paydt = paydt;
+    public void setPayDt(String payDt) {
+        this.payDt = payDt;
     }
 
     /**
-     *  pay_result.æ”¯ä»˜æ—¶é—´
+     *  pay_result.Ö§¸¶Ê±¼ä
      */
-    public String getPaytime() {
-        return paytime;
+    public String getPayTime() {
+        return payTime;
     }
 
     /**
-     *  pay_result.æ”¯ä»˜æ—¶é—´
+     *  pay_result.Ö§¸¶Ê±¼ä
      */
-    public void setPaytime(String paytime) {
-        this.paytime = paytime;
+    public void setPayTime(String payTime) {
+        this.payTime = payTime;
     }
 
     /**
-     *  pay_result.ç­¾åæ•°æ®
+     *  pay_result.Ç©ÃûÊı¾İ
      */
     public String getHmac() {
         return hmac;
     }
 
     /**
-     *  pay_result.ç­¾åæ•°æ®
+     *  pay_result.Ç©ÃûÊı¾İ
      */
     public void setHmac(String hmac) {
         this.hmac = hmac;
     }
 
     /**
-     *  pay_result.è¿”å›ç 
+     *  pay_result.·µ»ØÂë
      */
-    public String getReturncode() {
-        return returncode;
+    public String getReturnCode() {
+        return returnCode;
     }
 
     /**
-     *  pay_result.è¿”å›ç 
+     *  pay_result.·µ»ØÂë
      */
-    public void setReturncode(String returncode) {
-        this.returncode = returncode;
+    public void setReturnCode(String returnCode) {
+        this.returnCode = returnCode;
     }
 
     /**
-     *  pay_result.è¿”å›ç æè¿°ä¿¡æ¯
+     *  pay_result.·µ»ØÂëÃèÊöĞÅÏ¢
      */
     public String getMessage() {
         return message;
     }
 
     /**
-     *  pay_result.è¿”å›ç æè¿°ä¿¡æ¯
+     *  pay_result.·µ»ØÂëÃèÊöĞÅÏ¢
      */
     public void setMessage(String message) {
         this.message = message;
     }
 
     /**
-     *  pay_result.åˆ›å»ºæ—¶é—´
+     *  pay_result.´´½¨Ê±¼ä
      */
     public Date getCreateTime() {
         return createTime;
     }
 
     /**
-     *  pay_result.åˆ›å»ºæ—¶é—´
+     *  pay_result.´´½¨Ê±¼ä
      */
     public void setCreateTime(Date createTime) {
         this.createTime = createTime;
     }
 
     /**
-     *  pay_result.åˆ›å»ºäºº
+     *  pay_result.´´½¨ÈË
      */
     public Integer getCreateUser() {
         return createUser;
     }
 
     /**
-     *  pay_result.åˆ›å»ºäºº
+     *  pay_result.´´½¨ÈË
      */
     public void setCreateUser(Integer createUser) {
         this.createUser = createUser;
     }
 
     /**
-     *  pay_result.ä¿®æ”¹æ—¶é—´
+     *  pay_result.ĞŞ¸ÄÊ±¼ä
      */
     public Date getUpdateTime() {
         return updateTime;
     }
 
     /**
-     *  pay_result.ä¿®æ”¹æ—¶é—´
+     *  pay_result.ĞŞ¸ÄÊ±¼ä
      */
     public void setUpdateTime(Date updateTime) {
         this.updateTime = updateTime;
     }
 
     /**
-     *  pay_result.ä¿®æ”¹äºº
+     *  pay_result.ĞŞ¸ÄÈË
      */
     public Integer getUpdateUser() {
         return updateUser;
     }
 
     /**
-     *  pay_result.ä¿®æ”¹äºº
+     *  pay_result.ĞŞ¸ÄÈË
      */
     public void setUpdateUser(Integer updateUser) {
         this.updateUser = updateUser;
     }
 
     /**
-     *  pay_result.è‡ªå®šä¹‰é¡¹1
+     *  pay_result.×Ô¶¨ÒåÏî1
      */
     public Integer getZyx1() {
         return zyx1;
     }
 
     /**
-     *  pay_result.è‡ªå®šä¹‰é¡¹1
+     *  pay_result.×Ô¶¨ÒåÏî1
      */
     public void setZyx1(Integer zyx1) {
         this.zyx1 = zyx1;
     }
 
     /**
-     *  pay_result.è‡ªå®šä¹‰é¡¹2
+     *  pay_result.×Ô¶¨ÒåÏî2
      */
     public String getZyx2() {
         return zyx2;
     }
 
     /**
-     *  pay_result.è‡ªå®šä¹‰é¡¹2
+     *  pay_result.×Ô¶¨ÒåÏî2
      */
     public void setZyx2(String zyx2) {
         this.zyx2 = zyx2;
     }
 
     /**
-     *  pay_result.è‡ªå®šä¹‰é¡¹3
+     *  pay_result.×Ô¶¨ÒåÏî3
      */
     public String getZyx3() {
         return zyx3;
     }
 
     /**
-     *  pay_result.è‡ªå®šä¹‰é¡¹3
+     *  pay_result.×Ô¶¨ÒåÏî3
      */
     public void setZyx3(String zyx3) {
         this.zyx3 = zyx3;
     }
 
     /**
-     *  pay_result.è‡ªå®šä¹‰é¡¹4
+     *  pay_result.×Ô¶¨ÒåÏî4
      */
     public Date getZyx4() {
         return zyx4;
     }
 
     /**
-     *  pay_result.è‡ªå®šä¹‰é¡¹4
+     *  pay_result.×Ô¶¨ÒåÏî4
      */
     public void setZyx4(Date zyx4) {
         this.zyx4 = zyx4;
     }
 
     /**
-     *  pay_result.è‡ªå®šä¹‰é¡¹5
+     *  pay_result.×Ô¶¨ÒåÏî5
      */
     public BigDecimal getZyx5() {
         return zyx5;
     }
 
     /**
-     *  pay_result.è‡ªå®šä¹‰é¡¹5
+     *  pay_result.×Ô¶¨ÒåÏî5
      */
     public void setZyx5(BigDecimal zyx5) {
         this.zyx5 = zyx5;
+    }
+
+    /**
+     *  pay_result.ÉÌ»§±àºÅ
+     */
+    public String getMercId() {
+        return mercId;
+    }
+
+    /**
+     *  pay_result.ÉÌ»§±àºÅ
+     */
+    public void setMercId(String mercId) {
+        this.mercId = mercId;
+    }
+
+    /**
+     *  pay_result.°æ±¾ºÅ
+     */
+    public String getVersion() {
+        return version;
+    }
+
+    /**
+     *  pay_result.°æ±¾ºÅ
+     */
+    public void setVersion(String version) {
+        this.version = version;
+    }
+
+    /**
+     *  pay_result.Ç©Ãû·½Ê½
+     */
+    public String getSignType() {
+        return signType;
+    }
+
+    /**
+     *  pay_result.Ç©Ãû·½Ê½
+     */
+    public void setSignType(String signType) {
+        this.signType = signType;
     }
 }

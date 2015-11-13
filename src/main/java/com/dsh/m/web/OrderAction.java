@@ -154,6 +154,7 @@ public class OrderAction extends BaseAction {
 		orderChildExample.createCriteria().andOrderidEqualTo(orderid);
 		List<PurchaseorderChild> details = purchaseorderChildMapper.selectByExample(orderChildExample);
 		
+		
 		model.addAttribute("order", order);
 		model.addAttribute("details", details);
 		return "order/confirm";

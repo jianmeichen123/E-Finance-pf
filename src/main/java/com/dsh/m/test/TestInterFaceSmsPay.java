@@ -27,13 +27,13 @@ public class TestInterFaceSmsPay {
 		map.put("cardName", "Z1PiTMIw6QYLds9rDlPKyQ==");
 		map.put("idType", "00");
 		map.put("idNo", "fGwOwY3OSJjzp97gMz1BN/1GTfLCvuRE");
-		map.put("orderId", "md2015080418511527");
+		map.put("orderId", "md2015080418511531");
 		map.put("amount", "1");
 		map.put("validTime", "2h");
-		map.put("notifyUrl", "111111111");
+		map.put("notifyUrl", "http://123.56.170.164:8097/payment/payPaymentresult");
 	//	map.put("agrNo", "bfc6ef862363426e89ee6eaedbd392dd");
 		
-		String signStr = "UTF-8888000000000168test_request_new9gwPayExpressOffline1.0MD515210896985ZU4XaXr2y2YMtAohm4ZXpACI7t94rq0CZ1PiTMIw6QYLds9rDlPKyQ==00fGwOwY3OSJjzp97gMz1BN/1GTfLCvuREmd201508041851152712h111111111";
+		String signStr = "UTF-8888000000000168test_request_new9gwPayExpressOffline1.0MD515210896985ZU4XaXr2y2YMtAohm4ZXpACI7t94rq0CZ1PiTMIw6QYLds9rDlPKyQ==00fGwOwY3OSJjzp97gMz1BN/1GTfLCvuREmd201508041851153112hhttp://123.56.170.164:8097/payment/payPaymentresult";
 		String signStr_new = MD5.sign(signStr,
 				"aff167ff067e4dbe999d37af0bb848f6", "UTF-8");
 
@@ -42,4 +42,5 @@ public class TestInterFaceSmsPay {
 		HttpClient.post(Consstants.Test_InterFace_Pay, map);
 
 	}
+	
 }
