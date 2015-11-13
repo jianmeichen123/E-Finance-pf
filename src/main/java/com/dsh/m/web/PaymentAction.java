@@ -14,11 +14,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.dsh.m.constant.Consstants;
+import com.dsh.m.dao.CustomerMapper;
 import com.dsh.m.dao.PayAppointMapper;
 import com.dsh.m.dao.PayBaseMapper;
 import com.dsh.m.dao.PayPaymentMapper;
 import com.dsh.m.dao.PayResultMapper;
 import com.dsh.m.dao.PaySmscodeMapper;
+import com.dsh.m.model.Customer;
 import com.dsh.m.model.PayAppoint;
 import com.dsh.m.model.PayAppointExample;
 import com.dsh.m.model.PayBase;
@@ -32,7 +34,7 @@ import com.dsh.m.util.HttpClient;
 import com.dsh.m.util.ParamsUtil;
 import com.infosight.open.api.utils.MD5;
 
-@RequestMapping("/payment/payAppiont")
+@RequestMapping("/payment")
 @Controller
 public class PaymentAction extends BaseAction {
 	@Autowired
@@ -47,7 +49,16 @@ public class PaymentAction extends BaseAction {
 	private PayPaymentMapper payPaymentMapper;
 	@Autowired
 	private PayResultMapper payResultMapper;
+	@Autowired
+	private CustomerMapper customerMapper;
 
+	@RequestMapping("tosign")
+	public String tosign(HttpSession session) {
+		Integer userid = getUserId(session);
+		Customer customer = customerMapper.selectByPrimaryKey(userid);
+		return "account/signing";
+	}
+	
 	@ResponseBody
 	@RequestMapping("/paySmscode")
 	public String paySmscode(HttpSession session, PaySmscode paySmscode) {

@@ -25,15 +25,15 @@
 </header>
 <div class="main">  
      <div class="diy-list">
-     	<form id="msform" name="msform" action="/payment/appoint">
+     	<form id="msform" name="msform">
      		<fieldset>
      			<div class="diy-note">请绑定持卡人本人的银行卡</div>
 		
         		<div class="signing-from">
         			<div class="input-div">
-            			<div class="name"><label>持卡人</label><input type="text" name="cardname" placeholder="持卡人姓名" /></div>
+            			<div class="name"><label>持卡人</label><input id="cardname" type="text" name="cardname" placeholder="持卡人姓名" /></div>
                 		<!-- <div class="bank"><label>发卡行</label><input type="text" name="c-bank" placeholder="选择发卡银行" /></div> -->
-                		<div class="number"><label>卡号</label><input type="text" name="cardno" placeholder="绑定银行卡号" /></div>
+                		<div class="number"><label>卡号</label><input id="cardno" type="text" name="cardno" placeholder="绑定银行卡号" /></div>
             		</div>
         		</div>
         		<div class="diy-note"></div>
@@ -44,8 +44,8 @@
      			<div class="diy-note">请验证持卡人信息</div>
         		<div class="signing-from">
         			<div class="input-div">
-            			<div class="name"><label>证件类型</label><input type="text" name="idtype" placeholder="持卡人姓名" /></div>
-                		<div class="bank"><label>证件号码</label><input type="text" name="idno" placeholder="身份证号码" /></div>
+            			<div class="name"><label>证件类型</label><input id="idtype" type="text" name="idtype" placeholder="证件号码类型" /></div>
+                		<div class="bank"><label>证件号码</label><input id="idno" type="text" name="idno" placeholder="身份证号码" /></div>
             		</div>
         		</div>
         		<div class="diy-note"></div>
@@ -57,12 +57,13 @@
      			<div class="diy-note">银行短信验证</div>
         		<div class="signing-from">
         			<div class="input-div">
-            			<div class="name"><label>预留号码</label><input type="text" name="mobileno" placeholder="银行预留手机号码" class="c-phone" /><input type="button" name="send" class="send" value="发送验证码" onClick="showtime(30)"  /></div>
-                		<div class="bank"><label>验证码</label><input type="text" name="verifyno" placeholder="输入接收到的验证码" /></div>
+            			<div class="name"><label>预留号码</label><input id="mobileno" type="text" name="mobileno" placeholder="银行预留手机号码" class="c-phone" />
+            			<input type="button" name="send" class="send" value="发送验证码" onClick="showtime(30)"  /></div>
+                		<div class="bank"><label>验证码</label><input id="smscode" type="text" name="smscode" placeholder="输入接收到的验证码" /></div>
             		</div>
         		</div>
         		<div class="diy-note"></div>
-        		<input name="next" type="submit" class="next action-button u-btn" value="确认签约" />
+        		<input name="next" type="button" class="next action-button u-btn" value="确认签约" onclick="confirmsign();"/>
                 <input type="button" name="previous" class="previous action-button u-btn u-btn-b" value="上一步" />
        		</fieldset> 
            
@@ -87,14 +88,48 @@
 <script type="text/javascript" src="/js/script.js"></script>
 
 <script type="text/javascript">
-
+function confirmsign(){
+	var cardname = $("#cardname").val();
+	var cardno = $("#cardno").val();
+	var idtype = $("#idtype").val();
+	var idno = $("#idno").val();
+	var mobileno = $("#mobileno").val();
+	var smscode = $("#smscode").val();
+	var param = {cardName:cardname,cardNo:cardno,idType:idtype,idNo:idno,mobileNo:mobileno,smsCode:smscode};
+	$.ajax({
+		url:'/payment/payAppiont',
+		type:'post',
+		data:param,
+		dataType:'json'
+	}).done(function(data){
+		alert(data.msg)
+	})
+}
 
 function showtime(t){
 	document.msform.send.disabled=true;
 	for(i=1;i<=t;i++) {
 		window.setTimeout("update_p(" + i + ","+t+")", i * 1000);
 	}
-
+	var cardname = $("#cardname").val();
+	var cardno = $("#cardno").val();
+	var idtype = $("#idtype").val();
+	var idno = $("#idno").val();
+	var mobileno = $("#mobileno").val();
+	var smscode = $("#smscode").val();
+	var param = {cardName:cardname,cardNo:cardno,idType:idtype,idNo:idno,mobileNo:mobileno};
+	$.ajax({
+		url:'/payment/paySmscode',
+		type:'post',
+		data:param,
+		dataType:'json'
+	}).done(function(data){
+		if(data.isSuccess){
+			
+		}else{
+			alert(data.msg);
+		}
+	})
 }
 
 function update_p(num,t) {
