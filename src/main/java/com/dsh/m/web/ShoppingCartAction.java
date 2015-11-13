@@ -110,9 +110,9 @@ public class ShoppingCartAction extends BaseAction {
 				return fail("您的账户余额不足，请及时充值！！");
 			}
 			Date starttime = new JDateTime(new Date()).setHour(10).setMinute(0).setSecond(0, 0).convertToDate();
-			Date endtime = new JDateTime(new Date()).setHour(22).setMinute(30).setSecond(0, 0).convertToDate();
+			Date endtime = new JDateTime(new Date()).setHour(23).setMinute(00).setSecond(0, 0).convertToDate();
 			if(!(new Date().after(starttime)&&new Date().before(endtime))){
-				return fail("请在10:00--22:30之间下单！");
+				return fail("请在10:00--23:00之间下单！");
 			}
 			SupplyCustomerExample example = new SupplyCustomerExample();
 			example.createCriteria().andCustomeridEqualTo(userId);
