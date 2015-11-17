@@ -1,424 +1,424 @@
-ï»¿package com.dsh.m.model;
+package com.dsh.m.model;
 
 import java.math.BigDecimal;
 import java.util.Date;
 
 public class PayBase {
     /**
-     *  ä¸»é”®
+     *  Ö÷¼ü
      */
     private Integer id;
 
     /**
-     *  å­—ç¬¦é›†
+     *  ×Ö·û¼¯
      */
     private String charset;
 
     /**
-     *  å•†æˆ·ç¼–å·
+     *  ÉÌ»§±àºÅ
      */
-    private String mercid;
+    private String mercId;
 
     /**
-     *  å•†æˆ·è¯·æ±‚å·
+     *  ÉÌ»§ÇëÇóºÅ
      */
-    private String requestid;
+    private String requestId;
 
     /**
-     *  æ¥å£ç±»å‹
+     *  ½Ó¿ÚÀàĞÍ
      */
-    private String interfacename;
+    private String interfaceName;
 
     /**
-     *  ç‰ˆæœ¬å·
+     *  °æ±¾ºÅ
      */
     private String version;
 
     /**
-     *  å¤‡æ³¨
+     *  Ç©Ãû·½Ê½
+     */
+    private String signType;
+
+    /**
+     *  ±¸×¢
      */
     private String commnt;
 
     /**
-     *  åˆ›å»ºäºº
+     *  ´´½¨ÈË
      */
     private Integer createUser;
 
     /**
-     *  åˆ›å»ºæ—¶é—´
+     *  ´´½¨Ê±¼ä
      */
     private Date createTime;
 
     /**
-     *  ä¿®æ”¹äºº
+     *  ĞŞ¸ÄÈË
      */
     private Integer updateUser;
 
     /**
-     *  ä¿®æ”¹æ—¶é—´
+     *  ĞŞ¸ÄÊ±¼ä
      */
     private Date updateTime;
 
     /**
-     *  æ—¶é—´æˆ³
+     *  Ê±¼ä´Á
      */
     private String ts;
 
     /**
-     *  åˆ é™¤æ ‡å¿—
+     *  É¾³ı±êÖ¾
      */
     private String dr;
 
     /**
-     *  è‡ªå®šä¹‰é¡¹1
+     *  ×Ô¶¨ÒåÏî1
      */
     private Integer zyx1;
 
     /**
-     *  è‡ªå®šä¹‰é¡¹2
+     *  ×Ô¶¨ÒåÏî2
      */
     private String zyx2;
 
     /**
-     *  è‡ªå®šä¹‰é¡¹3
+     *  ×Ô¶¨ÒåÏî3
      */
     private String zyx3;
 
     /**
-     *  è‡ªå®šä¹‰é¡¹4
+     *  ×Ô¶¨ÒåÏî4
      */
     private Date zyx4;
 
     /**
-     *  è‡ªå®šä¹‰é¡¹5
+     *  ×Ô¶¨ÒåÏî5
      */
     private BigDecimal zyx5;
 
     /**
-     *  è‡ªå®šä¹‰é¡¹3
+     *  ×Ô¶¨ÒåÏî3
      */
     private String zyx6;
 
     /**
-     *  è‡ªå®šä¹‰é¡¹4
+     *  ×Ô¶¨ÒåÏî4
      */
     private String zyx7;
 
     /**
-     *  è‡ªå®šä¹‰é¡¹5
+     *  ×Ô¶¨ÒåÏî5
      */
     private String zyx8;
 
     /**
-     *  ç­¾åæ–¹å¼
-     */
-    private String signtype;
-
-    /**
-     *  pay_base.ä¸»é”®
+     *  pay_base.Ö÷¼ü
      */
     public Integer getId() {
         return id;
     }
 
     /**
-     *  pay_base.ä¸»é”®
+     *  pay_base.Ö÷¼ü
      */
     public void setId(Integer id) {
         this.id = id;
     }
 
     /**
-     *  pay_base.å­—ç¬¦é›†
+     *  pay_base.×Ö·û¼¯
      */
     public String getCharset() {
         return charset;
     }
 
     /**
-     *  pay_base.å­—ç¬¦é›†
+     *  pay_base.×Ö·û¼¯
      */
     public void setCharset(String charset) {
         this.charset = charset;
     }
 
     /**
-     *  pay_base.å•†æˆ·ç¼–å·
+     *  pay_base.ÉÌ»§±àºÅ
      */
-    public String getMercid() {
-        return mercid;
+    public String getMercId() {
+        return mercId;
     }
 
     /**
-     *  pay_base.å•†æˆ·ç¼–å·
+     *  pay_base.ÉÌ»§±àºÅ
      */
-    public void setMercid(String mercid) {
-        this.mercid = mercid;
+    public void setMercId(String mercId) {
+        this.mercId = mercId;
     }
 
     /**
-     *  pay_base.å•†æˆ·è¯·æ±‚å·
+     *  pay_base.ÉÌ»§ÇëÇóºÅ
      */
-    public String getRequestid() {
-        return requestid;
+    public String getRequestId() {
+        return requestId;
     }
 
     /**
-     *  pay_base.å•†æˆ·è¯·æ±‚å·
+     *  pay_base.ÉÌ»§ÇëÇóºÅ
      */
-    public void setRequestid(String requestid) {
-        this.requestid = requestid;
+    public void setRequestId(String requestId) {
+        this.requestId = requestId;
     }
 
     /**
-     *  pay_base.æ¥å£ç±»å‹
+     *  pay_base.½Ó¿ÚÀàĞÍ
      */
-    public String getInterfacename() {
-        return interfacename;
+    public String getInterfaceName() {
+        return interfaceName;
     }
 
     /**
-     *  pay_base.æ¥å£ç±»å‹
+     *  pay_base.½Ó¿ÚÀàĞÍ
      */
-    public void setInterfacename(String interfacename) {
-        this.interfacename = interfacename;
+    public void setInterfaceName(String interfaceName) {
+        this.interfaceName = interfaceName;
     }
 
     /**
-     *  pay_base.ç‰ˆæœ¬å·
+     *  pay_base.°æ±¾ºÅ
      */
     public String getVersion() {
         return version;
     }
 
     /**
-     *  pay_base.ç‰ˆæœ¬å·
+     *  pay_base.°æ±¾ºÅ
      */
     public void setVersion(String version) {
         this.version = version;
     }
 
     /**
-     *  pay_base.å¤‡æ³¨
+     *  pay_base.Ç©Ãû·½Ê½
+     */
+    public String getSignType() {
+        return signType;
+    }
+
+    /**
+     *  pay_base.Ç©Ãû·½Ê½
+     */
+    public void setSignType(String signType) {
+        this.signType = signType;
+    }
+
+    /**
+     *  pay_base.±¸×¢
      */
     public String getCommnt() {
         return commnt;
     }
 
     /**
-     *  pay_base.å¤‡æ³¨
+     *  pay_base.±¸×¢
      */
     public void setCommnt(String commnt) {
         this.commnt = commnt;
     }
 
     /**
-     *  pay_base.åˆ›å»ºäºº
+     *  pay_base.´´½¨ÈË
      */
     public Integer getCreateUser() {
         return createUser;
     }
 
     /**
-     *  pay_base.åˆ›å»ºäºº
+     *  pay_base.´´½¨ÈË
      */
     public void setCreateUser(Integer createUser) {
         this.createUser = createUser;
     }
 
     /**
-     *  pay_base.åˆ›å»ºæ—¶é—´
+     *  pay_base.´´½¨Ê±¼ä
      */
     public Date getCreateTime() {
         return createTime;
     }
 
     /**
-     *  pay_base.åˆ›å»ºæ—¶é—´
+     *  pay_base.´´½¨Ê±¼ä
      */
     public void setCreateTime(Date createTime) {
         this.createTime = createTime;
     }
 
     /**
-     *  pay_base.ä¿®æ”¹äºº
+     *  pay_base.ĞŞ¸ÄÈË
      */
     public Integer getUpdateUser() {
         return updateUser;
     }
 
     /**
-     *  pay_base.ä¿®æ”¹äºº
+     *  pay_base.ĞŞ¸ÄÈË
      */
     public void setUpdateUser(Integer updateUser) {
         this.updateUser = updateUser;
     }
 
     /**
-     *  pay_base.ä¿®æ”¹æ—¶é—´
+     *  pay_base.ĞŞ¸ÄÊ±¼ä
      */
     public Date getUpdateTime() {
         return updateTime;
     }
 
     /**
-     *  pay_base.ä¿®æ”¹æ—¶é—´
+     *  pay_base.ĞŞ¸ÄÊ±¼ä
      */
     public void setUpdateTime(Date updateTime) {
         this.updateTime = updateTime;
     }
 
     /**
-     *  pay_base.æ—¶é—´æˆ³
+     *  pay_base.Ê±¼ä´Á
      */
     public String getTs() {
         return ts;
     }
 
     /**
-     *  pay_base.æ—¶é—´æˆ³
+     *  pay_base.Ê±¼ä´Á
      */
     public void setTs(String ts) {
         this.ts = ts;
     }
 
     /**
-     *  pay_base.åˆ é™¤æ ‡å¿—
+     *  pay_base.É¾³ı±êÖ¾
      */
     public String getDr() {
         return dr;
     }
 
     /**
-     *  pay_base.åˆ é™¤æ ‡å¿—
+     *  pay_base.É¾³ı±êÖ¾
      */
     public void setDr(String dr) {
         this.dr = dr;
     }
 
     /**
-     *  pay_base.è‡ªå®šä¹‰é¡¹1
+     *  pay_base.×Ô¶¨ÒåÏî1
      */
     public Integer getZyx1() {
         return zyx1;
     }
 
     /**
-     *  pay_base.è‡ªå®šä¹‰é¡¹1
+     *  pay_base.×Ô¶¨ÒåÏî1
      */
     public void setZyx1(Integer zyx1) {
         this.zyx1 = zyx1;
     }
 
     /**
-     *  pay_base.è‡ªå®šä¹‰é¡¹2
+     *  pay_base.×Ô¶¨ÒåÏî2
      */
     public String getZyx2() {
         return zyx2;
     }
 
     /**
-     *  pay_base.è‡ªå®šä¹‰é¡¹2
+     *  pay_base.×Ô¶¨ÒåÏî2
      */
     public void setZyx2(String zyx2) {
         this.zyx2 = zyx2;
     }
 
     /**
-     *  pay_base.è‡ªå®šä¹‰é¡¹3
+     *  pay_base.×Ô¶¨ÒåÏî3
      */
     public String getZyx3() {
         return zyx3;
     }
 
     /**
-     *  pay_base.è‡ªå®šä¹‰é¡¹3
+     *  pay_base.×Ô¶¨ÒåÏî3
      */
     public void setZyx3(String zyx3) {
         this.zyx3 = zyx3;
     }
 
     /**
-     *  pay_base.è‡ªå®šä¹‰é¡¹4
+     *  pay_base.×Ô¶¨ÒåÏî4
      */
     public Date getZyx4() {
         return zyx4;
     }
 
     /**
-     *  pay_base.è‡ªå®šä¹‰é¡¹4
+     *  pay_base.×Ô¶¨ÒåÏî4
      */
     public void setZyx4(Date zyx4) {
         this.zyx4 = zyx4;
     }
 
     /**
-     *  pay_base.è‡ªå®šä¹‰é¡¹5
+     *  pay_base.×Ô¶¨ÒåÏî5
      */
     public BigDecimal getZyx5() {
         return zyx5;
     }
 
     /**
-     *  pay_base.è‡ªå®šä¹‰é¡¹5
+     *  pay_base.×Ô¶¨ÒåÏî5
      */
     public void setZyx5(BigDecimal zyx5) {
         this.zyx5 = zyx5;
     }
 
     /**
-     *  pay_base.è‡ªå®šä¹‰é¡¹3
+     *  pay_base.×Ô¶¨ÒåÏî3
      */
     public String getZyx6() {
         return zyx6;
     }
 
     /**
-     *  pay_base.è‡ªå®šä¹‰é¡¹3
+     *  pay_base.×Ô¶¨ÒåÏî3
      */
     public void setZyx6(String zyx6) {
         this.zyx6 = zyx6;
     }
 
     /**
-     *  pay_base.è‡ªå®šä¹‰é¡¹4
+     *  pay_base.×Ô¶¨ÒåÏî4
      */
     public String getZyx7() {
         return zyx7;
     }
 
     /**
-     *  pay_base.è‡ªå®šä¹‰é¡¹4
+     *  pay_base.×Ô¶¨ÒåÏî4
      */
     public void setZyx7(String zyx7) {
         this.zyx7 = zyx7;
     }
 
     /**
-     *  pay_base.è‡ªå®šä¹‰é¡¹5
+     *  pay_base.×Ô¶¨ÒåÏî5
      */
     public String getZyx8() {
         return zyx8;
     }
 
     /**
-     *  pay_base.è‡ªå®šä¹‰é¡¹5
+     *  pay_base.×Ô¶¨ÒåÏî5
      */
     public void setZyx8(String zyx8) {
         this.zyx8 = zyx8;
-    }
-
-    /**
-     *  pay_base.ç­¾åæ–¹å¼
-     */
-    public String getSigntype() {
-        return signtype;
-    }
-
-    /**
-     *  pay_base.ç­¾åæ–¹å¼
-     */
-    public void setSigntype(String signtype) {
-        this.signtype = signtype;
     }
 }
