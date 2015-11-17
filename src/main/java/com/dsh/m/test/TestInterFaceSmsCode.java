@@ -44,7 +44,6 @@ public class TestInterFaceSmsCode {
 		map.put("mobileNo", "15210896985");
 		map.put("smsType", "1");
 		map.put("cardNo", "ZU4XaXr2y2ahbc99VL2rfgCI7t94rq0C");
-		
 		map.put("cardName", "xt04HL7vE+D7IUN5eLlyZw==");
 		map.put("idType", "00");
 		map.put("idNo", "RcqAG7ZL0EGhMWUiloy6wsLxntulUNRi");
@@ -55,14 +54,14 @@ public class TestInterFaceSmsCode {
 
 		map.put("hmac", signStr_new);
 
-	//	String post = HttpClient.post(Consstants.Test_InterFace_SmsCode, map);
-		String post="{'mercId':'888000000000168','requestId':'test_request_new9','interfaceName':'gwSmsCodeOffline','version':'1.0','signType':'MD5','returnCode':'IPS0000','message':'交易成功','hmac':'e7f2cf169242db66588344d804ad211c','tradeNo':'SMS201511121802266281','rmk':''}";
-		JSONObject jsStr = JSONObject.fromObject(post); 
-		PayAppoint bean = (PayAppoint)JSONObject.toBean(jsStr,
-				PayAppoint.class);
+		String post = HttpClient.post(Consstants.Test_InterFace_SmsCode, map);
+		//String post="{'mercId':'888000000000168','requestId':'test_request_new9','interfaceName':'gwSmsCodeOffline','version':'1.0','signType':'MD5','returnCode':'IPS0000','message':'交易成功','hmac':'e7f2cf169242db66588344d804ad211c','tradeNo':'SMS201511121802266281','rmk':''}";
+		//JSONObject jsStr = JSONObject.fromObject(post); 
+		//PayAppoint bean = (PayAppoint)JSONObject.toBean(jsStr,
+		//		PayAppoint.class);
 	//	 List<PayAppoint> persons = (List<PayAppoint>)JSONArray.toCollection(jsStr, PayAppoint.class);
 	//    List<PayAppoint> json = JSONObject.parseArray(post1, PayAppoint.class);
-	    System.out.println(bean);
+	  //  System.out.println(bean);
 		//
 
 

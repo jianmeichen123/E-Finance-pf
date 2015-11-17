@@ -62,68 +62,108 @@ public class PaymentAction extends BaseAction {
 	@ResponseBody
 	@RequestMapping("/paySmscode")
 	public String paySmscode(HttpSession session, PaySmscode paySmscode) {
-		// 得到代付接口基础类
-		PayBase payBase = getPayBase();
-		// 获得当前登录人的id
-		Integer userid = super.getUserId(session);
-		paySmscode.setCustomerid(userid);
-		// 将对象的的所有需要加密的字段加密
-		Map<String, String> map = new HashMap<String, String>();
-		Map<String, String> setSmsCodeMapParms = ParamsUtil
-				.setSmsCodeMapParams(payBase, paySmscode);
-		String post = HttpClient.post(Consstants.Test_InterFace_SmsCode,
-				setSmsCodeMapParms);
-		PaySmscode paySmscodeReturn = EncriptUtil.toJsonSmsCode(post);
-		PaySmscode paySmscodeInsert = EncriptUtil.UpdateSmsCode(paySmscode,
-				paySmscodeReturn);
-		paySmscodeMapper.insert(paySmscodeInsert);
-		return success("获取验证码成功", paySmscodeReturn);
+		try {
+			// 得到代付接口基础类
+			PayBase payBase = getPayBase();
+			// 获得当前登录人的id
+			Integer userid = super.getUserId(session);
+			paySmscode.setCustomerid(userid);
+			// 将对象的的所有需要加密的字段加密
+			Map<String, String> map = new HashMap<String, String>();
+			Map<String, String> setSmsCodeMapParms = ParamsUtil
+					.setSmsCodeMapParams(payBase, paySmscode);
+			String post = HttpClient.post(Consstants.Test_InterFace_SmsCode,
+					setSmsCodeMapParms);
+			PaySmscode paySmscodeReturn = EncriptUtil.toJsonSmsCode(post);
+			if (paySmscodeReturn.getReturnCode().equals("IPS0000")) {
+				PaySmscode paySmscodeInsert = EncriptUtil.UpdateSmsCode(
+						paySmscode, paySmscodeReturn);
+				paySmscodeMapper.insert(paySmscodeInsert);
+				return success("获取验证码成功", paySmscodeReturn);
+			} else {
+				return fail(paySmscodeReturn.getMessage());
+			}
+
+		} catch (Exception e) {
+			// TODO: handle exception
+			return fail("获取验证码失败");
+		}
+
 	}
 
 	@ResponseBody
 	@RequestMapping("/payAppiont")
 	public String payAppiont(HttpSession session, PayAppoint payAppoint) {
-		// 得到代付接口基础类
-		PayBase payBase = getPayBase();
-		// 获得当前登录人的id
-		Integer userid = super.getUserId(session);
-		payAppoint.setCustomerid(userid);
-		// 将对象的的所有需要加密的字段加密
-		Map<String, String> map = new HashMap<String, String>();
-		Map<String, String> setpayAppointMapParams = ParamsUtil
-				.setSignMapParams(payBase, payAppoint);
-		String post = HttpClient.post(Consstants.Test_InterFace_Signe,
-				setpayAppointMapParams);
-		PayAppoint payAppointReturn = EncriptUtil.toJsonAppiont(post);
-		PayAppoint PayAppointInsert = EncriptUtil.UpdateAppiont(payAppoint,
-				payAppointReturn);
-		payAppointMapper.insert(PayAppointInsert);
-		return success("签约成功", payAppointReturn);
+		if (!"".equals(payAppoint.getSmsCode())) {
+			try {
+
+				// 得到代付接口基础类
+				PayBase payBase = getPayBase();
+				// 获得当前登录人的id
+				Integer userid = super.getUserId(session);
+				payAppoint.setCustomerid(userid);
+				// 将对象的的所有需要加密的字段加密
+				Map<String, String> map = new HashMap<String, String>();
+				Map<String, String> setpayAppointMapParams = ParamsUtil
+						.setSignMapParams(payBase, payAppoint);
+				String post = HttpClient.post(Consstants.Test_InterFace_Signe,
+						setpayAppointMapParams);
+				PayAppoint payAppointReturn = EncriptUtil.toJsonAppiont(post);
+				if (payAppointReturn.getReturnCode().equals("IPS0000")) {
+
+					PayAppoint PayAppointInsert = EncriptUtil.UpdateAppiont(
+							payAppoint, payAppointReturn);
+
+					payAppointMapper.insert(PayAppointInsert);
+					return success("签约成功", payAppointReturn);
+				} else {
+					return fail("签约失败" + payAppointReturn.getMessage() + "!");
+				}
+
+			} catch (Exception e) {
+				// TODO: handle exception
+				return fail("签约失败");
+			}
+		} else {
+			return fail("请先获取验证码！");
+		}
+
 	}
 
 	@ResponseBody
 	@RequestMapping("/payPayment")
 	public String payPayment(HttpSession session, PayPayment payPayment) {
-		// 得到代付接口基础类
-		PayBase payBase = getPayBase();
-		// 获取当前登录人id
-		Integer userid = super.getUserId(session);
-		PayAppointExample payAppointexample = new PayAppointExample();
-		payAppointexample.createCriteria().andCustomeridEqualTo(userid);
-		List<PayAppoint> PayPaymentList = payAppointMapper
-				.selectByExample(payAppointexample);
-		// 将对象的的所有需要加密的字段加密
-		Map<String, String> map = new HashMap<String, String>();
-		Map<String, String> setpayAppointMapParams = ParamsUtil
-				.setPayByRgrNoMapParams(payBase, payPayment,
-						PayPaymentList.get(0));
-		String post = HttpClient.post(Consstants.Test_InterFace_Pay,
-				setpayAppointMapParams);
-		PayPayment payPaymentReturn = EncriptUtil.toJsonPayment(post);
-		PayPayment PayPayPaymentInsert = EncriptUtil.UpdatePayPayment(
-				payPayment, payPaymentReturn);
-		payPaymentMapper.insert(PayPayPaymentInsert);
-		return success("支付成功", payPaymentReturn);
+		try {
+			// 得到代付接口基础类
+			PayBase payBase = getPayBase();
+			// 获取当前登录人id
+			Integer userid = super.getUserId(session);
+			PayAppointExample payAppointexample = new PayAppointExample();
+			payAppointexample.createCriteria().andCustomeridEqualTo(userid);
+			List<PayAppoint> PayPaymentList = payAppointMapper
+					.selectByExample(payAppointexample);
+			// 将对象的的所有需要加密的字段加密
+			Map<String, String> map = new HashMap<String, String>();
+			Map<String, String> setpayAppointMapParams = ParamsUtil
+					.setPayByRgrNoMapParams(payBase, payPayment,
+							PayPaymentList.get(0));
+			String post = HttpClient.post(Consstants.Test_InterFace_Pay,
+					setpayAppointMapParams);
+			PayPayment payPaymentReturn = EncriptUtil.toJsonPayment(post);
+			if(payPaymentReturn.getReturnCode().equals("IPS0000")){
+				PayPayment PayPayPaymentInsert = EncriptUtil.UpdatePayPayment(
+						payPayment, payPaymentReturn);
+				payPaymentMapper.insert(PayPayPaymentInsert);
+				return success("支付成功");
+			}else{
+				return fail("支付失败"+payPaymentReturn.getMessage()+"!");
+			}
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+			return fail("支付失败");
+		}
+		
 	}
 
 	public PayBase getPayBase() {
@@ -136,7 +176,7 @@ public class PaymentAction extends BaseAction {
 
 	@RequestMapping("/payPaymentresult")
 	@ResponseBody
-	public Map wthdResultnotify(HttpServletRequest request,
+	public Map payPaymentresult(HttpServletRequest request,
 			HttpServletResponse response) {
 		Map<String, String> map = new HashMap<String, String>();
 		try {

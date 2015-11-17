@@ -18,9 +18,9 @@ public class CreatePassword {
 	              }
 	          }
 	     //  String cardNo="6217000010051553694";
-	       String cardNo="6907558907069999";
+	    //   String cardNo="李伟强";
 	  //   String cardNo="李伟强";
-	//    String cardNo="150424198206130030";
+	   String cardNo="150424198206130030";
 	        String cardNoNew = "";                                                                                                                                                                                                                                                                                                                                     
 			try {
 				cardNoNew = TribleDesEncrypt.encryptMode(signKey1, cardNo);

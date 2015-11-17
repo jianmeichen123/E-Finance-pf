@@ -17,23 +17,18 @@ public class TestInterFaceSmsPay {
 
 		map.put("charset", "UTF-8");
 		map.put("mercId", "888000000000168");
-		map.put("requestId", "test_request_new9");
+		map.put("requestId", "test_request_new14");
 		map.put("interfaceName", "gwPayExpressOffline");
 		map.put("version", "1.0");
 		map.put("signType", "MD5");
-		map.put("mobileNo", "15210896985");
-	//	map.put("smsType", "1");
-		map.put("cardNo", "ZU4XaXr2y2YMtAohm4ZXpACI7t94rq0C");
-		map.put("cardName", "Z1PiTMIw6QYLds9rDlPKyQ==");
-		map.put("idType", "00");
-		map.put("idNo", "fGwOwY3OSJjzp97gMz1BN/1GTfLCvuRE");
-		map.put("orderId", "md2015080418511531");
+		map.put("mobileNo", "13366343223");
+		map.put("agrNo", "a82f1bf02adc4195ad4e3922eb18d226");
+		map.put("orderId", "md2015080418511541");
 		map.put("amount", "1");
 		map.put("validTime", "2h");
-		map.put("notifyUrl", "http://123.56.170.164:8097/payment/payPaymentresult");
-	//	map.put("agrNo", "bfc6ef862363426e89ee6eaedbd392dd");
+		map.put("notifyUrl", "http://123.56.170.164:8097/payment/payPaymentresult/");
 		
-		String signStr = "UTF-8888000000000168test_request_new9gwPayExpressOffline1.0MD515210896985ZU4XaXr2y2YMtAohm4ZXpACI7t94rq0CZ1PiTMIw6QYLds9rDlPKyQ==00fGwOwY3OSJjzp97gMz1BN/1GTfLCvuREmd201508041851153112hhttp://123.56.170.164:8097/payment/payPaymentresult";
+		String signStr = "UTF-8888000000000168test_request_new14gwPayExpressOffline1.0MD513366343223a82f1bf02adc4195ad4e3922eb18d226md201508041851154112hhttp://123.56.170.164:8097/payment/payPaymentresult";
 		String signStr_new = MD5.sign(signStr,
 				"aff167ff067e4dbe999d37af0bb848f6", "UTF-8");
 

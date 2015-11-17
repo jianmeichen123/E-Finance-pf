@@ -41,5 +41,14 @@ public interface Consstants {
 	 *查询支付信息
 	 */
 	public static final String InterFace_QueryOrder = "https://payment.shanqb.com/ips/mercExp/gwExpress/queryOrder";
+	/***
+	 *支付结果通知
+	 */
+	public static final String Test_InterFace_ResultNotice = "http://123.56.170.164:8097/payment/payPaymentresult";
+	
+	/***
+	 *支付结果通知
+	 */
+	public static final String InterFace_ResultNotice = "m.dosaing.com/payment/payPaymentresult";
 	
 }

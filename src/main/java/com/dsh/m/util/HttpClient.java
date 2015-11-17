@@ -144,7 +144,9 @@ public class HttpClient {
 
 		Set<String> keySet = params.keySet();
 		for (String key : keySet) {
-			nvps.add(new BasicNameValuePair(key, params.get(key)));
+			String strkey=key;
+			String strvalue=params.get(key);
+			nvps.add(new BasicNameValuePair(strkey, strvalue));
 		}
 
 		try {

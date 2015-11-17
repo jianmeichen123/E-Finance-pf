@@ -31,9 +31,9 @@
 		
         		<div class="signing-from">
         			<div class="input-div">
-            			<div class="name"><label>持卡人</label><input id="cardname" type="text" name="cardname" placeholder="持卡人姓名" /></div>
+            			<div class="name"><label>持卡人</label><input id="cardname" type="text" name="cardname" placeholder="持卡人姓名" value="陈建梅" /></div>
                 		<!-- <div class="bank"><label>发卡行</label><input type="text" name="c-bank" placeholder="选择发卡银行" /></div> -->
-                		<div class="number"><label>卡号</label><input id="cardno" type="text" name="cardno" placeholder="绑定银行卡号" /></div>
+                		<div class="number"><label>卡号</label><input id="cardno" type="text" name="cardno" value="6907558907062222" placeholder="绑定银行卡号" /></div>
             		</div>
         		</div>
         		<div class="diy-note"></div>
@@ -44,8 +44,8 @@
      			<div class="diy-note">请验证持卡人信息</div>
         		<div class="signing-from">
         			<div class="input-div">
-            			<div class="name"><label>证件类型</label><input id="idtype" type="text" name="idtype" placeholder="证件号码类型" /></div>
-                		<div class="bank"><label>证件号码</label><input id="idno" type="text" name="idno" placeholder="身份证号码" /></div>
+            			<div class="name"><label>证件类型</label><input id="idtype" type="text" name="idtype" value="00"placeholder="证件号码类型" /></div>
+                		<div class="bank"><label>证件号码</label><input id="idno" type="text" name="idno" value="62230119940228620X" placeholder="身份证号码" /></div>
             		</div>
         		</div>
         		<div class="diy-note"></div>
@@ -57,7 +57,7 @@
      			<div class="diy-note">银行短信验证</div>
         		<div class="signing-from">
         			<div class="input-div">
-            			<div class="name"><label>预留号码</label><input id="mobileno" type="text" name="mobileno" placeholder="银行预留手机号码" class="c-phone" />
+            			<div class="name"><label>预留号码</label><input id="mobileno" type="text" name="mobileno" value="15210896985" placeholder="银行预留手机号码" class="c-phone" />
             			<input type="button" name="send" class="send" value="发送验证码" onClick="showtime(30)"  /></div>
                 		<div class="bank"><label>验证码</label><input id="smscode" type="text" name="smscode" placeholder="输入接收到的验证码" /></div>
             		</div>
@@ -66,7 +66,7 @@
         		<input name="next" type="button" class="next action-button u-btn" value="确认签约" onclick="confirmsign();"/>
                 <input type="button" name="previous" class="previous action-button u-btn u-btn-b" value="上一步" />
        		</fieldset> 
-           
+           <input id="tradeNo" type="hidden" name="tradeNo" placeholder="" />
         </form>
      </div>
 
@@ -89,20 +89,28 @@
 
 <script type="text/javascript">
 function confirmsign(){
+     
 	var cardname = $("#cardname").val();
 	var cardno = $("#cardno").val();
 	var idtype = $("#idtype").val();
 	var idno = $("#idno").val();
 	var mobileno = $("#mobileno").val();
 	var smscode = $("#smscode").val();
-	var param = {cardName:cardname,cardNo:cardno,idType:idtype,idNo:idno,mobileNo:mobileno,smsCode:smscode};
+	var tradeNo = $("#tradeNo").val();
+	var param = {cardName:cardname,cardNo:cardno,idType:idtype,idNo:idno,mobileNo:mobileno,smsCode:smscode,tradeNo:tradeNo};
 	$.ajax({
 		url:'/payment/payAppiont',
 		type:'post',
 		data:param,
 		dataType:'json'
 	}).done(function(data){
+	 var returnUrl="/user";
+	if(data.isSuccess){
 		alert(data.msg)
+		window.location = returnUrl
+		}else{
+			alert(data.msg);
+		}
 	})
 }
 
@@ -125,7 +133,8 @@ function showtime(t){
 		dataType:'json'
 	}).done(function(data){
 		if(data.isSuccess){
-			
+		var tradeno=data.obj.tradeNo; 
+		   $("#tradeNo").val(tradeno);
 		}else{
 			alert(data.msg);
 		}
