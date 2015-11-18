@@ -130,6 +130,9 @@
        			<li class="noborderbottom"><span class="zs-l">退货金额</span> <span class="zs-r" >￥${returnprice.format() }</span></li>
        			<li class="noborderbottom"><span class="zs-l">协议返款</span> <span class="zs-r" >￥${indexorder==null?"--":indexorder.t17.format() }</span></li>
 			#end
+			#if(order.ordertype == 5)
+       			<li class="noborderbottom"><span class="zs-l">订单总金额</span> <span class="zs-r" >￥${order.totalprice.format() }</span></li>
+			#end
 			<li class="noborderbottom">
 				#if(order.ordertype == 1)
 					<a href="javascript:;" class="chakan-btn" onclick='cancel("${order.id}")'>取消订单</a>
