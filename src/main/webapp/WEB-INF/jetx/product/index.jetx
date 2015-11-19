@@ -44,6 +44,12 @@
 					'			<p><a href="javascript:;" onclick="buy('+n.goodsid+', this)">购买</a></p>'+
 					'		</div> '+            
 					'	</dd>'+
+					'	<div class="diss">'+
+					'		<ul class="row">'+
+					'			<li class="row-t">备注</li>'+
+					'			<li class="biaoge" style="display:none">'+n.beizhu+'</li>'+
+					'		</ul>'+
+					'	</div>'+
 					'</dl>'
 				$('#tbc').append(html)
 			})
@@ -102,6 +108,7 @@
 			$('.tongji').find('span').text(data)
 		})
 	}
+	
 </script>
 </head>
 <body>
@@ -150,7 +157,6 @@
 						<div class="dd-left">
 							<b><a href="javascipt:;">${good.gname }</a></b>
 							单位：${good.unit }<br>
-							${good.beizhu }
 						</div>
 						<div class="dd-right">
 							<ul>
@@ -161,6 +167,12 @@
 							<p><a href="javascript:;" onclick='buy("${good.goodsid}", this)'>购买</a></p>
 						</div>               
 					</dd>
+					<div class="diss">
+						<ul class="row">
+							<li class="row-t">备注</li>
+							<li class="biaoge" style="display: none;">${good.beizhu }</li>
+						</ul>
+					</div>
 				</dl>
 				#end
 			</div>
@@ -186,6 +198,17 @@
 
 </body>
 <script>
+$('.diss li.row-t').click(function(){
+	alert('d');
+	$(this).siblings().slideToggle();
+	$(this).parent('.row').siblings().find('.biaoge').hide();
+	if($(this).siblings('.biaoge').css('display')=='block'){
+	    $(this).removeClass("row-t").addClass("row-t1");
+    }
+	if($(this).siblings('.biaoge').css('display')=='none'){
+		$(this).removeClass("row-t1").addClass("row-t");	
+	}
+});
 $('#setbtn').click(function(){
 	$('.tanchu').show();
 	$('.menu').slideToggle(50);
