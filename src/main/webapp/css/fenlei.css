@@ -123,7 +123,7 @@
 
 .dingdan-list li table.biaoge{ border:none;} 
 .dingdan-list li table.biaoge th{font-size:12px; background-color:#f1f1f1; line-height:20px; border:none; border-top:1px solid #DFDFDD;font-weight:bold;}
-.dingdan-list li table.biaoge tbody tr{border-bottom:1px solid #DFDFDD; line-height:18px;font-size:10px; }
+.dingdan-list li table.biaoge tbody tr{border-bottom:1px solid #949494; line-height:25px;font-size:10px; }
 .dingdan-list li table.biaoge tbody td span{ line-height:20px; display:block; border:1px solid #DFDFDD;background-color:#f1f1f1;}
 .dingdan-list li table.biaoge tbody td span input{ background:none; border:none; width:30px; text-align:center;}
 .dingdan-list li.black{ color:#666; border-bottom: 1px solid #efefee;}
@@ -169,3 +169,5 @@
 .row-t,.row-t1{background-color: #e1e1e1;clear: both;font-size: 13px;height: 25px;line-height: 25px;text-align: center;}
 .biaoge{ font-size:12px; padding:10px;}
 
+.dingdan-list li table.biaoge tbody tr.noborder{border-bottom:1px solid #F1F1F1;  }
+.dingdan-list li table.biaoge tbody tr td.note{ padding-left:10px; background-color:#f6f6f6;}

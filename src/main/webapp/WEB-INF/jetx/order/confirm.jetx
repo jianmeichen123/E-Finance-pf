@@ -12,7 +12,12 @@
 <link rel="stylesheet" href="/css/foot.css" />
 <script src="/js/jquery-1.10.1.min.js" ></script>
 <script type="text/javascript">
+	var checkSubmitFlg = false; 
 	function confirm() {
+		if(checkSubmitFlg){
+			return false;
+		}
+		checkSubmitFlg = true;
 		var array = []
 		$.each($('.biaoge').find('tbody').find('tr'), function(i, n){
 			var tds = $(this).children()
@@ -73,7 +78,11 @@
                  </thead>
                  <tbody>
                  	#for(detail : details)
-	                    <tr>
+	                    #if(detail.remark)
+                    	<tr class="noborder">
+                    	#else
+                    	<tr>
+                    	#end
 	                    	<td>${getProductById(detail.goodsid).gname }</td>
 	                    	<td>${detail.amount.format() }</td>
 	                    	<td>${detail.realAmount.format() }</td>
@@ -87,6 +96,11 @@
 	                    	<td>￥${detail.unitPrice.format() }</td>
 	                    	<td>￥${detail.totalPrice.format() }</td>
 	                    </tr>
+	                    #if(detail.remark)
+                    	<tr>
+                    		<td colspan="6" align="left" class="note">备注：${detail.remark }</td>
+                    	</tr>
+                    	#end
                     #end
                  </tbody>
               </table>

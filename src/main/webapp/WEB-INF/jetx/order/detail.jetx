@@ -91,7 +91,11 @@
                  <tbody>
                  	#for(detail : details)
                  	#set(product = getProductById(detail.goodsid))
+                 	#if(detail.remark)
+                    <tr class="noborder">
+                    #else
                     <tr>
+                    #end
                     	<td>${product.gname }</td>
                     	<td>${product.unit }</td>
                     	<td>${detail.amount.format() }</td>
@@ -111,6 +115,11 @@
                     	<td><b>￥${detail.totalPrice==null?"--":detail.totalPrice.format() }</b></td>
                     	#end
                     </tr>
+                    #if(detail.remark)
+                    <tr>
+                    	<td colspan="6" align="left" class="note">备注：${detail.remark }</td>
+                    </tr>
+                    #end
                     #end
                  </tbody>
               </table>
