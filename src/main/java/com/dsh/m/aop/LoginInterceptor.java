@@ -18,7 +18,7 @@ public class LoginInterceptor implements HandlerInterceptor {
 		String queryString = request.getQueryString();
 		if(StringUtils.isNotBlank(queryString)) 
 			uri = uri+"?"+queryString;
-		if(obj==null||!"/payment/payPaymentresult".equals(uri)) {
+		if(obj==null&&!uri.equals("/payment/payPaymentresult")) {
 			response.sendRedirect("/user/tologin?returnUrl="+uri);
 			return false;
 		}

@@ -1,5 +1,6 @@
 package com.dsh.m.web;
 
+import java.io.UnsupportedEncodingException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -13,6 +14,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.alibaba.fastjson.JSONObject;
 import com.dsh.m.constant.Consstants;
 import com.dsh.m.dao.CustomerMapper;
 import com.dsh.m.dao.PayAppointMapper;
@@ -176,8 +178,8 @@ public class PaymentAction extends BaseAction {
 
 	@RequestMapping("/payPaymentresult")
 	@ResponseBody
-	public Map payPaymentresult(HttpServletRequest request,
-			HttpServletResponse response) {
+	public String payPaymentresult(HttpServletRequest request,
+			HttpServletResponse response) throws UnsupportedEncodingException {
 		Map<String, String> map = new HashMap<String, String>();
 		try {
 			String charset = request.getParameter("charset");
@@ -246,7 +248,9 @@ public class PaymentAction extends BaseAction {
 		signStr_new = MD5.sign(signStr, "aff167ff067e4dbe999d37af0bb848f6",
 				"UTF-8");
 		map.put("hmac", signStr_new);
-		return map;
+		JSONObject json = (JSONObject) JSONObject.toJSON(map);
+		response.setCharacterEncoding("UTF-8"); 
+		return json.toJSONString();
 
 	}
 

@@ -23,12 +23,12 @@ public class TestInterFaceSmsPay {
 		map.put("signType", "MD5");
 		map.put("mobileNo", "13366343223");
 		map.put("agrNo", "a82f1bf02adc4195ad4e3922eb18d226");
-		map.put("orderId", "md2015080418511541");
+		map.put("orderId", "md2015080418511542");
 		map.put("amount", "1");
 		map.put("validTime", "2h");
 		map.put("notifyUrl", "http://123.56.170.164:8097/payment/payPaymentresult/");
 		
-		String signStr = "UTF-8888000000000168test_request_new14gwPayExpressOffline1.0MD513366343223a82f1bf02adc4195ad4e3922eb18d226md201508041851154112hhttp://123.56.170.164:8097/payment/payPaymentresult";
+		String signStr = "UTF-8888000000000168test_request_new14gwPayExpressOffline1.0MD513366343223a82f1bf02adc4195ad4e3922eb18d226md201508041851154212hhttp://123.56.170.164:8097/payment/payPaymentresult";
 		String signStr_new = MD5.sign(signStr,
 				"aff167ff067e4dbe999d37af0bb848f6", "UTF-8");
 

@@ -1,5 +1,6 @@
 package com.dsh.m.service;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,6 +38,7 @@ public class SettleService {
 		Settleaccount settle = new Settleaccount();
 		settle.setId(id);
 		settle.setReturnstateid(1);
+		settle.setUpdatetime(new Date());
 		settleaccountMapper.updateByPrimaryKeySelective(settle);
 		settleaccountchildMapper.batchUpdateReturnState(id);
 	}

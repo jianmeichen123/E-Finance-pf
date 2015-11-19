@@ -1,5 +1,7 @@
 package com.dsh.m.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -7,6 +9,8 @@ import com.dsh.m.dao.GoodsBclassMapper;
 import com.dsh.m.dao.GoodsMapper;
 import com.dsh.m.model.Goods;
 import com.dsh.m.model.GoodsBclass;
+import com.dsh.m.model.GoodsExample;
+import com.dsh.m.model.SettleaccountchildExample;
 import com.dsh.m.util.redis.Cache;
 import com.dsh.m.util.redis.Redis;
 
@@ -23,9 +27,11 @@ public class GoodsService {
 		String key = "goods:"+id;
 		Goods goods = cache.get(key);
 		if(null==goods) {
-			goods = goodsMapper.selectByPrimaryKey(id);
-			if(null!=goods)
-				cache.set(key, goods);
+			GoodsExample scexample = new GoodsExample();
+			scexample.createCriteria().andGoodsidEqualTo(id).andDrNotEqualTo("1");
+	        List<Goods> goodsList = goodsMapper.selectByExample(scexample);
+			if(null!=goodsList)
+				cache.set(key, goodsList.get(0));
 		}
 		return goods;
 	}

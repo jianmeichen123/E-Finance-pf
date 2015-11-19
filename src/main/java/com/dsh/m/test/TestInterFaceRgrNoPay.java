@@ -17,20 +17,20 @@ public class TestInterFaceRgrNoPay {
 
 		map.put("charset", "UTF-8");
 		map.put("mercId", "888000000000168");
-		map.put("requestId", "test_request_new9");
+		map.put("requestId", "test_request_new15");
 		map.put("interfaceName", "gwPayExpressOffline");
 		map.put("version", "1.0");
 		map.put("signType", "MD5");
 		map.put("mobileNo", "13366343223");
 	 	map.put("agrNo", "b2cc639dcb44482fa7221209c57dcfe9");	
-		map.put("orderId", "md2015080418511540");
+		map.put("orderId", "md2015080418511544");
 		map.put("amount", "1");
 		map.put("validTime", "2h");
 		map.put("notifyUrl", "http://123.56.170.164:8097/payment/payPaymentresult");
 		
 	//	map.put("agrNo", "bfc6ef862363426e89ee6eaedbd392dd");
 		
-		String signStr = "UTF-8888000000000168test_request_new9gwPayExpressOffline1.0MD513366343223b2cc639dcb44482fa7221209c57dcfe9md201508041851154012hhttp://123.56.170.164:8097/payment/payPaymentresult";
+		String signStr = "UTF-8888000000000168test_request_new15gwPayExpressOffline1.0MD513366343223b2cc639dcb44482fa7221209c57dcfe9md201508041851154412hhttp://123.56.170.164:8097/payment/payPaymentresult";
 		String signStr_new = MD5.sign(signStr,
 				"aff167ff067e4dbe999d37af0bb848f6", "UTF-8");
 
