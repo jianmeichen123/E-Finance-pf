@@ -166,3 +166,6 @@
 .main-top i.i1{background:url(../images/zhangmu02-02.png) no-repeat right top;}
 .main .tanchu1{ display:none;position: absolute;top:0;z-index:1; left:0; width:100%; height:100%; margin:0 auto; }
 
+.row-t,.row-t1{background-color: #e1e1e1;clear: both;font-size: 13px;height: 25px;line-height: 25px;text-align: center;}
+.biaoge{ font-size:12px; padding:10px;}
+
