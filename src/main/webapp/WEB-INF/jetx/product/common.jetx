@@ -91,7 +91,6 @@
 					<div class="dd-left">
 						<b><a href="javascript:;">${goods.gname }</a></b>
 						单位：${goods.unit }<br>
-						${goods.beizhu }
 					</div>
 					<div class="dd-right">
 						<ul>
@@ -102,6 +101,12 @@
 						<p><a href="javascript:;" onclick='buy("${goods.goodsid}", this)'>购买</a></p>
 					</div>               
 				</dd>
+				<div class="dis">
+					<ul class="row">
+						<li class="row-t">备注</li>
+						<li class="biaoge" style="display: none;">${goods.beizhu }</li>
+					</ul>
+				</div>
 			</dl>
 			#end
 			#end
@@ -129,6 +134,16 @@
 </body>
 <script src="/js/fenlei_slidedoor.js" ></script>
 <script type="text/javascript">
+$('.dis li.row-t').click(function(){
+	$(this).siblings().slideToggle();
+	$(this).parent('.row').siblings().find('.biaoge').hide();
+	if($(this).siblings('.biaoge').css('display')=='block'){
+	    $(this).removeClass("row-t").addClass("row-t1");
+    }
+	if($(this).siblings('.biaoge').css('display')=='none'){
+		$(this).removeClass("row-t1").addClass("row-t");	
+	}
+});
 $('#setbtn').click(function(){
 	$('.tanchu').show();
 	$('.menu').slideToggle(50);

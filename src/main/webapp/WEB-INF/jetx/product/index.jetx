@@ -16,6 +16,7 @@
 		$('#tbc').html('')
 		$('#tb_').find('a').attr('class', 'normaltab')
 		$(a).addClass('hovertab')
+		var obj = $(this)
 		$.ajax({
 			url:'/product/load?catid='+catid,
 			dataType:'json'
@@ -107,6 +108,16 @@
 		}).done(function(data) {
 			$('.tongji').find('span').text(data)
 		})
+		$('.diss li.row-t').click(function(){
+			$(this).siblings().slideToggle();
+			$(this).parent('.row').siblings().find('.biaoge').hide();
+			if($(this).siblings('.biaoge').css('display')=='block'){
+			    $(this).removeClass("row-t").addClass("row-t1");
+		    }
+			if($(this).siblings('.biaoge').css('display')=='none'){
+				$(this).removeClass("row-t1").addClass("row-t");	
+			}
+		});
 	}
 	
 </script>
@@ -199,7 +210,6 @@
 </body>
 <script>
 $('.diss li.row-t').click(function(){
-	alert('d');
 	$(this).siblings().slideToggle();
 	$(this).parent('.row').siblings().find('.biaoge').hide();
 	if($(this).siblings('.biaoge').css('display')=='block'){
