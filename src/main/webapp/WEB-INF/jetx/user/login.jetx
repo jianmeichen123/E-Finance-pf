@@ -36,9 +36,7 @@
 					alert(data.msg)
 				else {
 					var returnUrl = $('#returnUrl').val()
-						alert(returnUrl);
 					if(returnUrl!='')
-				
 						window.location = returnUrl
 					else
 						window.location = '/'
