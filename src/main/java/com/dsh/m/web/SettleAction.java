@@ -47,6 +47,7 @@ public class SettleAction extends BaseAction {
 		Integer userid = super.getUserId(session);
 		SettleaccountExample example = new SettleaccountExample();
 		example.createCriteria().andCustomeridEqualTo(userid);
+		example.setOrderByClause("createtime desc");
 		List<Settleaccount> settles = settleaccountMapper.selectByExample(example);
 		for (int i = 0; i < settles.size(); i++) {
 			BigDecimal returnMoney = indexOrderMapper.getReturnMoney(settles.get(i).getId());
@@ -65,6 +66,7 @@ public class SettleAction extends BaseAction {
 		Settleaccount settle = settleaccountMapper.selectByPrimaryKey(id);
 		SettleaccountchildExample example = new SettleaccountchildExample();
 		example.createCriteria().andSettleidEqualTo(id);
+		example.setOrderByClause("orderdate desc");
 		List<Settleaccountchild> childs = settleaccountchildMapper.selectByExample(example);
 		JSONArray array = JSON.parseArray(JSON.toJSONString(childs));
 		@SuppressWarnings("rawtypes")

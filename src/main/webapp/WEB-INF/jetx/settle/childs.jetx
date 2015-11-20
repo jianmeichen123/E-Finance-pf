@@ -16,10 +16,27 @@
 				#elseif(child.order.balancestate==1)
 				<i class="state2">&nbsp;</i>
 				#end
-			</td></tr>
+			</td>
+		</tr>
 		#end
 		#if(settle.returnstateid == 0 && cansettle)
-		<tr><td colspan="5"><a href="javascript:;" class="btn" onclick='confirmreturn("${settle.id}", this)'>确认已返现</a></td></tr>
-		#end
+		<tr>
+			<td colspan="5" align="left">&nbsp;&nbsp;
+			返现周期：${settle.starttime.format("MM-dd")}~${settle.endtime.format("MM-dd")}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			返现状态：未返现 &nbsp;&nbsp;&nbsp;
+		</td>
+			
+		</tr>
+		<tr><td colspan="5" ><a href="javascript:;" class="btn" onclick='confirmreturn("${settle.id}", this)'>确认已返现</a></td></tr>
+		#else
+		<tr>
+			<td colspan="5" align="left">&nbsp;&nbsp;
+			返现周期：${settle.starttime.format("MM-dd")}~${settle.endtime.format("MM-dd")}&nbsp;&nbsp;&nbsp;
+			返现状态：已返现 &nbsp;&nbsp;&nbsp;
+			返款时间：${settle.updatetime==null?"--":settle.updatetime.format("MM/dd")}			</td>
+			
+		</tr>
+	   #end
+		
 	</tbody>
 </table>
