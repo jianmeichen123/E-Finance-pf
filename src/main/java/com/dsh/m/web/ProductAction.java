@@ -42,7 +42,7 @@ public class ProductAction extends BaseAction {
 		Integer userid = super.getUserId(session);
 		//传入二级分类
  		GoodsExample goodsExample = new GoodsExample();
-		goodsExample.createCriteria().andSclassidEqualTo(catid).andIsSaleEqualTo("1");
+		goodsExample.createCriteria().andSclassidEqualTo(catid).andIsSaleEqualTo("1").andDrNotEqualTo("1");
 		List<Goods> goods = goodsMapper.selectByExample(goodsExample);
 		
 		GoodsSclassExample goodsSclassExample = new GoodsSclassExample();
@@ -63,7 +63,7 @@ public class ProductAction extends BaseAction {
 	@RequestMapping("/load")
 	public String load(Integer catid) {
 		GoodsExample goodsExample = new GoodsExample();
-		goodsExample.createCriteria().andSclassidEqualTo(catid).andIsSaleEqualTo("1");
+		goodsExample.createCriteria().andSclassidEqualTo(catid).andIsSaleEqualTo("1").andDrNotEqualTo("1");
 		List<Goods> goods = goodsMapper.selectByExample(goodsExample);
 		return JSON.toJSONString(goods);
 	}
@@ -83,7 +83,7 @@ public class ProductAction extends BaseAction {
 	@RequestMapping("/search")
 	public String search(HttpSession session, String word, ModelMap model) {
 		GoodsExample example = new GoodsExample();
-		example.createCriteria().andGnameLike("%"+word+"%").andIsSaleEqualTo("1");
+		example.createCriteria().andGnameLike("%"+word+"%").andIsSaleEqualTo("1").andDrNotEqualTo("1");
 		List<Goods> list = goodsMapper.selectByExample(example);
 		model.addAttribute("products", list);
 		Integer userid = super.getUserId(session);

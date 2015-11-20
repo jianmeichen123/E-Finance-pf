@@ -52,7 +52,7 @@ public class PriceAction extends BaseAction {
 		List<GoodsSclass> sclasses = goodsSclassMapper.selectByExample(sclassExample);
 		Integer sclassid = sclasses.get(0).getSclassid();
 		GoodsExample goodsExample = new GoodsExample();
-		goodsExample.createCriteria().andSclassidEqualTo(sclassid).andIsSaleEqualTo("1");
+		goodsExample.createCriteria().andSclassidEqualTo(sclassid).andIsSaleEqualTo("1").andDrNotEqualTo("1");
 		List<Goods> goods = goodsMapper.selectByExample(goodsExample);
 		JSONArray array = JSON.parseArray(JSON.toJSONString(goods));
 		@SuppressWarnings("rawtypes")
@@ -83,7 +83,7 @@ public class PriceAction extends BaseAction {
 		List<GoodsSclass> sclasses = goodsSclassMapper.selectByExample(sclassExample);
 		Integer sclassid = sclasses.get(0).getSclassid();
 		GoodsExample goodsExample = new GoodsExample();
-		goodsExample.createCriteria().andSclassidEqualTo(sclassid).andIsSaleEqualTo("1");
+		goodsExample.createCriteria().andSclassidEqualTo(sclassid).andIsSaleEqualTo("1").andDrNotEqualTo("1");
 		List<Goods> goods = goodsMapper.selectByExample(goodsExample);
 		JSONArray array = JSON.parseArray(JSON.toJSONString(goods));
 		@SuppressWarnings("rawtypes")
@@ -110,7 +110,7 @@ public class PriceAction extends BaseAction {
 	@RequestMapping("/loadgoods")
 	public String loadgoods(Integer sclassid) {
 		GoodsExample goodsExample = new GoodsExample();
-		goodsExample.createCriteria().andSclassidEqualTo(sclassid).andIsSaleEqualTo("1");
+		goodsExample.createCriteria().andSclassidEqualTo(sclassid).andIsSaleEqualTo("1").andDrNotEqualTo("1");
 		List<Goods> goods = goodsMapper.selectByExample(goodsExample);
 		JSONArray array = JSON.parseArray(JSON.toJSONString(goods));
 		@SuppressWarnings("rawtypes")

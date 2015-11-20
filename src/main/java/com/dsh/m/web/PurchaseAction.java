@@ -80,7 +80,7 @@ public class PurchaseAction extends BaseAction {
 		List<GoodsSclass> sclasses = goodsSclassMapper.selectByExample(sclassExample);
 		Integer sclassid = sclasses.get(0).getSclassid();
 		GoodsExample goodsExample = new GoodsExample();
-		goodsExample.createCriteria().andSclassidEqualTo(sclassid);
+		goodsExample.createCriteria().andSclassidEqualTo(sclassid).andDrNotEqualTo("1");
 		List<Goods> goods = goodsMapper.selectByExample(goodsExample);
 		model.addAttribute("bclasses", bclasses);
 		model.addAttribute("sclasses", sclasses);
@@ -97,7 +97,7 @@ public class PurchaseAction extends BaseAction {
 		List<GoodsSclass> sclasses = goodsSclassMapper.selectByExample(sclassExample);
 		Integer sclassid = sclasses.get(0).getSclassid();
 		GoodsExample goodsExample = new GoodsExample();
-		goodsExample.createCriteria().andSclassidEqualTo(sclassid);
+		goodsExample.createCriteria().andSclassidEqualTo(sclassid).andDrNotEqualTo("1");
 		List<Goods> goods = goodsMapper.selectByExample(goodsExample);
 		@SuppressWarnings("rawtypes")
 		Map map = new HashMap();
@@ -110,7 +110,7 @@ public class PurchaseAction extends BaseAction {
 	@RequestMapping("/loadgoods")
 	public String loadgoods(Integer sclassid) {
 		GoodsExample goodsExample = new GoodsExample();
-		goodsExample.createCriteria().andSclassidEqualTo(sclassid);
+		goodsExample.createCriteria().andSclassidEqualTo(sclassid).andDrNotEqualTo("1");
 		List<Goods> goods = goodsMapper.selectByExample(goodsExample);
 		return success(null, goods);
 	}
@@ -215,7 +215,7 @@ public class PurchaseAction extends BaseAction {
 	@RequestMapping("/search")
 	public String search(HttpSession session, String word, ModelMap model) {
 		GoodsExample example = new GoodsExample();
-		example.createCriteria().andGnameLike("%"+word+"%");
+		example.createCriteria().andGnameLike("%"+word+"%").andDrNotEqualTo("1");
 		List<Goods> list = goodsMapper.selectByExample(example);
 		model.addAttribute("goods", list);
 		return "purchase/search";

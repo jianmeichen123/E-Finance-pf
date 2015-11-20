@@ -27,11 +27,9 @@ public class GoodsService {
 		String key = "goods:"+id;
 		Goods goods = cache.get(key);
 		if(null==goods) {
-			GoodsExample scexample = new GoodsExample();
-			scexample.createCriteria().andGoodsidEqualTo(id).andDrNotEqualTo("1");
-	        List<Goods> goodsList = goodsMapper.selectByExample(scexample);
-			if(null!=goodsList)
-				cache.set(key, goodsList.get(0));
+			goods = goodsMapper.selectByPrimaryKey(id);
+			if(null != goods)
+				cache.set(key, goods);
 		}
 		return goods;
 	}
