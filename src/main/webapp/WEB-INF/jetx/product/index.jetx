@@ -34,7 +34,6 @@
 					'		<div class="dd-left">'+
 					'			<b><a href="javascript:;">'+n.gname+'</a></b>'+
 					'			单位'+n.unit+'<br>'+
-					'			'+n.beizhu+
 					'		</div>'+
 					'		<div class="dd-right">'+
 					'			<ul>'+
