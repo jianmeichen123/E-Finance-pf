@@ -1,21 +1,22 @@
-package com.dsh.m.model;
+ï»¿package com.dsh.m.model;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
 
-public class Goods {
+public class Goods implements Serializable {
     /**
      *  
      */
     private Integer goodsid;
 
     /**
-     *  ÉÌÆ·Ãû³Æ
+     *  å•†å“åç§°
      */
     private String gname;
 
     /**
-     *  µ¥Î»
+     *  å•ä½
      */
     private String unit;
 
@@ -25,7 +26,7 @@ public class Goods {
     private Boolean iscalculate;
 
     /**
-     *  ÉÌÆ·Ğ¡ÀàID
+     *  å•†å“å°ç±»ID
      */
     private Integer sclassid;
 
@@ -50,92 +51,92 @@ public class Goods {
     private String gnum;
 
     /**
-     *  ÉÌÆ·ÀàĞÍ
+     *  å•†å“ç±»å‹
      */
     private Integer goodsTypeid;
 
     /**
-     *  ÉÌÆ·Àà±ğ
+     *  å•†å“ç±»åˆ«
      */
     private Integer goodsCategoryid;
 
     /**
-     *  ¹æ¸ñ
+     *  è§„æ ¼
      */
     private String specificationsid;
 
     /**
-     *  µÈ¼¶
+     *  ç­‰çº§
      */
     private String scaleid;
 
     /**
-     *  ´¢´æ
+     *  å‚¨å­˜
      */
     private String storageid;
 
     /**
-     *  ÊÇ·ñÏÔÊ¾
+     *  æ˜¯å¦æ˜¾ç¤º
      */
     private Boolean isShow;
 
     /**
-     *  ÊÇ·ñ²ÎÓëÖ¸Êı¼ÆËã
+     *  æ˜¯å¦å‚ä¸æŒ‡æ•°è®¡ç®—
      */
     private Short isIndex;
 
     /**
-     *  ÊÇ·ñÏÔÊ¾
+     *  æ˜¯å¦æ˜¾ç¤º
      */
     private Short sortno;
 
     /**
-     *  ÉÌÆ·Æ·ÅÆ
+     *  å•†å“å“ç‰Œ
      */
     private Integer brandid;
 
     /**
-     *  ÉÌÆ·²úµØ
+     *  å•†å“äº§åœ°
      */
     private String goodsoriginid;
 
     /**
-     *  °ü×°·½Ê½
+     *  åŒ…è£…æ–¹å¼
      */
     private String packingid;
 
     /**
-     *  ÇøÓò
+     *  åŒºåŸŸ
      */
     private String area;
 
     /**
-     *  Ìí¼ÓÊ±¼ä
+     *  æ·»åŠ æ—¶é—´
      */
     private Date createtime;
 
     /**
-     *  Ìí¼ÓÈË
+     *  æ·»åŠ äºº
      */
     private Integer createuser;
 
     /**
-     *  ĞŞ¸ÄÊ±¼ä
+     *  ä¿®æ”¹æ—¶é—´
      */
     private Date updatetime;
 
     /**
-     *  ĞŞ¸ÄÈË
+     *  ä¿®æ”¹äºº
      */
     private Integer updateuser;
 
     /**
-     *  µ¥Î»id
+     *  å•ä½id
      */
     private String unitid;
 
     /**
-     *  ÉÌÆ··ÖÀàID
+     *  å•†å“åˆ†ç±»ID
      */
     private Integer goostypeid;
 
@@ -239,28 +240,28 @@ public class Goods {
     }
 
     /**
-     *  goods.ÉÌÆ·Ãû³Æ
+     *  goods.å•†å“åç§°
      */
     public String getGname() {
         return gname;
     }
 
     /**
-     *  goods.ÉÌÆ·Ãû³Æ
+     *  goods.å•†å“åç§°
      */
     public void setGname(String gname) {
         this.gname = gname;
     }
 
     /**
-     *  goods.µ¥Î»
+     *  goods.å•ä½
      */
     public String getUnit() {
         return unit;
     }
 
     /**
-     *  goods.µ¥Î»
+     *  goods.å•ä½
      */
     public void setUnit(String unit) {
         this.unit = unit;
@@ -281,14 +282,14 @@ public class Goods {
     }
 
     /**
-     *  goods.ÉÌÆ·Ğ¡ÀàID
+     *  goods.å•†å“å°ç±»ID
      */
     public Integer getSclassid() {
         return sclassid;
     }
 
     /**
-     *  goods.ÉÌÆ·Ğ¡ÀàID
+     *  goods.å•†å“å°ç±»ID
      */
     public void setSclassid(Integer sclassid) {
         this.sclassid = sclassid;
@@ -351,252 +352,252 @@ public class Goods {
     }
 
     /**
-     *  goods.ÉÌÆ·ÀàĞÍ
+     *  goods.å•†å“ç±»å‹
      */
     public Integer getGoodsTypeid() {
         return goodsTypeid;
     }
 
     /**
-     *  goods.ÉÌÆ·ÀàĞÍ
+     *  goods.å•†å“ç±»å‹
      */
     public void setGoodsTypeid(Integer goodsTypeid) {
         this.goodsTypeid = goodsTypeid;
     }
 
     /**
-     *  goods.ÉÌÆ·Àà±ğ
+     *  goods.å•†å“ç±»åˆ«
      */
     public Integer getGoodsCategoryid() {
         return goodsCategoryid;
     }
 
     /**
-     *  goods.ÉÌÆ·Àà±ğ
+     *  goods.å•†å“ç±»åˆ«
      */
     public void setGoodsCategoryid(Integer goodsCategoryid) {
         this.goodsCategoryid = goodsCategoryid;
     }
 
     /**
-     *  goods.¹æ¸ñ
+     *  goods.è§„æ ¼
      */
     public String getSpecificationsid() {
         return specificationsid;
     }
 
     /**
-     *  goods.¹æ¸ñ
+     *  goods.è§„æ ¼
      */
     public void setSpecificationsid(String specificationsid) {
         this.specificationsid = specificationsid;
     }
 
     /**
-     *  goods.µÈ¼¶
+     *  goods.ç­‰çº§
      */
     public String getScaleid() {
         return scaleid;
     }
 
     /**
-     *  goods.µÈ¼¶
+     *  goods.ç­‰çº§
      */
     public void setScaleid(String scaleid) {
         this.scaleid = scaleid;
     }
 
     /**
-     *  goods.´¢´æ
+     *  goods.å‚¨å­˜
      */
     public String getStorageid() {
         return storageid;
     }
 
     /**
-     *  goods.´¢´æ
+     *  goods.å‚¨å­˜
      */
     public void setStorageid(String storageid) {
         this.storageid = storageid;
     }
 
     /**
-     *  goods.ÊÇ·ñÏÔÊ¾
+     *  goods.æ˜¯å¦æ˜¾ç¤º
      */
     public Boolean getIsShow() {
         return isShow;
     }
 
     /**
-     *  goods.ÊÇ·ñÏÔÊ¾
+     *  goods.æ˜¯å¦æ˜¾ç¤º
      */
     public void setIsShow(Boolean isShow) {
         this.isShow = isShow;
     }
 
     /**
-     *  goods.ÊÇ·ñ²ÎÓëÖ¸Êı¼ÆËã
+     *  goods.æ˜¯å¦å‚ä¸æŒ‡æ•°è®¡ç®—
      */
     public Short getIsIndex() {
         return isIndex;
     }
 
     /**
-     *  goods.ÊÇ·ñ²ÎÓëÖ¸Êı¼ÆËã
+     *  goods.æ˜¯å¦å‚ä¸æŒ‡æ•°è®¡ç®—
      */
     public void setIsIndex(Short isIndex) {
         this.isIndex = isIndex;
     }
 
     /**
-     *  goods.ÊÇ·ñÏÔÊ¾
+     *  goods.æ˜¯å¦æ˜¾ç¤º
      */
     public Short getSortno() {
         return sortno;
     }
 
     /**
-     *  goods.ÊÇ·ñÏÔÊ¾
+     *  goods.æ˜¯å¦æ˜¾ç¤º
      */
     public void setSortno(Short sortno) {
         this.sortno = sortno;
     }
 
     /**
-     *  goods.ÉÌÆ·Æ·ÅÆ
+     *  goods.å•†å“å“ç‰Œ
      */
     public Integer getBrandid() {
         return brandid;
     }
 
     /**
-     *  goods.ÉÌÆ·Æ·ÅÆ
+     *  goods.å•†å“å“ç‰Œ
      */
     public void setBrandid(Integer brandid) {
         this.brandid = brandid;
     }
 
     /**
-     *  goods.ÉÌÆ·²úµØ
+     *  goods.å•†å“äº§åœ°
      */
     public String getGoodsoriginid() {
         return goodsoriginid;
     }
 
     /**
-     *  goods.ÉÌÆ·²úµØ
+     *  goods.å•†å“äº§åœ°
      */
     public void setGoodsoriginid(String goodsoriginid) {
         this.goodsoriginid = goodsoriginid;
     }
 
     /**
-     *  goods.°ü×°·½Ê½
+     *  goods.åŒ…è£…æ–¹å¼
      */
     public String getPackingid() {
         return packingid;
     }
 
     /**
-     *  goods.°ü×°·½Ê½
+     *  goods.åŒ…è£…æ–¹å¼
      */
     public void setPackingid(String packingid) {
         this.packingid = packingid;
     }
 
     /**
-     *  goods.ÇøÓò
+     *  goods.åŒºåŸŸ
      */
     public String getArea() {
         return area;
     }
 
     /**
-     *  goods.ÇøÓò
+     *  goods.åŒºåŸŸ
      */
     public void setArea(String area) {
         this.area = area;
     }
 
     /**
-     *  goods.Ìí¼ÓÊ±¼ä
+     *  goods.æ·»åŠ æ—¶é—´
      */
     public Date getCreatetime() {
         return createtime;
     }
 
     /**
-     *  goods.Ìí¼ÓÊ±¼ä
+     *  goods.æ·»åŠ æ—¶é—´
      */
     public void setCreatetime(Date createtime) {
         this.createtime = createtime;
     }
 
     /**
-     *  goods.Ìí¼ÓÈË
+     *  goods.æ·»åŠ äºº
      */
     public Integer getCreateuser() {
         return createuser;
     }
 
     /**
-     *  goods.Ìí¼ÓÈË
+     *  goods.æ·»åŠ äºº
      */
     public void setCreateuser(Integer createuser) {
         this.createuser = createuser;
     }
 
     /**
-     *  goods.ĞŞ¸ÄÊ±¼ä
+     *  goods.ä¿®æ”¹æ—¶é—´
      */
     public Date getUpdatetime() {
         return updatetime;
     }
 
     /**
-     *  goods.ĞŞ¸ÄÊ±¼ä
+     *  goods.ä¿®æ”¹æ—¶é—´
      */
     public void setUpdatetime(Date updatetime) {
         this.updatetime = updatetime;
     }
 
     /**
-     *  goods.ĞŞ¸ÄÈË
+     *  goods.ä¿®æ”¹äºº
      */
     public Integer getUpdateuser() {
         return updateuser;
     }
 
     /**
-     *  goods.ĞŞ¸ÄÈË
+     *  goods.ä¿®æ”¹äºº
      */
     public void setUpdateuser(Integer updateuser) {
         this.updateuser = updateuser;
     }
 
     /**
-     *  goods.µ¥Î»id
+     *  goods.å•ä½id
      */
     public String getUnitid() {
         return unitid;
     }
 
     /**
-     *  goods.µ¥Î»id
+     *  goods.å•ä½id
      */
     public void setUnitid(String unitid) {
         this.unitid = unitid;
     }
 
     /**
-     *  goods.ÉÌÆ··ÖÀàID
+     *  goods.å•†å“åˆ†ç±»ID
      */
     public Integer getGoostypeid() {
         return goostypeid;
     }
 
     /**
-     *  goods.ÉÌÆ··ÖÀàID
+     *  goods.å•†å“åˆ†ç±»ID
      */
     public void setGoostypeid(Integer goostypeid) {
         this.goostypeid = goostypeid;

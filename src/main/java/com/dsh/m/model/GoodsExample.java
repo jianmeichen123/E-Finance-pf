@@ -2126,6 +2126,10 @@ public class GoodsExample {
             addCriterion("dr in", values, "dr");
             return (Criteria) this;
         }
+        public Criteria andDrnull() {
+            addCriterion("IFNULL(dr,0)", "0", "dr");
+            return (Criteria) this;
+        }
 
         public Criteria andDrNotIn(List<String> values) {
             addCriterion("dr not in", values, "dr");
