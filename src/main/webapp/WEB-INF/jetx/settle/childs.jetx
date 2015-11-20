@@ -1,42 +1,57 @@
 <table>
 	<thead>
-		<tr><th>订单编号</th><th>订单指数</th><th>结算金额</th><th>返款</th><th>结算状态</th></tr>
+		<tr>
+			<th>订单编号</th>
+			<th>订单指数</th>
+			<th>结算金额</th>
+			<th>返款</th>
+			<th>结算状态</th>
+		</tr>
 	</thead>
 	<tbody>
 		#for(child : childs)
-		<tr style="cursor:pointer;" onclick="javascript:window.location = '/order/settle?orderid=${child.orderid}'">
-			<td>${child.ordernum }</td>
-			#set(indexorder = getIndexOrderByOrderId(child.orderid))
-			<td>${indexorder==null?"--":multiplyIndex(indexorder.t1).format() }PMI</td>
+		<tr style="cursor: pointer;"
+			onclick="javascript:window.location = '/order/settle?orderid=${child.orderid}'">
+			<td>${child.ordernum }</td> #set(indexorder =
+			getIndexOrderByOrderId(child.orderid))
+			<td>${indexorder==null?"--":multiplyIndex(indexorder.t1).format()
+				}PMI</td>
 			<td>￥${child.realamount==null?"--":child.realamount.format() }</td>
-			<td class="color_black">￥${indexorder==null?"--":indexorder.t17.format() }</td>
-			<td>
-				#if(child.order.balancestate==0)
-				<i class="state1">&nbsp;</i>
-				#elseif(child.order.balancestate==1)
-				<i class="state2">&nbsp;</i>
+			<td class="color_black">￥${indexorder==null?"--":indexorder.t17.format()
+				}</td>
+			<td>#if(child.order.balancestate==0) <i class="state1">&nbsp;</i>
+				#elseif(child.order.balancestate==1) <i class="state2">&nbsp;</i>
 				#end
 			</td>
 		</tr>
-		#end
+		#end 
 		#if(settle.returnstateid == 0 && cansettle)
 		<tr>
 			<td colspan="5" align="left">&nbsp;&nbsp;
-			返现周期：${settle.starttime.format("MM-dd")}~${settle.endtime.format("MM-dd")}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-			返现状态：未返现 &nbsp;&nbsp;&nbsp;
-		</td>
-			
+				返现周期：${settle.starttime.format("MM-dd")}~${settle.endtime.format("MM-dd")}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				返现状态：未返现 &nbsp;&nbsp;&nbsp;</td>
 		</tr>
-		<tr><td colspan="5" ><a href="javascript:;" class="btn" onclick='confirmreturn("${settle.id}", this)'>确认已返现</a></td></tr>
-		#else
+		<tr>
+			<td colspan="5"><a href="javascript:;" class="btn"
+				onclick='confirmreturn("${settle.id}", this)'>确认已返现</a></td>
+		</tr>
+		#elseif(!cansettle)
 		<tr>
 			<td colspan="5" align="left">&nbsp;&nbsp;
-			返现周期：${settle.starttime.format("MM-dd")}~${settle.endtime.format("MM-dd")}&nbsp;&nbsp;&nbsp;
-			返现状态：已返现 &nbsp;&nbsp;&nbsp;
-			返款时间：${settle.updatetime==null?"--":settle.updatetime.format("MM/dd")}			</td>
-			
+				返现周期：${settle.starttime.format("MM-dd")}~${settle.endtime.format("MM-dd")}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				返现状态：未返现 &nbsp;&nbsp;&nbsp;</td>
 		</tr>
-	   #end
+		#else
 		
+		<tr>
+			<td colspan="5" align="left">&nbsp;&nbsp;
+				返现周期：${settle.starttime.format("MM-dd")}~${settle.endtime.format("MM-dd")}&nbsp;&nbsp;&nbsp;
+				返现状态：已返现 &nbsp;&nbsp;&nbsp;
+				返款时间：${settle.updatetime==null?"--":settle.updatetime.format("MM/dd")}
+			</td>
+
+		</tr>
+		#end
+
 	</tbody>
 </table>
