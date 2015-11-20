@@ -96,8 +96,13 @@
                     #else
                     <tr>
                     #end
+                    	#if(product)
                     	<td>${product.gname }</td>
                     	<td>${product.unit }</td>
+                    	#else
+                    	<td>--</td>
+                    	<td>--</td>
+                    	#end
                     	<td>${detail.amount.format() }</td>
                     	#if(status==5||status==6||status==8||status==9)
                     	<td>${detail.realAmount==null?"--":detail.realAmount.format() }</td>
@@ -117,7 +122,7 @@
                     </tr>
                     #if(detail.remark)
                     <tr>
-                    	<td colspan="6" align="left" class="note">备注：${detail.remark }</td>
+                    	<td colspan="7" align="left" class="note">备注：${detail.remark }</td>
                     </tr>
                     #end
                     #end
