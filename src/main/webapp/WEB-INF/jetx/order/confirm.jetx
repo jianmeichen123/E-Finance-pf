@@ -19,7 +19,7 @@
 		}
 		checkSubmitFlg = true;
 		var array = []
-		$.each($('.biaoge').find('tbody').find('tr'), function(i, n){
+		$.each($('.biaoge').find('tbody').find('tr.noremark'), function(i, n){
 			var tds = $(this).children()
 			var span = $(tds.get(3)).children().get(0)
 			var inputs = $(span).children()
@@ -79,9 +79,9 @@
                  <tbody>
                  	#for(detail : details)
 	                    #if(detail.remark)
-                    	<tr class="noborder">
+                    	<tr class="noremark noborder">
                     	#else
-                    	<tr>
+                    	<tr class="noremark">
                     	#end
 	                    	<td>${getProductById(detail.goodsid).gname }</td>
 	                    	<td>${detail.amount.format() }</td>
