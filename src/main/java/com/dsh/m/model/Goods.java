@@ -154,7 +154,6 @@ public class Goods implements Serializable {
      *  
      */
     private Integer zyx1;
-
     /**
      *  
      */
