@@ -1,11 +1,11 @@
-package com.dsh.m.model;
+ï»¿package com.dsh.m.model;
 
 import java.math.BigDecimal;
 import java.util.Date;
 
 public class PayAppoint {
     /**
-     *  Ö÷¼ü
+     *  ä¸»é”®
      */
     private Integer id;
 
@@ -20,169 +20,169 @@ public class PayAppoint {
     private String requestId;
 
     /**
-     *  ¿Í»§id
+     *  å®¢æˆ·id
      */
     private Integer customerid;
 
     /**
-     *  Ğ­ÒéºÅ
+     *  åè®®å·
      */
     private String agrNo;
 
     /**
-     *  ÊÖ»úºÅ
+     *  æ‰‹æœºå·
      */
     private String mobileNo;
 
     /**
-     *  ÑéÖ¤ÂëÀàĞÍ
+     *  éªŒè¯ç ç±»å‹
      */
     private String smsType;
 
     /**
-     *  ÒøĞĞ¿¨ÀàĞÍ
+     *  é“¶è¡Œå¡ç±»å‹
      */
     private String cardType;
 
     /**
-     *  ÒøĞĞ¿¨´úÂë
+     *  é“¶è¡Œå¡ä»£ç 
      */
     private String bandAddr;
 
     /**
-     *  ÒøĞĞ¿¨¿¨ºÅ
+     *  é“¶è¡Œå¡å¡å·
      */
     private String cardNo;
 
     /**
-     *  ÒøĞĞ¿¨»§Ãû
+     *  é“¶è¡Œå¡æˆ·å
      */
     private String cardName;
 
     /**
-     *  ĞÅÓÃ¿¨CVV2
+     *  ä¿¡ç”¨å¡CVV2
      */
     private String ardcvv2;
 
     /**
-     *  ĞÅÓÃ¿¨ÓĞĞ§ÆÚ
+     *  ä¿¡ç”¨å¡æœ‰æ•ˆæœŸ
      */
     private String cardexpdate;
 
     /**
-     *  Ö¤¼şÀàĞÍ
+     *  è¯ä»¶ç±»å‹
      */
     private String idType;
 
     /**
-     *  Ö¤¼şºÅÂë
+     *  è¯ä»¶å·ç 
      */
     private String idNo;
 
     /**
-     *  Á÷Ë®ºÅ
+     *  æµæ°´å·
      */
     private String tradeNo;
 
     /**
-     *  Ç©ÃûÊı¾İ
+     *  ç­¾åæ•°æ®
      */
     private String hmac;
 
     /**
-     *  ·µ»ØÂë
+     *  è¿”å›ç 
      */
     private String returnCode;
 
     /**
-     *  ·µ»ØÂëÃèÊöĞÅÏ¢
+     *  è¿”å›ç æè¿°ä¿¡æ¯
      */
     private String message;
 
     /**
-     *  ¶ÌĞÅÑéÖ¤Âë
+     *  çŸ­ä¿¡éªŒè¯ç 
      */
     private String smsCode;
 
     /**
-     *  ´´½¨ÈË
+     *  åˆ›å»ºäºº
      */
     private Integer createUser;
 
     /**
-     *  ´´½¨Ê±¼ä
+     *  åˆ›å»ºæ—¶é—´
      */
     private Date createTime;
 
     /**
-     *  ĞŞ¸ÄÈË
+     *  ä¿®æ”¹äºº
      */
     private Integer updateUser;
 
     /**
-     *  ĞŞ¸ÄÊ±¼ä
+     *  ä¿®æ”¹æ—¶é—´
      */
     private Date updateTime;
 
     /**
-     *  Ê±¼ä´Á
+     *  æ—¶é—´æˆ³
      */
     private String ts;
 
     /**
-     *  É¾³ı±êÖ¾
+     *  åˆ é™¤æ ‡å¿—
      */
     private String dr;
 
     /**
-     *  ×Ô¶¨ÒåÏî1
+     *  è‡ªå®šä¹‰é¡¹1
      */
     private Integer zyx1;
 
     /**
-     *  ×Ô¶¨ÒåÏî2
+     *  è‡ªå®šä¹‰é¡¹2
      */
     private String zyx2;
 
     /**
-     *  ×Ô¶¨ÒåÏî3
+     *  è‡ªå®šä¹‰é¡¹3
      */
     private String zyx3;
 
     /**
-     *  ×Ô¶¨ÒåÏî4
+     *  è‡ªå®šä¹‰é¡¹4
      */
     private Date zyx4;
 
     /**
-     *  ×Ô¶¨ÒåÏî5
+     *  è‡ªå®šä¹‰é¡¹5
      */
     private BigDecimal zyx5;
 
     /**
-     *  ×Ô¶¨ÒåÏî3
+     *  è‡ªå®šä¹‰é¡¹3
      */
     private String zyx6;
 
     /**
-     *  ×Ô¶¨ÒåÏî4
+     *  è‡ªå®šä¹‰é¡¹4
      */
     private String zyx7;
 
     /**
-     *  ×Ô¶¨ÒåÏî5
+     *  è‡ªå®šä¹‰é¡¹5
      */
     private String zyx8;
 
     /**
-     *  pay_appoint.Ö÷¼ü
+     *  pay_appoint.ä¸»é”®
      */
     public Integer getId() {
         return id;
     }
 
     /**
-     *  pay_appoint.Ö÷¼ü
+     *  pay_appoint.ä¸»é”®
      */
     public void setId(Integer id) {
         this.id = id;
@@ -217,434 +217,434 @@ public class PayAppoint {
     }
 
     /**
-     *  pay_appoint.¿Í»§id
+     *  pay_appoint.å®¢æˆ·id
      */
     public Integer getCustomerid() {
         return customerid;
     }
 
     /**
-     *  pay_appoint.¿Í»§id
+     *  pay_appoint.å®¢æˆ·id
      */
     public void setCustomerid(Integer customerid) {
         this.customerid = customerid;
     }
 
     /**
-     *  pay_appoint.Ğ­ÒéºÅ
+     *  pay_appoint.åè®®å·
      */
     public String getAgrNo() {
         return agrNo;
     }
 
     /**
-     *  pay_appoint.Ğ­ÒéºÅ
+     *  pay_appoint.åè®®å·
      */
     public void setAgrNo(String agrNo) {
         this.agrNo = agrNo;
     }
 
     /**
-     *  pay_appoint.ÊÖ»úºÅ
+     *  pay_appoint.æ‰‹æœºå·
      */
     public String getMobileNo() {
         return mobileNo;
     }
 
     /**
-     *  pay_appoint.ÊÖ»úºÅ
+     *  pay_appoint.æ‰‹æœºå·
      */
     public void setMobileNo(String mobileNo) {
         this.mobileNo = mobileNo;
     }
 
     /**
-     *  pay_appoint.ÑéÖ¤ÂëÀàĞÍ
+     *  pay_appoint.éªŒè¯ç ç±»å‹
      */
     public String getSmsType() {
         return smsType;
     }
 
     /**
-     *  pay_appoint.ÑéÖ¤ÂëÀàĞÍ
+     *  pay_appoint.éªŒè¯ç ç±»å‹
      */
     public void setSmsType(String smsType) {
         this.smsType = smsType;
     }
 
     /**
-     *  pay_appoint.ÒøĞĞ¿¨ÀàĞÍ
+     *  pay_appoint.é“¶è¡Œå¡ç±»å‹
      */
     public String getCardType() {
         return cardType;
     }
 
     /**
-     *  pay_appoint.ÒøĞĞ¿¨ÀàĞÍ
+     *  pay_appoint.é“¶è¡Œå¡ç±»å‹
      */
     public void setCardType(String cardType) {
         this.cardType = cardType;
     }
 
     /**
-     *  pay_appoint.ÒøĞĞ¿¨´úÂë
+     *  pay_appoint.é“¶è¡Œå¡ä»£ç 
      */
     public String getBandAddr() {
         return bandAddr;
     }
 
     /**
-     *  pay_appoint.ÒøĞĞ¿¨´úÂë
+     *  pay_appoint.é“¶è¡Œå¡ä»£ç 
      */
     public void setBandAddr(String bandAddr) {
         this.bandAddr = bandAddr;
     }
 
     /**
-     *  pay_appoint.ÒøĞĞ¿¨¿¨ºÅ
+     *  pay_appoint.é“¶è¡Œå¡å¡å·
      */
     public String getCardNo() {
         return cardNo;
     }
 
     /**
-     *  pay_appoint.ÒøĞĞ¿¨¿¨ºÅ
+     *  pay_appoint.é“¶è¡Œå¡å¡å·
      */
     public void setCardNo(String cardNo) {
         this.cardNo = cardNo;
     }
 
     /**
-     *  pay_appoint.ÒøĞĞ¿¨»§Ãû
+     *  pay_appoint.é“¶è¡Œå¡æˆ·å
      */
     public String getCardName() {
         return cardName;
     }
 
     /**
-     *  pay_appoint.ÒøĞĞ¿¨»§Ãû
+     *  pay_appoint.é“¶è¡Œå¡æˆ·å
      */
     public void setCardName(String cardName) {
         this.cardName = cardName;
     }
 
     /**
-     *  pay_appoint.ĞÅÓÃ¿¨CVV2
+     *  pay_appoint.ä¿¡ç”¨å¡CVV2
      */
     public String getArdcvv2() {
         return ardcvv2;
     }
 
     /**
-     *  pay_appoint.ĞÅÓÃ¿¨CVV2
+     *  pay_appoint.ä¿¡ç”¨å¡CVV2
      */
     public void setArdcvv2(String ardcvv2) {
         this.ardcvv2 = ardcvv2;
     }
 
     /**
-     *  pay_appoint.ĞÅÓÃ¿¨ÓĞĞ§ÆÚ
+     *  pay_appoint.ä¿¡ç”¨å¡æœ‰æ•ˆæœŸ
      */
     public String getCardexpdate() {
         return cardexpdate;
     }
 
     /**
-     *  pay_appoint.ĞÅÓÃ¿¨ÓĞĞ§ÆÚ
+     *  pay_appoint.ä¿¡ç”¨å¡æœ‰æ•ˆæœŸ
      */
     public void setCardexpdate(String cardexpdate) {
         this.cardexpdate = cardexpdate;
     }
 
     /**
-     *  pay_appoint.Ö¤¼şÀàĞÍ
+     *  pay_appoint.è¯ä»¶ç±»å‹
      */
     public String getIdType() {
         return idType;
     }
 
     /**
-     *  pay_appoint.Ö¤¼şÀàĞÍ
+     *  pay_appoint.è¯ä»¶ç±»å‹
      */
     public void setIdType(String idType) {
         this.idType = idType;
     }
 
     /**
-     *  pay_appoint.Ö¤¼şºÅÂë
+     *  pay_appoint.è¯ä»¶å·ç 
      */
     public String getIdNo() {
         return idNo;
     }
 
     /**
-     *  pay_appoint.Ö¤¼şºÅÂë
+     *  pay_appoint.è¯ä»¶å·ç 
      */
     public void setIdNo(String idNo) {
         this.idNo = idNo;
     }
 
     /**
-     *  pay_appoint.Á÷Ë®ºÅ
+     *  pay_appoint.æµæ°´å·
      */
     public String getTradeNo() {
         return tradeNo;
     }
 
     /**
-     *  pay_appoint.Á÷Ë®ºÅ
+     *  pay_appoint.æµæ°´å·
      */
     public void setTradeNo(String tradeNo) {
         this.tradeNo = tradeNo;
     }
 
     /**
-     *  pay_appoint.Ç©ÃûÊı¾İ
+     *  pay_appoint.ç­¾åæ•°æ®
      */
     public String getHmac() {
         return hmac;
     }
 
     /**
-     *  pay_appoint.Ç©ÃûÊı¾İ
+     *  pay_appoint.ç­¾åæ•°æ®
      */
     public void setHmac(String hmac) {
         this.hmac = hmac;
     }
 
     /**
-     *  pay_appoint.·µ»ØÂë
+     *  pay_appoint.è¿”å›ç 
      */
     public String getReturnCode() {
         return returnCode;
     }
 
     /**
-     *  pay_appoint.·µ»ØÂë
+     *  pay_appoint.è¿”å›ç 
      */
     public void setReturnCode(String returnCode) {
         this.returnCode = returnCode;
     }
 
     /**
-     *  pay_appoint.·µ»ØÂëÃèÊöĞÅÏ¢
+     *  pay_appoint.è¿”å›ç æè¿°ä¿¡æ¯
      */
     public String getMessage() {
         return message;
     }
 
     /**
-     *  pay_appoint.·µ»ØÂëÃèÊöĞÅÏ¢
+     *  pay_appoint.è¿”å›ç æè¿°ä¿¡æ¯
      */
     public void setMessage(String message) {
         this.message = message;
     }
 
     /**
-     *  pay_appoint.¶ÌĞÅÑéÖ¤Âë
+     *  pay_appoint.çŸ­ä¿¡éªŒè¯ç 
      */
     public String getSmsCode() {
         return smsCode;
     }
 
     /**
-     *  pay_appoint.¶ÌĞÅÑéÖ¤Âë
+     *  pay_appoint.çŸ­ä¿¡éªŒè¯ç 
      */
     public void setSmsCode(String smsCode) {
         this.smsCode = smsCode;
     }
 
     /**
-     *  pay_appoint.´´½¨ÈË
+     *  pay_appoint.åˆ›å»ºäºº
      */
     public Integer getCreateUser() {
         return createUser;
     }
 
     /**
-     *  pay_appoint.´´½¨ÈË
+     *  pay_appoint.åˆ›å»ºäºº
      */
     public void setCreateUser(Integer createUser) {
         this.createUser = createUser;
     }
 
     /**
-     *  pay_appoint.´´½¨Ê±¼ä
+     *  pay_appoint.åˆ›å»ºæ—¶é—´
      */
     public Date getCreateTime() {
         return createTime;
     }
 
     /**
-     *  pay_appoint.´´½¨Ê±¼ä
+     *  pay_appoint.åˆ›å»ºæ—¶é—´
      */
     public void setCreateTime(Date createTime) {
         this.createTime = createTime;
     }
 
     /**
-     *  pay_appoint.ĞŞ¸ÄÈË
+     *  pay_appoint.ä¿®æ”¹äºº
      */
     public Integer getUpdateUser() {
         return updateUser;
     }
 
     /**
-     *  pay_appoint.ĞŞ¸ÄÈË
+     *  pay_appoint.ä¿®æ”¹äºº
      */
     public void setUpdateUser(Integer updateUser) {
         this.updateUser = updateUser;
     }
 
     /**
-     *  pay_appoint.ĞŞ¸ÄÊ±¼ä
+     *  pay_appoint.ä¿®æ”¹æ—¶é—´
      */
     public Date getUpdateTime() {
         return updateTime;
     }
 
     /**
-     *  pay_appoint.ĞŞ¸ÄÊ±¼ä
+     *  pay_appoint.ä¿®æ”¹æ—¶é—´
      */
     public void setUpdateTime(Date updateTime) {
         this.updateTime = updateTime;
     }
 
     /**
-     *  pay_appoint.Ê±¼ä´Á
+     *  pay_appoint.æ—¶é—´æˆ³
      */
     public String getTs() {
         return ts;
     }
 
     /**
-     *  pay_appoint.Ê±¼ä´Á
+     *  pay_appoint.æ—¶é—´æˆ³
      */
     public void setTs(String ts) {
         this.ts = ts;
     }
 
     /**
-     *  pay_appoint.É¾³ı±êÖ¾
+     *  pay_appoint.åˆ é™¤æ ‡å¿—
      */
     public String getDr() {
         return dr;
     }
 
     /**
-     *  pay_appoint.É¾³ı±êÖ¾
+     *  pay_appoint.åˆ é™¤æ ‡å¿—
      */
     public void setDr(String dr) {
         this.dr = dr;
     }
 
     /**
-     *  pay_appoint.×Ô¶¨ÒåÏî1
+     *  pay_appoint.è‡ªå®šä¹‰é¡¹1
      */
     public Integer getZyx1() {
         return zyx1;
     }
 
     /**
-     *  pay_appoint.×Ô¶¨ÒåÏî1
+     *  pay_appoint.è‡ªå®šä¹‰é¡¹1
      */
     public void setZyx1(Integer zyx1) {
         this.zyx1 = zyx1;
     }
 
     /**
-     *  pay_appoint.×Ô¶¨ÒåÏî2
+     *  pay_appoint.è‡ªå®šä¹‰é¡¹2
      */
     public String getZyx2() {
         return zyx2;
     }
 
     /**
-     *  pay_appoint.×Ô¶¨ÒåÏî2
+     *  pay_appoint.è‡ªå®šä¹‰é¡¹2
      */
     public void setZyx2(String zyx2) {
         this.zyx2 = zyx2;
     }
 
     /**
-     *  pay_appoint.×Ô¶¨ÒåÏî3
+     *  pay_appoint.è‡ªå®šä¹‰é¡¹3
      */
     public String getZyx3() {
         return zyx3;
     }
 
     /**
-     *  pay_appoint.×Ô¶¨ÒåÏî3
+     *  pay_appoint.è‡ªå®šä¹‰é¡¹3
      */
     public void setZyx3(String zyx3) {
         this.zyx3 = zyx3;
     }
 
     /**
-     *  pay_appoint.×Ô¶¨ÒåÏî4
+     *  pay_appoint.è‡ªå®šä¹‰é¡¹4
      */
     public Date getZyx4() {
         return zyx4;
     }
 
     /**
-     *  pay_appoint.×Ô¶¨ÒåÏî4
+     *  pay_appoint.è‡ªå®šä¹‰é¡¹4
      */
     public void setZyx4(Date zyx4) {
         this.zyx4 = zyx4;
     }
 
     /**
-     *  pay_appoint.×Ô¶¨ÒåÏî5
+     *  pay_appoint.è‡ªå®šä¹‰é¡¹5
      */
     public BigDecimal getZyx5() {
         return zyx5;
     }
 
     /**
-     *  pay_appoint.×Ô¶¨ÒåÏî5
+     *  pay_appoint.è‡ªå®šä¹‰é¡¹5
      */
     public void setZyx5(BigDecimal zyx5) {
         this.zyx5 = zyx5;
     }
 
     /**
-     *  pay_appoint.×Ô¶¨ÒåÏî3
+     *  pay_appoint.è‡ªå®šä¹‰é¡¹3
      */
     public String getZyx6() {
         return zyx6;
     }
 
     /**
-     *  pay_appoint.×Ô¶¨ÒåÏî3
+     *  pay_appoint.è‡ªå®šä¹‰é¡¹3
      */
     public void setZyx6(String zyx6) {
         this.zyx6 = zyx6;
     }
 
     /**
-     *  pay_appoint.×Ô¶¨ÒåÏî4
+     *  pay_appoint.è‡ªå®šä¹‰é¡¹4
      */
     public String getZyx7() {
         return zyx7;
     }
 
     /**
-     *  pay_appoint.×Ô¶¨ÒåÏî4
+     *  pay_appoint.è‡ªå®šä¹‰é¡¹4
      */
     public void setZyx7(String zyx7) {
         this.zyx7 = zyx7;
     }
 
     /**
-     *  pay_appoint.×Ô¶¨ÒåÏî5
+     *  pay_appoint.è‡ªå®šä¹‰é¡¹5
      */
     public String getZyx8() {
         return zyx8;
     }
 
     /**
-     *  pay_appoint.×Ô¶¨ÒåÏî5
+     *  pay_appoint.è‡ªå®šä¹‰é¡¹5
      */
     public void setZyx8(String zyx8) {
         this.zyx8 = zyx8;

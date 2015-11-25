@@ -1,384 +1,384 @@
-package com.dsh.m.model;
+ï»¿package com.dsh.m.model;
 
 import java.math.BigDecimal;
 import java.util.Date;
 
 public class SysSms {
     /**
-     *  Ö÷¼ü
+     *  ä¸»é”®
      */
     private Integer id;
 
     /**
-     *  µç»°ºÅÂë
+     *  ç”µè¯å·ç 
      */
     private String tel;
 
     /**
-     *  ¶ÌĞÅÄÚÈİ
+     *  çŸ­ä¿¡å†…å®¹
      */
     private String content;
 
     /**
-     *  ¶ÌĞÅ×´Ì¬
+     *  çŸ­ä¿¡çŠ¶æ€
      */
     private String type;
 
     /**
-     *  ·¢ËÍÊ±¼ä
+     *  å‘é€æ—¶é—´
      */
     private Date sendtime;
 
     /**
-     *  ²ÎÊı
+     *  å‚æ•°
      */
     private String parameter;
 
     /**
-     *  Ìí¼ÓÈË
+     *  æ·»åŠ äºº
      */
     private Integer createuser;
 
     /**
-     *  Ìí¼ÓÊ±¼ä
+     *  æ·»åŠ æ—¶é—´
      */
     private Date creattime;
 
     /**
-     *  Ê±¼ä´Á
+     *  æ—¶é—´æˆ³
      */
     private String ts;
 
     /**
-     *  É¾³ı±êÖ¾
+     *  åˆ é™¤æ ‡å¿—
      */
     private String dr;
 
     /**
-     *  ×Ô¶¨ÒåÏî1
+     *  è‡ªå®šä¹‰é¡¹1
      */
     private Integer zyx1;
 
     /**
-     *  ×Ô¶¨ÒåÏî2
+     *  è‡ªå®šä¹‰é¡¹2
      */
     private Integer zyx2;
 
     /**
-     *  ×Ô¶¨ÒåÏî3
+     *  è‡ªå®šä¹‰é¡¹3
      */
     private String zyx3;
 
     /**
-     *  ×Ô¶¨ÒåÏî4
+     *  è‡ªå®šä¹‰é¡¹4
      */
     private String zyx4;
 
     /**
-     *  ×Ô¶¨ÒåÏî5
+     *  è‡ªå®šä¹‰é¡¹5
      */
     private String zyx5;
 
     /**
-     *  ×Ô¶¨ÒåÏî6
+     *  è‡ªå®šä¹‰é¡¹6
      */
     private Date zyx6;
 
     /**
-     *  ×Ô¶¨ÒåÏî7
+     *  è‡ªå®šä¹‰é¡¹7
      */
     private String zyx7;
 
     /**
-     *  ×Ô¶¨ÒåÏî8
+     *  è‡ªå®šä¹‰é¡¹8
      */
     private BigDecimal zyx8;
 
     /**
-     *  ×Ô¶¨ÒåÏî9
+     *  è‡ªå®šä¹‰é¡¹9
      */
     private String zyx9;
 
     /**
-     *  ×Ô¶¨ÒåÏî10
+     *  è‡ªå®šä¹‰é¡¹10
      */
     private String zyx10;
 
     /**
-     *  sys_sms.Ö÷¼ü
+     *  sys_sms.ä¸»é”®
      */
     public Integer getId() {
         return id;
     }
 
     /**
-     *  sys_sms.Ö÷¼ü
+     *  sys_sms.ä¸»é”®
      */
     public void setId(Integer id) {
         this.id = id;
     }
 
     /**
-     *  sys_sms.µç»°ºÅÂë
+     *  sys_sms.ç”µè¯å·ç 
      */
     public String getTel() {
         return tel;
     }
 
     /**
-     *  sys_sms.µç»°ºÅÂë
+     *  sys_sms.ç”µè¯å·ç 
      */
     public void setTel(String tel) {
         this.tel = tel;
     }
 
     /**
-     *  sys_sms.¶ÌĞÅÄÚÈİ
+     *  sys_sms.çŸ­ä¿¡å†…å®¹
      */
     public String getContent() {
         return content;
     }
 
     /**
-     *  sys_sms.¶ÌĞÅÄÚÈİ
+     *  sys_sms.çŸ­ä¿¡å†…å®¹
      */
     public void setContent(String content) {
         this.content = content;
     }
 
     /**
-     *  sys_sms.¶ÌĞÅ×´Ì¬
+     *  sys_sms.çŸ­ä¿¡çŠ¶æ€
      */
     public String getType() {
         return type;
     }
 
     /**
-     *  sys_sms.¶ÌĞÅ×´Ì¬
+     *  sys_sms.çŸ­ä¿¡çŠ¶æ€
      */
     public void setType(String type) {
         this.type = type;
     }
 
     /**
-     *  sys_sms.·¢ËÍÊ±¼ä
+     *  sys_sms.å‘é€æ—¶é—´
      */
     public Date getSendtime() {
         return sendtime;
     }
 
     /**
-     *  sys_sms.·¢ËÍÊ±¼ä
+     *  sys_sms.å‘é€æ—¶é—´
      */
     public void setSendtime(Date sendtime) {
         this.sendtime = sendtime;
     }
 
     /**
-     *  sys_sms.²ÎÊı
+     *  sys_sms.å‚æ•°
      */
     public String getParameter() {
         return parameter;
     }
 
     /**
-     *  sys_sms.²ÎÊı
+     *  sys_sms.å‚æ•°
      */
     public void setParameter(String parameter) {
         this.parameter = parameter;
     }
 
     /**
-     *  sys_sms.Ìí¼ÓÈË
+     *  sys_sms.æ·»åŠ äºº
      */
     public Integer getCreateuser() {
         return createuser;
     }
 
     /**
-     *  sys_sms.Ìí¼ÓÈË
+     *  sys_sms.æ·»åŠ äºº
      */
     public void setCreateuser(Integer createuser) {
         this.createuser = createuser;
     }
 
     /**
-     *  sys_sms.Ìí¼ÓÊ±¼ä
+     *  sys_sms.æ·»åŠ æ—¶é—´
      */
     public Date getCreattime() {
         return creattime;
     }
 
     /**
-     *  sys_sms.Ìí¼ÓÊ±¼ä
+     *  sys_sms.æ·»åŠ æ—¶é—´
      */
     public void setCreattime(Date creattime) {
         this.creattime = creattime;
     }
 
     /**
-     *  sys_sms.Ê±¼ä´Á
+     *  sys_sms.æ—¶é—´æˆ³
      */
     public String getTs() {
         return ts;
     }
 
     /**
-     *  sys_sms.Ê±¼ä´Á
+     *  sys_sms.æ—¶é—´æˆ³
      */
     public void setTs(String ts) {
         this.ts = ts;
     }
 
     /**
-     *  sys_sms.É¾³ı±êÖ¾
+     *  sys_sms.åˆ é™¤æ ‡å¿—
      */
     public String getDr() {
         return dr;
     }
 
     /**
-     *  sys_sms.É¾³ı±êÖ¾
+     *  sys_sms.åˆ é™¤æ ‡å¿—
      */
     public void setDr(String dr) {
         this.dr = dr;
     }
 
     /**
-     *  sys_sms.×Ô¶¨ÒåÏî1
+     *  sys_sms.è‡ªå®šä¹‰é¡¹1
      */
     public Integer getZyx1() {
         return zyx1;
     }
 
     /**
-     *  sys_sms.×Ô¶¨ÒåÏî1
+     *  sys_sms.è‡ªå®šä¹‰é¡¹1
      */
     public void setZyx1(Integer zyx1) {
         this.zyx1 = zyx1;
     }
 
     /**
-     *  sys_sms.×Ô¶¨ÒåÏî2
+     *  sys_sms.è‡ªå®šä¹‰é¡¹2
      */
     public Integer getZyx2() {
         return zyx2;
     }
 
     /**
-     *  sys_sms.×Ô¶¨ÒåÏî2
+     *  sys_sms.è‡ªå®šä¹‰é¡¹2
      */
     public void setZyx2(Integer zyx2) {
         this.zyx2 = zyx2;
     }
 
     /**
-     *  sys_sms.×Ô¶¨ÒåÏî3
+     *  sys_sms.è‡ªå®šä¹‰é¡¹3
      */
     public String getZyx3() {
         return zyx3;
     }
 
     /**
-     *  sys_sms.×Ô¶¨ÒåÏî3
+     *  sys_sms.è‡ªå®šä¹‰é¡¹3
      */
     public void setZyx3(String zyx3) {
         this.zyx3 = zyx3;
     }
 
     /**
-     *  sys_sms.×Ô¶¨ÒåÏî4
+     *  sys_sms.è‡ªå®šä¹‰é¡¹4
      */
     public String getZyx4() {
         return zyx4;
     }
 
     /**
-     *  sys_sms.×Ô¶¨ÒåÏî4
+     *  sys_sms.è‡ªå®šä¹‰é¡¹4
      */
     public void setZyx4(String zyx4) {
         this.zyx4 = zyx4;
     }
 
     /**
-     *  sys_sms.×Ô¶¨ÒåÏî5
+     *  sys_sms.è‡ªå®šä¹‰é¡¹5
      */
     public String getZyx5() {
         return zyx5;
     }
 
     /**
-     *  sys_sms.×Ô¶¨ÒåÏî5
+     *  sys_sms.è‡ªå®šä¹‰é¡¹5
      */
     public void setZyx5(String zyx5) {
         this.zyx5 = zyx5;
     }
 
     /**
-     *  sys_sms.×Ô¶¨ÒåÏî6
+     *  sys_sms.è‡ªå®šä¹‰é¡¹6
      */
     public Date getZyx6() {
         return zyx6;
     }
 
     /**
-     *  sys_sms.×Ô¶¨ÒåÏî6
+     *  sys_sms.è‡ªå®šä¹‰é¡¹6
      */
     public void setZyx6(Date zyx6) {
         this.zyx6 = zyx6;
     }
 
     /**
-     *  sys_sms.×Ô¶¨ÒåÏî7
+     *  sys_sms.è‡ªå®šä¹‰é¡¹7
      */
     public String getZyx7() {
         return zyx7;
     }
 
     /**
-     *  sys_sms.×Ô¶¨ÒåÏî7
+     *  sys_sms.è‡ªå®šä¹‰é¡¹7
      */
     public void setZyx7(String zyx7) {
         this.zyx7 = zyx7;
     }
 
     /**
-     *  sys_sms.×Ô¶¨ÒåÏî8
+     *  sys_sms.è‡ªå®šä¹‰é¡¹8
      */
     public BigDecimal getZyx8() {
         return zyx8;
     }
 
     /**
-     *  sys_sms.×Ô¶¨ÒåÏî8
+     *  sys_sms.è‡ªå®šä¹‰é¡¹8
      */
     public void setZyx8(BigDecimal zyx8) {
         this.zyx8 = zyx8;
     }
 
     /**
-     *  sys_sms.×Ô¶¨ÒåÏî9
+     *  sys_sms.è‡ªå®šä¹‰é¡¹9
      */
     public String getZyx9() {
         return zyx9;
     }
 
     /**
-     *  sys_sms.×Ô¶¨ÒåÏî9
+     *  sys_sms.è‡ªå®šä¹‰é¡¹9
      */
     public void setZyx9(String zyx9) {
         this.zyx9 = zyx9;
     }
 
     /**
-     *  sys_sms.×Ô¶¨ÒåÏî10
+     *  sys_sms.è‡ªå®šä¹‰é¡¹10
      */
     public String getZyx10() {
         return zyx10;
     }
 
     /**
-     *  sys_sms.×Ô¶¨ÒåÏî10
+     *  sys_sms.è‡ªå®šä¹‰é¡¹10
      */
     public void setZyx10(String zyx10) {
         this.zyx10 = zyx10;

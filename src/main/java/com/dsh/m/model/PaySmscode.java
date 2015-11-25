@@ -1,11 +1,11 @@
-package com.dsh.m.model;
+ï»¿package com.dsh.m.model;
 
 import java.math.BigDecimal;
 import java.util.Date;
 
 public class PaySmscode {
     /**
-     *  Ö÷¼ü
+     *  ä¸»é”®
      */
     private Integer id;
 
@@ -20,164 +20,164 @@ public class PaySmscode {
     private String requestId;
 
     /**
-     *  ¿Í»§id
+     *  å®¢æˆ·id
      */
     private Integer customerid;
 
     /**
-     *  ÊÖ»úºÅ
+     *  æ‰‹æœºå·
      */
     private String mobileNo;
 
     /**
-     *  Ğ­ÒéºÅ
+     *  åè®®å·
      */
     private String agrNo;
 
     /**
-     *  ÑéÖ¤ÂëÀàĞÍ
+     *  éªŒè¯ç ç±»å‹
      */
     private String smsType;
 
     /**
-     *  ÒøĞĞ¿¨ÀàĞÍ
+     *  é“¶è¡Œå¡ç±»å‹
      */
     private String cardType;
 
     /**
-     *  ÒøĞĞ¿¨´úÂë
+     *  é“¶è¡Œå¡ä»£ç 
      */
     private String bandAddr;
 
     /**
-     *  ÒøĞĞ¿¨¿¨ºÅ
+     *  é“¶è¡Œå¡å¡å·
      */
     private String cardNo;
 
     /**
-     *  ÒøĞĞ¿¨»§Ãû
+     *  é“¶è¡Œå¡æˆ·å
      */
     private String cardName;
 
     /**
-     *  ĞÅÓÃ¿¨CVV2
+     *  ä¿¡ç”¨å¡CVV2
      */
     private String ardcvv2;
 
     /**
-     *  ĞÅÓÃ¿¨ÓĞĞ§ÆÚ
+     *  ä¿¡ç”¨å¡æœ‰æ•ˆæœŸ
      */
     private String cardexpdate;
 
     /**
-     *  Ö¤¼şÀàĞÍ
+     *  è¯ä»¶ç±»å‹
      */
     private String idType;
 
     /**
-     *  Ö¤¼şºÅÂë
+     *  è¯ä»¶å·ç 
      */
     private String idNo;
 
     /**
-     *  Á÷Ë®ºÅ
+     *  æµæ°´å·
      */
     private String tradeNo;
 
     /**
-     *  Ç©ÃûÊı¾İ
+     *  ç­¾åæ•°æ®
      */
     private String hmac;
 
     /**
-     *  ·µ»ØÂë
+     *  è¿”å›ç 
      */
     private String returnCode;
 
     /**
-     *  ·µ»ØÂëÃèÊöĞÅÏ¢
+     *  è¿”å›ç æè¿°ä¿¡æ¯
      */
     private String message;
 
     /**
-     *  ´´½¨ÈË
+     *  åˆ›å»ºäºº
      */
     private Integer createUser;
 
     /**
-     *  ´´½¨Ê±¼ä
+     *  åˆ›å»ºæ—¶é—´
      */
     private Date createTime;
 
     /**
-     *  ĞŞ¸ÄÈË
+     *  ä¿®æ”¹äºº
      */
     private Integer updateUser;
 
     /**
-     *  ĞŞ¸ÄÊ±¼ä
+     *  ä¿®æ”¹æ—¶é—´
      */
     private Date updateTime;
 
     /**
-     *  Ê±¼ä´Á
+     *  æ—¶é—´æˆ³
      */
     private String ts;
 
     /**
-     *  É¾³ı±êÖ¾
+     *  åˆ é™¤æ ‡å¿—
      */
     private String dr;
 
     /**
-     *  ×Ô¶¨ÒåÏî1
+     *  è‡ªå®šä¹‰é¡¹1
      */
     private Integer zyx1;
 
     /**
-     *  ×Ô¶¨ÒåÏî2
+     *  è‡ªå®šä¹‰é¡¹2
      */
     private String zyx2;
 
     /**
-     *  ×Ô¶¨ÒåÏî3
+     *  è‡ªå®šä¹‰é¡¹3
      */
     private String zyx3;
 
     /**
-     *  ×Ô¶¨ÒåÏî4
+     *  è‡ªå®šä¹‰é¡¹4
      */
     private Date zyx4;
 
     /**
-     *  ×Ô¶¨ÒåÏî5
+     *  è‡ªå®šä¹‰é¡¹5
      */
     private BigDecimal zyx5;
 
     /**
-     *  ×Ô¶¨ÒåÏî3
+     *  è‡ªå®šä¹‰é¡¹3
      */
     private String zyx6;
 
     /**
-     *  ×Ô¶¨ÒåÏî4
+     *  è‡ªå®šä¹‰é¡¹4
      */
     private String zyx7;
 
     /**
-     *  ×Ô¶¨ÒåÏî5
+     *  è‡ªå®šä¹‰é¡¹5
      */
     private String zyx8;
 
     /**
-     *  pay_smscode.Ö÷¼ü
+     *  pay_smscode.ä¸»é”®
      */
     public Integer getId() {
         return id;
     }
 
     /**
-     *  pay_smsCode.Ö÷¼ü
+     *  pay_smsCode.ä¸»é”®
      */
     public void setId(Integer id) {
         this.id = id;
@@ -212,420 +212,420 @@ public class PaySmscode {
     }
 
     /**
-     *  pay_smscode.¿Í»§id
+     *  pay_smscode.å®¢æˆ·id
      */
     public Integer getCustomerid() {
         return customerid;
     }
 
     /**
-     *  pay_smsCode.¿Í»§id
+     *  pay_smsCode.å®¢æˆ·id
      */
     public void setCustomerid(Integer customerid) {
         this.customerid = customerid;
     }
 
     /**
-     *  pay_smscode.ÊÖ»úºÅ
+     *  pay_smscode.æ‰‹æœºå·
      */
     public String getMobileNo() {
         return mobileNo;
     }
 
     /**
-     *  pay_smsCode.ÊÖ»úºÅ
+     *  pay_smsCode.æ‰‹æœºå·
      */
     public void setMobileNo(String mobileNo) {
         this.mobileNo = mobileNo;
     }
 
     /**
-     *  pay_smscode.Ğ­ÒéºÅ
+     *  pay_smscode.åè®®å·
      */
     public String getAgrNo() {
         return agrNo;
     }
 
     /**
-     *  pay_smsCode.Ğ­ÒéºÅ
+     *  pay_smsCode.åè®®å·
      */
     public void setAgrNo(String agrNo) {
         this.agrNo = agrNo;
     }
 
     /**
-     *  pay_smscode.ÑéÖ¤ÂëÀàĞÍ
+     *  pay_smscode.éªŒè¯ç ç±»å‹
      */
     public String getSmsType() {
         return smsType;
     }
 
     /**
-     *  pay_smsCode.ÑéÖ¤ÂëÀàĞÍ
+     *  pay_smsCode.éªŒè¯ç ç±»å‹
      */
     public void setSmsType(String smsType) {
         this.smsType = smsType;
     }
 
     /**
-     *  pay_smscode.ÒøĞĞ¿¨ÀàĞÍ
+     *  pay_smscode.é“¶è¡Œå¡ç±»å‹
      */
     public String getCardType() {
         return cardType;
     }
 
     /**
-     *  pay_smsCode.ÒøĞĞ¿¨ÀàĞÍ
+     *  pay_smsCode.é“¶è¡Œå¡ç±»å‹
      */
     public void setCardType(String cardType) {
         this.cardType = cardType;
     }
 
     /**
-     *  pay_smscode.ÒøĞĞ¿¨´úÂë
+     *  pay_smscode.é“¶è¡Œå¡ä»£ç 
      */
     public String getBandAddr() {
         return bandAddr;
     }
 
     /**
-     *  pay_smsCode.ÒøĞĞ¿¨´úÂë
+     *  pay_smsCode.é“¶è¡Œå¡ä»£ç 
      */
     public void setBandAddr(String bandAddr) {
         this.bandAddr = bandAddr;
     }
 
     /**
-     *  pay_smscode.ÒøĞĞ¿¨¿¨ºÅ
+     *  pay_smscode.é“¶è¡Œå¡å¡å·
      */
     public String getCardNo() {
         return cardNo;
     }
 
     /**
-     *  pay_smsCode.ÒøĞĞ¿¨¿¨ºÅ
+     *  pay_smsCode.é“¶è¡Œå¡å¡å·
      */
     public void setCardNo(String cardNo) {
         this.cardNo = cardNo;
     }
 
     /**
-     *  pay_smscode.ÒøĞĞ¿¨»§Ãû
+     *  pay_smscode.é“¶è¡Œå¡æˆ·å
      */
     public String getCardName() {
         return cardName;
     }
 
     /**
-     *  pay_smsCode.ÒøĞĞ¿¨»§Ãû
+     *  pay_smsCode.é“¶è¡Œå¡æˆ·å
      */
     public void setCardName(String cardName) {
         this.cardName = cardName;
     }
 
     /**
-     *  pay_smscode.ĞÅÓÃ¿¨CVV2
+     *  pay_smscode.ä¿¡ç”¨å¡CVV2
      */
     public String getArdcvv2() {
         return ardcvv2;
     }
 
     /**
-     *  pay_smsCode.ĞÅÓÃ¿¨CVV2
+     *  pay_smsCode.ä¿¡ç”¨å¡CVV2
      */
     public void setArdcvv2(String ardcvv2) {
         this.ardcvv2 = ardcvv2;
     }
 
     /**
-     *  pay_smscode.ĞÅÓÃ¿¨ÓĞĞ§ÆÚ
+     *  pay_smscode.ä¿¡ç”¨å¡æœ‰æ•ˆæœŸ
      */
     public String getCardexpdate() {
         return cardexpdate;
     }
 
     /**
-     *  pay_smsCode.ĞÅÓÃ¿¨ÓĞĞ§ÆÚ
+     *  pay_smsCode.ä¿¡ç”¨å¡æœ‰æ•ˆæœŸ
      */
     public void setCardexpdate(String cardexpdate) {
         this.cardexpdate = cardexpdate;
     }
 
     /**
-     *  pay_smscode.Ö¤¼şÀàĞÍ
+     *  pay_smscode.è¯ä»¶ç±»å‹
      */
     public String getIdType() {
         return idType;
     }
 
     /**
-     *  pay_smsCode.Ö¤¼şÀàĞÍ
+     *  pay_smsCode.è¯ä»¶ç±»å‹
      */
     public void setIdType(String idType) {
         this.idType = idType;
     }
 
     /**
-     *  pay_smscode.Ö¤¼şºÅÂë
+     *  pay_smscode.è¯ä»¶å·ç 
      */
     public String getIdNo() {
         return idNo;
     }
 
     /**
-     *  pay_smsCode.Ö¤¼şºÅÂë
+     *  pay_smsCode.è¯ä»¶å·ç 
      */
     public void setIdNo(String idNo) {
         this.idNo = idNo;
     }
 
     /**
-     *  pay_smscode.Á÷Ë®ºÅ
+     *  pay_smscode.æµæ°´å·
      */
     public String getTradeNo() {
         return tradeNo;
     }
 
     /**
-     *  pay_smsCode.Á÷Ë®ºÅ
+     *  pay_smsCode.æµæ°´å·
      */
     public void setTradeNo(String tradeNo) {
         this.tradeNo = tradeNo;
     }
 
     /**
-     *  pay_smscode.Ç©ÃûÊı¾İ
+     *  pay_smscode.ç­¾åæ•°æ®
      */
     public String getHmac() {
         return hmac;
     }
 
     /**
-     *  pay_smsCode.Ç©ÃûÊı¾İ
+     *  pay_smsCode.ç­¾åæ•°æ®
      */
     public void setHmac(String hmac) {
         this.hmac = hmac;
     }
 
     /**
-     *  pay_smscode.·µ»ØÂë
+     *  pay_smscode.è¿”å›ç 
      */
     public String getReturnCode() {
         return returnCode;
     }
 
     /**
-     *  pay_smsCode.·µ»ØÂë
+     *  pay_smsCode.è¿”å›ç 
      */
     public void setReturnCode(String returnCode) {
         this.returnCode = returnCode;
     }
 
     /**
-     *  pay_smscode.·µ»ØÂëÃèÊöĞÅÏ¢
+     *  pay_smscode.è¿”å›ç æè¿°ä¿¡æ¯
      */
     public String getMessage() {
         return message;
     }
 
     /**
-     *  pay_smsCode.·µ»ØÂëÃèÊöĞÅÏ¢
+     *  pay_smsCode.è¿”å›ç æè¿°ä¿¡æ¯
      */
     public void setMessage(String message) {
         this.message = message;
     }
 
     /**
-     *  pay_smscode.´´½¨ÈË
+     *  pay_smscode.åˆ›å»ºäºº
      */
     public Integer getCreateUser() {
         return createUser;
     }
 
     /**
-     *  pay_smsCode.´´½¨ÈË
+     *  pay_smsCode.åˆ›å»ºäºº
      */
     public void setCreateUser(Integer createUser) {
         this.createUser = createUser;
     }
 
     /**
-     *  pay_smscode.´´½¨Ê±¼ä
+     *  pay_smscode.åˆ›å»ºæ—¶é—´
      */
     public Date getCreateTime() {
         return createTime;
     }
 
     /**
-     *  pay_smsCode.´´½¨Ê±¼ä
+     *  pay_smsCode.åˆ›å»ºæ—¶é—´
      */
     public void setCreateTime(Date createTime) {
         this.createTime = createTime;
     }
 
     /**
-     *  pay_smscode.ĞŞ¸ÄÈË
+     *  pay_smscode.ä¿®æ”¹äºº
      */
     public Integer getUpdateUser() {
         return updateUser;
     }
 
     /**
-     *  pay_smsCode.ĞŞ¸ÄÈË
+     *  pay_smsCode.ä¿®æ”¹äºº
      */
     public void setUpdateUser(Integer updateUser) {
         this.updateUser = updateUser;
     }
 
     /**
-     *  pay_smscode.ĞŞ¸ÄÊ±¼ä
+     *  pay_smscode.ä¿®æ”¹æ—¶é—´
      */
     public Date getUpdateTime() {
         return updateTime;
     }
 
     /**
-     *  pay_smsCode.ĞŞ¸ÄÊ±¼ä
+     *  pay_smsCode.ä¿®æ”¹æ—¶é—´
      */
     public void setUpdateTime(Date updateTime) {
         this.updateTime = updateTime;
     }
 
     /**
-     *  pay_smscode.Ê±¼ä´Á
+     *  pay_smscode.æ—¶é—´æˆ³
      */
     public String getTs() {
         return ts;
     }
 
     /**
-     *  pay_smsCode.Ê±¼ä´Á
+     *  pay_smsCode.æ—¶é—´æˆ³
      */
     public void setTs(String ts) {
         this.ts = ts;
     }
 
     /**
-     *  pay_smscode.É¾³ı±êÖ¾
+     *  pay_smscode.åˆ é™¤æ ‡å¿—
      */
     public String getDr() {
         return dr;
     }
 
     /**
-     *  pay_smsCode.É¾³ı±êÖ¾
+     *  pay_smsCode.åˆ é™¤æ ‡å¿—
      */
     public void setDr(String dr) {
         this.dr = dr;
     }
 
     /**
-     *  pay_smscode.×Ô¶¨ÒåÏî1
+     *  pay_smscode.è‡ªå®šä¹‰é¡¹1
      */
     public Integer getZyx1() {
         return zyx1;
     }
 
     /**
-     *  pay_smsCode.×Ô¶¨ÒåÏî1
+     *  pay_smsCode.è‡ªå®šä¹‰é¡¹1
      */
     public void setZyx1(Integer zyx1) {
         this.zyx1 = zyx1;
     }
 
     /**
-     *  pay_smscode.×Ô¶¨ÒåÏî2
+     *  pay_smscode.è‡ªå®šä¹‰é¡¹2
      */
     public String getZyx2() {
         return zyx2;
     }
 
     /**
-     *  pay_smsCode.×Ô¶¨ÒåÏî2
+     *  pay_smsCode.è‡ªå®šä¹‰é¡¹2
      */
     public void setZyx2(String zyx2) {
         this.zyx2 = zyx2;
     }
 
     /**
-     *  pay_smscode.×Ô¶¨ÒåÏî3
+     *  pay_smscode.è‡ªå®šä¹‰é¡¹3
      */
     public String getZyx3() {
         return zyx3;
     }
 
     /**
-     *  pay_smsCode.×Ô¶¨ÒåÏî3
+     *  pay_smsCode.è‡ªå®šä¹‰é¡¹3
      */
     public void setZyx3(String zyx3) {
         this.zyx3 = zyx3;
     }
 
     /**
-     *  pay_smscode.×Ô¶¨ÒåÏî4
+     *  pay_smscode.è‡ªå®šä¹‰é¡¹4
      */
     public Date getZyx4() {
         return zyx4;
     }
 
     /**
-     *  pay_smsCode.×Ô¶¨ÒåÏî4
+     *  pay_smsCode.è‡ªå®šä¹‰é¡¹4
      */
     public void setZyx4(Date zyx4) {
         this.zyx4 = zyx4;
     }
 
     /**
-     *  pay_smscode.×Ô¶¨ÒåÏî5
+     *  pay_smscode.è‡ªå®šä¹‰é¡¹5
      */
     public BigDecimal getZyx5() {
         return zyx5;
     }
 
     /**
-     *  pay_smsCode.×Ô¶¨ÒåÏî5
+     *  pay_smsCode.è‡ªå®šä¹‰é¡¹5
      */
     public void setZyx5(BigDecimal zyx5) {
         this.zyx5 = zyx5;
     }
 
     /**
-     *  pay_smscode.×Ô¶¨ÒåÏî3
+     *  pay_smscode.è‡ªå®šä¹‰é¡¹3
      */
     public String getZyx6() {
         return zyx6;
     }
 
     /**
-     *  pay_smsCode.×Ô¶¨ÒåÏî3
+     *  pay_smsCode.è‡ªå®šä¹‰é¡¹3
      */
     public void setZyx6(String zyx6) {
         this.zyx6 = zyx6;
     }
 
     /**
-     *  pay_smscode.×Ô¶¨ÒåÏî4
+     *  pay_smscode.è‡ªå®šä¹‰é¡¹4
      */
     public String getZyx7() {
         return zyx7;
     }
 
     /**
-     *  pay_smsCode.×Ô¶¨ÒåÏî4
+     *  pay_smsCode.è‡ªå®šä¹‰é¡¹4
      */
     public void setZyx7(String zyx7) {
         this.zyx7 = zyx7;
     }
 
     /**
-     *  pay_smscode.×Ô¶¨ÒåÏî5
+     *  pay_smscode.è‡ªå®šä¹‰é¡¹5
      */
     public String getZyx8() {
         return zyx8;
     }
 
     /**
-     *  pay_smsCode.×Ô¶¨ÒåÏî5
+     *  pay_smsCode.è‡ªå®šä¹‰é¡¹5
      */
     public void setZyx8(String zyx8) {
         this.zyx8 = zyx8;
