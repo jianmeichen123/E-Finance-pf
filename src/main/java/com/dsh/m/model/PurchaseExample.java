@@ -392,7 +392,7 @@ public class PurchaseExample {
         }
 
         public Criteria andInputtimeEqualTo(Date value) {
-            addCriterion("inputtime =", value, "inputtime");
+            addCriterion("date(inputtime) =", value, "inputtime");
             return (Criteria) this;
         }
 

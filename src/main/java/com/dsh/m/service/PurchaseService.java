@@ -2,6 +2,7 @@ package com.dsh.m.service;
 
 import java.math.BigDecimal;
 import java.util.Date;
+import java.util.List;
 import java.util.Set;
 
 import jetbrick.util.StringUtils;
@@ -15,6 +16,9 @@ import com.dsh.m.dao.PurchaseDetailMapper;
 import com.dsh.m.dao.PurchaseMapper;
 import com.dsh.m.model.Purchase;
 import com.dsh.m.model.PurchaseDetail;
+import com.dsh.m.model.PurchaseExample;
+import com.dsh.m.util.ConstructString;
+import com.dsh.m.util.DateUtil;
 import com.dsh.m.util.OrderUtil;
 import com.dsh.m.util.redis.Cache;
 import com.dsh.m.util.redis.Redis;
@@ -30,8 +34,23 @@ public class PurchaseService {
 	@Transactional
 	public Integer savePurchase(Integer userid, String dealTime) {
 		Purchase purchase = new Purchase();
-		String ordernum = OrderUtil.generateOrderNo();
-		purchase.setOrderid(ordernum);
+			String orderid;
+		if (DateUtil.getIntervalDays(dealTime, DateUtil.getCurrentDate()) == 0) {
+			orderid = ConstructString.getOrderId();
+		} else {
+			PurchaseExample purchaseExample=new PurchaseExample();
+			purchaseExample.createCriteria().andInputtimeEqualTo(DateUtil.parseDate(dealTime));
+			purchaseExample.setOrderByClause("purid DESC");
+			List<Purchase> list=purchaseMapper.selectByExample(purchaseExample);			// 如果查询的这一天没有一个单号
+			if (list.isEmpty()) {
+				orderid = OrderUtil.getFirstOrderId(dealTime);
+			} else {
+				orderid = OrderUtil.changOrderId(list.get(0).getOrderid());
+			}
+		}
+
+		//String ordernum = OrderUtil.generateOrderNo();
+		purchase.setOrderid(orderid);
 		purchase.setInputtime(new Date());
 		purchase.setCustomerid(userid);
 		purchaseMapper.insertSelective(purchase);
@@ -54,7 +73,7 @@ public class PurchaseService {
 			}
 			detail.setDealTime(new JDateTime(dealTime, "YYYY-MM-DD").convertToDate());
 			detail.setGoodsid(Integer.parseInt(k));
-			detail.setOrderid(ordernum);
+			detail.setOrderid(orderid);
 			detail.setUnitPrice(unitPrice);
 			detail.setTotalPrice(totalPrice);
 			detail.setPurchaseid(purchase.getPurid());
