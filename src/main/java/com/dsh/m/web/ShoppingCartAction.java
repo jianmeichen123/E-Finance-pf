@@ -162,7 +162,7 @@ public class ShoppingCartAction extends BaseAction {
 		SysSms syssms = null;
 		if(supply.getMobile() != null && supply.getMobile().length() == 11){
 			syssms = new SysSms();
-			syssms.setContent("用户" + customer.getShopname() + "已经下单，请您及时登录处理！有问题请咨询客服电话010-622999432");
+			syssms.setContent("用户" + customer.getShopname() + "已经下单，请您及时登录处理！有问题请咨询客服电话010-62999432");
 			syssms.setTel(supply.getMobile());
 			syssms.setSendtime(new Date());
 			syssms.setType("0");
