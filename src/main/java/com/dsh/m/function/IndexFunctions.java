@@ -76,4 +76,7 @@ public class IndexFunctions {
 		}
 	}
 
+	public static boolean isDuoZero(BigDecimal big) {
+		return big.compareTo(new BigDecimal(0))==1;
+	}
 }

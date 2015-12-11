@@ -59,6 +59,7 @@ function search() {
      <div class="pro-list">
       <div class="dis"  id="tbc_01">
       	#for(good : goods)
+      	#if(isDuoZero(good.marketPrice))
         <dl>
             <dt><a href="#"><img src="
 			#if(good.image=='')
@@ -75,6 +76,7 @@ function search() {
                </div>               
             </dd>
         </dl>
+        #end
         #end
        </div>  
        
