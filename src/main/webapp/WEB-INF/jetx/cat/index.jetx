@@ -23,11 +23,11 @@
 		}).done(function(data){
 		
 			$.each(data, function(i, n){
-		       if( n.image==null){
-		         n.image="load.jpg";
+		       if( n.typePic==null || n.typePic==""){
+		         n.typePic="load.jpg";
 		       }
-				var html = '<a href="/product?catid='+n.sclassid
-						+'"><img src="http://bj.dosaing.com/upload/'+ n.image +'"><br>'+n.sclassname+'</a>'
+				var html = '<a href="/product?catid='+n.id
+						+'"><img src="http://bj.dosaing.com/upload/'+ n.typePic +'"><br>'+n.typeName+'</a>'
 				$('#sectab').append(html)
 			})
 		})
@@ -74,13 +74,13 @@
 	<div class="main-left" id="tb_">
 		<ul>
 			#for(cat : firstcats)
-			<li><a href="javascript:;" onClick='loadcat("${cat.bclassid}", this)' class="
+			<li><a href="javascript:;" onClick='loadcat("${cat.id}", this)' class="
 			#if(for.index==1)
 				hovertab
 			#else
 				normaltab
 			#end
-			">${cat.bclassname}</a></li>
+			">${cat.typeName}</a></li>
 			#end
 		</ul>
 	</div>
@@ -88,15 +88,15 @@
 		<div class="tab-list">
 			<div class="dis" id="sectab">
 				#for(cat : secondcats)
-			    <a href="/product?catid=${cat.sclassid}"><img src='
-					#if(cat.image=='')
+			    <a href="/product?catid=${cat.id}"><img src='
+					#if(cat.typePic == '')
 						http://bj.dosaing.com/upload/load.jpg
 					#else
-						${request.getAttribute("config.img.prefix") }${cat.image}
+						${request.getAttribute("config.img.prefix") }${cat.typePic}
 					#end
 					'>
 			    
-			    <br>${cat.sclassname}</a>
+			    <br>${cat.typeName}</a>
 			    #end
 			</div>
 		</div>

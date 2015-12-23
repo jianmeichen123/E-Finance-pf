@@ -15,45 +15,56 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
-import com.dsh.m.dao.GoodsBclassMapper;
+import com.dsh.m.dao.GoodsCategoryMapper;
 import com.dsh.m.dao.GoodsMapper;
 import com.dsh.m.dao.GoodsPriceMapper;
-import com.dsh.m.dao.GoodsSclassMapper;
 import com.dsh.m.model.Goods;
-import com.dsh.m.model.GoodsBclass;
-import com.dsh.m.model.GoodsBclassExample;
+import com.dsh.m.model.GoodsCategory;
+import com.dsh.m.model.GoodsCategoryExample;
 import com.dsh.m.model.GoodsExample;
 import com.dsh.m.model.GoodsPrice;
 import com.dsh.m.model.GoodsPriceExample;
-import com.dsh.m.model.GoodsSclass;
-import com.dsh.m.model.GoodsSclassExample;
 
 @RequestMapping("/price")
 @Controller
 public class PriceAction extends BaseAction {
 	
-	@Autowired
-	private GoodsBclassMapper goodsBclassMapper;
-	@Autowired
-	private GoodsSclassMapper goodsSclassMapper;
+//	@Autowired
+//	private GoodsBclassMapper goodsBclassMapper;
+//	@Autowired
+//	private GoodsSclassMapper goodsSclassMapper;
 	@Autowired
 	private GoodsMapper goodsMapper;
 	@Autowired
 	private GoodsPriceMapper goodsPriceMapper;
+	@Autowired
+	private GoodsCategoryMapper goodsCategoryMapper;
 	
 	@RequestMapping("/search")
 	public String search(ModelMap model) {
-		GoodsBclassExample bclassExample = new GoodsBclassExample();
-		bclassExample.createCriteria().andBclassidNotEqualTo(28).andIsSaleEqualTo("1");
-		List<GoodsBclass> bclasses = goodsBclassMapper.selectByExample(bclassExample);
-		Integer bclassid = bclasses.get(0).getBclassid();
-		GoodsSclassExample sclassExample = new GoodsSclassExample();
-		sclassExample.createCriteria().andBclassidEqualTo(bclassid).andIsSaleEqualTo("1");
-		List<GoodsSclass> sclasses = goodsSclassMapper.selectByExample(sclassExample);
-		Integer sclassid = sclasses.get(0).getSclassid();
+//		GoodsBclassExample bclassExample = new GoodsBclassExample();
+//		bclassExample.createCriteria().andBclassidNotEqualTo(28).andIsSaleEqualTo("1");
+//		List<GoodsBclass> bclasses = goodsBclassMapper.selectByExample(bclassExample);
+//		Integer bclassid = bclasses.get(0).getBclassid();
+//		GoodsSclassExample sclassExample = new GoodsSclassExample();
+//		sclassExample.createCriteria().andBclassidEqualTo(bclassid).andIsSaleEqualTo("1");
+//		List<GoodsSclass> sclasses = goodsSclassMapper.selectByExample(sclassExample);
+//		Integer sclassid = sclasses.get(0).getSclassid();
+		
+		GoodsCategoryExample goodsCategoryExample = new GoodsCategoryExample();
+		goodsCategoryExample.createCriteria().andIdNotEqualTo(28).andIsSaleEqualTo(true).andParentIdEqualTo(0);
+		List<GoodsCategory> firstcats = goodsCategoryMapper.selectByExample(goodsCategoryExample);
+		
+		Integer catpid = firstcats.get(0).getId();
+		goodsCategoryExample.clear();
+		goodsCategoryExample.createCriteria().andParentIdEqualTo(catpid).andIsSaleEqualTo(true);
+		List<GoodsCategory> secondcats = goodsCategoryMapper.selectByExample(goodsCategoryExample);
+		
+		Integer catid = secondcats.get(0).getId();
 		GoodsExample goodsExample = new GoodsExample();
-		goodsExample.createCriteria().andSclassidEqualTo(sclassid).andIsSaleEqualTo("1").andDrNotEqualTo("1");
+		goodsExample.createCriteria().andGoodsCategoryidEqualTo(catid).andIsSaleEqualTo("1").andDrNotEqualTo("1");
 		List<Goods> goods = goodsMapper.selectByExample(goodsExample);
+		
 		JSONArray array = JSON.parseArray(JSON.toJSONString(goods));
 		@SuppressWarnings("rawtypes")
 		Iterator iter = array.iterator();
@@ -68,8 +79,8 @@ public class PriceAction extends BaseAction {
 				json.put("price", price.getMarketprice());
 			}
 		}
-		model.addAttribute("bclasses", bclasses);
-		model.addAttribute("sclasses", sclasses);
+		model.addAttribute("bclasses", firstcats);
+		model.addAttribute("sclasses", secondcats);
 		model.addAttribute("goods", array);
 		return "price/search";
 	}
@@ -78,12 +89,18 @@ public class PriceAction extends BaseAction {
 	@ResponseBody
 	@RequestMapping("/loadsclass")
 	public String loadsclass(Integer bclassid) {
-		GoodsSclassExample sclassExample = new GoodsSclassExample();
-		sclassExample.createCriteria().andBclassidEqualTo(bclassid).andIsSaleEqualTo("1");
-		List<GoodsSclass> sclasses = goodsSclassMapper.selectByExample(sclassExample);
-		Integer sclassid = sclasses.get(0).getSclassid();
+//		GoodsSclassExample sclassExample = new GoodsSclassExample();
+//		sclassExample.createCriteria().andBclassidEqualTo(bclassid).andIsSaleEqualTo("1");
+//		List<GoodsSclass> sclasses = goodsSclassMapper.selectByExample(sclassExample);
+//		Integer sclassid = sclasses.get(0).getSclassid();
+		
+		GoodsCategoryExample goodsCategoryExample = new GoodsCategoryExample();
+		goodsCategoryExample.createCriteria().andParentIdEqualTo(bclassid).andIsSaleEqualTo(true);
+		List<GoodsCategory> secondcats = goodsCategoryMapper.selectByExample(goodsCategoryExample);
+		Integer id = secondcats.get(0).getId();
+		
 		GoodsExample goodsExample = new GoodsExample();
-		goodsExample.createCriteria().andSclassidEqualTo(sclassid).andIsSaleEqualTo("1").andDrNotEqualTo("1");
+		goodsExample.createCriteria().andGoodsCategoryidEqualTo(id).andIsSaleEqualTo("1").andDrNotEqualTo("1");
 		List<Goods> goods = goodsMapper.selectByExample(goodsExample);
 		JSONArray array = JSON.parseArray(JSON.toJSONString(goods));
 		@SuppressWarnings("rawtypes")
@@ -101,7 +118,7 @@ public class PriceAction extends BaseAction {
 		}
 		@SuppressWarnings("rawtypes")
 		Map map = new HashMap();
-		map.put("sclasses", sclasses);
+		map.put("sclasses", secondcats);
 		map.put("goods", array);
 		return success(null, map);
 	}
@@ -110,7 +127,7 @@ public class PriceAction extends BaseAction {
 	@RequestMapping("/loadgoods")
 	public String loadgoods(Integer sclassid) {
 		GoodsExample goodsExample = new GoodsExample();
-		goodsExample.createCriteria().andSclassidEqualTo(sclassid).andIsSaleEqualTo("1").andDrNotEqualTo("1");
+		goodsExample.createCriteria().andGoodsCategoryidEqualTo(sclassid).andIsSaleEqualTo("1").andDrNotEqualTo("1");
 		List<Goods> goods = goodsMapper.selectByExample(goodsExample);
 		JSONArray array = JSON.parseArray(JSON.toJSONString(goods));
 		@SuppressWarnings("rawtypes")

@@ -22,16 +22,13 @@ import redis.clients.jedis.Jedis;
 
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
-import com.dsh.m.dao.GoodsBclassMapper;
+import com.dsh.m.dao.GoodsCategoryMapper;
 import com.dsh.m.dao.GoodsMapper;
-import com.dsh.m.dao.GoodsSclassMapper;
 import com.dsh.m.dao.PurchaseDetailMapper;
 import com.dsh.m.model.Goods;
-import com.dsh.m.model.GoodsBclass;
-import com.dsh.m.model.GoodsBclassExample;
+import com.dsh.m.model.GoodsCategory;
+import com.dsh.m.model.GoodsCategoryExample;
 import com.dsh.m.model.GoodsExample;
-import com.dsh.m.model.GoodsSclass;
-import com.dsh.m.model.GoodsSclassExample;
 import com.dsh.m.model.PurchaseDetail;
 import com.dsh.m.model.PurchaseDetailExample;
 import com.dsh.m.service.PurchaseService;
@@ -43,14 +40,16 @@ import com.dsh.m.util.redis.Redis;
 public class PurchaseAction extends BaseAction {
 	@Autowired
 	private PurchaseDetailMapper purchaseDetailMapper;
-	@Autowired
-	private GoodsBclassMapper goodsBclassMapper;
-	@Autowired
-	private GoodsSclassMapper goodsSclassMapper;
+//	@Autowired
+//	private GoodsBclassMapper goodsBclassMapper;
+//	@Autowired
+//	private GoodsSclassMapper goodsSclassMapper;
 	@Autowired
 	private GoodsMapper goodsMapper;
 	@Autowired
 	private PurchaseService purchaseService;
+	@Autowired
+	private GoodsCategoryMapper goodsCategoryMapper;
 	
 	@RequestMapping("/detail")
 	public String detail(Integer purchaseid, HttpSession session, ModelMap model) {
@@ -70,20 +69,31 @@ public class PurchaseAction extends BaseAction {
 	
 	@RequestMapping("/input")
 	public String input(ModelMap model) {
-		GoodsBclassExample bclassExample = new GoodsBclassExample();
-		bclassExample.createCriteria().andBclassidNotEqualTo(28);
-		List<GoodsBclass> bclasses = goodsBclassMapper.selectByExample(bclassExample);
+//		GoodsBclassExample bclassExample = new GoodsBclassExample();
+//		bclassExample.createCriteria().andBclassidNotEqualTo(28);
+//		List<GoodsBclass> bclasses = goodsBclassMapper.selectByExample(bclassExample);
+//		
+//		Integer bclassid = bclasses.get(0).getBclassid();
+//		GoodsSclassExample sclassExample = new GoodsSclassExample();
+//		sclassExample.createCriteria().andBclassidEqualTo(bclassid);
+//		List<GoodsSclass> sclasses = goodsSclassMapper.selectByExample(sclassExample);
+//		Integer sclassid = sclasses.get(0).getSclassid();
 		
-		Integer bclassid = bclasses.get(0).getBclassid();
-		GoodsSclassExample sclassExample = new GoodsSclassExample();
-		sclassExample.createCriteria().andBclassidEqualTo(bclassid);
-		List<GoodsSclass> sclasses = goodsSclassMapper.selectByExample(sclassExample);
-		Integer sclassid = sclasses.get(0).getSclassid();
+		GoodsCategoryExample goodsCategoryExample = new GoodsCategoryExample();
+		goodsCategoryExample.createCriteria().andIdNotEqualTo(28).andIdNotEqualTo(51).andParentIdEqualTo(0).andIsSaleEqualTo(true);
+		List<GoodsCategory> firstcats = goodsCategoryMapper.selectByExample(goodsCategoryExample);
+		
+		Integer catpid = firstcats.get(0).getId();
+		goodsCategoryExample.clear();
+		goodsCategoryExample.createCriteria().andParentIdEqualTo(catpid);
+		List<GoodsCategory> secondcats = goodsCategoryMapper.selectByExample(goodsCategoryExample);
+		
+		Integer catid = secondcats.get(0).getId();
 		GoodsExample goodsExample = new GoodsExample();
-		goodsExample.createCriteria().andSclassidEqualTo(sclassid).andDrNotEqualTo("1");
+		goodsExample.createCriteria().andGoodsCategoryidEqualTo(catid).andDrNotEqualTo("1");
 		List<Goods> goods = goodsMapper.selectByExample(goodsExample);
-		model.addAttribute("bclasses", bclasses);
-		model.addAttribute("sclasses", sclasses);
+		model.addAttribute("bclasses", firstcats);
+		model.addAttribute("sclasses", secondcats);
 		model.addAttribute("goods", goods);
 		return "purchase/input";
 	}
@@ -92,16 +102,22 @@ public class PurchaseAction extends BaseAction {
 	@ResponseBody
 	@RequestMapping("/loadsclass")
 	public String loadsclass(Integer bclassid) {
-		GoodsSclassExample sclassExample = new GoodsSclassExample();
-		sclassExample.createCriteria().andBclassidEqualTo(bclassid);
-		List<GoodsSclass> sclasses = goodsSclassMapper.selectByExample(sclassExample);
-		Integer sclassid = sclasses.get(0).getSclassid();
+//		GoodsSclassExample sclassExample = new GoodsSclassExample();
+//		sclassExample.createCriteria().andBclassidEqualTo(bclassid);
+//		List<GoodsSclass> sclasses = goodsSclassMapper.selectByExample(sclassExample);
+//		Integer sclassid = sclasses.get(0).getSclassid();
+		
+		GoodsCategoryExample goodsCategoryExample = new GoodsCategoryExample();
+		goodsCategoryExample.createCriteria().andParentIdEqualTo(bclassid);
+		List<GoodsCategory> secondcats = goodsCategoryMapper.selectByExample(goodsCategoryExample);
+		Integer id = secondcats.get(0).getId();
+		
 		GoodsExample goodsExample = new GoodsExample();
-		goodsExample.createCriteria().andSclassidEqualTo(sclassid).andDrNotEqualTo("1");
+		goodsExample.createCriteria().andGoodsCategoryidEqualTo(id).andDrNotEqualTo("1");
 		List<Goods> goods = goodsMapper.selectByExample(goodsExample);
 		@SuppressWarnings("rawtypes")
 		Map map = new HashMap();
-		map.put("sclasses", sclasses);
+		map.put("sclasses", secondcats);
 		map.put("goods", goods);
 		return success(null, map);
 	}
@@ -110,7 +126,7 @@ public class PurchaseAction extends BaseAction {
 	@RequestMapping("/loadgoods")
 	public String loadgoods(Integer sclassid) {
 		GoodsExample goodsExample = new GoodsExample();
-		goodsExample.createCriteria().andSclassidEqualTo(sclassid).andDrNotEqualTo("1");
+		goodsExample.createCriteria().andGoodsCategoryidEqualTo(sclassid).andDrNotEqualTo("1");
 		List<Goods> goods = goodsMapper.selectByExample(goodsExample);
 		return success(null, goods);
 	}
@@ -216,7 +232,8 @@ public class PurchaseAction extends BaseAction {
 	public String search(HttpSession session, String word, ModelMap model) {
 		GoodsExample example = new GoodsExample();
 		example.createCriteria().andGnameLike("%"+word+"%").andDrNotEqualTo("1");
-		List<Goods> list = goodsMapper.selectByExample(example);
+		@SuppressWarnings("rawtypes")
+		List list = goodsMapper.getGoodsByName("%"+word+"%");
 		model.addAttribute("goods", list);
 		return "purchase/search";
 	}

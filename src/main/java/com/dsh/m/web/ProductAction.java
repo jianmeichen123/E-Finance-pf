@@ -12,14 +12,14 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.alibaba.fastjson.JSON;
 import com.dsh.m.dao.CustomerGoodsMapper;
+import com.dsh.m.dao.GoodsCategoryMapper;
 import com.dsh.m.dao.GoodsMapper;
-import com.dsh.m.dao.GoodsSclassMapper;
 import com.dsh.m.model.CustomerGoods;
 import com.dsh.m.model.CustomerGoodsExample;
 import com.dsh.m.model.Goods;
+import com.dsh.m.model.GoodsCategory;
+import com.dsh.m.model.GoodsCategoryExample;
 import com.dsh.m.model.GoodsExample;
-import com.dsh.m.model.GoodsSclass;
-import com.dsh.m.model.GoodsSclassExample;
 import com.dsh.m.service.ShoppingCartService;
 import com.dsh.m.util.redis.Cache;
 import com.dsh.m.util.redis.Redis;
@@ -30,28 +30,36 @@ public class ProductAction extends BaseAction {
 	
 	@Autowired
 	private GoodsMapper goodsMapper;
-	@Autowired
-	private GoodsSclassMapper goodsSclassMapper;
+//	@Autowired
+//	private GoodsSclassMapper goodsSclassMapper;
 	@Autowired
 	private CustomerGoodsMapper customerGoodsMapper;
 	@Autowired
 	private ShoppingCartService shoppingCartService;
+	@Autowired
+	private GoodsCategoryMapper goodsCategoryMapper;
 	
 	@RequestMapping
 	public String index(Integer catid, ModelMap model, HttpSession session) {
 		Integer userid = super.getUserId(session);
 		//传入二级分类
  		GoodsExample goodsExample = new GoodsExample();
-		goodsExample.createCriteria().andSclassidEqualTo(catid).andIsSaleEqualTo("1").andDrNotEqualTo("1");
+		goodsExample.createCriteria().andGoodsCategoryidEqualTo(catid).andIsSaleEqualTo("1").andDrNotEqualTo("1");
 		List<Goods> goods = goodsMapper.selectByExample(goodsExample);
 		
-		GoodsSclassExample goodsSclassExample = new GoodsSclassExample();
-		goodsSclassExample.createCriteria().andSclassidEqualTo(catid).andIsSaleEqualTo("1");
-		GoodsSclass sclass = goodsSclassMapper.selectByPrimaryKey(catid);
-		Integer bclassid = sclass.getBclassid();
-		goodsSclassExample = new GoodsSclassExample();
-		goodsSclassExample.createCriteria().andBclassidEqualTo(bclassid).andIsSaleEqualTo("1");
-		List<GoodsSclass> cats = goodsSclassMapper.selectByExample(goodsSclassExample);
+//		GoodsSclassExample goodsSclassExample = new GoodsSclassExample();
+//		goodsSclassExample.createCriteria().andSclassidEqualTo(catid).andIsSaleEqualTo("1");
+//		GoodsSclass sclass = goodsSclassMapper.selectByPrimaryKey(catid);
+//		Integer bclassid = sclass.getBclassid();
+//		goodsSclassExample = new GoodsSclassExample();
+//		goodsSclassExample.createCriteria().andBclassidEqualTo(bclassid).andIsSaleEqualTo("1");
+//		List<GoodsSclass> cats = goodsSclassMapper.selectByExample(goodsSclassExample);
+		
+		GoodsCategory category = goodsCategoryMapper.selectByPrimaryKey(catid);
+		Integer parentId = category.getParentId();
+		GoodsCategoryExample goodsCategoryExample = new GoodsCategoryExample();
+		goodsCategoryExample.createCriteria().andParentIdEqualTo(parentId).andIsSaleEqualTo(true);
+		List<GoodsCategory> cats = goodsCategoryMapper.selectByExample(goodsCategoryExample);
 		
 		model.addAttribute("goods", goods);
 		model.addAttribute("cats", cats);
@@ -63,7 +71,7 @@ public class ProductAction extends BaseAction {
 	@RequestMapping("/load")
 	public String load(Integer catid) {
 		GoodsExample goodsExample = new GoodsExample();
-		goodsExample.createCriteria().andSclassidEqualTo(catid).andIsSaleEqualTo("1").andDrNotEqualTo("1");
+		goodsExample.createCriteria().andGoodsCategoryidEqualTo(catid).andIsSaleEqualTo("1").andDrNotEqualTo("1");
 		List<Goods> goods = goodsMapper.selectByExample(goodsExample);
 		return JSON.toJSONString(goods);
 	}

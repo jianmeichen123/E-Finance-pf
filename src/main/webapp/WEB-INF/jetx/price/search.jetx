@@ -47,7 +47,7 @@ $(function() {
 									html+='class="hovertab test"'
 								else 
 									html+='class="normaltab test"'
-								html+=' sclassid="'+n.sclassid+'">'+n.sclassname+'</a></li>';
+								html+=' sclassid="'+n.id+'">'+n.typeName+'</a></li>';
 					$('#tb_').find('ul').append(html)
 				})
 				$.each(data.obj.goods, function(i, n) {
@@ -140,20 +140,20 @@ $(function() {
      <i></i>
      <p class="p-f">
      	#for(bclass : bclasses)
-        <a href="javascript:;" bclassid="${bclass.bclassid}"
+        <a href="javascript:;" bclassid="${bclass.id}"
         
         #if(for.index==1)
         class="cur"
         #end
         
-        >${bclass.bclassname }</a>
+        >${bclass.typeName }</a>
         #end
      </p>
   </div>
   <div class="main-left" id="tb_">
      <ul>
      	#for(sclass : sclasses)
-		<li><a href="javascript:;" id="tb_${for.index }" sclassid="${sclass.sclassid }"
+		<li><a href="javascript:;" id="tb_${for.index }" sclassid="${sclass.id }"
 		
 		#if(for.index==1)
 		class="hovertab test"
@@ -161,7 +161,7 @@ $(function() {
 		class="normaltab test"
 		#end
 				
-		>${sclass.sclassname }</a></li>
+		>${sclass.typeName }</a></li>
 		#end
      </ul>
   </div>

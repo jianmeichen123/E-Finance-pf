@@ -2,7 +2,9 @@ package com.dsh.m.dao;
 
 import com.dsh.m.model.Goods;
 import com.dsh.m.model.GoodsExample;
+
 import java.util.List;
+
 import org.apache.ibatis.annotations.Param;
 
 public interface GoodsMapper {
@@ -74,4 +76,7 @@ public interface GoodsMapper {
 	 * @mbggenerated  Thu Nov 19 16:18:11 CST 2015
 	 */
 	int updateByPrimaryKey(Goods record);
+	
+	@SuppressWarnings("rawtypes")
+	List getGoodsByName(String gname);
 }

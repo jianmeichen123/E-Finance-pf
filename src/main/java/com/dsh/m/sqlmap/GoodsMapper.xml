@@ -899,4 +899,26 @@
       zyx15 = #{zyx15,jdbcType=VARCHAR}
     where goodsid = #{goodsid,jdbcType=INTEGER}
   </update>
+  <select id="getGoodsByName" parameterType="string" resultType="map">
+  	SELECT
+		g.*
+	FROM
+		goods_category gc,
+		goods g
+	WHERE
+		g.gname LIKE #{gname}
+	AND IFNULL(g.dr,0)=0
+	AND g.goods_categoryid = gc.id
+	AND gc.parent_id IN (
+		SELECT
+			id
+		FROM
+			goods_category
+		WHERE
+			parent_id = 0
+		AND id != 28
+		AND id != 51
+		AND is_sale = 1
+	)
+  </select>
 </mapper>

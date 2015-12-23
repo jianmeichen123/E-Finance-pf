@@ -141,13 +141,13 @@
 	<div class="main-left" id="tb_">
 		<ul id="${request.getParameter('catid')}">
 			#for(cat : cats)
-			<li title="${cat.sclassid }" id="${request.getParameter('catid')==cat.sclassid}"><a href="javascript:;" onclick='loadproduct("${cat.sclassid}", this)' class="
-			#if((request.getParameter('catid')).asInt()==cat.sclassid)
+			<li title="${cat.id }" id="${request.getParameter('catid')==cat.id}"><a href="javascript:;" onclick='loadproduct("${cat.id}", this)' class="
+			#if((request.getParameter('catid')).asInt()==cat.id)
 				hovertab
 			#else
 				normaltab
 			#end
-			">${cat.sclassname }</a></li>
+			">${cat.typeName }</a></li>
 			#end
 		</ul>
 	</div>
