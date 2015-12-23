@@ -184,7 +184,7 @@ public class OrderService {
 		}
 		if(flag) {
 			SupplyCustomerExample sce = new SupplyCustomerExample();
-			sce.createCriteria().andCustomeridEqualTo(customerid);
+			sce.createCriteria().andCustomeridEqualTo(customerid).andDrNotEqualTo("1");
 			List<SupplyCustomer> list = supplyCustomerMapper.selectByExample(sce);
 			Float exponent = null;
 			if(CollectionUtils.isNotEmpty(list)) {

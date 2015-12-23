@@ -115,7 +115,7 @@ public class ShoppingCartAction extends BaseAction {
 				return fail("请在10:00--23:00之间下单！");
 			}
 			SupplyCustomerExample example = new SupplyCustomerExample();
-			example.createCriteria().andCustomeridEqualTo(userId);
+			example.createCriteria().andCustomeridEqualTo(userId).andDrNotEqualTo("1");
 			List<SupplyCustomer> list = supplyCustomerMapper.selectByExample(example);
 			if(CollectionUtils.isEmpty(list)) {
 				return fail("暂无供应商处理！ ！");

@@ -93,7 +93,7 @@ public class OrderAction extends BaseAction {
 		SupplyCustomerExample sce = new SupplyCustomerExample();
 		Integer customerid = order.getCustomerid();
 		Integer supplyid = order.getSupplyid(); 
-		sce.createCriteria().andCustomeridEqualTo(customerid);
+		sce.createCriteria().andCustomeridEqualTo(customerid).andDrNotEqualTo("1");
 		List<SupplyCustomer> scs = supplyCustomerMapper.selectByExample(sce);
 		
 		OrderLogisticsExample logisticsExample = new OrderLogisticsExample();
